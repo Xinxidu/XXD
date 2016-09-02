@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F863EDD7DC62F1E2F344F8F /* libPods-XXD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1696AF4DC74005A5A3024F13 /* libPods-XXD.a */; };
+		3B4C7A171D79414E001ECA94 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4C7A0A1D79414E001ECA94 /* TAAbstractDotView.m */; };
+		3B4C7A181D79414E001ECA94 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4C7A0C1D79414E001ECA94 /* TAAnimatedDotView.m */; };
+		3B4C7A191D79414E001ECA94 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4C7A0E1D79414E001ECA94 /* TADotView.m */; };
+		3B4C7A1A1D79414E001ECA94 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4C7A101D79414E001ECA94 /* TAPageControl.m */; };
+		3B4C7A1B1D79414E001ECA94 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4C7A121D79414E001ECA94 /* SDCollectionViewCell.m */; };
+		3B4C7A1C1D79414E001ECA94 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4C7A141D79414E001ECA94 /* SDCycleScrollView.m */; };
+		3B4C7A1D1D79414E001ECA94 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4C7A161D79414E001ECA94 /* UIView+SDExtension.m */; };
 		6933F6971D790B7A009CB88F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6933F6961D790B7A009CB88F /* Default-568h@2x.png */; };
 		697D76391D781300008D7C94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D76381D781300008D7C94 /* main.m */; };
 		697D763C1D781300008D7C94 /* XXDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D763B1D781300008D7C94 /* XXDAppDelegate.m */; };
@@ -21,6 +29,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1696AF4DC74005A5A3024F13 /* libPods-XXD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XXD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4C7A091D79414E001ECA94 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		3B4C7A0A1D79414E001ECA94 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		3B4C7A0B1D79414E001ECA94 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		3B4C7A0C1D79414E001ECA94 /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		3B4C7A0D1D79414E001ECA94 /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		3B4C7A0E1D79414E001ECA94 /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		3B4C7A0F1D79414E001ECA94 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		3B4C7A101D79414E001ECA94 /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
+		3B4C7A111D79414E001ECA94 /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
+		3B4C7A121D79414E001ECA94 /* SDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewCell.m; sourceTree = "<group>"; };
+		3B4C7A131D79414E001ECA94 /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
+		3B4C7A141D79414E001ECA94 /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
+		3B4C7A151D79414E001ECA94 /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
+		3B4C7A161D79414E001ECA94 /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
 		6933F6961D790B7A009CB88F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		697D76341D781300008D7C94 /* XXD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XXD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697D76381D781300008D7C94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -41,6 +64,8 @@
 		697D76741D78295F008D7C94 /* XXDMyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDMyViewController.h; sourceTree = "<group>"; };
 		697D76751D78295F008D7C94 /* XXDMyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyViewController.m; sourceTree = "<group>"; };
 		697D76781D782E77008D7C94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8A1EB41BB141BBB1A5B05B48 /* Pods-XXD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XXD/Pods-XXD.debug.xcconfig"; sourceTree = "<group>"; };
+		B431A3CF173B42D828D67E6C /* Pods-XXD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXD.release.xcconfig"; path = "Pods/Target Support Files/Pods-XXD/Pods-XXD.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,17 +73,66 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F863EDD7DC62F1E2F344F8F /* libPods-XXD.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2AA9BF295D8B6657288ACEE5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1696AF4DC74005A5A3024F13 /* libPods-XXD.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3B4C7A071D79414E001ECA94 /* SDCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				3B4C7A081D79414E001ECA94 /* PageControl */,
+				3B4C7A111D79414E001ECA94 /* SDCollectionViewCell.h */,
+				3B4C7A121D79414E001ECA94 /* SDCollectionViewCell.m */,
+				3B4C7A131D79414E001ECA94 /* SDCycleScrollView.h */,
+				3B4C7A141D79414E001ECA94 /* SDCycleScrollView.m */,
+				3B4C7A151D79414E001ECA94 /* UIView+SDExtension.h */,
+				3B4C7A161D79414E001ECA94 /* UIView+SDExtension.m */,
+			);
+			path = SDCycleScrollView;
+			sourceTree = "<group>";
+		};
+		3B4C7A081D79414E001ECA94 /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				3B4C7A091D79414E001ECA94 /* TAAbstractDotView.h */,
+				3B4C7A0A1D79414E001ECA94 /* TAAbstractDotView.m */,
+				3B4C7A0B1D79414E001ECA94 /* TAAnimatedDotView.h */,
+				3B4C7A0C1D79414E001ECA94 /* TAAnimatedDotView.m */,
+				3B4C7A0D1D79414E001ECA94 /* TADotView.h */,
+				3B4C7A0E1D79414E001ECA94 /* TADotView.m */,
+				3B4C7A0F1D79414E001ECA94 /* TAPageControl.h */,
+				3B4C7A101D79414E001ECA94 /* TAPageControl.m */,
+			);
+			path = PageControl;
+			sourceTree = "<group>";
+		};
+		573BDCCF535E29EBAB88DE8C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8A1EB41BB141BBB1A5B05B48 /* Pods-XXD.debug.xcconfig */,
+				B431A3CF173B42D828D67E6C /* Pods-XXD.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		697D762B1D781300008D7C94 = {
 			isa = PBXGroup;
 			children = (
 				697D76361D781300008D7C94 /* XXD */,
 				697D76351D781300008D7C94 /* Products */,
+				573BDCCF535E29EBAB88DE8C /* Pods */,
+				2AA9BF295D8B6657288ACEE5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +208,7 @@
 		697D76561D781B9E008D7C94 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				3B4C7A071D79414E001ECA94 /* SDCycleScrollView */,
 				697D76631D7828AD008D7C94 /* Controller */,
 			);
 			path = Home;
@@ -217,9 +292,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 697D764B1D781300008D7C94 /* Build configuration list for PBXNativeTarget "XXD" */;
 			buildPhases = (
+				809D794DEC32FE5FA9F81027 /* [CP] Check Pods Manifest.lock */,
 				697D76301D781300008D7C94 /* Sources */,
 				697D76311D781300008D7C94 /* Frameworks */,
 				697D76321D781300008D7C94 /* Resources */,
+				37D4D91693FB5C04F483DEA7 /* [CP] Embed Pods Frameworks */,
+				C9B377DF58D18D55054EE535 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -275,18 +353,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		37D4D91693FB5C04F483DEA7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XXD/Pods-XXD-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		809D794DEC32FE5FA9F81027 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C9B377DF58D18D55054EE535 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XXD/Pods-XXD-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		697D76301D781300008D7C94 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				697D766D1D78292C008D7C94 /* XXDMarketViewController.m in Sources */,
+				3B4C7A1C1D79414E001ECA94 /* SDCycleScrollView.m in Sources */,
 				697D76761D78295F008D7C94 /* XXDMyViewController.m in Sources */,
 				697D763C1D781300008D7C94 /* XXDAppDelegate.m in Sources */,
 				697D76731D782951008D7C94 /* XXDDiscoverViewController.m in Sources */,
+				3B4C7A171D79414E001ECA94 /* TAAbstractDotView.m in Sources */,
+				3B4C7A1A1D79414E001ECA94 /* TAPageControl.m in Sources */,
+				3B4C7A1B1D79414E001ECA94 /* SDCollectionViewCell.m in Sources */,
 				697D76701D782939008D7C94 /* XXDTradeViewController.m in Sources */,
 				697D765C1D781BBC008D7C94 /* XXDMainTabController.m in Sources */,
 				697D766A1D782911008D7C94 /* XXDHomeViewController.m in Sources */,
+				3B4C7A191D79414E001ECA94 /* TADotView.m in Sources */,
+				3B4C7A181D79414E001ECA94 /* TAAnimatedDotView.m in Sources */,
+				3B4C7A1D1D79414E001ECA94 /* UIView+SDExtension.m in Sources */,
 				697D76391D781300008D7C94 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,23 +524,30 @@
 		};
 		697D764C1D781300008D7C94 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A1EB41BB141BBB1A5B05B48 /* Pods-XXD.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = XXD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xinxidu.XXD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "XXD/Sections/Home/XXD-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		697D764D1D781300008D7C94 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B431A3CF173B42D828D67E6C /* Pods-XXD.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = XXD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xinxidu.XXD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "XXD/Sections/Home/XXD-Bridging-Header.h";
 			};
 			name = Release;
 		};
