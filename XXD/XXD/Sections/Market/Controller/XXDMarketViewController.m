@@ -9,9 +9,9 @@
 #import "XXDMarketViewController.h"
 #import "VarietiesView.h"
 #import "ItemTableViewCell.h"
-#import "BrokenLineViewController.h"
 #import "MoreDetailModel.h"
-#import "SearchViewController.h"
+#import "XXDSearchViewController.h"
+#import "XXDQuotationViewController.h"
 #define ADD @"++"
 #define SUB @"--"
 #define SIZE [[UIScreen mainScreen] bounds].size
@@ -46,7 +46,7 @@
 }
 -(void)searchButtonClick{
     self.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:[[SearchViewController alloc]init] animated:YES];
+    [self.navigationController pushViewController:[[XXDSearchViewController alloc]init] animated:YES];
     self.hidesBottomBarWhenPushed = NO;
 }
 #pragma mark ****** 最新行情的数据请求
@@ -136,7 +136,7 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    BrokenLineViewController* vc = [[BrokenLineViewController alloc]init];
+    XXDQuotationViewController* vc = [[XXDQuotationViewController alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {

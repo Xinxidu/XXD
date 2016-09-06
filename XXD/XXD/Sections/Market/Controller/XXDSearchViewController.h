@@ -1,5 +1,5 @@
 //
-//  SearchViewController.h
+//  XXDSearchViewController.h
 //  XXD
 //
 //  Created by pan on 16/9/5.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchViewController : UIViewController
+@interface XXDSearchViewController : UIViewController
 
 @end

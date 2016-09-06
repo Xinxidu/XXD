@@ -1,24 +1,24 @@
 //
-//  SearchViewController.m
+//  XXDQuotationViewController.m
 //  XXD
 //
-//  Created by pan on 16/9/5.
+//  Created by pan on 16/9/6.
 //  Copyright © 2016年 xinxidu. All rights reserved.
 //
 
-#import "SearchViewController.h"
+#import "XXDQuotationViewController.h"
 
-@interface SearchViewController ()
+@interface XXDQuotationViewController ()
 
 @end
 
-@implementation SearchViewController
+@implementation XXDQuotationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"行情";
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"搜索";
 }
 
 - (void)didReceiveMemoryWarning {
