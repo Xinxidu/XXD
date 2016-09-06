@@ -7,6 +7,10 @@
 //
 
 #import "XXDDiscoverViewController.h"
+#import "DaysInvestmentViewController.h"
+#import "ProfitSkillViewController.h"
+#import "ProfessorTeamViewController.h"
+#import "XXDActivityMessageVC.h"
 
 @interface XXDDiscoverViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
@@ -20,6 +24,14 @@
     self.navigationItem.title = @"发现";
     [self createTableView];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor blackColor]}];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:10/255.0 green:46/255.0 blue:60/255.0 alpha:1.0];
+}
+
 -(void)createTableView{
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     _tableView.delegate = self;
@@ -52,29 +64,61 @@
     cell.backgroundColor = [UIColor whiteColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (indexPath.section == 0) {
-        cell.imageView.image = [UIImage imageNamed:@""];
+        cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
         cell.textLabel.text = @"活动消息";
     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {
-            cell.imageView.image = [UIImage imageNamed:@""];
+            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"在线直播";
         }else{
-            cell.imageView.image = [UIImage imageNamed:@""];
+            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"投资策略";
         }
     }else if (indexPath.section == 2){
         if (indexPath.row == 0) {
-            cell.imageView.image = [UIImage imageNamed:@""];
+            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"盈利技巧";
         }else{
-            cell.imageView.image = [UIImage imageNamed:@""];
+            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"名师团队";
         }
     }else{
-        cell.imageView.image = [UIImage imageNamed:@""];
+        cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
         cell.textLabel.text = @"模拟盘交易";
     }
     return cell;
+
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        self.hidesBottomBarWhenPushed = YES;
+        XXDActivityMessageVC *activityVC = [[XXDActivityMessageVC alloc]init];
+        [self.navigationController pushViewController:activityVC animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
+    }else if (indexPath.section == 1){
+        if (indexPath.row == 0) {
+            NSLog(@"在线直播");
+        }else{//投资策略
+            self.hidesBottomBarWhenPushed = YES;
+            DaysInvestmentViewController *daysIn = [[DaysInvestmentViewController alloc]init];
+            [self.navigationController pushViewController:daysIn animated:YES];
+            self.hidesBottomBarWhenPushed = NO;
+        }
+    }else if (indexPath.section == 2){
+        if (indexPath.row == 0) {//盈利技巧
+            self.hidesBottomBarWhenPushed = YES;
+            ProfitSkillViewController *profit = [[ProfitSkillViewController alloc]init];
+            [self.navigationController pushViewController:profit animated:YES];
+            self.hidesBottomBarWhenPushed = NO;
+        }else{
+            self.hidesBottomBarWhenPushed = YES;
+            ProfessorTeamViewController *team = [[ProfessorTeamViewController alloc]init];
+            [self.navigationController pushViewController:team animated:YES];
+            self.hidesBottomBarWhenPushed = NO;
+        }
+    }else{
+        NSLog(@"模拟盘交易");
+    }
 
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

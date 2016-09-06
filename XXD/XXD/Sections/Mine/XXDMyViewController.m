@@ -7,6 +7,7 @@
 //
 
 #import "XXDMyViewController.h"
+#import "XXDMyActivityVC.h"
 
 @interface XXDMyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
@@ -21,6 +22,14 @@
     [self createHeaderView];
     [self createTableView];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor blackColor]}];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:10/255.0 green:46/255.0 blue:60/255.0 alpha:1.0];
+}
+
 -(void)createHeaderView{
     NSLog(@"***********");
     _hearerView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 120)];
@@ -86,35 +95,62 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            cell.imageView.image = [UIImage imageNamed:@""];
+            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"我的实盘账户";
         }else{
-            cell.imageView.image = [UIImage imageNamed:@""];
+            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"我的自选";
         }
 
     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {
-            cell.imageView.image = [UIImage imageNamed:@""];
+            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"我的活动";
         }else if (indexPath.row == 1){
-            cell.imageView.image = [UIImage imageNamed:@""];
+            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"关于我们";
         }else{
-            cell.imageView.image = [UIImage imageNamed:@""];
+            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"联系我们";
         }
     }else{
         if (indexPath.row == 0) {
-            cell.imageView.image = [UIImage imageNamed:@""];
+            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"使用帮助";
         }else{
-            cell.imageView.image = [UIImage imageNamed:@""];
+            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"设置";
         }
     }
     return cell;
     
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {//我的实盘账户
+            
+        }else{//我的自选
+            
+        }
+        
+    }else if (indexPath.section == 1){
+        if (indexPath.row == 0) {//我的活动
+            self.hidesBottomBarWhenPushed = YES;
+            XXDMyActivityVC *vc = [[XXDMyActivityVC alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+            self.hidesBottomBarWhenPushed = NO;
+        }else if (indexPath.row == 1){//关于我们
+            
+        }else{//联系我们
+            
+        }
+    }else{
+        if (indexPath.row == 0) {//使用帮助
+            
+        }else{//设置
+            
+        }
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.1;
