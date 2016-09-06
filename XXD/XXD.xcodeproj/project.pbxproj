@@ -26,6 +26,7 @@
 		697D76731D782951008D7C94 /* XXDDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D76721D782951008D7C94 /* XXDDiscoverViewController.m */; };
 		697D76761D78295F008D7C94 /* XXDMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D76751D78295F008D7C94 /* XXDMyViewController.m */; };
 		697D76791D782E77008D7C94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 697D76771D782E77008D7C94 /* Main.storyboard */; };
+		69C40D1C1D7D463000872C23 /* UIButton+XXD.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C40D1B1D7D463000872C23 /* UIButton+XXD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,8 @@
 		697D76741D78295F008D7C94 /* XXDMyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDMyViewController.h; sourceTree = "<group>"; };
 		697D76751D78295F008D7C94 /* XXDMyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyViewController.m; sourceTree = "<group>"; };
 		697D76781D782E77008D7C94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		69C40D1A1D7D463000872C23 /* UIButton+XXD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+XXD.h"; sourceTree = "<group>"; };
+		69C40D1B1D7D463000872C23 /* UIButton+XXD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+XXD.m"; sourceTree = "<group>"; };
 		8A1EB41BB141BBB1A5B05B48 /* Pods-XXD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XXD/Pods-XXD.debug.xcconfig"; sourceTree = "<group>"; };
 		B431A3CF173B42D828D67E6C /* Pods-XXD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXD.release.xcconfig"; path = "Pods/Target Support Files/Pods-XXD/Pods-XXD.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +154,7 @@
 				697D763B1D781300008D7C94 /* XXDAppDelegate.m */,
 				697D76511D781B9E008D7C94 /* Common */,
 				697D76541D781B9E008D7C94 /* Sections */,
+				69C40D181D7D1D9000872C23 /* Category */,
 				697D76431D781300008D7C94 /* Assets.xcassets */,
 				697D76771D782E77008D7C94 /* Main.storyboard */,
 				697D76481D781300008D7C94 /* Info.plist */,
@@ -285,6 +289,15 @@
 			path = XXD/Sections/Discover/Controller;
 			sourceTree = SOURCE_ROOT;
 		};
+		69C40D181D7D1D9000872C23 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				69C40D1A1D7D463000872C23 /* UIButton+XXD.h */,
+				69C40D1B1D7D463000872C23 /* UIButton+XXD.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -408,6 +421,7 @@
 			files = (
 				697D766D1D78292C008D7C94 /* XXDMarketViewController.m in Sources */,
 				3B4C7A1C1D79414E001ECA94 /* SDCycleScrollView.m in Sources */,
+				69C40D1C1D7D463000872C23 /* UIButton+XXD.m in Sources */,
 				697D76761D78295F008D7C94 /* XXDMyViewController.m in Sources */,
 				697D763C1D781300008D7C94 /* XXDAppDelegate.m in Sources */,
 				697D76731D782951008D7C94 /* XXDDiscoverViewController.m in Sources */,
