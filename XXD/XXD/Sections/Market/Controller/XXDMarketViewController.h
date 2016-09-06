@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface XXDMarketViewController : UIViewController
-
+@property (strong,nonatomic) NSMutableArray* array;
+@property(nonatomic,copy)void(^backToMainView)(NSMutableArray*);
 @end
