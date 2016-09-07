@@ -18,7 +18,7 @@
     return self;
 }
 -(void)createView{
-    _zhuanjiaLable = [[UILabel alloc]initWithFrame:CGRectMake(25, 20, 80, 20)];
+    _zhuanjiaLable = [[UILabel alloc]initWithFrame:CGRectMake(15, 20, 80, 20)];
     _zhuanjiaLable.text = @"专家策略";
     _zhuanjiaLable.font = [UIFont systemFontOfSize:14.0f];
     _zhuanjiaLable.textAlignment = NSTextAlignmentCenter;
@@ -28,7 +28,7 @@
     _zhuanjiaLable.layer.backgroundColor = [UIColor colorWithRed:0.73 green:0.51 blue:0.06 alpha:1].CGColor;
     [self.contentView addSubview:_zhuanjiaLable];
     
-    _dateLable = [[UILabel alloc]initWithFrame:CGRectMake(30, CGRectGetMaxY(_zhuanjiaLable.frame), 40, 20)];
+    _dateLable = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(_zhuanjiaLable.frame), 40, 20)];
     _dateLable.text = @"03-10";
     _dateLable.textColor = [UIColor redColor];
     _dateLable.textAlignment = NSTextAlignmentCenter;
@@ -42,23 +42,24 @@
     _timeLable.font = [UIFont systemFontOfSize:13.0f];
     [self.contentView addSubview:_timeLable];
     
-    UIView* rightBgView = [[UIView alloc]initWithFrame:CGRectMake(130, 1, SIZE.width-130, 78)];
+    UIView* rightBgView = [[UIView alloc]initWithFrame:CGRectMake(100, 1, SIZE.width-130, 78)];
 //    rightBgView.backgroundColor = [UIColor colorWithRed:0.98 green:0.98 blue:0.98 alpha:1];
     [self.contentView addSubview:rightBgView];
     
     _titleLable = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, rightBgView.frame.size.width-20, 40)];
     _titleLable.text = @"油价双底构筑，上行势如破竹";
+    _titleLable.font = [UIFont systemFontOfSize:13.0f];
     [rightBgView addSubview:_titleLable];
     
     _editorLabler = [[UILabel alloc]initWithFrame:CGRectMake(_titleLable.frame.origin.x, CGRectGetMaxY(_titleLable.frame), 40, 20)];
-    _editorLabler.font = [UIFont systemFontOfSize:12.0f];
+    _editorLabler.font = [UIFont systemFontOfSize:10.0f];
     _editorLabler.text = @"编者语:";
     _editorLabler.textColor = [UIColor redColor];
     [rightBgView addSubview:_editorLabler];
     
     _textLable = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_editorLabler.frame), _editorLabler.frame.origin.y, rightBgView.frame.size.width-60, 20)];
     _textLable.text = @"油价已从2月低位反弹逾85%";
-    _textLable.font = [UIFont systemFontOfSize:12.0f];
+    _textLable.font = [UIFont systemFontOfSize:10.0f];
     [rightBgView addSubview:_textLable];
 }
 -(void)configModel:(DaysInvestmentModel *)model{

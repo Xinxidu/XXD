@@ -8,10 +8,12 @@
 
 #import "XXDMyViewController.h"
 #import "XXDMyActivityVC.h"
+#import "AboutXiDuViewController.h"
 
 @interface XXDMyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UIView *hearerView;
+@property (strong,nonatomic) UIWebView *phoneCallWebView;
 @end
 
 @implementation XXDMyViewController
@@ -141,8 +143,19 @@
             self.hidesBottomBarWhenPushed = NO;
         }else if (indexPath.row == 1){//关于我们
             
+            self.hidesBottomBarWhenPushed = YES;
+            AboutXiDuViewController *vc = [[AboutXiDuViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+            self.hidesBottomBarWhenPushed = NO;
         }else{//联系我们
-            
+            //拨打电话
+            NSString *telephoneNumber =  @"400-105-4080";
+            NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",telephoneNumber]];
+            if ( !_phoneCallWebView ) {
+                _phoneCallWebView = [[UIWebView alloc]initWithFrame:CGRectZero];
+            }
+            [_phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneURL]];
+            NSLog(@"联系我们");
         }
     }else{
         if (indexPath.row == 0) {//使用帮助
