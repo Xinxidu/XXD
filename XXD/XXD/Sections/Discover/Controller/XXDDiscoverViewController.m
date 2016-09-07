@@ -11,6 +11,8 @@
 #import "ProfitSkillViewController.h"
 #import "ProfessorTeamViewController.h"
 #import "XXDActivityMessageVC.h"
+#import "XXDPushViewController.h"
+#import "XXDLiveOnLineController.h"
 
 @interface XXDDiscoverViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
@@ -90,36 +92,30 @@
 
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        self.hidesBottomBarWhenPushed = YES;
+    self.hidesBottomBarWhenPushed = YES;
+    if (indexPath.section == 0) {   //活动消息
         XXDActivityMessageVC *activityVC = [[XXDActivityMessageVC alloc]init];
-        [self.navigationController pushViewController:activityVC animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
+        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:activityVC];
     }else if (indexPath.section == 1){
-        if (indexPath.row == 0) {
-            NSLog(@"在线直播");
-        }else{//投资策略
-            self.hidesBottomBarWhenPushed = YES;
+        if (indexPath.row == 0) {   //在线直播
+            XXDLiveOnLineController *liveOnLineController = [[XXDLiveOnLineController alloc] init];
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:liveOnLineController];
+        }else{  //投资策略
             DaysInvestmentViewController *daysIn = [[DaysInvestmentViewController alloc]init];
-            [self.navigationController pushViewController:daysIn animated:YES];
-            self.hidesBottomBarWhenPushed = NO;
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:daysIn];
         }
     }else if (indexPath.section == 2){
-        if (indexPath.row == 0) {//盈利技巧
-            self.hidesBottomBarWhenPushed = YES;
+        if (indexPath.row == 0) {   //盈利技巧
             ProfitSkillViewController *profit = [[ProfitSkillViewController alloc]init];
-            [self.navigationController pushViewController:profit animated:YES];
-            self.hidesBottomBarWhenPushed = NO;
-        }else{
-            self.hidesBottomBarWhenPushed = YES;
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:profit];
+        }else{  //名师团队
             ProfessorTeamViewController *team = [[ProfessorTeamViewController alloc]init];
-            [self.navigationController pushViewController:team animated:YES];
-            self.hidesBottomBarWhenPushed = NO;
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:team];
         }
     }else{
         NSLog(@"模拟盘交易");
     }
-
+    self.hidesBottomBarWhenPushed = NO;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10;
