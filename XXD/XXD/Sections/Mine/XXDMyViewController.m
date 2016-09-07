@@ -136,17 +136,19 @@
         }
         
     }else if (indexPath.section == 1){
+        self.hidesBottomBarWhenPushed = YES;
         if (indexPath.row == 0) {//我的活动
-            self.hidesBottomBarWhenPushed = YES;
+//            self.hidesBottomBarWhenPushed = YES;
             XXDMyActivityVC *vc = [[XXDMyActivityVC alloc]init];
             [self.navigationController pushViewController:vc animated:YES];
-            self.hidesBottomBarWhenPushed = NO;
+            
+//            self.hidesBottomBarWhenPushed = NO;
         }else if (indexPath.row == 1){//关于我们
             
-            self.hidesBottomBarWhenPushed = YES;
+//            self.hidesBottomBarWhenPushed = YES;
             AboutXiDuViewController *vc = [[AboutXiDuViewController alloc]init];
             [self.navigationController pushViewController:vc animated:YES];
-            self.hidesBottomBarWhenPushed = NO;
+//            self.hidesBottomBarWhenPushed = NO;
         }else{//联系我们
             //拨打电话
             NSString *telephoneNumber =  @"400-105-4080";
@@ -157,6 +159,7 @@
             [_phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneURL]];
             NSLog(@"联系我们");
         }
+        self.hidesBottomBarWhenPushed = NO;
     }else{
         if (indexPath.row == 0) {//使用帮助
             

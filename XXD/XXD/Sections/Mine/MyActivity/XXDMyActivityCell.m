@@ -22,32 +22,33 @@
     return self;
 }
 -(void)createUI{
-    _picImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 60)];
-    _picImageView.backgroundColor = [UIColor grayColor];
-    [self.contentView addSubview:_picImageView];
-    
-    _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_picImageView.frame)+2, 2, 150, 15)];
-    _titleLabel.text = @"教你如何炒股";
+    _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 8, 150, 15)];
+    _titleLabel.text = @"活动标题一";
     _titleLabel.font = [UIFont systemFontOfSize:15.0];
     [self.contentView addSubview:_titleLabel];
     
-    _descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_picImageView.frame)+2, CGRectGetMaxY(_picImageView.frame)-13, 150, 12)];
-    _descriptionLabel.text = @"名师荐股：西都金融研究院...";
-    _descriptionLabel.font = [UIFont systemFontOfSize:12.0];
-    [self.contentView addSubview:_descriptionLabel];
-    
-    _timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.contentView.bounds.size.width-54, 2, 50, 13)];
-    _timeLabel.text = @"8月21日";
-    _timeLabel.font = [UIFont systemFontOfSize:13.0];
-    _timeLabel.textColor = [UIColor blueColor];
-    [self.contentView addSubview:_timeLabel];
-    
-    _activityStatusLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.contentView.bounds.size.width-51, CGRectGetMaxY(_picImageView.frame)-16, 45, 16)];
-    _activityStatusLabel.text = @"活动中";
+    _activityStatusLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.contentView.bounds.size.width-55, 5, 45, 18)];
+    _activityStatusLabel.text = @"已参与";
     _activityStatusLabel.font = [UIFont systemFontOfSize:13.0];
     _activityStatusLabel.backgroundColor = [UIColor orangeColor];
     _activityStatusLabel.textColor = [UIColor whiteColor];
     _activityStatusLabel.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:_activityStatusLabel];
+    
+    _picImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_titleLabel.frame)+3, self.contentView.bounds.size.width-20, 100)];
+    _picImageView.backgroundColor = [UIColor grayColor];
+    [self.contentView addSubview:_picImageView];
+    
+    _takeDateLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_picImageView.frame)+5, 150, 12)];
+    _takeDateLabel.text = @"参与日期:16.08.18";
+    _takeDateLabel.font = [UIFont systemFontOfSize:11.0];
+    _takeDateLabel.textColor = [UIColor grayColor];
+    [self.contentView addSubview:_takeDateLabel];
+    
+    _activityStatusLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.contentView.bounds.size.width-170, CGRectGetMaxY(_picImageView.frame)+5, 160, 13)];
+    _activityStatusLabel.text = @"活动日期:16.08.18～16.08.27";
+    _activityStatusLabel.font = [UIFont systemFontOfSize:11.0];
+    _activityStatusLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:_activityStatusLabel];
     
     

@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor whiteColor];
-    self.title=@"活动消息";
+    self.title=@"我的活动";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
@@ -47,19 +47,6 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor whiteColor];
-    //    if (indexPath.section == 0) {
-    //        cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
-    //        cell.textLabel.text = @"活动消息";
-    //    }else if (indexPath.section == 1){
-    //            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
-    //            cell.textLabel.text = @"投资策略";
-    //    }else if (indexPath.section == 2){
-    //            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
-    //            cell.textLabel.text = @"名师团队";
-    //    }else{
-    //        cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
-    //        cell.textLabel.text = @"模拟盘交易";
-    //    }
     return cell;
     
 }
@@ -67,13 +54,13 @@
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    return 150;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0.1;
+    return 5;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 15;
+    return 10;
 }
 
 #pragma mark -返回按钮点击

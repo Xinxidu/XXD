@@ -131,13 +131,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (_dataArray.count>0) {
         DaysInvestmentModel* model = _dataArray[indexPath.row];
-        if (_callBack) {
-            _callBack(model.IdString);
-        }
-    }else{
-        if (_callBack) {
-            _callBack(@"1");
-        }
+        DaysDetailController *detailVC = [[DaysDetailController alloc]init];
+        detailVC.Id = model.IdString;
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detailVC animated:YES];
     }
 }
 

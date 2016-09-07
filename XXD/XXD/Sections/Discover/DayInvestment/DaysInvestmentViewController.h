@@ -7,5 +7,4 @@
 //
 #import <UIKit/UIKit.h>
 @interface DaysInvestmentViewController : UIViewController
-@property(nonatomic,copy)  void(^callBack)(NSString* str);
 @end
