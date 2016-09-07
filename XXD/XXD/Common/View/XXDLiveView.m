@@ -72,6 +72,7 @@
         textView.textColor = [UIColor blackColor];
         textView.text = liveImage.info;
         textView.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        textView.editable = NO;
         [masterView addSubview:textView];
         
         [self addSubview:masterView];

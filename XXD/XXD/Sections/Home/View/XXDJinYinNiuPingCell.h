@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class XXDJinYinNiuPing;
 @interface XXDJinYinNiuPingCell : UITableViewCell
-
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withJinYinNiuPing:(XXDJinYinNiuPing *)jinYinNiuPing;
 @end

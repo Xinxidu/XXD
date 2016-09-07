@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>Pods-XXD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,7 +27,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>600C42C0A63AF98FE73204C02DE3001D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>70BC44266C6FFE30D2C57129458E070B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>928353533005A4198EBDA5B700D37B64</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C22B0F55E74405A9A48A68011CB1E2F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E4C14AE2BE396B80F2E4AAE50D74F99E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

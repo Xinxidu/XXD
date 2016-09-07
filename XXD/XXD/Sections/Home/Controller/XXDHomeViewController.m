@@ -11,6 +11,10 @@
 #import "UIButton+XXD.h"
 #import "XXDLiveView.h"
 #import "XXDLiveImage.h"
+#import "XXDTimeNews.h"
+#import "XXDTimeNewsCell.h"
+#import "XXDJinYinNiuPing.h"
+#import "XXDJinYinNiuPingCell.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 
@@ -21,7 +25,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     XXDButtonTypeFinanceCalendar    //财经日历
 };
 
-@interface XXDHomeViewController ()<SDCycleScrollViewDelegate>
+@interface XXDHomeViewController ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (strong,nonatomic) UIScrollView *rootScrollView;  //根视图
 @property (strong,nonatomic) SDCycleScrollView *cycleScrollView;    //顶部滚动视图
 @property (strong,nonatomic) UIView *horizontal_1;   //水平线1
@@ -32,6 +36,9 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 @property (strong,nonatomic) XXDLiveView *liveView; //直播间
 @property (strong,nonatomic) UIButton *timeNewsButton;  //实时快讯按钮
 @property (strong,nonatomic) UIButton *jinYinNiuPingButton; //金银牛评按钮
+@property (strong,nonatomic) UITableView *buttomTableView;  //底部TableView
+@property (assign,nonatomic) NSInteger flagForTable;    //切换实时快讯和金银牛评tableView的标记
+@property (strong,nonatomic) NSMutableArray *timeNewsArray;
 @end
 
 @implementation XXDHomeViewController
@@ -58,8 +65,13 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     //创建实时快讯按钮
     self.jinYinNiuPingButton = [self createBottomButtonWidthTitle:@"金银牛评" x:WIDTH/2.0-1];
     [self.jinYinNiuPingButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //初始化数据
+    self.timeNewsArray  = [NSMutableArray arrayWithObjects:@"俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是",@"俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是",@"俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是",@"俺的沙发多发的发的发的是发的是发达地方",nil];
+
+    //初始化底部TableView
+    [self initButtomTableView];
 }
-//创建顶部的轮播图
+#pragma mark 创建顶部的轮播图
 - (void)createInfiniteScrollView {
 
     //网络图片
@@ -233,13 +245,62 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 - (void)buttomButtonClick:(UIButton *)sender{
     [sender setTitleColor:[UIColor colorWithRed:253/255.0 green:169/255.0 blue:76/255.0 alpha:1.0] forState:UIControlStateNormal];//253 169 76
     if ([sender.titleLabel.text isEqualToString:@"实时快讯"]) {
-        NSLog(@"实时快讯");
+        self.flagForTable = 0;
         [self.jinYinNiuPingButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }else{
-        NSLog(@"金银牛评");
+        self.flagForTable = 1;
         [self.timeNewsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
-    
+     [self initButtomTableView];
+}
+#pragma mark 初始化底部TableView
+- (void)initButtomTableView{
+    if (self.buttomTableView != nil) {
+        [self.buttomTableView removeFromSuperview];
+        self.buttomTableView = nil;
+    }
+    self.buttomTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.timeNewsButton.frame), WIDTH, HEIGHT-100) style:UITableViewStylePlain];
+    self.buttomTableView.delegate = self;
+    self.buttomTableView.dataSource = self;
+    self.buttomTableView.separatorStyle = self.flagForTable == 0 ? UITableViewCellSeparatorStyleNone : UITableViewCellSeparatorStyleSingleLine ;
+    self.buttomTableView.showsVerticalScrollIndicator = NO;
+    self.buttomTableView.bounces=YES;
+    [self.rootScrollView addSubview:self.buttomTableView];
+}
+#pragma mark UITableView代理
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return  10;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString* cellId = @"cell";
+    if (self.flagForTable == 0) {
+        XXDTimeNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        if (cell == nil) {
+            XXDTimeNews *timeNews = [[XXDTimeNews alloc] init];
+            timeNews.timeString = @"13:36";
+            timeNews.detailString = [self.timeNewsArray objectAtIndex:indexPath.row];
+            cell = [[XXDTimeNewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId withTimeNews:timeNews];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else{
+        XXDJinYinNiuPingCell *cell=[tableView dequeueReusableCellWithIdentifier:cellId];
+        if (cell == nil) {
+            XXDJinYinNiuPing *jinYinNiuPing = [[XXDJinYinNiuPing alloc] init];
+            jinYinNiuPing.imageString = @"aaa";
+            jinYinNiuPing.detailString = @"阿萨德发的发生大发事大法师打发斯蒂芬";
+            jinYinNiuPing.dateString = @"2016/09/01 07:16:30";
+            cell = [[XXDJinYinNiuPingCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId withJinYinNiuPing:jinYinNiuPing];
+        }
+        cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *detailString = [self.timeNewsArray objectAtIndex:indexPath.row];
+    CGFloat height = [detailString boundingRectWithSize:CGSizeMake(WIDTH-45, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:11.0f] forKey:NSFontAttributeName] context:nil].size.height;
+    return self.flagForTable == 0 ? height+18 : 70;
 }
 - (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];}
 @end
