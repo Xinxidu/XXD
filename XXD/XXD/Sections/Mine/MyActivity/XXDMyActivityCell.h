@@ -11,7 +11,7 @@
 @interface XXDMyActivityCell : UITableViewCell
 @property (nonatomic,strong)UIImageView *picImageView;//图片
 @property (nonatomic,strong)UILabel *titleLabel;//标题
-@property (nonatomic,strong)UILabel *descriptionLabel;//简单描述
-@property (nonatomic,strong)UILabel *timeLabel;//时间
+@property (nonatomic,strong)UILabel *takeDateLabel;//参与日期
+@property (nonatomic,strong)UILabel *activityDateLabel;//活动日期
 @property (nonatomic,strong)UILabel *activityStatusLabel;//活动状态
 @end

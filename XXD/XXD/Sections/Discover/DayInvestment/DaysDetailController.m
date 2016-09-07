@@ -21,9 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //自定义导航栏
-//    [BaseNavigation loadUIViewController:self title:_navigationTitle navigationBarBgColor:[UIColor blackColor] backSelector:@selector(backToMainView)];
-    //创建WKWebView
-    _wkWebView = [[BaseWKWebView alloc] initWithFrame:CGRectMake(0,0, SIZE.width  , SIZE.height-64)];
+    self.title = @"详情";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    _wkWebView = [[BaseWKWebView alloc] initWithFrame:CGRectMake(0,0, SIZE.width  , SIZE.height)];
     [self.view addSubview:_wkWebView];
     [self getDataFromWeb];
 }
@@ -47,7 +48,11 @@
         
     }];
 }
--(void)backToMainView{
+//-(void)backToMainView{
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
+#pragma mark -返回按钮点击
+- (void)backBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {

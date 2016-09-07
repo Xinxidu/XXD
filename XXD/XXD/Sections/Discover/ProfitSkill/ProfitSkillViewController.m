@@ -10,6 +10,7 @@
 #import "ProfitSkillCell.h"
 #import "BaseTableView.h"
 #import "AFNetworking.h"
+#import "DaysDetailController.h"
 
 #define SIZE [UIScreen mainScreen].bounds.size
 #define URL @"http://175.102.13.51:8080/XDSY/ZhuBan"
@@ -126,13 +127,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (_dataArray.count>0) {
         ProfitSkillModel* model = _dataArray[indexPath.row];
-        if (_callBackToViewController) {
-            _callBackToViewController(model.Id);
-        }
-    }else{
-        if (_callBackToViewController) {
-             _callBackToViewController(@"1");
-        }
+        DaysDetailController *detailVC = [[DaysDetailController alloc]init];
+        detailVC.Id = model.Id;
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detailVC animated:YES];
     }
 }
 
