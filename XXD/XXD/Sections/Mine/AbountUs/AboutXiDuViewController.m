@@ -12,7 +12,7 @@
 #import "ExchangeInfoViewController.h"
 #import "XiDuInfoViewController.h"
 #import "ContactUsViewController.h"
-#import "BasePushViewController.h"
+//#import "BasePushViewController.h"
 #define WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
 #define HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
 @interface AboutXiDuViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -30,9 +30,16 @@
     [self loadUI];
     [self createTabelview];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    self.hidesBottomBarWhenPushed = YES;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    self.hidesBottomBarWhenPushed = YES;
+}
+
 #pragma mark -加载视图
 - (void)loadUI{
-    _bannerView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 0.36*HEIGHT)];
+    _bannerView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 64, WIDTH, 0.36*HEIGHT)];
     _bannerView.image=[UIImage imageNamed:@"banner"];
     [self.view addSubview:_bannerView];
 }
@@ -69,9 +76,9 @@
         cell=[[AboutXiDuTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
     }
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    NSArray *titleArr=[[NSArray alloc]initWithObjects:@"交易所简介",@"西都简介",@"西都新闻",@"联系我们",nil];
+    NSArray *titleArr=[[NSArray alloc]initWithObjects:@"交易所简介",@"鑫西都简介",@"鑫西都新闻",@"联系我们",nil];
     cell.TitleLabel.text=titleArr[indexPath.row];
-    NSArray *imageArr=[[NSArray alloc]initWithObjects:@"交易所图标",@"西都简介图标",@"新闻图标",@"联系我们图标", nil];
+    NSArray *imageArr=[[NSArray alloc]initWithObjects:@"gerenxinxi",@"gerenxinxi",@"gerenxinxi",@"gerenxinxi", nil];
     cell.IconImgv.image=[UIImage imageNamed:imageArr[indexPath.row]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
@@ -79,13 +86,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        [BasePushViewController customPushViewController:self.navigationController WithTargetViewController:[[ExchangeInfoViewController alloc] init]];
+//        [BasePushViewController customPushViewController:self.navigationController WithTargetViewController:[[ExchangeInfoViewController alloc] init]];
+        [self.navigationController pushViewController:[[ExchangeInfoViewController alloc]init] animated:YES];
     }else if (indexPath.row==1){
-        [BasePushViewController customPushViewController:self.navigationController WithTargetViewController:[[XiDuInfoViewController alloc] init]];
+//        [BasePushViewController customPushViewController:self.navigationController WithTargetViewController:[[XiDuInfoViewController alloc] init]];
+        [self.navigationController pushViewController:[[XiDuInfoViewController alloc]init] animated:YES];
     }else if (indexPath.row==2){
-        [BasePushViewController customPushViewController:self.navigationController WithTargetViewController:[[XiDuNewsViewController alloc] init]];
+//        [BasePushViewController customPushViewController:self.navigationController WithTargetViewController:[[XiDuNewsViewController alloc] init]];
+        [self.navigationController pushViewController:[[XiDuNewsViewController alloc]init] animated:YES];
     }else if (indexPath.row==3){
-        [BasePushViewController customPushViewController:self.navigationController WithTargetViewController:[[ContactUsViewController alloc] init]];
+//        [BasePushViewController customPushViewController:self.navigationController WithTargetViewController:[[ContactUsViewController alloc] init]];
+        [self.navigationController pushViewController:[[ContactUsViewController alloc]init] animated:YES];
     }
 }
 

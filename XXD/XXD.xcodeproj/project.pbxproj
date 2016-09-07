@@ -20,6 +20,16 @@
 		3B60B8A51D7D3D8A002AA667 /* VarietiesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B60B8A21D7D3D8A002AA667 /* VarietiesView.m */; };
 		3B60B8A61D7D3D8A002AA667 /* VarietyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B60B8A41D7D3D8A002AA667 /* VarietyModel.m */; };
 		3B60B8A91D7D6BAA002AA667 /* XXDSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B60B8A81D7D6BAA002AA667 /* XXDSearchViewController.m */; };
+		3B6F5F161D7FAFC60058D2DE /* AboutXiDuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F131D7FAFC60058D2DE /* AboutXiDuTableViewCell.m */; };
+		3B6F5F171D7FAFC60058D2DE /* AboutXiDuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F151D7FAFC60058D2DE /* AboutXiDuViewController.m */; };
+		3B6F5F261D7FAFFE0058D2DE /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F191D7FAFFE0058D2DE /* ContactUsViewController.m */; };
+		3B6F5F271D7FAFFE0058D2DE /* ExchangeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F1B1D7FAFFE0058D2DE /* ExchangeInfoViewController.m */; };
+		3B6F5F281D7FAFFE0058D2DE /* XiDuInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F1D1D7FAFFE0058D2DE /* XiDuInfoViewController.m */; };
+		3B6F5F291D7FAFFE0058D2DE /* XiDuNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F1F1D7FAFFE0058D2DE /* XiDuNewsCell.m */; };
+		3B6F5F2A1D7FAFFE0058D2DE /* XiDuNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F211D7FAFFE0058D2DE /* XiDuNewsDetailViewController.m */; };
+		3B6F5F2B1D7FAFFE0058D2DE /* XiDuNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F231D7FAFFE0058D2DE /* XiDuNewsModel.m */; };
+		3B6F5F2C1D7FAFFE0058D2DE /* XiDuNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F251D7FAFFE0058D2DE /* XiDuNewsViewController.m */; };
+		3B6F5F2F1D7FB0F00058D2DE /* BaseWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F2E1D7FB0F00058D2DE /* BaseWebRequest.m */; };
 		3B7B3E611D7E515A003DBF06 /* XXDQuotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E601D7E515A003DBF06 /* XXDQuotationViewController.m */; };
 		3B7B3E6C1D7E5632003DBF06 /* ProfitSkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E671D7E5632003DBF06 /* ProfitSkillCell.m */; };
 		3B7B3E6D1D7E5632003DBF06 /* ProfitSkillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E691D7E5632003DBF06 /* ProfitSkillModel.m */; };
@@ -75,6 +85,26 @@
 		3B60B8A41D7D3D8A002AA667 /* VarietyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VarietyModel.m; sourceTree = "<group>"; };
 		3B60B8A71D7D6BAA002AA667 /* XXDSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDSearchViewController.h; sourceTree = "<group>"; };
 		3B60B8A81D7D6BAA002AA667 /* XXDSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDSearchViewController.m; sourceTree = "<group>"; };
+		3B6F5F121D7FAFC60058D2DE /* AboutXiDuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutXiDuTableViewCell.h; sourceTree = "<group>"; };
+		3B6F5F131D7FAFC60058D2DE /* AboutXiDuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutXiDuTableViewCell.m; sourceTree = "<group>"; };
+		3B6F5F141D7FAFC60058D2DE /* AboutXiDuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutXiDuViewController.h; sourceTree = "<group>"; };
+		3B6F5F151D7FAFC60058D2DE /* AboutXiDuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutXiDuViewController.m; sourceTree = "<group>"; };
+		3B6F5F181D7FAFFE0058D2DE /* ContactUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsViewController.h; sourceTree = "<group>"; };
+		3B6F5F191D7FAFFE0058D2DE /* ContactUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsViewController.m; sourceTree = "<group>"; };
+		3B6F5F1A1D7FAFFE0058D2DE /* ExchangeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeInfoViewController.h; sourceTree = "<group>"; };
+		3B6F5F1B1D7FAFFE0058D2DE /* ExchangeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeInfoViewController.m; sourceTree = "<group>"; };
+		3B6F5F1C1D7FAFFE0058D2DE /* XiDuInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XiDuInfoViewController.h; sourceTree = "<group>"; };
+		3B6F5F1D1D7FAFFE0058D2DE /* XiDuInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XiDuInfoViewController.m; sourceTree = "<group>"; };
+		3B6F5F1E1D7FAFFE0058D2DE /* XiDuNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XiDuNewsCell.h; sourceTree = "<group>"; };
+		3B6F5F1F1D7FAFFE0058D2DE /* XiDuNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XiDuNewsCell.m; sourceTree = "<group>"; };
+		3B6F5F201D7FAFFE0058D2DE /* XiDuNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XiDuNewsDetailViewController.h; sourceTree = "<group>"; };
+		3B6F5F211D7FAFFE0058D2DE /* XiDuNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XiDuNewsDetailViewController.m; sourceTree = "<group>"; };
+		3B6F5F221D7FAFFE0058D2DE /* XiDuNewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XiDuNewsModel.h; sourceTree = "<group>"; };
+		3B6F5F231D7FAFFE0058D2DE /* XiDuNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XiDuNewsModel.m; sourceTree = "<group>"; };
+		3B6F5F241D7FAFFE0058D2DE /* XiDuNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XiDuNewsViewController.h; sourceTree = "<group>"; };
+		3B6F5F251D7FAFFE0058D2DE /* XiDuNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XiDuNewsViewController.m; sourceTree = "<group>"; };
+		3B6F5F2D1D7FB0F00058D2DE /* BaseWebRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWebRequest.h; sourceTree = "<group>"; };
+		3B6F5F2E1D7FB0F00058D2DE /* BaseWebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWebRequest.m; sourceTree = "<group>"; };
 		3B7B3E5F1D7E515A003DBF06 /* XXDQuotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDQuotationViewController.h; sourceTree = "<group>"; };
 		3B7B3E601D7E515A003DBF06 /* XXDQuotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDQuotationViewController.m; sourceTree = "<group>"; };
 		3B7B3E661D7E5632003DBF06 /* ProfitSkillCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfitSkillCell.h; sourceTree = "<group>"; };
@@ -267,6 +297,24 @@
 		3B7B3E901D7EC041003DBF06 /* AbountUs */ = {
 			isa = PBXGroup;
 			children = (
+				3B6F5F141D7FAFC60058D2DE /* AboutXiDuViewController.h */,
+				3B6F5F151D7FAFC60058D2DE /* AboutXiDuViewController.m */,
+				3B6F5F121D7FAFC60058D2DE /* AboutXiDuTableViewCell.h */,
+				3B6F5F131D7FAFC60058D2DE /* AboutXiDuTableViewCell.m */,
+				3B6F5F181D7FAFFE0058D2DE /* ContactUsViewController.h */,
+				3B6F5F191D7FAFFE0058D2DE /* ContactUsViewController.m */,
+				3B6F5F1A1D7FAFFE0058D2DE /* ExchangeInfoViewController.h */,
+				3B6F5F1B1D7FAFFE0058D2DE /* ExchangeInfoViewController.m */,
+				3B6F5F1C1D7FAFFE0058D2DE /* XiDuInfoViewController.h */,
+				3B6F5F1D1D7FAFFE0058D2DE /* XiDuInfoViewController.m */,
+				3B6F5F1E1D7FAFFE0058D2DE /* XiDuNewsCell.h */,
+				3B6F5F1F1D7FAFFE0058D2DE /* XiDuNewsCell.m */,
+				3B6F5F201D7FAFFE0058D2DE /* XiDuNewsDetailViewController.h */,
+				3B6F5F211D7FAFFE0058D2DE /* XiDuNewsDetailViewController.m */,
+				3B6F5F221D7FAFFE0058D2DE /* XiDuNewsModel.h */,
+				3B6F5F231D7FAFFE0058D2DE /* XiDuNewsModel.m */,
+				3B6F5F241D7FAFFE0058D2DE /* XiDuNewsViewController.h */,
+				3B6F5F251D7FAFFE0058D2DE /* XiDuNewsViewController.m */,
 			);
 			path = AbountUs;
 			sourceTree = "<group>";
@@ -368,6 +416,8 @@
 			children = (
 				697D765A1D781BBC008D7C94 /* XXDMainTabController.h */,
 				697D765B1D781BBC008D7C94 /* XXDMainTabController.m */,
+				3B6F5F2D1D7FB0F00058D2DE /* BaseWebRequest.h */,
+				3B6F5F2E1D7FB0F00058D2DE /* BaseWebRequest.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -601,13 +651,18 @@
 				3B7B3E841D7E61BD003DBF06 /* ProfessorTeamViewController.m in Sources */,
 				697D766D1D78292C008D7C94 /* XXDMarketViewController.m in Sources */,
 				3B60B8A61D7D3D8A002AA667 /* VarietyModel.m in Sources */,
+				3B6F5F291D7FAFFE0058D2DE /* XiDuNewsCell.m in Sources */,
 				3B7B3E881D7EA8F9003DBF06 /* XXDActivityMessageVC.m in Sources */,
 				3B4C7A1C1D79414E001ECA94 /* SDCycleScrollView.m in Sources */,
 				3B7B3E971D7EC07D003DBF06 /* XXDMyActivityVC.m in Sources */,
 				69C40D1C1D7D463000872C23 /* UIButton+XXD.m in Sources */,
+				3B6F5F171D7FAFC60058D2DE /* AboutXiDuViewController.m in Sources */,
+				3B6F5F2B1D7FAFFE0058D2DE /* XiDuNewsModel.m in Sources */,
+				3B6F5F2C1D7FAFFE0058D2DE /* XiDuNewsViewController.m in Sources */,
 				3B7B3E801D7E5B0D003DBF06 /* BaseWKWebView.m in Sources */,
 				3B7B3E9A1D7EC0C6003DBF06 /* XXDMyActivityCell.m in Sources */,
 				697D763C1D781300008D7C94 /* XXDAppDelegate.m in Sources */,
+				3B6F5F281D7FAFFE0058D2DE /* XiDuInfoViewController.m in Sources */,
 				697D76731D782951008D7C94 /* XXDDiscoverViewController.m in Sources */,
 				3B4C7A171D79414E001ECA94 /* TAAbstractDotView.m in Sources */,
 				3B60B88B1D7D3D08002AA667 /* MoreDetailModel.m in Sources */,
@@ -617,6 +672,7 @@
 				3B7B3E6E1D7E5632003DBF06 /* ProfitSkillViewController.m in Sources */,
 				697D76701D782939008D7C94 /* XXDTradeViewController.m in Sources */,
 				3B7B3E8F1D7EBECC003DBF06 /* XXDMyViewController.m in Sources */,
+				3B6F5F161D7FAFC60058D2DE /* AboutXiDuTableViewCell.m in Sources */,
 				3B60B8A91D7D6BAA002AA667 /* XXDSearchViewController.m in Sources */,
 				697D765C1D781BBC008D7C94 /* XXDMainTabController.m in Sources */,
 				697D766A1D782911008D7C94 /* XXDHomeViewController.m in Sources */,
@@ -624,13 +680,17 @@
 				3B7B3E7D1D7E56B0003DBF06 /* BaseTableView.m in Sources */,
 				3B7B3E6D1D7E5632003DBF06 /* ProfitSkillModel.m in Sources */,
 				3B7B3E781D7E564D003DBF06 /* DaysDetailController.m in Sources */,
+				3B6F5F2F1D7FB0F00058D2DE /* BaseWebRequest.m in Sources */,
 				3B4C7A181D79414E001ECA94 /* TAAnimatedDotView.m in Sources */,
 				3B7B3E6C1D7E5632003DBF06 /* ProfitSkillCell.m in Sources */,
 				3B4C7A1D1D79414E001ECA94 /* UIView+SDExtension.m in Sources */,
 				697D76391D781300008D7C94 /* main.m in Sources */,
+				3B6F5F261D7FAFFE0058D2DE /* ContactUsViewController.m in Sources */,
 				3B7B3E771D7E564D003DBF06 /* DayInvestmentCell.m in Sources */,
+				3B6F5F2A1D7FAFFE0058D2DE /* XiDuNewsDetailViewController.m in Sources */,
 				3B7B3E611D7E515A003DBF06 /* XXDQuotationViewController.m in Sources */,
 				3B60B8A51D7D3D8A002AA667 /* VarietiesView.m in Sources */,
+				3B6F5F271D7FAFFE0058D2DE /* ExchangeInfoViewController.m in Sources */,
 				3B7B3E791D7E564D003DBF06 /* DaysInvestmentModel.m in Sources */,
 				3B7B3E7A1D7E564D003DBF06 /* DaysInvestmentViewController.m in Sources */,
 			);
