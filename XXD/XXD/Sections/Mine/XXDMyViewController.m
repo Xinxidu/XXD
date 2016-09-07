@@ -10,6 +10,7 @@
 #import "XXDMyActivityVC.h"
 #import "AboutXiDuViewController.h"
 #import "XXDPushViewController.h"
+#import "XXDMyFirmAccountVC.h"
 
 @interface XXDMyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
@@ -130,12 +131,14 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
+        self.hidesBottomBarWhenPushed = YES;
         if (indexPath.row == 0) {//我的实盘账户
-            
+            XXDMyFirmAccountVC *vc = [[XXDMyFirmAccountVC alloc]init];
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
         }else{//我的自选
             
         }
-        
+        self.hidesBottomBarWhenPushed = NO;
     }else if (indexPath.section == 1){
         self.hidesBottomBarWhenPushed = YES;
         if (indexPath.row == 0) {//我的活动
