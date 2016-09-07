@@ -62,8 +62,8 @@
 		69B1C61F1D7EBD61000CA633 /* XXDJinYinNiuPingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B1C61E1D7EBD61000CA633 /* XXDJinYinNiuPingCell.m */; };
 		69B1C6231D7EC0D1000CA633 /* XXDTimeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B1C6221D7EC0D1000CA633 /* XXDTimeNews.m */; };
 		69B1C6261D7EC12B000CA633 /* XXDJinYinNiuPing.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B1C6251D7EC12B000CA633 /* XXDJinYinNiuPing.m */; };
-		69B89A6A1D7FFB70009875E1 /* XXDPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A691D7FFB70009875E1 /* XXDPushViewController.m */; };
 		69B89A711D7FFFCE009875E1 /* XXDLiveOnLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A701D7FFFCE009875E1 /* XXDLiveOnLineController.m */; };
+		69B89A741D80009E009875E1 /* XXDPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A731D80009E009875E1 /* XXDPushViewController.m */; };
 		69C40D1C1D7D463000872C23 /* UIButton+XXD.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C40D1B1D7D463000872C23 /* UIButton+XXD.m */; };
 /* End PBXBuildFile section */
 
@@ -175,10 +175,10 @@
 		69B1C6221D7EC0D1000CA633 /* XXDTimeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDTimeNews.m; sourceTree = "<group>"; };
 		69B1C6241D7EC12B000CA633 /* XXDJinYinNiuPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDJinYinNiuPing.h; sourceTree = "<group>"; };
 		69B1C6251D7EC12B000CA633 /* XXDJinYinNiuPing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDJinYinNiuPing.m; sourceTree = "<group>"; };
-		69B89A681D7FFB70009875E1 /* XXDPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDPushViewController.h; sourceTree = "<group>"; };
-		69B89A691D7FFB70009875E1 /* XXDPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDPushViewController.m; sourceTree = "<group>"; };
 		69B89A6F1D7FFFCE009875E1 /* XXDLiveOnLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLiveOnLineController.h; sourceTree = "<group>"; };
 		69B89A701D7FFFCE009875E1 /* XXDLiveOnLineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLiveOnLineController.m; sourceTree = "<group>"; };
+		69B89A721D80009E009875E1 /* XXDPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDPushViewController.h; sourceTree = "<group>"; };
+		69B89A731D80009E009875E1 /* XXDPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDPushViewController.m; sourceTree = "<group>"; };
 		69C40D1A1D7D463000872C23 /* UIButton+XXD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+XXD.h"; sourceTree = "<group>"; };
 		69C40D1B1D7D463000872C23 /* UIButton+XXD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+XXD.m"; sourceTree = "<group>"; };
 		8A1EB41BB141BBB1A5B05B48 /* Pods-XXD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XXD/Pods-XXD.debug.xcconfig"; sourceTree = "<group>"; };
@@ -558,6 +558,8 @@
 		69B1C6121D7E64A5000CA633 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				69B89A721D80009E009875E1 /* XXDPushViewController.h */,
+				69B89A731D80009E009875E1 /* XXDPushViewController.m */,
 				69B1C6161D7E64FF000CA633 /* XXDLiveImage.h */,
 				69B1C6171D7E64FF000CA633 /* XXDLiveImage.m */,
 			);
@@ -598,8 +600,6 @@
 		69C40D181D7D1D9000872C23 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				69B89A681D7FFB70009875E1 /* XXDPushViewController.h */,
-				69B89A691D7FFB70009875E1 /* XXDPushViewController.m */,
 				69C40D1A1D7D463000872C23 /* UIButton+XXD.h */,
 				69C40D1B1D7D463000872C23 /* UIButton+XXD.m */,
 			);
@@ -769,6 +769,7 @@
 				3B7B3E781D7E564D003DBF06 /* DaysDetailController.m in Sources */,
 				3B6F5F2F1D7FB0F00058D2DE /* BaseWebRequest.m in Sources */,
 				3B4C7A181D79414E001ECA94 /* TAAnimatedDotView.m in Sources */,
+				69B89A741D80009E009875E1 /* XXDPushViewController.m in Sources */,
 				3B7B3E6C1D7E5632003DBF06 /* ProfitSkillCell.m in Sources */,
 				3B4C7A1D1D79414E001ECA94 /* UIView+SDExtension.m in Sources */,
 				697D76391D781300008D7C94 /* main.m in Sources */,
@@ -777,7 +778,6 @@
 				3B7B3E771D7E564D003DBF06 /* DayInvestmentCell.m in Sources */,
 				3B6F5F2A1D7FAFFE0058D2DE /* XiDuNewsDetailViewController.m in Sources */,
 				3B7B3E611D7E515A003DBF06 /* XXDQuotationViewController.m in Sources */,
-				69B89A6A1D7FFB70009875E1 /* XXDPushViewController.m in Sources */,
 				3B60B8A51D7D3D8A002AA667 /* VarietiesView.m in Sources */,
 				3B6F5F271D7FAFFE0058D2DE /* ExchangeInfoViewController.m in Sources */,
 				3B7B3E791D7E564D003DBF06 /* DaysInvestmentModel.m in Sources */,
