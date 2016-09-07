@@ -269,7 +269,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark UITableView代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return  10;
+    return  self.flagForTable == 0 ? 10 : 6;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString* cellId = @"cell";
