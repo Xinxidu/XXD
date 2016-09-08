@@ -7,8 +7,12 @@
 //
 
 #import "XXDMyFirmAccountVC.h"
-#import "XXDMyAccountInfoVC.h"
 #import "XXDPushViewController.h"
+#import "XXDMyAccountInfoVC.h"
+#import "XXDTodayMakeListVC.h"
+#import "XXDTodayExchangeListVC.h"
+#import "XXDHistoryMakeListVC.h"
+#import "XXDHistoryExchangeListVC.h"
 
 @interface XXDMyFirmAccountVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)UITableView *tableView;
@@ -50,6 +54,7 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.bounces = NO;
+    _tableView.scrollEnabled = NO;
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     _tableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_tableView];
@@ -80,9 +85,19 @@
     
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.hidesBottomBarWhenPushed = YES;
     if (indexPath.row == 0) {
         [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDMyAccountInfoVC alloc]init]];
+    }else if (indexPath.row == 1){
+        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDTodayMakeListVC alloc]init]];
+    }else if (indexPath.row == 2){
+        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDTodayExchangeListVC alloc]init]];
+    }else if (indexPath.row == 3){
+        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDHistoryMakeListVC alloc]init]];
+    }else{
+        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDHistoryExchangeListVC alloc]init]];
     }
+    self.hidesBottomBarWhenPushed = NO;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 40;
