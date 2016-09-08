@@ -24,7 +24,19 @@
     [self createUI];
 }
 -(void)createUI{
-    
+    NSArray *itemArray = @[@"订立时间",@"买/卖",@"订立价/手续费",@"成交量",@"成交额"];
+    for (NSInteger i=0; i<itemArray.count; i++) {
+        UILabel *itemLabel = [[UILabel alloc]initWithFrame:CGRectMake((self.view.bounds.size.width/5)*i, 64, self.view.bounds.size.width/5, 40)];
+        itemLabel.text = itemArray[i];
+        itemLabel.font = [UIFont systemFontOfSize:11.0];
+        itemLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        itemLabel.numberOfLines = 0;
+        itemLabel.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:itemLabel];
+    }
+    UILabel *lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 64+40, self.view.bounds.size.width, 0.5)];
+    lineLabel.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:lineLabel];
 }
 #pragma mark -返回按钮点击
 - (void)backBtnClick{
