@@ -65,6 +65,11 @@
 		69B1C6261D7EC12B000CA633 /* XXDJinYinNiuPing.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B1C6251D7EC12B000CA633 /* XXDJinYinNiuPing.m */; };
 		69B89A711D7FFFCE009875E1 /* XXDLiveOnLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A701D7FFFCE009875E1 /* XXDLiveOnLineController.m */; };
 		69B89A741D80009E009875E1 /* XXDPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A731D80009E009875E1 /* XXDPushViewController.m */; };
+		69B89A801D813723009875E1 /* firmBargainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A7E1D813723009875E1 /* firmBargainViewController.m */; };
+		69B89A831D81378F009875E1 /* XXDOrderBSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A821D81378F009875E1 /* XXDOrderBSView.m */; };
+		69B89A861D8137C6009875E1 /* XXDSwapsBSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A851D8137C6009875E1 /* XXDSwapsBSView.m */; };
+		69B89A891D8137ED009875E1 /* XXDDelegateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A881D8137ED009875E1 /* XXDDelegateView.m */; };
+		69B89A8C1D813807009875E1 /* XXDHoldProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A8B1D813807009875E1 /* XXDHoldProductView.m */; };
 		69C40D1C1D7D463000872C23 /* UIButton+XXD.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C40D1B1D7D463000872C23 /* UIButton+XXD.m */; };
 /* End PBXBuildFile section */
 
@@ -182,6 +187,16 @@
 		69B89A701D7FFFCE009875E1 /* XXDLiveOnLineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLiveOnLineController.m; sourceTree = "<group>"; };
 		69B89A721D80009E009875E1 /* XXDPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDPushViewController.h; sourceTree = "<group>"; };
 		69B89A731D80009E009875E1 /* XXDPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDPushViewController.m; sourceTree = "<group>"; };
+		69B89A7D1D813723009875E1 /* firmBargainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = firmBargainViewController.h; sourceTree = "<group>"; };
+		69B89A7E1D813723009875E1 /* firmBargainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = firmBargainViewController.m; sourceTree = "<group>"; };
+		69B89A811D81378F009875E1 /* XXDOrderBSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDOrderBSView.h; sourceTree = "<group>"; };
+		69B89A821D81378F009875E1 /* XXDOrderBSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDOrderBSView.m; sourceTree = "<group>"; };
+		69B89A841D8137C6009875E1 /* XXDSwapsBSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDSwapsBSView.h; sourceTree = "<group>"; };
+		69B89A851D8137C6009875E1 /* XXDSwapsBSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDSwapsBSView.m; sourceTree = "<group>"; };
+		69B89A871D8137ED009875E1 /* XXDDelegateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDDelegateView.h; sourceTree = "<group>"; };
+		69B89A881D8137ED009875E1 /* XXDDelegateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDDelegateView.m; sourceTree = "<group>"; };
+		69B89A8A1D813807009875E1 /* XXDHoldProductView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHoldProductView.h; sourceTree = "<group>"; };
+		69B89A8B1D813807009875E1 /* XXDHoldProductView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHoldProductView.m; sourceTree = "<group>"; };
 		69C40D1A1D7D463000872C23 /* UIButton+XXD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+XXD.h"; sourceTree = "<group>"; };
 		69C40D1B1D7D463000872C23 /* UIButton+XXD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+XXD.m"; sourceTree = "<group>"; };
 		8A1EB41BB141BBB1A5B05B48 /* Pods-XXD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XXD/Pods-XXD.debug.xcconfig"; sourceTree = "<group>"; };
@@ -326,6 +341,7 @@
 		3B7B3E8C1D7EBE72003DBF06 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				69B89A751D810378009875E1 /* Trade */,
 				3B6F5F381D8007FF0058D2DE /* MyFirmAccount */,
 				3B6F5F371D8007BD0058D2DE /* MyOptional */,
 				3B7B3E901D7EC041003DBF06 /* AbountUs */,
@@ -618,6 +634,39 @@
 			path = LiveOnLine;
 			sourceTree = "<group>";
 		};
+		69B89A751D810378009875E1 /* Trade */ = {
+			isa = PBXGroup;
+			children = (
+				69B89A7C1D813723009875E1 /* Controller */,
+				69B89A7F1D813723009875E1 /* View */,
+			);
+			path = Trade;
+			sourceTree = "<group>";
+		};
+		69B89A7C1D813723009875E1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				69B89A7D1D813723009875E1 /* firmBargainViewController.h */,
+				69B89A7E1D813723009875E1 /* firmBargainViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		69B89A7F1D813723009875E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				69B89A811D81378F009875E1 /* XXDOrderBSView.h */,
+				69B89A821D81378F009875E1 /* XXDOrderBSView.m */,
+				69B89A841D8137C6009875E1 /* XXDSwapsBSView.h */,
+				69B89A851D8137C6009875E1 /* XXDSwapsBSView.m */,
+				69B89A871D8137ED009875E1 /* XXDDelegateView.h */,
+				69B89A881D8137ED009875E1 /* XXDDelegateView.m */,
+				69B89A8A1D813807009875E1 /* XXDHoldProductView.h */,
+				69B89A8B1D813807009875E1 /* XXDHoldProductView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		69C40D181D7D1D9000872C23 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -763,16 +812,20 @@
 				3B6F5F2B1D7FAFFE0058D2DE /* XiDuNewsModel.m in Sources */,
 				3B6F5F2C1D7FAFFE0058D2DE /* XiDuNewsViewController.m in Sources */,
 				3B7B3E801D7E5B0D003DBF06 /* BaseWKWebView.m in Sources */,
+				69B89A8C1D813807009875E1 /* XXDHoldProductView.m in Sources */,
+				69B89A831D81378F009875E1 /* XXDOrderBSView.m in Sources */,
 				3B7B3E9A1D7EC0C6003DBF06 /* XXDMyActivityCell.m in Sources */,
 				697D763C1D781300008D7C94 /* XXDAppDelegate.m in Sources */,
 				3B6F5F281D7FAFFE0058D2DE /* XiDuInfoViewController.m in Sources */,
 				69B1C6231D7EC0D1000CA633 /* XXDTimeNews.m in Sources */,
+				69B89A861D8137C6009875E1 /* XXDSwapsBSView.m in Sources */,
 				69B1C6181D7E64FF000CA633 /* XXDLiveImage.m in Sources */,
 				697D76731D782951008D7C94 /* XXDDiscoverViewController.m in Sources */,
 				69B1C61F1D7EBD61000CA633 /* XXDJinYinNiuPingCell.m in Sources */,
 				3B4C7A171D79414E001ECA94 /* TAAbstractDotView.m in Sources */,
 				3B60B88B1D7D3D08002AA667 /* MoreDetailModel.m in Sources */,
 				69B89A711D7FFFCE009875E1 /* XXDLiveOnLineController.m in Sources */,
+				69B89A891D8137ED009875E1 /* XXDDelegateView.m in Sources */,
 				3B4C7A1A1D79414E001ECA94 /* TAPageControl.m in Sources */,
 				3B4C7A1B1D79414E001ECA94 /* SDCollectionViewCell.m in Sources */,
 				3B6F5F321D7FDAF00058D2DE /* XXDSearchViewController.m in Sources */,
@@ -780,6 +833,7 @@
 				3B7B3E6E1D7E5632003DBF06 /* ProfitSkillViewController.m in Sources */,
 				697D76701D782939008D7C94 /* XXDTradeViewController.m in Sources */,
 				69B1C6111D7E4FE8000CA633 /* XXDLiveView.m in Sources */,
+				69B89A801D813723009875E1 /* firmBargainViewController.m in Sources */,
 				3B7B3E8F1D7EBECC003DBF06 /* XXDMyViewController.m in Sources */,
 				3B6F5F161D7FAFC60058D2DE /* AboutXiDuTableViewCell.m in Sources */,
 				697D765C1D781BBC008D7C94 /* XXDMainTabController.m in Sources */,

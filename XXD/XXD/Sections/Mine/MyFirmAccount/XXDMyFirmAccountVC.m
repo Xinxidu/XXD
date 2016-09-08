@@ -7,7 +7,8 @@
 //
 
 #import "XXDMyFirmAccountVC.h"
-
+#import "XXDPushViewController.h"
+#import "firmBargainViewController.h"
 @interface XXDMyFirmAccountVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @end
@@ -32,6 +33,7 @@
     [tradeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     tradeButton.layer.cornerRadius = 5;
     tradeButton.layer.masksToBounds = YES;
+    [tradeButton addTarget:self action:@selector(pushToTrade) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:tradeButton];
     //退出账户按钮
     UIButton *exitButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -86,6 +88,11 @@
 #pragma mark -返回按钮点击
 - (void)backBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
+}
+#pragma mark 跳转交易
+- (void)pushToTrade{
+    firmBargainViewController *firmBargain = [[firmBargainViewController alloc] init];
+    [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:firmBargain];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
