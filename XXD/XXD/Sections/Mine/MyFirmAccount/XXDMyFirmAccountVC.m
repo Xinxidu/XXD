@@ -7,6 +7,8 @@
 //
 
 #import "XXDMyFirmAccountVC.h"
+#import "XXDMyAccountInfoVC.h"
+#import "XXDPushViewController.h"
 
 @interface XXDMyFirmAccountVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)UITableView *tableView;
@@ -26,7 +28,7 @@
     [self createTableView];
     //跳转交易按钮
     UIButton *tradeButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    tradeButton.frame = CGRectMake(self.view.bounds.size.width-90, CGRectGetMaxY(_tableView.frame), 80, 35);
+    tradeButton.frame = CGRectMake(self.view.bounds.size.width-85, CGRectGetMaxY(_tableView.frame), 80, 35);
     tradeButton.backgroundColor = [UIColor colorWithRed:252/255.0 green:98/255.0 blue:146/255.0 alpha:1.0];
     [tradeButton setTitle:@"交易" forState:UIControlStateNormal];
     [tradeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -44,7 +46,7 @@
     [self.view addSubview:exitButton];
 }
 -(void)createTableView{
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 260)];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 265)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.bounces = NO;
@@ -78,7 +80,9 @@
     
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (indexPath.row == 0) {
+        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDMyAccountInfoVC alloc]init]];
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 40;
