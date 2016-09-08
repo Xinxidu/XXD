@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0F863EDD7DC62F1E2F344F8F /* libPods-XXD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1696AF4DC74005A5A3024F13 /* libPods-XXD.a */; };
+		3B355B721D80F8F1008C8376 /* XXDMyAccountInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B711D80F8F1008C8376 /* XXDMyAccountInfoVC.m */; };
+		3B355B751D8149D6008C8376 /* AuthcodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B741D8149D6008C8376 /* AuthcodeView.m */; };
+		3B355B781D815709008C8376 /* XXDTodayMakeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B771D815709008C8376 /* XXDTodayMakeListVC.m */; };
+		3B355B7B1D81573E008C8376 /* XXDTodayExchangeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B7A1D81573E008C8376 /* XXDTodayExchangeListVC.m */; };
+		3B355B7E1D81576C008C8376 /* XXDHistoryMakeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B7D1D81576C008C8376 /* XXDHistoryMakeListVC.m */; };
+		3B355B841D8158F4008C8376 /* XXDHistoryExchangeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B831D8158F4008C8376 /* XXDHistoryExchangeListVC.m */; };
 		3B4C7A171D79414E001ECA94 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4C7A0A1D79414E001ECA94 /* TAAbstractDotView.m */; };
 		3B4C7A181D79414E001ECA94 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4C7A0C1D79414E001ECA94 /* TAAnimatedDotView.m */; };
 		3B4C7A191D79414E001ECA94 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4C7A0E1D79414E001ECA94 /* TADotView.m */; };
@@ -75,6 +81,18 @@
 
 /* Begin PBXFileReference section */
 		1696AF4DC74005A5A3024F13 /* libPods-XXD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XXD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B355B701D80F8F1008C8376 /* XXDMyAccountInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDMyAccountInfoVC.h; sourceTree = "<group>"; };
+		3B355B711D80F8F1008C8376 /* XXDMyAccountInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyAccountInfoVC.m; sourceTree = "<group>"; };
+		3B355B731D8149D6008C8376 /* AuthcodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthcodeView.h; sourceTree = "<group>"; };
+		3B355B741D8149D6008C8376 /* AuthcodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthcodeView.m; sourceTree = "<group>"; };
+		3B355B761D815709008C8376 /* XXDTodayMakeListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDTodayMakeListVC.h; sourceTree = "<group>"; };
+		3B355B771D815709008C8376 /* XXDTodayMakeListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDTodayMakeListVC.m; sourceTree = "<group>"; };
+		3B355B791D81573E008C8376 /* XXDTodayExchangeListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDTodayExchangeListVC.h; sourceTree = "<group>"; };
+		3B355B7A1D81573E008C8376 /* XXDTodayExchangeListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDTodayExchangeListVC.m; sourceTree = "<group>"; };
+		3B355B7C1D81576C008C8376 /* XXDHistoryMakeListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHistoryMakeListVC.h; sourceTree = "<group>"; };
+		3B355B7D1D81576C008C8376 /* XXDHistoryMakeListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHistoryMakeListVC.m; sourceTree = "<group>"; };
+		3B355B821D8158F4008C8376 /* XXDHistoryExchangeListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHistoryExchangeListVC.h; sourceTree = "<group>"; };
+		3B355B831D8158F4008C8376 /* XXDHistoryExchangeListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHistoryExchangeListVC.m; sourceTree = "<group>"; };
 		3B4C7A091D79414E001ECA94 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
 		3B4C7A0A1D79414E001ECA94 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
 		3B4C7A0B1D79414E001ECA94 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
@@ -286,6 +304,16 @@
 			children = (
 				3B6F5F391D8008350058D2DE /* XXDMyFirmAccountVC.h */,
 				3B6F5F3A1D8008350058D2DE /* XXDMyFirmAccountVC.m */,
+				3B355B701D80F8F1008C8376 /* XXDMyAccountInfoVC.h */,
+				3B355B711D80F8F1008C8376 /* XXDMyAccountInfoVC.m */,
+				3B355B761D815709008C8376 /* XXDTodayMakeListVC.h */,
+				3B355B771D815709008C8376 /* XXDTodayMakeListVC.m */,
+				3B355B791D81573E008C8376 /* XXDTodayExchangeListVC.h */,
+				3B355B7A1D81573E008C8376 /* XXDTodayExchangeListVC.m */,
+				3B355B7C1D81576C008C8376 /* XXDHistoryMakeListVC.h */,
+				3B355B7D1D81576C008C8376 /* XXDHistoryMakeListVC.m */,
+				3B355B821D8158F4008C8376 /* XXDHistoryExchangeListVC.h */,
+				3B355B831D8158F4008C8376 /* XXDHistoryExchangeListVC.m */,
 			);
 			path = MyFirmAccount;
 			sourceTree = "<group>";
@@ -566,6 +594,8 @@
 			children = (
 				697D766E1D782939008D7C94 /* XXDTradeViewController.h */,
 				697D766F1D782939008D7C94 /* XXDTradeViewController.m */,
+				3B355B731D8149D6008C8376 /* AuthcodeView.h */,
+				3B355B741D8149D6008C8376 /* AuthcodeView.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -710,7 +740,7 @@
 				TargetAttributes = {
 					697D76331D781300008D7C94 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = R9DE87BJ5L;
+						DevelopmentTeam = VRQSU9ZYT4;
 					};
 				};
 			};
@@ -804,7 +834,10 @@
 				3B60B8A61D7D3D8A002AA667 /* VarietyModel.m in Sources */,
 				3B6F5F291D7FAFFE0058D2DE /* XiDuNewsCell.m in Sources */,
 				3B7B3E881D7EA8F9003DBF06 /* XXDActivityMessageVC.m in Sources */,
+				3B355B7E1D81576C008C8376 /* XXDHistoryMakeListVC.m in Sources */,
 				3B4C7A1C1D79414E001ECA94 /* SDCycleScrollView.m in Sources */,
+				3B355B7B1D81573E008C8376 /* XXDTodayExchangeListVC.m in Sources */,
+				3B355B781D815709008C8376 /* XXDTodayMakeListVC.m in Sources */,
 				69B1C6261D7EC12B000CA633 /* XXDJinYinNiuPing.m in Sources */,
 				3B7B3E971D7EC07D003DBF06 /* XXDMyActivityVC.m in Sources */,
 				69C40D1C1D7D463000872C23 /* UIButton+XXD.m in Sources */,
@@ -819,6 +852,7 @@
 				3B6F5F281D7FAFFE0058D2DE /* XiDuInfoViewController.m in Sources */,
 				69B1C6231D7EC0D1000CA633 /* XXDTimeNews.m in Sources */,
 				69B89A861D8137C6009875E1 /* XXDSwapsBSView.m in Sources */,
+				3B355B751D8149D6008C8376 /* AuthcodeView.m in Sources */,
 				69B1C6181D7E64FF000CA633 /* XXDLiveImage.m in Sources */,
 				697D76731D782951008D7C94 /* XXDDiscoverViewController.m in Sources */,
 				69B1C61F1D7EBD61000CA633 /* XXDJinYinNiuPingCell.m in Sources */,
@@ -829,6 +863,7 @@
 				3B4C7A1A1D79414E001ECA94 /* TAPageControl.m in Sources */,
 				3B4C7A1B1D79414E001ECA94 /* SDCollectionViewCell.m in Sources */,
 				3B6F5F321D7FDAF00058D2DE /* XXDSearchViewController.m in Sources */,
+				3B355B721D80F8F1008C8376 /* XXDMyAccountInfoVC.m in Sources */,
 				3B7B3E8B1D7EAF01003DBF06 /* XXDActivityTableViewCell.m in Sources */,
 				3B7B3E6E1D7E5632003DBF06 /* ProfitSkillViewController.m in Sources */,
 				697D76701D782939008D7C94 /* XXDTradeViewController.m in Sources */,
@@ -848,6 +883,7 @@
 				3B7B3E6C1D7E5632003DBF06 /* ProfitSkillCell.m in Sources */,
 				3B4C7A1D1D79414E001ECA94 /* UIView+SDExtension.m in Sources */,
 				3B6F5F3B1D8008350058D2DE /* XXDMyFirmAccountVC.m in Sources */,
+				3B355B841D8158F4008C8376 /* XXDHistoryExchangeListVC.m in Sources */,
 				697D76391D781300008D7C94 /* main.m in Sources */,
 				3B6F5F261D7FAFFE0058D2DE /* ContactUsViewController.m in Sources */,
 				69B1C61C1D7EBD39000CA633 /* XXDTimeNewsCell.m in Sources */,
@@ -969,7 +1005,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = XXD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xinxidu.XXD;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xinxidu.XXDs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "XXD/Sections/Home/XXD-Bridging-Header.h";
@@ -987,7 +1023,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = XXD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xinxidu.XXD;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xinxidu.XXDs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "XXD/Sections/Home/XXD-Bridging-Header.h";
