@@ -86,22 +86,22 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     [self.view addSubview:self.mainScrollView];
     switch (buttonType) {
         case XXDButtonTypeOrderBuy:{
-            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 300) buttonString:@"买入" isShowTwoButtonForSwapsBS:NO];
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 300) buttonString:@"买入" isShowTwoButtonForSwapsBS:NO accountString:@"018000000173"];
             orderBSView.bsDelegate = self;
             [self.mainScrollView addSubview:orderBSView];
          }break;
         case XXDButtonTypeOrderSell:{
-            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 300) buttonString:@"卖出" isShowTwoButtonForSwapsBS:NO];
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 300) buttonString:@"卖出" isShowTwoButtonForSwapsBS:NO accountString:@"018000000173"];
             orderBSView.bsDelegate = self;
             [self.mainScrollView addSubview:orderBSView];
         }break;
         case XXDButtonTypeSwapsBuy:{
-            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 340) buttonString:@"买入" isShowTwoButtonForSwapsBS:YES];
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 340) buttonString:@"买入" isShowTwoButtonForSwapsBS:YES accountString:@"018000000173"];
             orderBSView.bsDelegate = self;
             [self.mainScrollView addSubview:orderBSView];
         }break;
         case XXDButtonTypeSwapsToSell:{
-            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 340) buttonString:@"卖出" isShowTwoButtonForSwapsBS:YES];
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 340) buttonString:@"卖出" isShowTwoButtonForSwapsBS:YES accountString:@"018000000173"];
             orderBSView.bsDelegate = self;
             [self.mainScrollView addSubview:orderBSView];
         }break;
@@ -115,8 +115,35 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
         }break;
     }
 }
+#pragma mark 商品名称弹窗代理方法
 - (void)showProductListAlert:(UIAlertController *)alert{
     [self presentViewController:alert animated:YES completion:nil];
+}
+#pragma mark 买入二次确认弹窗代理方法
+- (void)sureBSAlert:(UIAlertController *)alert{
+    [self presentViewController:alert animated:YES completion:nil];
+}
+#pragma mark 确定按钮点击代理方法
+- (void)sureBSButtonClickWidthButtonName:(NSString *)buttonName isOrderOrSwaps:(BOOL)isOrderOrSwaps{
+    if (isOrderOrSwaps == NO) {
+        if ([buttonName isEqualToString:@"确定买入"]) {
+            NSLog(@"委托订立买入");
+        }else{
+            NSLog(@"委托订立卖出");
+        }
+    }else{
+        if ([buttonName isEqualToString:@"确定买入"]) {
+            NSLog(@"委托调期买入");
+        }else{
+            NSLog(@"委托调期卖出");
+        }
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+#pragma mark 取消按钮点击代理方法
+- (void)cancelButtonClick{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

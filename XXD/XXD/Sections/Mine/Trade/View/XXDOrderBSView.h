@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 @protocol XXDOrderBSViewDelegate<NSObject>
 - (void)showProductListAlert:(UIAlertController *)alert;
+- (void)sureBSAlert:(UIAlertController *)alert;
+- (void)sureBSButtonClickWidthButtonName:(NSString *)buttonName isOrderOrSwaps:(BOOL)isOrderOrSwaps;
+- (void)cancelButtonClick;
 @end
 @interface XXDOrderBSView : UIView<UIPickerViewDelegate,UIPickerViewDataSource>
 @property (strong,nonatomic) UIButton *proNameButton;//商品名按钮
@@ -26,5 +29,8 @@
 @property (strong,nonatomic) UIButton *totalButton;//按汇总按钮
 @property (strong,nonatomic) UIButton *detailButton;//按明细按钮
 @property (strong,nonatomic) UIButton *bsButton;//买入/卖出按钮
-- (instancetype)initWithFrame:(CGRect)frame buttonString:(NSString *)buttonString isShowTwoButtonForSwapsBS:(BOOL)isShowTwoButtonForSwapsBS;
+@property (assign,nonatomic) BOOL isSwapsBS;//是否为调期买卖页面
+@property (strong,nonatomic) UIAlertController *sureAlertView;//买入/卖出确认弹窗
+@property (copy,nonatomic) NSString *accountString;//账号名
+- (instancetype)initWithFrame:(CGRect)frame buttonString:(NSString *)buttonString isShowTwoButtonForSwapsBS:(BOOL)isShowTwoButtonForSwapsBS accountString:(NSString *)accountString;
 @end
