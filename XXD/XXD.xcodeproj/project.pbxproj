@@ -53,6 +53,7 @@
 		3B7B3E8F1D7EBECC003DBF06 /* XXDMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E8E1D7EBECC003DBF06 /* XXDMyViewController.m */; };
 		3B7B3E971D7EC07D003DBF06 /* XXDMyActivityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E961D7EC07D003DBF06 /* XXDMyActivityVC.m */; };
 		3B7B3E9A1D7EC0C6003DBF06 /* XXDMyActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E991D7EC0C6003DBF06 /* XXDMyActivityCell.m */; };
+		3B8FF8C91D86750E003D5EC1 /* XXDLeftMarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8FF8C81D86750E003D5EC1 /* XXDLeftMarketViewController.m */; };
 		6933F6971D790B7A009CB88F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6933F6961D790B7A009CB88F /* Default-568h@2x.png */; };
 		697D76391D781300008D7C94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D76381D781300008D7C94 /* main.m */; };
 		697D763C1D781300008D7C94 /* XXDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D763B1D781300008D7C94 /* XXDAppDelegate.m */; };
@@ -170,6 +171,8 @@
 		3B7B3E961D7EC07D003DBF06 /* XXDMyActivityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyActivityVC.m; sourceTree = "<group>"; };
 		3B7B3E981D7EC0C6003DBF06 /* XXDMyActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDMyActivityCell.h; sourceTree = "<group>"; };
 		3B7B3E991D7EC0C6003DBF06 /* XXDMyActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyActivityCell.m; sourceTree = "<group>"; };
+		3B8FF8C71D86750E003D5EC1 /* XXDLeftMarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLeftMarketViewController.h; sourceTree = "<group>"; };
+		3B8FF8C81D86750E003D5EC1 /* XXDLeftMarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLeftMarketViewController.m; sourceTree = "<group>"; };
 		6933F6961D790B7A009CB88F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		697D76341D781300008D7C94 /* XXD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XXD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697D76381D781300008D7C94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -574,12 +577,14 @@
 		697D76641D7828B3008D7C94 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3B6F5F301D7FDAF00058D2DE /* XXDSearchViewController.h */,
-				3B6F5F311D7FDAF00058D2DE /* XXDSearchViewController.m */,
 				697D766B1D78292C008D7C94 /* XXDMarketViewController.h */,
 				697D766C1D78292C008D7C94 /* XXDMarketViewController.m */,
+				3B6F5F301D7FDAF00058D2DE /* XXDSearchViewController.h */,
+				3B6F5F311D7FDAF00058D2DE /* XXDSearchViewController.m */,
 				3B7B3E5F1D7E515A003DBF06 /* XXDQuotationViewController.h */,
 				3B7B3E601D7E515A003DBF06 /* XXDQuotationViewController.m */,
+				3B8FF8C71D86750E003D5EC1 /* XXDLeftMarketViewController.h */,
+				3B8FF8C81D86750E003D5EC1 /* XXDLeftMarketViewController.m */,
 				3B60B8A01D7D3D8A002AA667 /* Varieties */,
 				3B60B8831D7D3D08002AA667 /* MoreVarieties */,
 			);
@@ -841,6 +846,7 @@
 				3B6F5F2C1D7FAFFE0058D2DE /* XiDuNewsViewController.m in Sources */,
 				3B7B3E801D7E5B0D003DBF06 /* BaseWKWebView.m in Sources */,
 				69B89A8C1D813807009875E1 /* XXDHoldProductView.m in Sources */,
+				3B8FF8C91D86750E003D5EC1 /* XXDLeftMarketViewController.m in Sources */,
 				69B89A831D81378F009875E1 /* XXDOrderBSView.m in Sources */,
 				3B7B3E9A1D7EC0C6003DBF06 /* XXDMyActivityCell.m in Sources */,
 				697D763C1D781300008D7C94 /* XXDAppDelegate.m in Sources */,

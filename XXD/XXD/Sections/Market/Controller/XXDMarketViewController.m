@@ -12,6 +12,7 @@
 #import "MoreDetailModel.h"
 #import "XXDSearchViewController.h"
 #import "XXDQuotationViewController.h"
+#import "XXDLeftMarketViewController.h"
 #define ADD @"++"
 #define SUB @"--"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
@@ -38,6 +39,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
     self.navigationController.navigationBar.translucent = NO;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"gerenxinxi"] style:UIBarButtonItemStylePlain target:self action:@selector(leftChangeItemClick)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"🔍" style:UIBarButtonItemStylePlain target:self action:@selector(searchButtonClick)];
     self.title = @"行情";
     NSInteger i = 0;
@@ -45,6 +47,19 @@
     [self createScrollView];
     [self createNameButtonData:i];
     NSLog(@"%f,%f",WIDTH,HEIGHT);
+}
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor blackColor]}];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:10/255.0 green:46/255.0 blue:60/255.0 alpha:1.0];
+}
+
+-(void)leftChangeItemClick{
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:[[XXDLeftMarketViewController alloc]init] animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
 }
 -(void)searchButtonClick{
     self.hidesBottomBarWhenPushed = YES;
@@ -95,6 +110,7 @@
     _scroll.delegate = self;
     _scroll.tag = 50;
     _scroll.showsHorizontalScrollIndicator = NO;
+    _scroll.showsVerticalScrollIndicator = NO;
     _scroll.pagingEnabled = NO;
     _scroll.bounces = NO;
     
