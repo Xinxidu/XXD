@@ -171,6 +171,9 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
     }else{
         buttonString = @"➕";
     }
+    if (jiaJianType == XXDJiaJianTypeBuyNumJian) {
+        jiaJianButton.enabled = NO;
+    }
     [jiaJianButton setTitle:buttonString forState:UIControlStateNormal];
     jiaJianButton.layer.borderColor = GRAYCOLOR;
     jiaJianButton.layer.borderWidth = 1;
@@ -184,7 +187,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
         case XXDJiaJianTypeBuyPriceJian:{
             double buyPrice = [self getMoneyNumberWithMoneyString:self.buyPriceLabel.text];
             buyPrice = buyPrice - 1;
-            if (buyPrice<=0) {
+            if (buyPrice<2) {
                 sender.enabled = NO;
             }
             self.buyPriceLabel.text = [self getMoneyStringWithMoneyNumber:buyPrice];
@@ -202,7 +205,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
         case XXDJiaJianTypeBuyNumJian:{
             NSInteger buyNum = [self.buyNumLabel.text integerValue];
             buyNum = buyNum - 1;
-            if (buyNum<=0) {
+            if (buyNum<2) {
                 sender.enabled = NO;
             }
             self.buyNumLabel.text = [NSString stringWithFormat:@"%ld",buyNum];
