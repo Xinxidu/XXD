@@ -14,9 +14,10 @@
 #import "XXDQuotationViewController.h"
 #define ADD @"++"
 #define SUB @"--"
-#define SIZE [[UIScreen mainScreen] bounds].size
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
 #define GLODENCOLOR [UIColor colorWithRed:186/255.0 green:128/255.0 blue:15/255.0 alpha:1.0]
-#define LINEWIDTH 80
+#define LINEWIDTH WIDTH/5
 #define URL @""
 
 @interface XXDMarketViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
@@ -43,6 +44,7 @@
     _dataArray = [[NSMutableArray alloc]init];
     [self createScrollView];
     [self createNameButtonData:i];
+    NSLog(@"%f,%f",WIDTH,HEIGHT);
 }
 -(void)searchButtonClick{
     self.hidesBottomBarWhenPushed = YES;
@@ -65,7 +67,7 @@
     _nameInternational = [[NSMutableArray alloc]initWithObjects:@"自选",@"华通铂银",@"上期所",@"大商所",@"郑商所",@"中金所",@"上金所",@"LME",@"CME",@"ICE",@"全球外汇",@"全球指数", nil];
     for (int i=0; i<_nameInternational.count; i++) {
         UIButton* btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        btn.frame = CGRectMake(i*LINEWIDTH, 2, LINEWIDTH, 40);
+        btn.frame = CGRectMake(i*LINEWIDTH, 0, LINEWIDTH, HEIGHT*0.07);
         [btn setTitle:_nameInternational[i] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         btn.tag = 100+i;
@@ -88,12 +90,13 @@
 }
 #pragma mark ****** 创建名字scroll
 -(void)createScrollView{
-    _scroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SIZE.width, 40)];
+    _scroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT*0.07)];
     _scroll.backgroundColor = [UIColor whiteColor];
     _scroll.delegate = self;
     _scroll.tag = 50;
     _scroll.showsHorizontalScrollIndicator = NO;
     _scroll.pagingEnabled = NO;
+    _scroll.bounces = NO;
     
     [self.view addSubview:_scroll];
     _lineView = [[UIView alloc]initWithFrame:CGRectMake(0, _scroll.frame.size.height-2, LINEWIDTH, 2)];
@@ -102,7 +105,7 @@
     
     NSArray* arr = [[NSArray alloc]initWithObjects:@"品种",@"成交量",@"最高",@"最低", nil];
     for (int i=0; i<arr.count; i++) {
-        UILabel* lable = [[UILabel alloc]initWithFrame:CGRectMake(60+(SIZE.width-60)/4*i, CGRectGetMaxY(_scroll.frame), (SIZE.width-60)/4, 30)];
+        UILabel* lable = [[UILabel alloc]initWithFrame:CGRectMake(60+(WIDTH-60)/4*i, CGRectGetMaxY(_scroll.frame), (WIDTH-60)/4, 30)];
         [self.view addSubview:lable];
         [lable setText:arr[i]];
         lable.font = [UIFont systemFontOfSize:14.0];
@@ -110,7 +113,7 @@
         lable.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
         lable.textAlignment = NSTextAlignmentCenter;
     }
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_scroll.frame)+30, SIZE.width, SIZE.height-CGRectGetMaxY(_scroll.frame)-64-30) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_scroll.frame)+30, WIDTH, HEIGHT-CGRectGetMaxY(_scroll.frame)-64-30) style:UITableViewStylePlain];
     _tableView.backgroundColor = [UIColor whiteColor];
     _tableView.delegate = self;
     _tableView.dataSource = self;
