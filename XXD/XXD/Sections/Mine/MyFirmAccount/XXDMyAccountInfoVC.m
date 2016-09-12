@@ -26,27 +26,27 @@
     [self createUI];
 }
 -(void)createUI{
-    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 84, self.view.bounds.size.width, 45)];
+    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 64+20, self.view.bounds.size.width, 40)];
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
     //账户
-    UILabel *zhanghuLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 13, 40, 20)];
+    UILabel *zhanghuLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 10, 40, 20)];
     zhanghuLabel.text = @"账户:";
     zhanghuLabel.font = [UIFont systemFontOfSize:14.0];
     zhanghuLabel.textColor = [UIColor grayColor];
     [topView addSubview:zhanghuLabel];
-    UILabel *zhanghuNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(zhanghuLabel.frame)+2, 13, 70, 20)];
+    UILabel *zhanghuNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(zhanghuLabel.frame)+2, 10, 70, 20)];
     zhanghuNameLabel.text = @"VIP66666";
     zhanghuNameLabel.textColor = [UIColor grayColor];
     zhanghuNameLabel.font = [UIFont systemFontOfSize:14.0];
     [topView addSubview:zhanghuNameLabel];
     //风险覆盖率
-    UILabel *fengxianLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(zhanghuNameLabel.frame)+30, 13, 80, 20)];
+    UILabel *fengxianLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(zhanghuNameLabel.frame)+30, 10, 80, 20)];
     fengxianLabel.text = @"风险覆盖率";
     fengxianLabel.textColor = [UIColor grayColor];
     fengxianLabel.font = [UIFont systemFontOfSize:14.0];
     [topView addSubview:fengxianLabel];
-    UILabel *anquanLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(fengxianLabel.frame)+2, 8, 50, 30)];
+    UILabel *anquanLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(fengxianLabel.frame)+2, 5, 50, 30)];
     anquanLabel.text = @"安全";
     anquanLabel.font = [UIFont systemFontOfSize:14.0];
     anquanLabel.textColor = [UIColor whiteColor];
