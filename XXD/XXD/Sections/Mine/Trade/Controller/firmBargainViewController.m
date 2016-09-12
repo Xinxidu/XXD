@@ -8,6 +8,8 @@
 
 #import "firmBargainViewController.h"
 #import "XXDOrderBSView.h"
+#import "XXDDelegateView.h"
+#import "XXDHoldProductView.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 typedef NS_ENUM(NSInteger,XXDButtonType){
@@ -18,11 +20,11 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     XXDButtonTypeDelegate,             //委托
     XXDButtonTypeHoldProduct        //持货
 };
-@interface firmBargainViewController ()
+@interface firmBargainViewController ()<XXDOrderBSViewDelegate>
 @property (strong,nonatomic) UIView *topView;   //顶部视图
 @property (strong,nonatomic) NSArray *menuBottonNameArray;  //菜单按钮名称数组
 @property (strong,nonatomic) UIView *topUnderLine;  //顶部橘色下划线
-@property (strong,nonatomic) UIView *mainView;  //主视图
+@property (strong,nonatomic) UIScrollView *mainScrollView;  //主视图
 @end
 
 @implementation firmBargainViewController
@@ -74,33 +76,47 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     [self createMainViewWithButtonType:sender.tag];
 }
 - (void)createMainViewWithButtonType:(XXDButtonType)buttonType{
-    if (self.mainView != nil) {
-        [self.mainView removeFromSuperview];
-        self.mainView = nil;
+    if (self.mainScrollView != nil) {
+        [self.mainScrollView removeFromSuperview];
+        self.mainScrollView = nil;
     }
+    self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.topView.frame), WIDTH, HEIGHT-CGRectGetMaxY(self.topView.frame))];
+    self.mainScrollView.contentSize = CGSizeMake(WIDTH, HEIGHT*2);
+    self.mainScrollView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.mainScrollView];
     switch (buttonType) {
         case XXDButtonTypeOrderBuy:{
-            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.topView.frame), WIDTH, 300)];
-            NSLog(@"%@",NSStringFromCGRect(CGRectMake(0, CGRectGetMaxY(self.topView.frame), WIDTH, 300)));
-            [self.view addSubview:orderBSView];
-         }
-        break;
-        case XXDButtonTypeOrderSell:
-            NSLog(@"订立卖");
-        break;
-        case XXDButtonTypeSwapsBuy:
-            NSLog(@"调期买");
-        break;
-        case XXDButtonTypeSwapsToSell:
-            NSLog(@"调期卖");
-        break;
-        case XXDButtonTypeDelegate:
-            NSLog(@"委托");
-        break;
-        case XXDButtonTypeHoldProduct:
-            NSLog(@"持货");
-        break;
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 300) buttonString:@"买入" isShowTwoButtonForSwapsBS:NO];
+            orderBSView.bsDelegate = self;
+            [self.mainScrollView addSubview:orderBSView];
+         }break;
+        case XXDButtonTypeOrderSell:{
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 300) buttonString:@"卖出" isShowTwoButtonForSwapsBS:NO];
+            orderBSView.bsDelegate = self;
+            [self.mainScrollView addSubview:orderBSView];
+        }break;
+        case XXDButtonTypeSwapsBuy:{
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 340) buttonString:@"买入" isShowTwoButtonForSwapsBS:YES];
+            orderBSView.bsDelegate = self;
+            [self.mainScrollView addSubview:orderBSView];
+        }break;
+        case XXDButtonTypeSwapsToSell:{
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 340) buttonString:@"卖出" isShowTwoButtonForSwapsBS:YES];
+            orderBSView.bsDelegate = self;
+            [self.mainScrollView addSubview:orderBSView];
+        }break;
+        case XXDButtonTypeDelegate:{
+            XXDDelegateView *delegateView = [[XXDDelegateView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 400)];
+            [self.mainScrollView addSubview:delegateView];
+        }break;
+        case XXDButtonTypeHoldProduct:{
+            XXDHoldProductView *holdProductView = [[XXDHoldProductView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 190)];
+            [self.mainScrollView addSubview:holdProductView];
+        }break;
     }
+}
+- (void)showProductListAlert:(UIAlertController *)alert{
+    [self presentViewController:alert animated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

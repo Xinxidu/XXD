@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface XXDHoldProductView : UIView
-
+@property (strong,nonatomic) NSArray *titleArray;///表头数组
+@property (strong,nonatomic) NSArray *numArray;//数额数组
 @end

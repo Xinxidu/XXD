@@ -73,7 +73,6 @@
 		69B89A741D80009E009875E1 /* XXDPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A731D80009E009875E1 /* XXDPushViewController.m */; };
 		69B89A801D813723009875E1 /* firmBargainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A7E1D813723009875E1 /* firmBargainViewController.m */; };
 		69B89A831D81378F009875E1 /* XXDOrderBSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A821D81378F009875E1 /* XXDOrderBSView.m */; };
-		69B89A861D8137C6009875E1 /* XXDSwapsBSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A851D8137C6009875E1 /* XXDSwapsBSView.m */; };
 		69B89A891D8137ED009875E1 /* XXDDelegateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A881D8137ED009875E1 /* XXDDelegateView.m */; };
 		69B89A8C1D813807009875E1 /* XXDHoldProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A8B1D813807009875E1 /* XXDHoldProductView.m */; };
 		69C40D1C1D7D463000872C23 /* UIButton+XXD.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C40D1B1D7D463000872C23 /* UIButton+XXD.m */; };
@@ -209,8 +208,6 @@
 		69B89A7E1D813723009875E1 /* firmBargainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = firmBargainViewController.m; sourceTree = "<group>"; };
 		69B89A811D81378F009875E1 /* XXDOrderBSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDOrderBSView.h; sourceTree = "<group>"; };
 		69B89A821D81378F009875E1 /* XXDOrderBSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDOrderBSView.m; sourceTree = "<group>"; };
-		69B89A841D8137C6009875E1 /* XXDSwapsBSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDSwapsBSView.h; sourceTree = "<group>"; };
-		69B89A851D8137C6009875E1 /* XXDSwapsBSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDSwapsBSView.m; sourceTree = "<group>"; };
 		69B89A871D8137ED009875E1 /* XXDDelegateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDDelegateView.h; sourceTree = "<group>"; };
 		69B89A881D8137ED009875E1 /* XXDDelegateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDDelegateView.m; sourceTree = "<group>"; };
 		69B89A8A1D813807009875E1 /* XXDHoldProductView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHoldProductView.h; sourceTree = "<group>"; };
@@ -687,8 +684,6 @@
 			children = (
 				69B89A811D81378F009875E1 /* XXDOrderBSView.h */,
 				69B89A821D81378F009875E1 /* XXDOrderBSView.m */,
-				69B89A841D8137C6009875E1 /* XXDSwapsBSView.h */,
-				69B89A851D8137C6009875E1 /* XXDSwapsBSView.m */,
 				69B89A871D8137ED009875E1 /* XXDDelegateView.h */,
 				69B89A881D8137ED009875E1 /* XXDDelegateView.m */,
 				69B89A8A1D813807009875E1 /* XXDHoldProductView.h */,
@@ -740,7 +735,7 @@
 				TargetAttributes = {
 					697D76331D781300008D7C94 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = VRQSU9ZYT4;
+						DevelopmentTeam = R9DE87BJ5L;
 					};
 				};
 			};
@@ -851,7 +846,6 @@
 				697D763C1D781300008D7C94 /* XXDAppDelegate.m in Sources */,
 				3B6F5F281D7FAFFE0058D2DE /* XiDuInfoViewController.m in Sources */,
 				69B1C6231D7EC0D1000CA633 /* XXDTimeNews.m in Sources */,
-				69B89A861D8137C6009875E1 /* XXDSwapsBSView.m in Sources */,
 				3B355B751D8149D6008C8376 /* AuthcodeView.m in Sources */,
 				69B1C6181D7E64FF000CA633 /* XXDLiveImage.m in Sources */,
 				697D76731D782951008D7C94 /* XXDDiscoverViewController.m in Sources */,
