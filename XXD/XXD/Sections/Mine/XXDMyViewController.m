@@ -130,17 +130,17 @@
     
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.hidesBottomBarWhenPushed = YES;
     if (indexPath.section == 0) {
-        self.hidesBottomBarWhenPushed = YES;
+        
         if (indexPath.row == 0) {//我的实盘账户
             XXDMyFirmAccountVC *vc = [[XXDMyFirmAccountVC alloc]init];
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
         }else{//我的自选
             
         }
-        self.hidesBottomBarWhenPushed = NO;
+        
     }else if (indexPath.section == 1){
-        self.hidesBottomBarWhenPushed = YES;
         if (indexPath.row == 0) {//我的活动
             XXDMyActivityVC *vc = [[XXDMyActivityVC alloc]init];
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
@@ -157,7 +157,6 @@
             [_phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneURL]];
             NSLog(@"联系我们");
         }
-        self.hidesBottomBarWhenPushed = NO;
     }else{
         if (indexPath.row == 0) {//使用帮助
             
@@ -165,6 +164,7 @@
             
         }
     }
+    self.hidesBottomBarWhenPushed = NO;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.1;
