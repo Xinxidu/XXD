@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"行情";
+    self.title = @"行情详情页";
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
