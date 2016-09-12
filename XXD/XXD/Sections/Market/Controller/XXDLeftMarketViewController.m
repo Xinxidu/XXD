@@ -32,41 +32,60 @@
     internationLabel.text = @"国际行情";
     internationLabel.textColor = [UIColor whiteColor];
     [topView addSubview:internationLabel];
-    NSArray *internationButtonTexts = @[@"NEMEX原油",@"IPE原油",@"外汇",@"国际黄金",@"全球股指"];
-    NSMutableArray *buttonTitleAray = [[NSMutableArray alloc]init];
+    NSArray *internationButtonTexts = @[@[@"NEMEX原油",@"IPE原油",@"外汇"],@[@"国际黄金",@"全球股指",@""]];
     for (NSInteger row = 0 ; row < 2; row++) {
-        CGFloat x = 0,y = row*41+CGRectGetMaxY(internationLabel.frame)+15,width = (WIDTH-1)*0.5,height = 40;
         for (NSInteger col = 0; col < 3; col++) {
-            x = col*((WIDTH-1)*0.5+1);
-            UIView *v = [[UIView alloc] initWithFrame:CGRectMake(x, y, width, height)];
-            v.backgroundColor = [UIColor whiteColor];
-            [topView addSubview:v];
-            
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            button.frame = CGRectMake(0, 0, width, height);
-//            [button setTitle:@"标题" forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            button.backgroundColor = [UIColor orangeColor];
-            [buttonTitleAray addObject:button];
-            [v addSubview:button];
+            UIButton *itemButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            itemButton.frame = CGRectMake(col*((WIDTH-30)/3+5), row*35+5+CGRectGetMaxY(internationLabel.frame), (WIDTH-30)/3, 30);
+            [itemButton setTitle:internationButtonTexts[row][col] forState:UIControlStateNormal];
+            [itemButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            itemButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+            itemButton.backgroundColor = [UIColor orangeColor];
+            itemButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+            [topView addSubview:itemButton];
+            if (row == 0) {
+                itemButton.backgroundColor = [UIColor colorWithRed:242/255.0 green:183/255.0 blue:70/255.0 alpha:1.0];
+                [itemButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            }else{
+                itemButton.backgroundColor = [UIColor colorWithRed:27/255.0 green:124/255.0 blue:189/255.0 alpha:1.0];
+                [itemButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                if (col == 2) {
+                    itemButton.hidden = YES;
+                }
+            }
         }
     }
-//    for (NSInteger i = 0; i < 5; i++) {
-//        UIButton *button = (UIButton *)buttonTitleAray[i];
-//        button.titleLabel.text = internationButtonTexts[i];
-//    }
-
     //国内行情视图
-    UIView *LowView = [[UIView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(topView.frame)+10, WIDTH-20, 150)];
-    [self.view addSubview:LowView];
+    UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(topView.frame), WIDTH-20, 150)];
+    [self.view addSubview:bottomView];
     UILabel *domesticLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, 80, 30)];
     domesticLabel.text = @"国内行情";
     domesticLabel.textColor = [UIColor whiteColor];
-    [LowView addSubview:domesticLabel];
-    NSArray *domesticButtonTexts = @[@"电交所",@"上海黄金",@"上海期货",@"津贵所",@"逛贵所",@"新华大宗",@"天矿所",@"齐鲁所",@"大圆银泰"];
-    for (NSInteger i = 0; i<domesticButtonTexts.count; i++) {
-        
+    [bottomView addSubview:domesticLabel];
+    NSArray *domesticButtonTexts = @[@[@"电交所",@"上海黄金",@"上海期货"],@[@"津贵所",@"逛贵所",@"新华大宗"],@[@"天矿所",@"齐鲁所",@"大圆银泰"]];
+    for (NSInteger row = 0 ; row < 3; row++) {
+        for (NSInteger col = 0; col < 3; col++) {
+            UIButton *itemButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            itemButton.frame = CGRectMake(col*((WIDTH-30)/3+5), row*35+5+CGRectGetMaxY(internationLabel.frame), (WIDTH-30)/3, 30);
+            [itemButton setTitle:domesticButtonTexts[row][col] forState:UIControlStateNormal];
+            [itemButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            itemButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+            itemButton.backgroundColor = [UIColor orangeColor];
+            itemButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+            [bottomView addSubview:itemButton];
+            if (row == 0) {
+                itemButton.backgroundColor = [UIColor colorWithRed:242/255.0 green:183/255.0 blue:70/255.0 alpha:1.0];
+                [itemButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            }else if(row == 1){
+                itemButton.backgroundColor = [UIColor colorWithRed:27/255.0 green:124/255.0 blue:189/255.0 alpha:1.0];
+                [itemButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            }else{
+                itemButton.backgroundColor = [UIColor colorWithRed:88/255.0 green:165/255.0 blue:110/255.0 alpha:1.0];
+                [itemButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            }
+        }
     }
+
 }
 #pragma mark -返回按钮点击
 - (void)backBtnClick{

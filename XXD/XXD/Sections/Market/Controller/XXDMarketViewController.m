@@ -110,6 +110,7 @@
     _scroll.delegate = self;
     _scroll.tag = 50;
     _scroll.showsHorizontalScrollIndicator = NO;
+    _scroll.showsVerticalScrollIndicator = NO;
     _scroll.pagingEnabled = NO;
     _scroll.bounces = NO;
     
