@@ -18,8 +18,10 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
 };
 
 @implementation XXDOrderBSView
-- (instancetype)initWithFrame:(CGRect)frame buttonString:(NSString *)buttonString isShowTwoButtonForSwapsBS:(BOOL)isShowTwoButtonForSwapsBS{
+- (instancetype)initWithFrame:(CGRect)frame buttonString:(NSString *)buttonString isShowTwoButtonForSwapsBS:(BOOL)isShowTwoButtonForSwapsBS accountString:(NSString *)accountString{
     if (self = [super initWithFrame:frame]) {
+        self.isSwapsBS = isShowTwoButtonForSwapsBS;
+        self.accountString = accountString;
         self.backgroundColor = [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1];
         //商品名称  白银升贴水1000   龙天勇银    白银现货排期  白银基差1000
         self.proNameArray = @[@"白银升贴水1000",@"龙天勇银",@"白银现货排期",@"白银基差1000"];
@@ -129,9 +131,9 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
 #pragma mark 商品名称列表弹窗事件
 - (void)showProListAlert{
     if (_alertView == nil) {
-        _alertView = [UIAlertController alertControllerWithTitle:@"" message:@"\n\n\n"  preferredStyle:UIAlertControllerStyleAlert];
+        _alertView = [UIAlertController alertControllerWithTitle:@"" message:@"\n\n\n\n\n"  preferredStyle:UIAlertControllerStyleAlert];
         //添加商品picker
-        UIPickerView *productPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 10, 270, 90)];
+        UIPickerView *productPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 10, 270, 120)];
         productPicker.delegate = self;
         productPicker.dataSource = self;
         [_alertView.view addSubview:productPicker];
@@ -219,11 +221,79 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
 }
 #pragma mark 买入/卖出按钮点击事件
 - (void)buyButtonClick:(UIButton *)sender{
-    if ([sender.titleLabel.text isEqualToString:@"买入"]) {
-        NSLog(@"买入");
-    }else{
-        NSLog(@"卖出");
+    _sureAlertView = [UIAlertController alertControllerWithTitle:@"" message:@"\n\n\n\n\n\n\n\n" preferredStyle:UIAlertControllerStyleAlert];
+    UIView *customAlertView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 270, 190)];
+    customAlertView.backgroundColor = [UIColor whiteColor];
+    //弹窗标题
+    UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 270, 35)];
+    titleView.backgroundColor = [UIColor colorWithRed:37/255.0 green:67/255.0 blue:95/255.0 alpha:1];
+    titleView.text = [NSString stringWithFormat:@"委托%@%@确认",self.isSwapsBS?@"调期":@"订立",sender.titleLabel.text];
+    titleView.textColor = [UIColor whiteColor];
+    titleView.textAlignment = NSTextAlignmentCenter;
+    titleView.font = [UIFont systemFontOfSize:16.0];
+    [customAlertView addSubview:titleView];
+    //弹窗内容
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(15,CGRectGetMaxY(titleView.frame)+15, 255, 85)];
+    NSString *accountString = self.accountString;
+    NSString *productName = self.proNameButton.titleLabel.text;
+    NSString *num = self.buyNumLabel.text;
+    NSString *price = self.buyPriceLabel.text;
+    NSArray *labelStringArray = [NSArray arrayWithObjects:@"账        号：",accountString,
+                                                                                                 @"商品名称：",productName,
+                                                                                                 @"数        量：",num,
+                                                                                                 @"价        格：",price,nil];
+    NSMutableArray *labelArray = [NSMutableArray arrayWithCapacity:8];
+    for (NSInteger row = 0; row < 4; row++) {
+        CGFloat x = 0,y = row*18,width = 0,height = 15;
+        for (NSInteger col = 0 ; col<2; col++) {
+            x = col*80,width=col==0?80:175;
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(x, y, width, height)];
+            label.textColor = [UIColor grayColor];
+            label.font = [UIFont systemFontOfSize:15.0f];
+            [contentView addSubview:label];
+            [labelArray addObject:label];
+        }
     }
+    for (NSInteger i = 0; i < 8; i++) {
+        UILabel *label = (UILabel *)labelArray[i];
+        label.text = labelStringArray[i];
+    }
+    [customAlertView addSubview:contentView];
+    UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(contentView.frame), 270, 1)];
+    horizontal.backgroundColor = [UIColor colorWithRed:228/255.0 green:228/255.0 blue:228/255.0 alpha:1];
+    [customAlertView addSubview:horizontal];
+    //弹窗底部按钮
+    //确定
+    UIButton *sureButton = [[UIButton alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(horizontal.frame) + 10, 112.5, 35)];
+    [sureButton setTitle:[NSString stringWithFormat:@"确定%@",sender.titleLabel.text] forState:UIControlStateNormal];
+    [sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    sureButton.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+    sureButton.layer.masksToBounds = YES;
+    sureButton.layer.cornerRadius = 3.0f;
+    sureButton.backgroundColor = [UIColor colorWithRed:250/255.0 green:128/255.0 blue:62/255.0 alpha:1];
+    [sureButton addTarget:self action:@selector(sureButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [customAlertView addSubview:sureButton];
+    //取消
+    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(142.5, CGRectGetMaxY(horizontal.frame) + 10, 112.5, 35)];
+    [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    cancelButton.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+    cancelButton.layer.masksToBounds = YES;
+    cancelButton.layer.cornerRadius = 3.0f;
+    cancelButton.backgroundColor = [UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1];
+    [cancelButton addTarget:self action:@selector(cancelButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [customAlertView addSubview:cancelButton];
+    
+    [_sureAlertView.view addSubview:customAlertView];
+    [self.bsDelegate sureBSAlert:_sureAlertView];
+}
+#pragma mark 确定按钮点击事件
+- (void)sureButtonClick:(UIButton *)sender{
+    [self.bsDelegate sureBSButtonClickWidthButtonName:sender.titleLabel.text isOrderOrSwaps:self.isSwapsBS];
+}
+#pragma mark 取消按钮点击事件
+- (void)cancelButtonClick{
+    [self.bsDelegate cancelButtonClick];
 }
 #pragma mark 将数字转化为货币格式的字符串
 - (NSString *)getMoneyStringWithMoneyNumber:(double)money{
