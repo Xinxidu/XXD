@@ -15,6 +15,8 @@
 #import "XXDTimeNewsCell.h"
 #import "XXDJinYinNiuPing.h"
 #import "XXDJinYinNiuPingCell.h"
+#import "XXDCalendarViewController.h"
+#import "XXDPushViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 
@@ -71,6 +73,14 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     //初始化底部TableView
     [self initButtomTableView];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor blackColor]}];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:10/255.0 green:46/255.0 blue:60/255.0 alpha:1.0];
+}
+
 #pragma mark 创建顶部的轮播图
 - (void)createInfiniteScrollView {
 
@@ -120,6 +130,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 顶部按钮的点击事件
 - (void)buttonClick:(UIButton*)sender {
+    self.hidesBottomBarWhenPushed = YES;
     switch (sender.tag) {
         case XXDButtonTypeHotTrade:
             NSLog(@"%@",sender.titleLabel.text);
@@ -132,8 +143,10 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
             break;
         case XXDButtonTypeFinanceCalendar:
             NSLog(@"%@",sender.titleLabel.text);
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDCalendarViewController alloc]init]];
             break;
     }
+    self.hidesBottomBarWhenPushed = NO;
 }
 #pragma mark 创建水平线
 - (UIView *)createHorizontalWithY:(CGFloat)y{

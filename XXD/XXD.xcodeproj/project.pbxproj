@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0F863EDD7DC62F1E2F344F8F /* libPods-XXD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1696AF4DC74005A5A3024F13 /* libPods-XXD.a */; };
+		3B2EC0261D878A290019A72E /* XXDCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC0251D878A290019A72E /* XXDCalendarViewController.m */; };
+		3B2EC02B1D878AA00019A72E /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC0281D878AA00019A72E /* CalendarCell.m */; };
+		3B2EC02C1D878AA00019A72E /* DateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC02A1D878AA00019A72E /* DateView.m */; };
 		3B355B721D80F8F1008C8376 /* XXDMyAccountInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B711D80F8F1008C8376 /* XXDMyAccountInfoVC.m */; };
 		3B355B751D8149D6008C8376 /* AuthcodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B741D8149D6008C8376 /* AuthcodeView.m */; };
 		3B355B781D815709008C8376 /* XXDTodayMakeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B771D815709008C8376 /* XXDTodayMakeListVC.m */; };
@@ -81,6 +84,12 @@
 
 /* Begin PBXFileReference section */
 		1696AF4DC74005A5A3024F13 /* libPods-XXD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XXD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B2EC0241D878A290019A72E /* XXDCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDCalendarViewController.h; sourceTree = "<group>"; };
+		3B2EC0251D878A290019A72E /* XXDCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDCalendarViewController.m; sourceTree = "<group>"; };
+		3B2EC0271D878AA00019A72E /* CalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCell.h; sourceTree = "<group>"; };
+		3B2EC0281D878AA00019A72E /* CalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCell.m; sourceTree = "<group>"; };
+		3B2EC0291D878AA00019A72E /* DateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateView.h; sourceTree = "<group>"; };
+		3B2EC02A1D878AA00019A72E /* DateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateView.m; sourceTree = "<group>"; };
 		3B355B701D80F8F1008C8376 /* XXDMyAccountInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDMyAccountInfoVC.h; sourceTree = "<group>"; };
 		3B355B711D80F8F1008C8376 /* XXDMyAccountInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyAccountInfoVC.m; sourceTree = "<group>"; };
 		3B355B731D8149D6008C8376 /* AuthcodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthcodeView.h; sourceTree = "<group>"; };
@@ -239,6 +248,19 @@
 				1696AF4DC74005A5A3024F13 /* libPods-XXD.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3B2EC0231D878A050019A72E /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				3B2EC0241D878A290019A72E /* XXDCalendarViewController.h */,
+				3B2EC0251D878A290019A72E /* XXDCalendarViewController.m */,
+				3B2EC0271D878AA00019A72E /* CalendarCell.h */,
+				3B2EC0281D878AA00019A72E /* CalendarCell.m */,
+				3B2EC0291D878AA00019A72E /* DateView.h */,
+				3B2EC02A1D878AA00019A72E /* DateView.m */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		3B4C7A071D79414E001ECA94 /* SDCycleScrollView */ = {
@@ -541,6 +563,7 @@
 		697D76561D781B9E008D7C94 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				3B2EC0231D878A050019A72E /* Calendar */,
 				69B1C6201D7EC0BD000CA633 /* Model */,
 				69B1C6191D7EBCE7000CA633 /* View */,
 				3B4C7A071D79414E001ECA94 /* SDCycleScrollView */,
@@ -831,7 +854,10 @@
 				3B60B88A1D7D3D08002AA667 /* ItemTableViewCell.m in Sources */,
 				3B7B3E841D7E61BD003DBF06 /* ProfessorTeamViewController.m in Sources */,
 				697D766D1D78292C008D7C94 /* XXDMarketViewController.m in Sources */,
+				3B2EC02B1D878AA00019A72E /* CalendarCell.m in Sources */,
 				3B60B8A61D7D3D8A002AA667 /* VarietyModel.m in Sources */,
+				3B2EC0261D878A290019A72E /* XXDCalendarViewController.m in Sources */,
+				3B2EC02C1D878AA00019A72E /* DateView.m in Sources */,
 				3B6F5F291D7FAFFE0058D2DE /* XiDuNewsCell.m in Sources */,
 				3B7B3E881D7EA8F9003DBF06 /* XXDActivityMessageVC.m in Sources */,
 				3B355B7E1D81576C008C8376 /* XXDHistoryMakeListVC.m in Sources */,
