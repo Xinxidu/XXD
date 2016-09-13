@@ -80,6 +80,10 @@
 		69B89A891D8137ED009875E1 /* XXDDelegateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A881D8137ED009875E1 /* XXDDelegateView.m */; };
 		69B89A8C1D813807009875E1 /* XXDHoldProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A8B1D813807009875E1 /* XXDHoldProductView.m */; };
 		69C40D1C1D7D463000872C23 /* UIButton+XXD.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C40D1B1D7D463000872C23 /* UIButton+XXD.m */; };
+		69E1C62B1D8793AD00ED2735 /* XXDHotTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C62A1D8793AD00ED2735 /* XXDHotTradeViewController.m */; };
+		69E1C62E1D87970C00ED2735 /* XXDHotTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C62D1D87970C00ED2735 /* XXDHotTrade.m */; };
+		69E1C6311D879B0400ED2735 /* XXDHotTradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C6301D879B0400ED2735 /* XXDHotTradeCell.m */; };
+		69E1C6341D87CD6F00ED2735 /* XXDHotTradeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C6331D87CD6F00ED2735 /* XXDHotTradeLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -226,6 +230,14 @@
 		69B89A8B1D813807009875E1 /* XXDHoldProductView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHoldProductView.m; sourceTree = "<group>"; };
 		69C40D1A1D7D463000872C23 /* UIButton+XXD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+XXD.h"; sourceTree = "<group>"; };
 		69C40D1B1D7D463000872C23 /* UIButton+XXD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+XXD.m"; sourceTree = "<group>"; };
+		69E1C6291D8793AD00ED2735 /* XXDHotTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHotTradeViewController.h; sourceTree = "<group>"; };
+		69E1C62A1D8793AD00ED2735 /* XXDHotTradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHotTradeViewController.m; sourceTree = "<group>"; };
+		69E1C62C1D87970C00ED2735 /* XXDHotTrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHotTrade.h; sourceTree = "<group>"; };
+		69E1C62D1D87970C00ED2735 /* XXDHotTrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHotTrade.m; sourceTree = "<group>"; };
+		69E1C62F1D879B0400ED2735 /* XXDHotTradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHotTradeCell.h; sourceTree = "<group>"; };
+		69E1C6301D879B0400ED2735 /* XXDHotTradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHotTradeCell.m; sourceTree = "<group>"; };
+		69E1C6321D87CD6F00ED2735 /* XXDHotTradeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHotTradeLabel.h; sourceTree = "<group>"; };
+		69E1C6331D87CD6F00ED2735 /* XXDHotTradeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHotTradeLabel.m; sourceTree = "<group>"; };
 		8A1EB41BB141BBB1A5B05B48 /* Pods-XXD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XXD/Pods-XXD.debug.xcconfig"; sourceTree = "<group>"; };
 		B431A3CF173B42D828D67E6C /* Pods-XXD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXD.release.xcconfig"; path = "Pods/Target Support Files/Pods-XXD/Pods-XXD.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -593,6 +605,8 @@
 			children = (
 				697D76681D782911008D7C94 /* XXDHomeViewController.h */,
 				697D76691D782911008D7C94 /* XXDHomeViewController.m */,
+				69E1C6291D8793AD00ED2735 /* XXDHotTradeViewController.h */,
+				69E1C62A1D8793AD00ED2735 /* XXDHotTradeViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -665,6 +679,10 @@
 				69B1C61B1D7EBD39000CA633 /* XXDTimeNewsCell.m */,
 				69B1C61D1D7EBD61000CA633 /* XXDJinYinNiuPingCell.h */,
 				69B1C61E1D7EBD61000CA633 /* XXDJinYinNiuPingCell.m */,
+				69E1C62F1D879B0400ED2735 /* XXDHotTradeCell.h */,
+				69E1C6301D879B0400ED2735 /* XXDHotTradeCell.m */,
+				69E1C6321D87CD6F00ED2735 /* XXDHotTradeLabel.h */,
+				69E1C6331D87CD6F00ED2735 /* XXDHotTradeLabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -676,6 +694,8 @@
 				69B1C6221D7EC0D1000CA633 /* XXDTimeNews.m */,
 				69B1C6241D7EC12B000CA633 /* XXDJinYinNiuPing.h */,
 				69B1C6251D7EC12B000CA633 /* XXDJinYinNiuPing.m */,
+				69E1C62C1D87970C00ED2735 /* XXDHotTrade.h */,
+				69E1C62D1D87970C00ED2735 /* XXDHotTrade.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -861,6 +881,7 @@
 				3B6F5F291D7FAFFE0058D2DE /* XiDuNewsCell.m in Sources */,
 				3B7B3E881D7EA8F9003DBF06 /* XXDActivityMessageVC.m in Sources */,
 				3B355B7E1D81576C008C8376 /* XXDHistoryMakeListVC.m in Sources */,
+				69E1C6341D87CD6F00ED2735 /* XXDHotTradeLabel.m in Sources */,
 				3B4C7A1C1D79414E001ECA94 /* SDCycleScrollView.m in Sources */,
 				3B355B7B1D81573E008C8376 /* XXDTodayExchangeListVC.m in Sources */,
 				3B355B781D815709008C8376 /* XXDTodayMakeListVC.m in Sources */,
@@ -870,6 +891,7 @@
 				3B6F5F171D7FAFC60058D2DE /* AboutXiDuViewController.m in Sources */,
 				3B6F5F2B1D7FAFFE0058D2DE /* XiDuNewsModel.m in Sources */,
 				3B6F5F2C1D7FAFFE0058D2DE /* XiDuNewsViewController.m in Sources */,
+				69E1C6311D879B0400ED2735 /* XXDHotTradeCell.m in Sources */,
 				3B7B3E801D7E5B0D003DBF06 /* BaseWKWebView.m in Sources */,
 				69B89A8C1D813807009875E1 /* XXDHoldProductView.m in Sources */,
 				3B8FF8C91D86750E003D5EC1 /* XXDLeftMarketViewController.m in Sources */,
@@ -911,6 +933,7 @@
 				3B6F5F3B1D8008350058D2DE /* XXDMyFirmAccountVC.m in Sources */,
 				3B355B841D8158F4008C8376 /* XXDHistoryExchangeListVC.m in Sources */,
 				697D76391D781300008D7C94 /* main.m in Sources */,
+				69E1C62B1D8793AD00ED2735 /* XXDHotTradeViewController.m in Sources */,
 				3B6F5F261D7FAFFE0058D2DE /* ContactUsViewController.m in Sources */,
 				69B1C61C1D7EBD39000CA633 /* XXDTimeNewsCell.m in Sources */,
 				3B7B3E771D7E564D003DBF06 /* DayInvestmentCell.m in Sources */,
@@ -918,6 +941,7 @@
 				3B7B3E611D7E515A003DBF06 /* XXDQuotationViewController.m in Sources */,
 				3B60B8A51D7D3D8A002AA667 /* VarietiesView.m in Sources */,
 				3B6F5F271D7FAFFE0058D2DE /* ExchangeInfoViewController.m in Sources */,
+				69E1C62E1D87970C00ED2735 /* XXDHotTrade.m in Sources */,
 				3B7B3E791D7E564D003DBF06 /* DaysInvestmentModel.m in Sources */,
 				3B7B3E7A1D7E564D003DBF06 /* DaysInvestmentViewController.m in Sources */,
 			);
