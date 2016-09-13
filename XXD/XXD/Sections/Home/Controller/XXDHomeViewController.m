@@ -17,7 +17,9 @@
 #import "XXDJinYinNiuPingCell.h"
 #import "XXDCalendarViewController.h"
 #import "XXDPushViewController.h"
+#import "XXDHotTradeViewController.h"
 #import "XXDHotActivityViewController.h"
+
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 
@@ -134,7 +136,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     self.hidesBottomBarWhenPushed = YES;
     switch (sender.tag) {
         case XXDButtonTypeHotTrade:
-            NSLog(@"%@",sender.titleLabel.text);
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDHotTradeViewController alloc] init]];
             break;
         case XXDButtonTypeHotActivity:
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDHotActivityViewController alloc]init]];
