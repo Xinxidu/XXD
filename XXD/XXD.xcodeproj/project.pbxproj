@@ -85,6 +85,7 @@
 		69E1C62E1D87970C00ED2735 /* XXDHotTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C62D1D87970C00ED2735 /* XXDHotTrade.m */; };
 		69E1C6311D879B0400ED2735 /* XXDHotTradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C6301D879B0400ED2735 /* XXDHotTradeCell.m */; };
 		69E1C6341D87CD6F00ED2735 /* XXDHotTradeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C6331D87CD6F00ED2735 /* XXDHotTradeLabel.m */; };
+		69E1C6381D87EE3300ED2735 /* XXDLiveNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C6371D87EE3300ED2735 /* XXDLiveNewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -241,6 +242,8 @@
 		69E1C6301D879B0400ED2735 /* XXDHotTradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHotTradeCell.m; sourceTree = "<group>"; };
 		69E1C6321D87CD6F00ED2735 /* XXDHotTradeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHotTradeLabel.h; sourceTree = "<group>"; };
 		69E1C6331D87CD6F00ED2735 /* XXDHotTradeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHotTradeLabel.m; sourceTree = "<group>"; };
+		69E1C6361D87EE3300ED2735 /* XXDLiveNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLiveNewViewController.h; sourceTree = "<group>"; };
+		69E1C6371D87EE3300ED2735 /* XXDLiveNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLiveNewViewController.m; sourceTree = "<group>"; };
 		8A1EB41BB141BBB1A5B05B48 /* Pods-XXD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XXD/Pods-XXD.debug.xcconfig"; sourceTree = "<group>"; };
 		B431A3CF173B42D828D67E6C /* Pods-XXD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXD.release.xcconfig"; path = "Pods/Target Support Files/Pods-XXD/Pods-XXD.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -587,6 +590,7 @@
 		697D76561D781B9E008D7C94 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				69E1C6351D87E64300ED2735 /* LiveNew */,
 				3B2EC02D1D87938B0019A72E /* HotActivity */,
 				3B2EC0231D878A050019A72E /* Calendar */,
 				69B1C6201D7EC0BD000CA633 /* Model */,
@@ -762,6 +766,15 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		69E1C6351D87E64300ED2735 /* LiveNew */ = {
+			isa = PBXGroup;
+			children = (
+				69E1C6361D87EE3300ED2735 /* XXDLiveNewViewController.h */,
+				69E1C6371D87EE3300ED2735 /* XXDLiveNewViewController.m */,
+			);
+			path = LiveNew;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -889,6 +902,7 @@
 				697D766D1D78292C008D7C94 /* XXDMarketViewController.m in Sources */,
 				3B2EC02B1D878AA00019A72E /* CalendarCell.m in Sources */,
 				3B60B8A61D7D3D8A002AA667 /* VarietyModel.m in Sources */,
+				69E1C6381D87EE3300ED2735 /* XXDLiveNewViewController.m in Sources */,
 				3B2EC0261D878A290019A72E /* XXDCalendarViewController.m in Sources */,
 				3B2EC02C1D878AA00019A72E /* DateView.m in Sources */,
 				3B6F5F291D7FAFFE0058D2DE /* XiDuNewsCell.m in Sources */,

@@ -46,7 +46,6 @@
     _dataArray = [[NSMutableArray alloc]init];
     [self createScrollView];
     [self createNameButtonData:i];
-    NSLog(@"%f,%f",WIDTH,HEIGHT);
 }
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];

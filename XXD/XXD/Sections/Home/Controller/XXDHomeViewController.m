@@ -19,7 +19,7 @@
 #import "XXDPushViewController.h"
 #import "XXDHotTradeViewController.h"
 #import "XXDHotActivityViewController.h"
-
+#import "XXDLiveNewViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 
@@ -142,7 +142,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDHotActivityViewController alloc]init]];
             break;
         case XXDButtonTypeLiveNew:
-            NSLog(@"%@",sender.titleLabel.text);
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDLiveNewViewController alloc]init]];
             break;
         case XXDButtonTypeFinanceCalendar:
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDCalendarViewController alloc]init]];

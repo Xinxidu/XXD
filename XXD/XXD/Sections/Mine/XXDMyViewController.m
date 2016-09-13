@@ -35,7 +35,6 @@
 }
 
 -(void)createHeaderView{
-    NSLog(@"***********");
     _hearerView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 120)];
     _hearerView.backgroundColor = [UIColor colorWithRed:54/255.0 green:77/255.0 blue:99/255.0 alpha:1.0];
     [self.view addSubview:_hearerView];
