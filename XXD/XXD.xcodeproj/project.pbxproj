@@ -12,6 +12,9 @@
 		3B2EC02B1D878AA00019A72E /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC0281D878AA00019A72E /* CalendarCell.m */; };
 		3B2EC02C1D878AA00019A72E /* DateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC02A1D878AA00019A72E /* DateView.m */; };
 		3B2EC0301D8793A30019A72E /* XXDHotActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC02F1D8793A30019A72E /* XXDHotActivityViewController.m */; };
+		3B2EC0341D87CBC60019A72E /* XXDRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC0331D87CBC60019A72E /* XXDRegisterViewController.m */; };
+		3B2EC0371D87CC7D0019A72E /* XXDRegisterSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC0361D87CC7D0019A72E /* XXDRegisterSecondViewController.m */; };
+		3B2EC03A1D87CCA50019A72E /* XXDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC0391D87CCA50019A72E /* XXDLoginViewController.m */; };
 		3B355B721D80F8F1008C8376 /* XXDMyAccountInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B711D80F8F1008C8376 /* XXDMyAccountInfoVC.m */; };
 		3B355B751D8149D6008C8376 /* AuthcodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B741D8149D6008C8376 /* AuthcodeView.m */; };
 		3B355B781D815709008C8376 /* XXDTodayMakeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B771D815709008C8376 /* XXDTodayMakeListVC.m */; };
@@ -98,6 +101,12 @@
 		3B2EC02A1D878AA00019A72E /* DateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateView.m; sourceTree = "<group>"; };
 		3B2EC02E1D8793A30019A72E /* XXDHotActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHotActivityViewController.h; sourceTree = "<group>"; };
 		3B2EC02F1D8793A30019A72E /* XXDHotActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHotActivityViewController.m; sourceTree = "<group>"; };
+		3B2EC0321D87CBC60019A72E /* XXDRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDRegisterViewController.h; sourceTree = "<group>"; };
+		3B2EC0331D87CBC60019A72E /* XXDRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDRegisterViewController.m; sourceTree = "<group>"; };
+		3B2EC0351D87CC7D0019A72E /* XXDRegisterSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDRegisterSecondViewController.h; sourceTree = "<group>"; };
+		3B2EC0361D87CC7D0019A72E /* XXDRegisterSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDRegisterSecondViewController.m; sourceTree = "<group>"; };
+		3B2EC0381D87CCA50019A72E /* XXDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLoginViewController.h; sourceTree = "<group>"; };
+		3B2EC0391D87CCA50019A72E /* XXDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLoginViewController.m; sourceTree = "<group>"; };
 		3B355B701D80F8F1008C8376 /* XXDMyAccountInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDMyAccountInfoVC.h; sourceTree = "<group>"; };
 		3B355B711D80F8F1008C8376 /* XXDMyAccountInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyAccountInfoVC.m; sourceTree = "<group>"; };
 		3B355B731D8149D6008C8376 /* AuthcodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthcodeView.h; sourceTree = "<group>"; };
@@ -290,6 +299,19 @@
 			path = HotActivity;
 			sourceTree = "<group>";
 		};
+		3B2EC0311D87CB8F0019A72E /* LoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				3B2EC0321D87CBC60019A72E /* XXDRegisterViewController.h */,
+				3B2EC0331D87CBC60019A72E /* XXDRegisterViewController.m */,
+				3B2EC0351D87CC7D0019A72E /* XXDRegisterSecondViewController.h */,
+				3B2EC0361D87CC7D0019A72E /* XXDRegisterSecondViewController.m */,
+				3B2EC0381D87CCA50019A72E /* XXDLoginViewController.h */,
+				3B2EC0391D87CCA50019A72E /* XXDLoginViewController.m */,
+			);
+			path = LoginAndRegister;
+			sourceTree = "<group>";
+		};
 		3B4C7A071D79414E001ECA94 /* SDCycleScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +440,7 @@
 		3B7B3E8C1D7EBE72003DBF06 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				3B2EC0311D87CB8F0019A72E /* LoginAndRegister */,
 				69B89A751D810378009875E1 /* Trade */,
 				3B6F5F381D8007FF0058D2DE /* MyFirmAccount */,
 				3B6F5F371D8007BD0058D2DE /* MyOptional */,
@@ -897,8 +920,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B2EC0371D87CC7D0019A72E /* XXDRegisterSecondViewController.m in Sources */,
 				3B60B88A1D7D3D08002AA667 /* ItemTableViewCell.m in Sources */,
 				3B7B3E841D7E61BD003DBF06 /* ProfessorTeamViewController.m in Sources */,
+				3B2EC03A1D87CCA50019A72E /* XXDLoginViewController.m in Sources */,
 				697D766D1D78292C008D7C94 /* XXDMarketViewController.m in Sources */,
 				3B2EC02B1D878AA00019A72E /* CalendarCell.m in Sources */,
 				3B60B8A61D7D3D8A002AA667 /* VarietyModel.m in Sources */,
@@ -949,6 +974,7 @@
 				3B6F5F161D7FAFC60058D2DE /* AboutXiDuTableViewCell.m in Sources */,
 				697D765C1D781BBC008D7C94 /* XXDMainTabController.m in Sources */,
 				697D766A1D782911008D7C94 /* XXDHomeViewController.m in Sources */,
+				3B2EC0341D87CBC60019A72E /* XXDRegisterViewController.m in Sources */,
 				3B4C7A191D79414E001ECA94 /* TADotView.m in Sources */,
 				3B7B3E7D1D7E56B0003DBF06 /* BaseTableView.m in Sources */,
 				3B7B3E6D1D7E5632003DBF06 /* ProfitSkillModel.m in Sources */,

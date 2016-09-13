@@ -11,6 +11,8 @@
 #import "AboutXiDuViewController.h"
 #import "XXDPushViewController.h"
 #import "XXDMyFirmAccountVC.h"
+#import "XXDRegisterViewController.h"
+#import "XXDLoginViewController.h"
 
 @interface XXDMyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
@@ -56,6 +58,7 @@
     registerButton.backgroundColor = [UIColor orangeColor];
     registerButton.layer.cornerRadius = 2;
     registerButton.layer.masksToBounds = YES;
+    [registerButton addTarget:self action:@selector(registerClick:) forControlEvents:UIControlEventTouchUpInside];
     [_hearerView addSubview:registerButton];
     
     //登录按钮
@@ -65,7 +68,20 @@
     loginButton.backgroundColor = [UIColor greenColor];
     loginButton.layer.cornerRadius = 2;
     loginButton.layer.masksToBounds = YES;
+    [loginButton addTarget:self action:@selector(loginClick:) forControlEvents:UIControlEventTouchUpInside];
     [_hearerView addSubview:loginButton];
+}
+//注册按钮事件
+-(void)registerClick:(UIButton*)sender{
+    self.hidesBottomBarWhenPushed = YES;
+    [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDRegisterViewController alloc]init]];
+    self.hidesBottomBarWhenPushed = NO;
+}
+//登录按钮事件
+-(void)loginClick:(UIButton*)sender{
+    self.hidesBottomBarWhenPushed = YES;
+    [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDLoginViewController alloc]init]];
+    self.hidesBottomBarWhenPushed = NO;
 }
 -(void)createTableView{
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_hearerView.frame), self.view.bounds.size.width, self.view.bounds.size.height-44)];
