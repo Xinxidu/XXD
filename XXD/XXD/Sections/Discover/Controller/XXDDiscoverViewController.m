@@ -13,6 +13,7 @@
 #import "XXDActivityMessageVC.h"
 #import "XXDPushViewController.h"
 #import "XXDLiveOnLineController.h"
+#import "XXDNewerViewController.h"
 
 @interface XXDDiscoverViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
@@ -54,7 +55,7 @@
     }else if (section == 2){
         return 2;
     }else{
-        return 1;
+        return 2;
     }
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -85,8 +86,14 @@
             cell.textLabel.text = @"名师团队";
         }
     }else{
-        cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
-        cell.textLabel.text = @"模拟盘交易";
+        if (indexPath.row == 0) {
+            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
+            cell.textLabel.text = @"新手入门";
+        }else{
+            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
+            cell.textLabel.text = @"模拟盘交易";
+        }
+        
     }
     return cell;
 
@@ -113,7 +120,12 @@
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:team];
         }
     }else{
-        NSLog(@"模拟盘交易");
+        if (indexPath.row == 0) {
+            XXDNewerViewController *newer = [[XXDNewerViewController alloc] init];
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:newer];
+        }else{
+            NSLog(@"模拟盘交易");
+        }
     }
     self.hidesBottomBarWhenPushed = NO;
 }

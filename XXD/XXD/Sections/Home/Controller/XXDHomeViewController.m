@@ -20,6 +20,7 @@
 #import "XXDHotTradeViewController.h"
 #import "XXDHotActivityViewController.h"
 #import "XXDLiveNewViewController.h"
+#import "XXDLiveOnLineController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 
@@ -243,7 +244,15 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     liveImage.info = @"特点：抢反弹一马当先抓涨停十拿九稳";
     liveImage.teacherPush = @"西都金融研究院每周不定时推荐一到两支股票";
     self.liveView = [[XXDLiveView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.horizontal_3.frame), WIDTH, 110) liveImageModel:liveImage];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(liveViewClick)];
+    [self.liveView addGestureRecognizer:tap];
     [self.rootScrollView addSubview:self.liveView];
+}
+#pragma mark 直播间视图点击事件
+- (void)liveViewClick{
+    self.hidesBottomBarWhenPushed = YES;
+    [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDLiveOnLineController alloc] init]];
+    self.hidesBottomBarWhenPushed = NO;
 }
 #pragma mark 创建底部两个按钮
 - (UIButton *)createBottomButtonWidthTitle:(NSString *)title x:(CGFloat)x{
