@@ -7,9 +7,9 @@
 //
 #import <Foundation/Foundation.h>
 @interface DaysInvestmentModel : NSObject
-@property(copy,nonatomic)NSString* dateString;
 @property(copy,nonatomic)NSString* timeString;
 @property(copy,nonatomic)NSString* titleString;
 @property(copy,nonatomic)NSString* textString;
 @property(copy,nonatomic)NSString*IdString;
+@property(copy,nonatomic)NSString* LitpicString;//标题图片
 @end

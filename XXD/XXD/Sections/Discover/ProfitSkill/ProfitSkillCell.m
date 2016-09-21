@@ -19,21 +19,11 @@
     return self;
 }
 -(void)createView{
-    _skill = [[UILabel alloc]initWithFrame:CGRectMake(20, 10, 60, 15)];
-    _skill.text = @"[盈利技巧]";
-    _skill.font = [UIFont systemFontOfSize:12.0f];
-    _skill.textColor = [UIColor redColor];
-    [self.contentView addSubview:_skill];
     
-    _dateLable = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_skill.frame), 10, 120, 15)];
-    _dateLable.font = [UIFont systemFontOfSize:12.0f];
-    _dateLable.textColor = [UIColor redColor];
-    _dateLable.text = @"2016-02-22";
-    [self.contentView addSubview:_dateLable];
-    
-    _titleLable = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(_skill.frame), SIZE.width-20, 30)];
+    _titleLable = [[UILabel alloc]initWithFrame:CGRectMake(10, 12, SIZE.width-20, 16)];
     _titleLable.text = @"沙特或利用OPEC会议加强团结";
     _titleLable.font = [UIFont systemFontOfSize:16.0f];
+    _titleLable.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
     [self.contentView addSubview:_titleLable];
     
     _antistopLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(_titleLable.frame), 40, 15)];
@@ -41,19 +31,28 @@
 //    _antistopLabel.backgroundColor = [UIColor blueColor];
     _antistopLabel.textColor = [UIColor redColor];
     _antistopLabel.font = [UIFont systemFontOfSize:12.0f];
-    [self.contentView addSubview:_antistopLabel];
+//    [self.contentView addSubview:_antistopLabel];
     
-    _wordLable = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_antistopLabel.frame), _antistopLabel.frame.origin.y, SIZE.width-80, 15)];
-    _wordLable.font = [UIFont systemFontOfSize:12.0f];
-    _wordLable.text = @"沙特,利用,OPEC,会议，知情人";
+    _wordLable = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_titleLable.frame)+3, SIZE.width-20, 15)];
+    _wordLable.font = [UIFont systemFontOfSize:13.0f];
+    _wordLable.text = @"关键词:沙特,利用,OPEC,会议，知情人";
+    _wordLable.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
     [self.contentView addSubview:_wordLable];
+    
+    _dateLable = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_wordLable.frame)+5, SIZE.width-20, 12)];
+    _dateLable.font = [UIFont systemFontOfSize:12.0f];
+    _dateLable.textColor = [UIColor redColor];
+    _dateLable.text = @"2016-02-22 07:01:01";
+    _dateLable.textColor = [UIColor grayColor];
+    [self.contentView addSubview:_dateLable];
+
 }
 
 -(void)configModel:(ProfitSkillModel *)model{
     _dateLable.text = model.dateString;
     _titleLable.text = model.titleString;
 //    _antistopLabel.text = model.antistopString;
-    _wordLable.text = model.Keywords;
+    _wordLable.text = [NSString stringWithFormat:@"关键词:%@",model.Keywords];
     _idString = model.Id;
 }
 
