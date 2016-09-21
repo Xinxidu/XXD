@@ -46,7 +46,7 @@
             NSArray  *arr2=[NSArray arrayWithObjects:CompanyTel,CustomerHotline,JoinHotline,ComplaintsTel,CompanyAddress,HeadquartersAddress, nil];
             NSArray *arr1=[[NSArray alloc]initWithObjects:@"公司电话:",@"客服热线:",@"加盟热线:",@"投诉电话:",@"公司地址:上",@"总部地址:",nil];
             for (int i=0; i<5; i++) {
-                _label=[[UILabel alloc]initWithFrame:CGRectMake(10, 64+35*i, WIDTH-20, 35)];
+                _label=[[UILabel alloc]initWithFrame:CGRectMake(10, 35*i, WIDTH-20, 35)];
                 _label.text=[NSString stringWithFormat:@"%@%@",arr1[i],arr2[i]];
                 _label.font=[UIFont systemFontOfSize:13.0];
                 _label.numberOfLines=0;

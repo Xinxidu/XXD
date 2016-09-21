@@ -6,6 +6,7 @@
 //  Copyright © 2016年 Secret. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-@interface AboutXiDuViewController : UIViewController
+#import "CustomScrollViewController.h"
+@interface AboutXiDuViewController : CustomScrollViewController
 
 @end
