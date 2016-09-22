@@ -15,6 +15,9 @@
 @property (strong,nonatomic) UIAlertController *dateAlert;//自定义日历控制器弹窗
 @property (strong,nonatomic) NSDate *selectedDate;//选中日期
 @property (strong,nonatomic) UIButton *dateTextButton;
+@property (strong,nonatomic) UIButton *startButton;//起始日期
+@property (strong,nonatomic) UIButton *endButton;//截止日期
+@property (assign,nonatomic) int buttonIndex;//截止日期
 @end
 
 @implementation XXDHistoryExchangeListVC
@@ -37,6 +40,7 @@
     [self.view addSubview:topView];
     NSArray *dateText = @[@"起始日期",@"截止日期"];
     NSArray *datePlaceholderText = @[@"请输入起始日期",@"请输入截止日期"];
+    NSMutableArray *dateButtonArray = [NSMutableArray array];
     for (NSInteger i=0; i<dateText.count; i++) {
         UILabel *dateTextLabel = [[UILabel alloc]initWithFrame:CGRectMake((self.view.bounds.size.width/2)*i, 0, self.view.bounds.size.width/2, 40)];
         dateTextLabel.text = dateText[i];
@@ -56,9 +60,11 @@
         _dateTextButton.layer.masksToBounds = YES;
         [_dateTextButton addTarget:self action:@selector(calendarClick:) forControlEvents:UIControlEventTouchUpInside];
         _dateTextButton.tag = 100+i;
+        [dateButtonArray addObject:_dateTextButton];
         [topView addSubview:_dateTextButton];
     }
-
+    _startButton = (UIButton *)[dateButtonArray objectAtIndex:0];
+    _endButton = (UIButton *)[dateButtonArray objectAtIndex:1];
     NSArray *itemArray = @[@"调期时间",@"买/卖",@"订立/调期",@"手续/调期",@"调期量"];
     for (NSInteger i=0; i<itemArray.count; i++) {
         UILabel *itemLabel = [[UILabel alloc]initWithFrame:CGRectMake((self.view.bounds.size.width/5)*i, CGRectGetMaxY(topView.frame), self.view.bounds.size.width/5, 40)];
@@ -77,6 +83,11 @@
 }
 #pragma mark 日历按钮点击事件
 - (void)calendarClick:(UIButton *)sender{
+    if (sender.tag == 100) {
+        _buttonIndex =100;
+    }else{
+        _buttonIndex = 101;
+    }
     [self presentViewController:_dateAlert animated:YES completion:nil];
 }
 #pragma mark 初始化自定义弹窗
@@ -102,18 +113,14 @@
 }
 #pragma mark 点击日历控件"确定"事件
 - (void)sureActionForDatePicker:(NSDate *)date{
-//    //根据日历控件选中的日期重新加载日期选项卡
-//    [self.dayArray removeAllObjects];
-//    [self.weekArray removeAllObjects];
-//    for (DateView *aView in self.dateScrollView.subviews) {
-//        [aView removeFromSuperview];
-//    }
-//    [self.viewArray removeAllObjects];
-//    self.dayArray = [self getDayArrayFromDate:date];
-//    self.weekArray = [self getWeekArrayFromDate:date];
-//    [self createScrollViewWithDate:date];
     self.selectedDate = date;
-//    NSLog(@"%@".self.selectedDate);
+    NSString *str = [NSString stringWithFormat:@"%@",date];
+    NSArray* array = [str componentsSeparatedByString:@" "];
+    if (_buttonIndex == 100) {
+        [_startButton setTitle:array[0] forState:UIControlStateNormal];
+    }else{
+        [_endButton setTitle:array[0] forState:UIControlStateNormal];
+    }
     
 }
 
