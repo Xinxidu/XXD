@@ -21,11 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //自定义导航栏
-    self.title = @"联系我们";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    //网络请求
     self.view.backgroundColor = [UIColor whiteColor];
     [self WebRequest];
 }
@@ -58,9 +53,5 @@
             [self.view addSubview:imgV];
         }
     }];
-}
-#pragma mark -返回按钮点击
-- (void)backBtnClick{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

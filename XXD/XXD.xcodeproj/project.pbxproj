@@ -61,6 +61,10 @@
 		3B7B3E971D7EC07D003DBF06 /* XXDMyActivityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E961D7EC07D003DBF06 /* XXDMyActivityVC.m */; };
 		3B7B3E9A1D7EC0C6003DBF06 /* XXDMyActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E991D7EC0C6003DBF06 /* XXDMyActivityCell.m */; };
 		3B8FF8C91D86750E003D5EC1 /* XXDLeftMarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8FF8C81D86750E003D5EC1 /* XXDLeftMarketViewController.m */; };
+		3BAF05A61D93853A00CFB105 /* XXDTodayMakeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05A51D93853A00CFB105 /* XXDTodayMakeListCell.m */; };
+		3BAF05A91D93A5F700CFB105 /* XXDTodayExchangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05A81D93A5F700CFB105 /* XXDTodayExchangeCell.m */; };
+		3BAF05AC1D93AD8300CFB105 /* XXDHistoryMarketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05AB1D93AD8300CFB105 /* XXDHistoryMarketListCell.m */; };
+		3BAF05AF1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05AE1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m */; };
 		6933F6971D790B7A009CB88F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6933F6961D790B7A009CB88F /* Default-568h@2x.png */; };
 		697D76391D781300008D7C94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D76381D781300008D7C94 /* main.m */; };
 		697D763C1D781300008D7C94 /* XXDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D763B1D781300008D7C94 /* XXDAppDelegate.m */; };
@@ -200,6 +204,14 @@
 		3B7B3E991D7EC0C6003DBF06 /* XXDMyActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyActivityCell.m; sourceTree = "<group>"; };
 		3B8FF8C71D86750E003D5EC1 /* XXDLeftMarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLeftMarketViewController.h; sourceTree = "<group>"; };
 		3B8FF8C81D86750E003D5EC1 /* XXDLeftMarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLeftMarketViewController.m; sourceTree = "<group>"; };
+		3BAF05A41D93853A00CFB105 /* XXDTodayMakeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDTodayMakeListCell.h; sourceTree = "<group>"; };
+		3BAF05A51D93853A00CFB105 /* XXDTodayMakeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDTodayMakeListCell.m; sourceTree = "<group>"; };
+		3BAF05A71D93A5F700CFB105 /* XXDTodayExchangeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDTodayExchangeCell.h; sourceTree = "<group>"; };
+		3BAF05A81D93A5F700CFB105 /* XXDTodayExchangeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDTodayExchangeCell.m; sourceTree = "<group>"; };
+		3BAF05AA1D93AD8300CFB105 /* XXDHistoryMarketListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHistoryMarketListCell.h; sourceTree = "<group>"; };
+		3BAF05AB1D93AD8300CFB105 /* XXDHistoryMarketListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHistoryMarketListCell.m; sourceTree = "<group>"; };
+		3BAF05AD1D93ADAA00CFB105 /* XXDHistoryExchangeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHistoryExchangeCell.h; sourceTree = "<group>"; };
+		3BAF05AE1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHistoryExchangeCell.m; sourceTree = "<group>"; };
 		6933F6961D790B7A009CB88F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		697D76341D781300008D7C94 /* XXD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XXD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697D76381D781300008D7C94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -382,12 +394,20 @@
 				3B355B711D80F8F1008C8376 /* XXDMyAccountInfoVC.m */,
 				3B355B761D815709008C8376 /* XXDTodayMakeListVC.h */,
 				3B355B771D815709008C8376 /* XXDTodayMakeListVC.m */,
+				3BAF05A41D93853A00CFB105 /* XXDTodayMakeListCell.h */,
+				3BAF05A51D93853A00CFB105 /* XXDTodayMakeListCell.m */,
 				3B355B791D81573E008C8376 /* XXDTodayExchangeListVC.h */,
 				3B355B7A1D81573E008C8376 /* XXDTodayExchangeListVC.m */,
+				3BAF05A71D93A5F700CFB105 /* XXDTodayExchangeCell.h */,
+				3BAF05A81D93A5F700CFB105 /* XXDTodayExchangeCell.m */,
 				3B355B7C1D81576C008C8376 /* XXDHistoryMakeListVC.h */,
 				3B355B7D1D81576C008C8376 /* XXDHistoryMakeListVC.m */,
+				3BAF05AA1D93AD8300CFB105 /* XXDHistoryMarketListCell.h */,
+				3BAF05AB1D93AD8300CFB105 /* XXDHistoryMarketListCell.m */,
 				3B355B821D8158F4008C8376 /* XXDHistoryExchangeListVC.h */,
 				3B355B831D8158F4008C8376 /* XXDHistoryExchangeListVC.m */,
+				3BAF05AD1D93ADAA00CFB105 /* XXDHistoryExchangeCell.h */,
+				3BAF05AE1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m */,
 			);
 			path = MyFirmAccount;
 			sourceTree = "<group>";
@@ -471,10 +491,10 @@
 				3B6F5F1B1D7FAFFE0058D2DE /* ExchangeInfoViewController.m */,
 				3B6F5F1C1D7FAFFE0058D2DE /* XiDuInfoViewController.h */,
 				3B6F5F1D1D7FAFFE0058D2DE /* XiDuInfoViewController.m */,
-				3B6F5F1E1D7FAFFE0058D2DE /* XiDuNewsCell.h */,
-				3B6F5F1F1D7FAFFE0058D2DE /* XiDuNewsCell.m */,
 				3B6F5F201D7FAFFE0058D2DE /* XiDuNewsDetailViewController.h */,
 				3B6F5F211D7FAFFE0058D2DE /* XiDuNewsDetailViewController.m */,
+				3B6F5F1E1D7FAFFE0058D2DE /* XiDuNewsCell.h */,
+				3B6F5F1F1D7FAFFE0058D2DE /* XiDuNewsCell.m */,
 				3B6F5F221D7FAFFE0058D2DE /* XiDuNewsModel.h */,
 				3B6F5F231D7FAFFE0058D2DE /* XiDuNewsModel.m */,
 				3B6F5F241D7FAFFE0058D2DE /* XiDuNewsViewController.h */,
@@ -941,6 +961,7 @@
 				3B2EC03A1D87CCA50019A72E /* XXDLoginViewController.m in Sources */,
 				697D766D1D78292C008D7C94 /* XXDMarketViewController.m in Sources */,
 				3B2EC02B1D878AA00019A72E /* CalendarCell.m in Sources */,
+				3BAF05AC1D93AD8300CFB105 /* XXDHistoryMarketListCell.m in Sources */,
 				3B60B8A61D7D3D8A002AA667 /* VarietyModel.m in Sources */,
 				69E1C6381D87EE3300ED2735 /* XXDLiveNewViewController.m in Sources */,
 				3B2EC0261D878A290019A72E /* XXDCalendarViewController.m in Sources */,
@@ -971,6 +992,7 @@
 				3B355B751D8149D6008C8376 /* AuthcodeView.m in Sources */,
 				69B1C6181D7E64FF000CA633 /* XXDLiveImage.m in Sources */,
 				697D76731D782951008D7C94 /* XXDDiscoverViewController.m in Sources */,
+				3BAF05A91D93A5F700CFB105 /* XXDTodayExchangeCell.m in Sources */,
 				69B1C61F1D7EBD61000CA633 /* XXDJinYinNiuPingCell.m in Sources */,
 				3B4C7A171D79414E001ECA94 /* TAAbstractDotView.m in Sources */,
 				3B60B88B1D7D3D08002AA667 /* MoreDetailModel.m in Sources */,
@@ -979,6 +1001,7 @@
 				3B4C7A1A1D79414E001ECA94 /* TAPageControl.m in Sources */,
 				3B2EC0301D8793A30019A72E /* XXDHotActivityViewController.m in Sources */,
 				3B4C7A1B1D79414E001ECA94 /* SDCollectionViewCell.m in Sources */,
+				3BAF05AF1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m in Sources */,
 				3B6F5F321D7FDAF00058D2DE /* XXDSearchViewController.m in Sources */,
 				3B355B721D80F8F1008C8376 /* XXDMyAccountInfoVC.m in Sources */,
 				3B7B3E8B1D7EAF01003DBF06 /* XXDActivityTableViewCell.m in Sources */,
@@ -998,6 +1021,7 @@
 				3B4C7A181D79414E001ECA94 /* TAAnimatedDotView.m in Sources */,
 				69B89A741D80009E009875E1 /* XXDPushViewController.m in Sources */,
 				3B7B3E6C1D7E5632003DBF06 /* ProfitSkillCell.m in Sources */,
+				3BAF05A61D93853A00CFB105 /* XXDTodayMakeListCell.m in Sources */,
 				3B4C7A1D1D79414E001ECA94 /* UIView+SDExtension.m in Sources */,
 				3B6F5F3B1D8008350058D2DE /* XXDMyFirmAccountVC.m in Sources */,
 				3B355B841D8158F4008C8376 /* XXDHistoryExchangeListVC.m in Sources */,

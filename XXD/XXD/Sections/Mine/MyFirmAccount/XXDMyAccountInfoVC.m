@@ -27,7 +27,9 @@
 }
 -(void)createUI{
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 64+20, self.view.bounds.size.width, 40)];
-    topView.backgroundColor = [UIColor whiteColor];
+    topView.backgroundColor = [UIColor colorWithRed:225/255.0 green:241/255.0 blue:254/255.0 alpha:1.0];
+    topView.layer.borderWidth = 0.3;
+    topView.layer.borderColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0].CGColor;
     [self.view addSubview:topView];
     //账户
     UILabel *zhanghuLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 10, 40, 20)];
@@ -46,12 +48,21 @@
     fengxianLabel.textColor = [UIColor grayColor];
     fengxianLabel.font = [UIFont systemFontOfSize:14.0];
     [topView addSubview:fengxianLabel];
-    UILabel *anquanLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(fengxianLabel.frame)+2, 5, 50, 30)];
+    UILabel *anquanLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(fengxianLabel.frame)+2, 5, 60, 30)];
     anquanLabel.text = @"安全";
     anquanLabel.font = [UIFont systemFontOfSize:14.0];
     anquanLabel.textColor = [UIColor whiteColor];
     anquanLabel.textAlignment = NSTextAlignmentCenter;
-    anquanLabel.backgroundColor = [UIColor colorWithRed:106/255.0 green:194/255.0 blue:43/255.0 alpha:1.0];
+    anquanLabel.backgroundColor = [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1.0];
+    anquanLabel.layer.cornerRadius = 15.0;
+    anquanLabel.layer.masksToBounds = YES;
+    CALayer *layer = [CALayer layer];
+    layer.frame = CGRectMake(CGRectGetMaxX(fengxianLabel.frame)+2, 5, 60, 30);
+    layer.backgroundColor = [UIColor blueColor].CGColor;
+    layer.shadowOffset = CGSizeMake(1, 1);
+    layer.shadowOpacity = 0.8;
+    layer.cornerRadius = 15;
+    [topView.layer addSublayer:layer];
     [topView addSubview:anquanLabel];
     //下部视图
     //初始化表头数组
@@ -75,9 +86,9 @@
             UILabel *numLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 20, width-5, 20)];
             numLabel.textColor = [UIColor blackColor];
             numLabel.font = [UIFont systemFontOfSize:12.0f];
-            if (row==4&&col==0) {
-                numLabel.textColor = [UIColor redColor];
-            }
+//            if (row==4&&col==0) {
+//                numLabel.textColor = [UIColor redColor];
+//            }
             [numLabelArray addObject:numLabel];
             [v addSubview:numLabel];
             [self.view addSubview:v];

@@ -26,38 +26,28 @@
     //刷新详情描述
     _TitleLabel.text=model.Title;
     //刷新关键词
-    _KeywordsDetail.text=model.Keywords;
+    _KeywordsDetail.text=[NSString stringWithFormat:@"关键词: %@",model.Keywords];
     //
     _Id=model.Id;
 }
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.backgroundColor=[UIColor whiteColor];
-        //西都新闻
-        _XiDuLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 5, 80, 10)];
-        _XiDuLabel.font=[UIFont systemFontOfSize:13.0];
-        _XiDuLabel.text=@"【西都新闻】";
-        _XiDuLabel.textColor=[UIColor redColor];
-        [self.contentView addSubview:_XiDuLabel];
-        //日期
-        _DateLabel=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_XiDuLabel.frame)+5, 5, 140, 10)];
-        _DateLabel.font=[UIFont systemFontOfSize:12.0];
-        _DateLabel.textColor=[UIColor redColor];
-        [self.contentView addSubview:_DateLabel];
         //详细信息
-        _TitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_DateLabel.frame)+5, WIDTH-20, 20)];
+        _TitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, WIDTH-20, 20)];
         _TitleLabel.font=[UIFont systemFontOfSize:15.0];
+        _TitleLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
         [self.contentView addSubview:_TitleLabel];
-        //关键字
-        _KeywordsLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_TitleLabel.frame)+5, 40, 15)];
-        _KeywordsLabel.font=[UIFont systemFontOfSize:12.0];
-        _KeywordsLabel.text=@"关键词:";
-        _KeywordsLabel.textColor=[UIColor redColor];
-        [self.contentView addSubview:_KeywordsLabel];
         //关键字内容
-        _KeywordsDetail=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_KeywordsLabel.frame)+5, CGRectGetMaxY(_TitleLabel.frame)+5, WIDTH-60, 15)];
-        _KeywordsDetail.font=[UIFont systemFontOfSize:12.0];
+        _KeywordsDetail=[[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_TitleLabel.frame)+5, WIDTH-20, 15)];
+        _KeywordsDetail.font=[UIFont systemFontOfSize:13.0];
+        _KeywordsDetail.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
         [self.contentView addSubview:_KeywordsDetail];
+        //日期
+        _DateLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_KeywordsDetail.frame)+8, WIDTH-20, 13)];
+        _DateLabel.font=[UIFont systemFontOfSize:13.0];
+        _DateLabel.textColor=[UIColor grayColor];
+        [self.contentView addSubview:_DateLabel];
     }
     return self;
 }

@@ -26,10 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title=@"西都新闻";
-    self.view.backgroundColor=[UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     //刷新控件
     _activity = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];//刷新控件
     [_activity setCenter:self.view.center];//指定进度轮中心点
@@ -79,9 +75,10 @@
     _tableView.delegate=self; 
     _tableView.dataSource=self;
     _tableView.bounces=YES;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _tableView.separatorColor=[UIColor grayColor];
     [_tableView setShowsVerticalScrollIndicator:NO];
+    _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     [self.view addSubview:_tableView];
     __weak XiDuNewsViewController *blockSelf=self;
     [_tableView setRequestData:^{
@@ -92,11 +89,6 @@
         [blockSelf refreshStateChangeisUpToGetMore:YES];
     }];
 }
-#pragma mark -返回按钮点击
-- (void)backBtnClick{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 #pragma mark tableView的代理返回cell高度和个数
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (_dataSourceArray.count>0) {
@@ -125,7 +117,8 @@
     if (_dataSourceArray.count>0) {
         XiDuNewsModel *model=_dataSourceArray[indexPath.row];
         [[NSUserDefaults standardUserDefaults]setObject:model.Id forKey:@"id"];
-        [self.navigationController pushViewController:[[XiDuNewsDetailViewController alloc]init] animated:YES];
+    [self.delegate pushViewController];
+    
     }
 }
 @end

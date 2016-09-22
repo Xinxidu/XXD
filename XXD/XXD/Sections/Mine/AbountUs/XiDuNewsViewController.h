@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol XiDuNewsViewControllerDelegate<NSObject>
+- (void)pushViewController;
+@end
 @interface XiDuNewsViewController : UIViewController
+@property (weak,nonatomic) id<XiDuNewsViewControllerDelegate> delegate;
 @end

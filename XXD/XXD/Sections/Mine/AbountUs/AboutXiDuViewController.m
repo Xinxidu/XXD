@@ -11,8 +11,8 @@
 #import "ExchangeInfoViewController.h"
 #import "XiDuInfoViewController.h"
 #import "ContactUsViewController.h"
-
-@interface AboutXiDuViewController ()
+#import "XiDuNewsDetailViewController.h"
+@interface AboutXiDuViewController ()<XiDuNewsViewControllerDelegate>
 
 @end
 
@@ -32,6 +32,7 @@
     ExchangeInfoViewController *oneVC = [[ExchangeInfoViewController alloc] init];
     XiDuInfoViewController *twoVC = [[XiDuInfoViewController alloc] init];
     XiDuNewsViewController *threeVC = [[XiDuNewsViewController alloc] init];
+    threeVC.delegate = self;
     ContactUsViewController *fourVC = [[ContactUsViewController alloc] init];
     
     self.controllerArray = @[oneVC,twoVC,threeVC,fourVC];
@@ -45,5 +46,8 @@
 #pragma mark -返回按钮点击
 - (void)backBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)pushViewController{
+    [self.navigationController pushViewController:[[XiDuNewsDetailViewController alloc]init] animated:YES];
 }
 @end

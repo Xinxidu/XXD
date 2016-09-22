@@ -18,12 +18,21 @@
 @implementation XiDuInfoViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title=@"西都简介";
-    //自定义返回按钮
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [self createUI];
+}
+-(void)createUI{
+    UIImageView *topImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 100, 50)];
+    topImageView.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:topImageView];
+    
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(topImageView.frame)+10, 10, 70, 35)];
+    titleLabel.text = @"鑫西都简介";
+    titleLabel.font = [UIFont systemFontOfSize:14.0];
+    titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    titleLabel.numberOfLines = 0;
+    [self.view addSubview:titleLabel];
     //创建WKWebView
-    _wkWebView = [[BaseWKWebView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    _wkWebView = [[BaseWKWebView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topImageView.frame)+10, WIDTH, HEIGHT)];
     [self.view addSubview:_wkWebView];
     //网络请求
     BaseWebRequest *webRequest = [[BaseWebRequest alloc] init];
@@ -37,8 +46,6 @@
             [_wkWebView loadHTMLString:htmlString baseURL:nil];
         }
     }];
-}
-- (void)back{
-    [self.navigationController popViewControllerAnimated:YES];
+
 }
 @end
