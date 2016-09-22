@@ -23,6 +23,8 @@
 #import "XXDLiveOnLineController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
+#define GREENCOLOR [UIColor colorWithRed:0/255.0 green:142/255.0 blue:48/255.0 alpha:1]
+#define GRAYCOLOR [UIColor colorWithRed:230/255.0 green:231/255.0 blue:232/255.0 alpha:1]
 
 typedef NS_ENUM(NSInteger,XXDButtonType){
     XXDButtonTypeHotTrade,              //热门交易
@@ -31,14 +33,12 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     XXDButtonTypeFinanceCalendar    //财经日历
 };
 
-@interface XXDHomeViewController ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface XXDHomeViewController ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,PopViewControllerDelegate>
 @property (strong,nonatomic) UIScrollView *rootScrollView;  //根视图
 @property (strong,nonatomic) SDCycleScrollView *cycleScrollView;    //顶部滚动视图
-@property (strong,nonatomic) UIView *horizontal_1;   //水平线1
-@property (strong,nonatomic) UIView *horizontal_2;   //水平线2
-@property (strong,nonatomic) UIView *verticalLine_1;    //垂直线1
+@property (strong,nonatomic) UIView *topBgView;     //顶部四个按钮的背景
+@property (strong,nonatomic) UIView *verticalLine;    //垂直线1
 @property (strong,nonatomic) UIView *openAccountView;   //开户
-@property (strong,nonatomic) UIView *horizontal_3;  //水平线3
 @property (strong,nonatomic) XXDLiveView *liveView; //直播间
 @property (strong,nonatomic) UIButton *timeNewsButton;  //实时快讯按钮
 @property (strong,nonatomic) UIButton *jinYinNiuPingButton; //金银牛评按钮
@@ -51,43 +51,40 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"首页";
+    self.navigationItem.title = @"银大师";
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
+    self.navigationController.navigationBar.shadowImage=[UIImage new];
     //创建根视图
-    self.rootScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    self.rootScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -64, WIDTH, HEIGHT+20)];
+    self.rootScrollView.bounces = NO;
+    self.rootScrollView.backgroundColor = [UIColor colorWithRed:244/255.0 green:248/255.0 blue:251/255.0 alpha:1];
     self.rootScrollView.contentSize = CGSizeMake(WIDTH, HEIGHT*2);
     [self.view addSubview:self.rootScrollView];
     [self createInfiniteScrollView];    //顶部的轮播图
-    self.horizontal_1 = [self createHorizontalWithY:self.cycleScrollView.frame.size.height+4];   //水平线1
     [self creatButtions];   //顶部的四个按钮
-    self.horizontal_2 = [self createHorizontalWithY:CGRectGetMaxY(self.horizontal_1.frame)+WIDTH/4.0-10];     //水平线2
-    self.verticalLine_1 = [self createVerticlalLineWithLength:87.0f];     //中间垂直线
+    self.verticalLine = [self createVerticlalLineWithLength:72.0f];     //中间垂直线
     [self createFeaturedProducts];      //创建主打产品
     [self createOpenAccount];       //立即开户
-    self.horizontal_3 = [self createHorizontalWithY:CGRectGetMaxY(self.openAccountView.frame)+3];     //水平线3
     [self createLiveView];      //创建直播视图
     //创建实时快讯按钮
     self.timeNewsButton = [self createBottomButtonWidthTitle:@"实时快讯" x:-1];
-    [self.timeNewsButton setTitleColor:[UIColor colorWithRed:253/255.0 green:169/255.0 blue:76/255.0 alpha:1.0] forState:UIControlStateNormal];//253 169 76
+    [self.timeNewsButton setTitleColor:[UIColor colorWithRed:23/255.0 green:137/255.0 blue:241/255.0 alpha:1.0] forState:UIControlStateNormal];//23 137 241
+    self.timeNewsButton.backgroundColor = GRAYCOLOR;
+    self.timeNewsButton.titleEdgeInsets = UIEdgeInsetsMake(11, (WIDTH-1)*0.5 -92, 11, 32);
     //创建实时快讯按钮
     self.jinYinNiuPingButton = [self createBottomButtonWidthTitle:@"金银牛评" x:WIDTH/2.0-1];
     [self.jinYinNiuPingButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.jinYinNiuPingButton.backgroundColor = [UIColor whiteColor];
+    self.jinYinNiuPingButton.titleEdgeInsets = UIEdgeInsetsMake(11, 32, 11, (WIDTH-1)*0.5 -92);
     //初始化数据
     self.timeNewsArray  = [NSMutableArray arrayWithObjects:@"俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是",@"俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是",@"俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是",@"俺的沙发多发的发的发的是发的是发达地方",nil];
 
     //初始化底部TableView
     [self initButtomTableView];
 }
--(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor blackColor]}];
-}
--(void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:10/255.0 green:46/255.0 blue:60/255.0 alpha:1.0];
-}
 
 #pragma mark 创建顶部的轮播图
 - (void)createInfiniteScrollView {
-
     //网络图片
     NSArray *imagesURLStrings = @[
                                   @"http://www.bz55.com/uploads/allimg/150818/140-150QQH359.jpg",
@@ -96,10 +93,8 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
                                   @"http://www.bz55.com/uploads/allimg/150208/139-15020P92501.jpg",
                                   @"http://www.bz55.com/uploads/allimg/130520/1-1305200S957.jpg"
                                   ];
-
-    CGFloat w = self.view.bounds.size.width;
     // 创建滚动视图
-    self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, w, 100) shouldInfiniteLoop:YES imageNamesGroup:imagesURLStrings];
+    self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, WIDTH, 166) shouldInfiniteLoop:YES imageNamesGroup:imagesURLStrings];
     self.cycleScrollView.delegate = self;
     self.cycleScrollView.autoScrollTimeInterval = 6;
     self.cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
@@ -111,22 +106,28 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 创建顶部4个按钮
 - (void)creatButtions{
+    self.topBgView  = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.cycleScrollView.frame), WIDTH, WIDTH/5.1)];
+    self.topBgView.backgroundColor = [UIColor whiteColor];
+    [self.rootScrollView addSubview:self.topBgView];
     NSArray *imageArray = @[@"icon_message_pressed",@"icon_message_pressed",@"icon_message_pressed",@"icon_message_pressed"];
     NSArray *nameArray = @[@"热门交易",@"热门活动",@"直播新闻",@"财经日历"];
     for (NSInteger i = 0; i < 4; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(WIDTH/4.0*i,CGRectGetMaxY(self.horizontal_1.frame) ,WIDTH/4.0, WIDTH/4.0-10);
+        button.frame = CGRectMake((WIDTH-200)/5.0*(i+1)+50*i, 8, 50, WIDTH/5.1-9);
         [button setImage:[UIImage imageNamed:imageArray[i]] forState:UIControlStateNormal];
         [button setTitle:nameArray[i] forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont systemFontOfSize:12];
+        button.titleLabel.font = [UIFont systemFontOfSize:12.0f];
         button.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+        [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         button.tag = i;
         [button verticalImageAndTitle:5.0];
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.rootScrollView addSubview:button];
+        [self.topBgView addSubview:button];
     }
+    //232 233 237
+    UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH/5.1-1, WIDTH, 1)];
+    horizontal.backgroundColor = GRAYCOLOR;
+    [self.topBgView addSubview:horizontal];
 }
 #pragma mark - SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
@@ -136,18 +137,26 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 - (void)buttonClick:(UIButton*)sender {
     self.hidesBottomBarWhenPushed = YES;
     switch (sender.tag) {
-        case XXDButtonTypeHotTrade:
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDHotTradeViewController alloc] init]];
-            break;
-        case XXDButtonTypeHotActivity:
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDHotActivityViewController alloc]init]];
-            break;
-        case XXDButtonTypeLiveNew:
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDLiveNewViewController alloc]init]];
-            break;
-        case XXDButtonTypeFinanceCalendar:
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDCalendarViewController alloc]init]];
-            break;
+        case XXDButtonTypeHotTrade:{
+            XXDHotTradeViewController *hotTradeVc = [[XXDHotTradeViewController alloc] init];
+            hotTradeVc.delegate = self;
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:hotTradeVc];
+        }break;
+        case XXDButtonTypeHotActivity:{
+            XXDHotActivityViewController *hotActivityVc = [[XXDHotActivityViewController alloc] init];
+            hotActivityVc.delegate = self;
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:hotActivityVc];
+        }break;
+        case XXDButtonTypeLiveNew:{
+            XXDLiveNewViewController *liveNewVc = [[XXDLiveNewViewController alloc] init];
+            liveNewVc.delegate = self;
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:liveNewVc];
+        }break;
+        case XXDButtonTypeFinanceCalendar:{
+            XXDCalendarViewController *calendarVc = [[XXDCalendarViewController alloc] init];
+            calendarVc.delegate = self;
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:calendarVc];
+        }break;
     }
     self.hidesBottomBarWhenPushed = NO;
 }
@@ -160,8 +169,8 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 创建垂直线
 - (UIView *)createVerticlalLineWithLength:(CGFloat)length{
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake((WIDTH-1.0)/2.0, CGRectGetMaxY(self.horizontal_2.frame), 1, length)];
-    line.backgroundColor = [UIColor lightGrayColor];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake((WIDTH-1.0)/2.0, CGRectGetMaxY(self.topBgView.frame)+10, 1, length)];
+    line.backgroundColor = GRAYCOLOR;
     [self.rootScrollView addSubview:line];
     return line;
 }
@@ -173,28 +182,29 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     NSArray *num3Array = @[@"-3.50%",@"+0.10%"];
     for (NSInteger i = 0; i < 2 ; i++) {
         CGFloat viewWidth = (WIDTH-1)/2.0;
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake((viewWidth+1)*i, CGRectGetMaxY(self.horizontal_2.frame), viewWidth, 87)];
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake((viewWidth+1)*i, CGRectGetMaxY(self.topBgView.frame)+10, viewWidth, 72)];
+        v.backgroundColor = [UIColor whiteColor];
         UILabel *productName = [[UILabel alloc] init];
         productName.text = productNameArray[i];
-        productName.font = [UIFont systemFontOfSize:16.0f];
+        productName.font = [UIFont boldSystemFontOfSize:13.0f];
         CGFloat productNameWidth = [(NSString *)productNameArray[i] boundingRectWithSize:CGSizeMake(1000, 16) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:productName.font forKey:NSFontAttributeName] context:nil].size.width;
-        productName.frame = CGRectMake((viewWidth-productNameWidth)/2.0, 5, productNameWidth, 30);
+        productName.frame = CGRectMake((viewWidth-productNameWidth)/2.0, 5, productNameWidth, 22);
         [v addSubview:productName];
         CGFloat x = productName.frame.origin.x;
-        UILabel *num1 = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(productName.frame), viewWidth-x, 27)];
+        UILabel *num1 = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(productName.frame), viewWidth-x, 22)];
         num1.font = [UIFont systemFontOfSize:20.0];
         num1.text = num1Array[i];
-        num1.textColor = (i == 0 ? [UIColor greenColor] : [UIColor redColor]);
+        num1.textColor = (i == 0 ? GREENCOLOR : [UIColor redColor]);
         [v addSubview:num1];
-        UILabel *num2 = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(num1.frame), viewWidth/2.0-x, 25)];
+        UILabel *num2 = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(num1.frame), viewWidth/2.0-x, 15)];
         num2.font = [UIFont systemFontOfSize:12.0];
         num2.text = num2Array[i];
-        num2.textColor = (i == 0 ? [UIColor greenColor] : [UIColor redColor]);
+        num2.textColor = (i == 0 ? GREENCOLOR : [UIColor redColor]);
         [v addSubview:num2];
-        UILabel *num3 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(num2.frame), CGRectGetMaxY(num1.frame), viewWidth-CGRectGetMaxX(num2.frame), 25)];
+        UILabel *num3 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(num2.frame), CGRectGetMaxY(num1.frame), viewWidth-CGRectGetMaxX(num2.frame), 15)];
         num3.font = [UIFont systemFontOfSize:12.0];
         num3.text = num3Array[i];
-        num3.textColor = (i == 0 ? [UIColor greenColor] : [UIColor redColor]);
+        num3.textColor = (i == 0 ? GREENCOLOR : [UIColor redColor]);
         [v addSubview:num3];
         if (i == 0) {
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(featuredProductsClick1)];
@@ -215,17 +225,19 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 立即开户
 - (void)createOpenAccount{
-    self.openAccountView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.verticalLine_1.frame), WIDTH, 30)];
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, WIDTH/2.0, 30)];
-    label.text = @"新开实盘账号，开启财富之旅";
+    self.openAccountView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.verticalLine.frame), WIDTH, 25)];
+    self.openAccountView.backgroundColor = GRAYCOLOR;
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake((WIDTH-247)*0.5, 0, 175, 25)];
+    label.textColor = [UIColor darkGrayColor];
+    label.text = @"新开实盘账号，开启财富之旅!";
     label.font = [UIFont systemFontOfSize:12.0f];
     [self.openAccountView addSubview:label];
-    UIButton *openAccountButton = [[UIButton alloc] initWithFrame:CGRectMake(WIDTH/2.0+5, 2.5, 70, 25)];
-    [openAccountButton setTitle:@"立即开户" forState:UIControlStateNormal];
+    UIButton *openAccountButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(label.frame), 2.5, 72, 20)];
+    [openAccountButton setTitle:@"立即开户>>" forState:UIControlStateNormal];
     openAccountButton.titleLabel.font = [UIFont systemFontOfSize:12.0f];
     [openAccountButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    openAccountButton.backgroundColor = [UIColor colorWithRed:253/255.0 green:98/255.0 blue:146/255.0 alpha:1];
-    openAccountButton.layer.cornerRadius = 5;
+    openAccountButton.backgroundColor = [UIColor colorWithRed:236/255.0 green:13/255.0 blue:26/255.0 alpha:1];
+    openAccountButton.layer.cornerRadius = 2;
     openAccountButton.layer.masksToBounds = YES;
     [openAccountButton addTarget:self action:@selector(openAccountClick) forControlEvents:UIControlEventTouchUpInside];
     [self.openAccountView addSubview:openAccountButton];
@@ -238,12 +250,11 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 #pragma mark 创建直播视图
 - (void)createLiveView{
     XXDLiveImage *liveImage = [[XXDLiveImage alloc] init];
-    liveImage.viewHeight = 90;
     liveImage.liveName = @"股赢天下";
     liveImage.viewColor = [UIColor colorWithRed:242/255.0 green:167/255.0 blue:162/255.0 alpha:1.0]; //242 167 162
     liveImage.info = @"特点：抢反弹一马当先抓涨停十拿九稳";
     liveImage.teacherPush = @"西都金融研究院每周不定时推荐一到两支股票";
-    self.liveView = [[XXDLiveView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.horizontal_3.frame), WIDTH, 110) liveImageModel:liveImage];
+    self.liveView = [[XXDLiveView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.openAccountView.frame)+10, WIDTH, 97) liveImageModel:liveImage];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(liveViewClick)];
     [self.liveView addGestureRecognizer:tap];
     [self.rootScrollView addSubview:self.liveView];
@@ -251,15 +262,21 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 #pragma mark 直播间视图点击事件
 - (void)liveViewClick{
     self.hidesBottomBarWhenPushed = YES;
-    [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDLiveOnLineController alloc] init]];
+    XXDLiveOnLineController *liveOnVc = [[XXDLiveOnLineController alloc] init];
+    liveOnVc.delegate = self;
+    [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:liveOnVc];
     self.hidesBottomBarWhenPushed = NO;
+}
+- (void)changeNavigationBarColor{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
+    self.navigationController.navigationBar.shadowImage=[UIImage new];
 }
 #pragma mark 创建底部两个按钮
 - (UIButton *)createBottomButtonWidthTitle:(NSString *)title x:(CGFloat)x{
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(self.liveView.frame)+3, (WIDTH-1.0)/2.0+2, 40)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(self.liveView.frame)+9, (WIDTH-1.0)/2.0+2, 37)];
     [button setTitle:title forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont systemFontOfSize:14.0f];
-    button.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
+    button.layer.borderColor = GRAYCOLOR.CGColor;
     button.layer.borderWidth = 1;
     [button addTarget:self action:@selector(buttomButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.rootScrollView addSubview:button];
@@ -267,13 +284,16 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 底部两个按钮点击事件
 - (void)buttomButtonClick:(UIButton *)sender{
-    [sender setTitleColor:[UIColor colorWithRed:253/255.0 green:169/255.0 blue:76/255.0 alpha:1.0] forState:UIControlStateNormal];//253 169 76
+    [sender setTitleColor:[UIColor colorWithRed:23/255.0 green:137/255.0 blue:241/255.0 alpha:1.0] forState:UIControlStateNormal];//23 137 241
+    sender.backgroundColor = GRAYCOLOR;
     if ([sender.titleLabel.text isEqualToString:@"实时快讯"]) {
         self.flagForTable = 0;
         [self.jinYinNiuPingButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.jinYinNiuPingButton.backgroundColor = [UIColor whiteColor];
     }else{
         self.flagForTable = 1;
         [self.timeNewsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.timeNewsButton.backgroundColor = [UIColor whiteColor];
     }
      [self initButtomTableView];
 }

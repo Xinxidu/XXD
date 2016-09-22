@@ -9,6 +9,7 @@
 #import "XXDLiveNewViewController.h"
 #import "XXDTimeNews.h"
 #import "XXDTimeNewsCell.h"
+#import "XXDCustomNavigation.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 typedef NS_ENUM(NSInteger,XXDButtonType){
@@ -30,10 +31,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor=[UIColor whiteColor];
-    self.title=@"直播新闻";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [XXDCustomNavigation loadUIViewController:self title:@"直播新闻" backSelector:@selector(backBtnClick)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"我的收藏" style:UIBarButtonItemStylePlain target:self action: @selector(myCollect)];
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     [self.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]} forState:UIControlStateNormal];
@@ -49,6 +47,11 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 #pragma mark 返回
 - (void)backBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate changeNavigationBarColor];
+}
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.delegate changeNavigationBarColor];
 }
 #pragma mark 我的收藏
 - (void)myCollect{

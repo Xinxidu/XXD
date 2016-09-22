@@ -58,13 +58,14 @@ typedef NS_ENUM(NSInteger,XXDMainTabType) {
                                                        image:[UIImage imageNamed:imageName]
                                                selectedImage:[UIImage imageNamed:imageSelected]];
         nav.tabBarItem.tag = idx;
+        nav.navigationBar.barStyle = UIBarStyleBlackTranslucent;
         [vcArray addObject:nav];
     }];
     self.viewControllers = [NSArray arrayWithArray:vcArray];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - VC

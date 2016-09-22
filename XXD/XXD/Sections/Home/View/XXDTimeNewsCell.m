@@ -26,11 +26,11 @@
         verticalLine.backgroundColor = [UIColor lightGrayColor];
         [self.contentView addSubview:verticalLine];
         //快讯详情
-        CGFloat detailHeight = [timeNews.detailString boundingRectWithSize:CGSizeMake(width-45, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:11.0f] forKey:NSFontAttributeName] context:nil].size.height;
+        CGFloat detailHeight = [timeNews.detailString boundingRectWithSize:CGSizeMake(width-45, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:12.0f] forKey:NSFontAttributeName] context:nil].size.height;
         UILabel *detailTextView = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(verticalLine.frame)+5, 8, width-CGRectGetMaxX(verticalLine.frame)-5, detailHeight)];
         detailTextView.numberOfLines = 0;
-        detailTextView.font = [UIFont systemFontOfSize:11.0f];
-        detailTextView.textColor = [UIColor blackColor];
+        detailTextView.font = [UIFont systemFontOfSize:12.0f];
+        detailTextView.textColor = [UIColor darkGrayColor];
         detailTextView.text = timeNews.detailString;
         verticalLine.frame = CGRectMake(41, 0, 1, 20+detailHeight);
         [self.contentView addSubview:detailTextView];
