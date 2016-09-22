@@ -18,7 +18,7 @@
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 #define GLODENCOLOR [UIColor colorWithRed:186/255.0 green:128/255.0 blue:15/255.0 alpha:1.0]
-#define LINEWIDTH WIDTH/5
+#define LINEWIDTH self.view.bounds.size.width/5
 #define URL @""
 
 @interface XXDMarketViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
@@ -45,7 +45,7 @@
     NSInteger i = 0;
     _dataArray = [[NSMutableArray alloc]init];
     [self createScrollView];
-    [self createNameButtonData:i];
+    [self createNameButtonData];
 }
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
@@ -77,7 +77,7 @@
     //    }];
 }
 
--(void)createNameButtonData:(NSInteger)sender{
+-(void)createNameButtonData{
     _nameInternational = [[NSMutableArray alloc]initWithObjects:@"自选",@"华通铂银",@"上期所",@"大商所",@"郑商所",@"中金所",@"上金所",@"LME",@"CME",@"ICE",@"全球外汇",@"全球指数", nil];
     for (int i=0; i<_nameInternational.count; i++) {
         UIButton* btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -85,6 +85,7 @@
         [btn setTitle:_nameInternational[i] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         btn.tag = 100+i;
+        btn.titleLabel.textAlignment = NSTextAlignmentCenter;
         [btn addTarget:self action:@selector(nameButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [_scroll addSubview:btn];
     }
@@ -108,9 +109,7 @@
     _scroll.backgroundColor = [UIColor whiteColor];
     _scroll.delegate = self;
     _scroll.tag = 50;
-    _scroll.showsHorizontalScrollIndicator = NO;
-    _scroll.showsVerticalScrollIndicator = NO;
-    _scroll.pagingEnabled = NO;
+    _scroll.pagingEnabled = YES;
     _scroll.bounces = NO;
     
     [self.view addSubview:_scroll];

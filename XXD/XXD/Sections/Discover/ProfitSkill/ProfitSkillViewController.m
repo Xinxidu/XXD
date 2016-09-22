@@ -78,12 +78,9 @@
 -(void)getTimeAndDate:(NSString*)string AndModel:(ProfitSkillModel*)model{
     NSArray* array = [string componentsSeparatedByString:@"  "];
     NSString* date = array[0];
-//    NSRange  range1 = NSMakeRange(5, 5);
-//    NSString* dateString = [date substringWithRange:range1];
-    model.dateString = date;
-//    NSRange range2 = NSMakeRange(0, 5);
-//    NSString* timeString = [array[1] substringWithRange:range2];
-//    model.timeString = timeString;
+    NSString* time = array[1];
+    NSString* timeString = [NSString stringWithFormat:@"%@ %@",date,time];
+    model.dateString = timeString;
 }
 
 

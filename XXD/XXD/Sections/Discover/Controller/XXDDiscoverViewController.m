@@ -28,13 +28,9 @@
     [self createTableView];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor blackColor]}];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
 }
--(void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:10/255.0 green:46/255.0 blue:60/255.0 alpha:1.0];
-}
-
 -(void)createTableView{
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     _tableView.delegate = self;
@@ -45,17 +41,15 @@
     [self.view addSubview:_tableView];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return 3;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
         return 1;
     }else if (section ==1){
-        return 2;
-    }else if (section == 2){
-        return 2;
+        return 4;
     }else{
-        return 2;
+        return 1;
     }
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -73,12 +67,10 @@
         if (indexPath.row == 0) {
             cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"在线直播";
-        }else{
+        }else if(indexPath.row == 1){
             cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"投资策略";
-        }
-    }else if (indexPath.section == 2){
-        if (indexPath.row == 0) {
+        }else if (indexPath.row == 2){
             cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"盈利技巧";
         }else{
@@ -86,14 +78,8 @@
             cell.textLabel.text = @"名师团队";
         }
     }else{
-        if (indexPath.row == 0) {
-            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
-            cell.textLabel.text = @"新手入门";
-        }else{
             cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"模拟盘交易";
-        }
-        
     }
     return cell;
 
@@ -107,12 +93,10 @@
         if (indexPath.row == 0) {   //在线直播
             XXDLiveOnLineController *liveOnLineController = [[XXDLiveOnLineController alloc] init];
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:liveOnLineController];
-        }else{  //投资策略
+        }else if(indexPath.row == 1){  //投资策略
             DaysInvestmentViewController *daysIn = [[DaysInvestmentViewController alloc]init];
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:daysIn];
-        }
-    }else if (indexPath.section == 2){
-        if (indexPath.row == 0) {   //盈利技巧
+        }else if (indexPath.row == 2){  //盈利技巧
             ProfitSkillViewController *profit = [[ProfitSkillViewController alloc]init];
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:profit];
         }else{  //名师团队
@@ -120,12 +104,7 @@
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:team];
         }
     }else{
-        if (indexPath.row == 0) {
-            XXDNewerViewController *newer = [[XXDNewerViewController alloc] init];
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:newer];
-        }else{
             NSLog(@"模拟盘交易");
-        }
     }
     self.hidesBottomBarWhenPushed = NO;
 }

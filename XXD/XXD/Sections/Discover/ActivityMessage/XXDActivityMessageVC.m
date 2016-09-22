@@ -47,19 +47,12 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor whiteColor];
-//    if (indexPath.section == 0) {
-//        cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
-//        cell.textLabel.text = @"活动消息";
-//    }else if (indexPath.section == 1){
-//            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
-//            cell.textLabel.text = @"投资策略";
-//    }else if (indexPath.section == 2){
-//            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
-//            cell.textLabel.text = @"名师团队";
-//    }else{
-//        cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
-//        cell.textLabel.text = @"模拟盘交易";
-//    }
+    if (indexPath.section %2 == 0) {
+        cell.activityStatusLabel.backgroundColor = [UIColor redColor];
+    }else{
+        cell.activityStatusLabel.backgroundColor = [UIColor grayColor];
+        cell.activityStatusLabel.text = @"已结束";
+    }
     return cell;
     
 }
@@ -67,13 +60,13 @@
         
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    return 80;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0.1;
+    return 15;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 15;
+    return 0.1;
 }
 
 #pragma mark -返回按钮点击

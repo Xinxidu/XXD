@@ -29,16 +29,12 @@
     [self createTableView];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor blackColor]}];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
 }
--(void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:10/255.0 green:46/255.0 blue:60/255.0 alpha:1.0];
-}
-
 -(void)createHeaderView{
     _hearerView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 120)];
-    _hearerView.backgroundColor = [UIColor colorWithRed:54/255.0 green:77/255.0 blue:99/255.0 alpha:1.0];
+    _hearerView.backgroundColor = [UIColor colorWithRed:224/255.0 green:240/255.0 blue:253/255.0 alpha:1.0];
     [self.view addSubview:_hearerView];
     //头像
     UIImageView *headpicImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 50, 40, 40)];
@@ -49,15 +45,22 @@
     //登录状态显示
     UILabel *statusLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(headpicImageView.frame)+10, 60, 60, 20)];
     statusLabel.text = @"未登录";
-    statusLabel.textColor = [UIColor whiteColor];
+    statusLabel.textColor = [UIColor blackColor];
     [_hearerView addSubview:statusLabel];
     //注册按钮
     UIButton *registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
     registerButton.frame = CGRectMake(CGRectGetMaxX(statusLabel.frame)+55, 55, 60, 30) ;
     [registerButton setTitle:@"注册" forState:UIControlStateNormal];
-    registerButton.backgroundColor = [UIColor orangeColor];
-    registerButton.layer.cornerRadius = 2;
+    registerButton.backgroundColor = [UIColor colorWithRed:249/255.0 green:14/255.0 blue:27/255.0 alpha:1.0];
+    registerButton.layer.cornerRadius = 15;
     registerButton.layer.masksToBounds = YES;
+    CALayer *layer = [CALayer layer];
+    layer.frame = CGRectMake(CGRectGetMaxX(statusLabel.frame)+55, 55, 60, 30);
+    layer.backgroundColor = [UIColor redColor].CGColor;
+    layer.shadowOffset = CGSizeMake(2, 2);
+    layer.shadowOpacity = 0.8;
+    layer.cornerRadius = 15;
+    [_hearerView.layer addSublayer:layer];
     [registerButton addTarget:self action:@selector(registerClick:) forControlEvents:UIControlEventTouchUpInside];
     [_hearerView addSubview:registerButton];
     
@@ -65,9 +68,16 @@
     UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
     loginButton.frame = CGRectMake(CGRectGetMaxX(registerButton.frame)+10, 55, 60, 30) ;
     [loginButton setTitle:@"登录" forState:UIControlStateNormal];
-    loginButton.backgroundColor = [UIColor greenColor];
-    loginButton.layer.cornerRadius = 2;
+    loginButton.backgroundColor = [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1.0];
+    loginButton.layer.cornerRadius = 15;
     loginButton.layer.masksToBounds = YES;
+    CALayer *layer1 = [CALayer layer];
+    layer1.frame = CGRectMake(CGRectGetMaxX(registerButton.frame)+10, 55, 60, 30);
+    layer1.backgroundColor = [UIColor greenColor].CGColor;
+    layer1.shadowOffset = CGSizeMake(2, 2);
+    layer1.shadowOpacity = 0.8;
+    layer1.cornerRadius = 15;
+    [_hearerView.layer addSublayer:layer1];
     [loginButton addTarget:self action:@selector(loginClick:) forControlEvents:UIControlEventTouchUpInside];
     [_hearerView addSubview:loginButton];
 }

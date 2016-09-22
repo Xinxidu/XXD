@@ -47,6 +47,11 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor whiteColor];
+    if (!(indexPath.section%2 == 0)) {
+        cell.cicleImageView.backgroundColor = [UIColor grayColor];
+        cell.activityStatusLabel.backgroundColor = [UIColor grayColor];
+        cell.activityStatusLabel.text = @"已结束";
+    }
     return cell;
     
 }
@@ -54,7 +59,7 @@
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 150;
+    return 130;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 5;

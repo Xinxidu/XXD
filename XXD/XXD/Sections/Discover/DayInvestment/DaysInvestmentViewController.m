@@ -55,6 +55,7 @@
         int index = [i intValue];
         if (index == 1) {
             NSArray*  array = responseObject[@"data"];
+//            NSLog(@"%@",array);
             //------ 判断是否时上拉加载更多，判断是否删除数据数组 ------
             if (is==YES) { }else [_dataArray removeAllObjects];
             for(int i=0;i<array.count;i++){
@@ -64,6 +65,7 @@
                 [self getTimeAndDate:date AndModel:model];
                 model.textString = array[i][@"Body"];
                 model.IdString = array[i][@"Id"];
+                model.LitpicString = array[i][@"Litpic"];
                 [_dataArray addObject:model];
             }
             if (array.count==0) {
@@ -83,11 +85,8 @@
 -(void)getTimeAndDate:(NSString*)string AndModel:(DaysInvestmentModel*)model{
     NSArray* array = [string componentsSeparatedByString:@"  "];
     NSString* date = array[0];
-    NSRange  range1 = NSMakeRange(5, 5);
-    NSString* dateString = [date substringWithRange:range1];
-    model.dateString = dateString;
-    NSRange range2 = NSMakeRange(0, 5);
-    NSString* timeString = [array[1] substringWithRange:range2];
+    NSString* time = array[1];
+    NSString* timeString = [NSString stringWithFormat:@"%@ %@",date,time];
     model.timeString = timeString;
 }
 #pragma mark ****** 创建tableView

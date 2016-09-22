@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F863EDD7DC62F1E2F344F8F /* libPods-XXD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1696AF4DC74005A5A3024F13 /* libPods-XXD.a */; };
+		3B24B3011D9272DE004FAC80 /* CustomScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B24B3001D9272DE004FAC80 /* CustomScrollViewController.m */; };
 		3B2EC0261D878A290019A72E /* XXDCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC0251D878A290019A72E /* XXDCalendarViewController.m */; };
 		3B2EC02B1D878AA00019A72E /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC0281D878AA00019A72E /* CalendarCell.m */; };
 		3B2EC02C1D878AA00019A72E /* DateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC02A1D878AA00019A72E /* DateView.m */; };
@@ -32,7 +33,6 @@
 		3B60B88B1D7D3D08002AA667 /* MoreDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B60B8871D7D3D08002AA667 /* MoreDetailModel.m */; };
 		3B60B8A51D7D3D8A002AA667 /* VarietiesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B60B8A21D7D3D8A002AA667 /* VarietiesView.m */; };
 		3B60B8A61D7D3D8A002AA667 /* VarietyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B60B8A41D7D3D8A002AA667 /* VarietyModel.m */; };
-		3B6F5F161D7FAFC60058D2DE /* AboutXiDuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F131D7FAFC60058D2DE /* AboutXiDuTableViewCell.m */; };
 		3B6F5F171D7FAFC60058D2DE /* AboutXiDuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F151D7FAFC60058D2DE /* AboutXiDuViewController.m */; };
 		3B6F5F261D7FAFFE0058D2DE /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F191D7FAFFE0058D2DE /* ContactUsViewController.m */; };
 		3B6F5F271D7FAFFE0058D2DE /* ExchangeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F1B1D7FAFFE0058D2DE /* ExchangeInfoViewController.m */; };
@@ -95,6 +95,8 @@
 
 /* Begin PBXFileReference section */
 		1696AF4DC74005A5A3024F13 /* libPods-XXD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XXD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B24B2FF1D9272DE004FAC80 /* CustomScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollViewController.h; sourceTree = "<group>"; };
+		3B24B3001D9272DE004FAC80 /* CustomScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomScrollViewController.m; sourceTree = "<group>"; };
 		3B2EC0241D878A290019A72E /* XXDCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDCalendarViewController.h; sourceTree = "<group>"; };
 		3B2EC0251D878A290019A72E /* XXDCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDCalendarViewController.m; sourceTree = "<group>"; };
 		3B2EC0271D878AA00019A72E /* CalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCell.h; sourceTree = "<group>"; };
@@ -143,8 +145,6 @@
 		3B60B8A21D7D3D8A002AA667 /* VarietiesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VarietiesView.m; sourceTree = "<group>"; };
 		3B60B8A31D7D3D8A002AA667 /* VarietyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VarietyModel.h; sourceTree = "<group>"; };
 		3B60B8A41D7D3D8A002AA667 /* VarietyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VarietyModel.m; sourceTree = "<group>"; };
-		3B6F5F121D7FAFC60058D2DE /* AboutXiDuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutXiDuTableViewCell.h; sourceTree = "<group>"; };
-		3B6F5F131D7FAFC60058D2DE /* AboutXiDuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutXiDuTableViewCell.m; sourceTree = "<group>"; };
 		3B6F5F141D7FAFC60058D2DE /* AboutXiDuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutXiDuViewController.h; sourceTree = "<group>"; };
 		3B6F5F151D7FAFC60058D2DE /* AboutXiDuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutXiDuViewController.m; sourceTree = "<group>"; };
 		3B6F5F181D7FAFFE0058D2DE /* ContactUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsViewController.h; sourceTree = "<group>"; };
@@ -467,8 +467,8 @@
 			children = (
 				3B6F5F141D7FAFC60058D2DE /* AboutXiDuViewController.h */,
 				3B6F5F151D7FAFC60058D2DE /* AboutXiDuViewController.m */,
-				3B6F5F121D7FAFC60058D2DE /* AboutXiDuTableViewCell.h */,
-				3B6F5F131D7FAFC60058D2DE /* AboutXiDuTableViewCell.m */,
+				3B24B2FF1D9272DE004FAC80 /* CustomScrollViewController.h */,
+				3B24B3001D9272DE004FAC80 /* CustomScrollViewController.m */,
 				3B6F5F181D7FAFFE0058D2DE /* ContactUsViewController.h */,
 				3B6F5F191D7FAFFE0058D2DE /* ContactUsViewController.m */,
 				3B6F5F1A1D7FAFFE0058D2DE /* ExchangeInfoViewController.h */,
@@ -852,7 +852,8 @@
 				TargetAttributes = {
 					697D76331D781300008D7C94 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = R9DE87BJ5L;
+						DevelopmentTeam = VRQSU9ZYT4;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -940,6 +941,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B24B3011D9272DE004FAC80 /* CustomScrollViewController.m in Sources */,
 				3B2EC0371D87CC7D0019A72E /* XXDRegisterSecondViewController.m in Sources */,
 				3B60B88A1D7D3D08002AA667 /* ItemTableViewCell.m in Sources */,
 				3B7B3E841D7E61BD003DBF06 /* ProfessorTeamViewController.m in Sources */,
@@ -993,7 +995,6 @@
 				69B1C6111D7E4FE8000CA633 /* XXDLiveView.m in Sources */,
 				69B89A801D813723009875E1 /* firmBargainViewController.m in Sources */,
 				3B7B3E8F1D7EBECC003DBF06 /* XXDMyViewController.m in Sources */,
-				3B6F5F161D7FAFC60058D2DE /* AboutXiDuTableViewCell.m in Sources */,
 				697D765C1D781BBC008D7C94 /* XXDMainTabController.m in Sources */,
 				697D766A1D782911008D7C94 /* XXDHomeViewController.m in Sources */,
 				3B2EC0341D87CBC60019A72E /* XXDRegisterViewController.m in Sources */,
@@ -1133,15 +1134,17 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R9DE87BJ5L;
+				DEVELOPMENT_TEAM = VRQSU9ZYT4;
 				INFOPLIST_FILE = XXD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xinxidu.XXDs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "XXD/Sections/Home/XXD-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1153,14 +1156,16 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R9DE87BJ5L;
+				DEVELOPMENT_TEAM = VRQSU9ZYT4;
 				INFOPLIST_FILE = XXD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xinxidu.XXDs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "XXD/Sections/Home/XXD-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -10,13 +10,11 @@
 #import "DaysInvestmentModel.h"
 
 @interface DayInvestmentCell : UITableViewCell
-@property (strong,nonatomic) UILabel* zhuanjiaLable;
-@property (strong,nonatomic) UILabel* dateLable;
 @property (strong,nonatomic) UILabel* timeLable;
 
 @property (strong,nonatomic) UILabel* titleLable;
-@property (strong,nonatomic) UILabel* editorLabler;
 @property (strong,nonatomic) UILabel* textLable;
+@property (strong,nonatomic) UIImageView* litpicimageView;
 
 @property(copy,nonatomic) NSString* Id;
 -(void)configModel:(DaysInvestmentModel*)model;
