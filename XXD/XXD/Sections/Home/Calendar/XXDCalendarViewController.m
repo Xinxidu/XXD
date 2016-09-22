@@ -10,7 +10,7 @@
 #import "DateView.h"
 #import "XXDPushViewController.h"
 #import "CalendarCell.h"
-
+#import "XXDCustomNavigation.h"
 #define HEIGHT CGRectGetHeight(self.view.bounds)
 #define WIDTH CGRectGetWidth(self.view.bounds)
 #define CALENDARBUTTONWIDTH 60
@@ -35,11 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self createOnline];
-    self.navigationItem.title = @"财经日历";
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [XXDCustomNavigation loadUIViewController:self title:@"财经日历" backSelector:@selector(backBtnClick)];
     self.viewArray = [NSMutableArray array];
     //日历按钮
     UIButton *calendarButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, CALENDARBUTTONWIDTH-1, CALENDARBUTTONHEIGHT)];
@@ -65,6 +61,11 @@
 #pragma mark -返回按钮点击
 - (void)backBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate changeNavigationBarColor];
+}
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.delegate changeNavigationBarColor];
 }
 //#pragma mark ****** 右上角在线解套
 //-(void)createOnline{

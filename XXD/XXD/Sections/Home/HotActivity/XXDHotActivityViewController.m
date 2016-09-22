@@ -8,7 +8,7 @@
 
 #import "XXDHotActivityViewController.h"
 #import "XXDMyActivityCell.h"
-
+#import "XXDCustomNavigation.h"
 @interface XXDHotActivityViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
 @end
@@ -17,12 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor=[UIColor whiteColor];
-    self.title=@"热门活动";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
+    [XXDCustomNavigation loadUIViewController:self title:@"热门活动" backSelector:@selector(backBtnClick)];
     [self createTableView];
 }
 -(void)createTableView{
@@ -66,20 +61,14 @@
 #pragma mark -返回按钮点击
 - (void)backBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate changeNavigationBarColor];
+}
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.delegate changeNavigationBarColor];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 @end

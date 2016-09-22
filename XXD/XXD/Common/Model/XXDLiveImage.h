@@ -10,7 +10,6 @@
 @class UIColor;
 @interface XXDLiveImage : NSObject
 @property (strong,nonatomic) UIColor *viewColor;
-@property (assign,nonatomic) float viewHeight;
 @property (copy,nonatomic) NSString *liveName;
 @property (copy,nonatomic) NSString *info;
 @property (copy,nonatomic) NSString *teacherPush;

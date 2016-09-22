@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "PopViewControllerDelegate.h"
 @interface XXDCalendarViewController : UIViewController
-
+@property (weak,nonatomic) id<PopViewControllerDelegate> delegate;
 @end

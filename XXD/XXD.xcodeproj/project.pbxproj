@@ -88,6 +88,7 @@
 		69B89A831D81378F009875E1 /* XXDOrderBSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A821D81378F009875E1 /* XXDOrderBSView.m */; };
 		69B89A891D8137ED009875E1 /* XXDDelegateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A881D8137ED009875E1 /* XXDDelegateView.m */; };
 		69B89A8C1D813807009875E1 /* XXDHoldProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A8B1D813807009875E1 /* XXDHoldProductView.m */; };
+		69C1058F1D93852F00F4D3AE /* XXDCustomNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C1058E1D93852F00F4D3AE /* XXDCustomNavigation.m */; };
 		69C40D1C1D7D463000872C23 /* UIButton+XXD.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C40D1B1D7D463000872C23 /* UIButton+XXD.m */; };
 		69E1C62B1D8793AD00ED2735 /* XXDHotTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C62A1D8793AD00ED2735 /* XXDHotTradeViewController.m */; };
 		69E1C62E1D87970C00ED2735 /* XXDHotTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C62D1D87970C00ED2735 /* XXDHotTrade.m */; };
@@ -256,6 +257,9 @@
 		69B89A881D8137ED009875E1 /* XXDDelegateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDDelegateView.m; sourceTree = "<group>"; };
 		69B89A8A1D813807009875E1 /* XXDHoldProductView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHoldProductView.h; sourceTree = "<group>"; };
 		69B89A8B1D813807009875E1 /* XXDHoldProductView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHoldProductView.m; sourceTree = "<group>"; };
+		69C1058C1D936E8A00F4D3AE /* PopViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopViewControllerDelegate.h; sourceTree = "<group>"; };
+		69C1058D1D93852F00F4D3AE /* XXDCustomNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDCustomNavigation.h; sourceTree = "<group>"; };
+		69C1058E1D93852F00F4D3AE /* XXDCustomNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDCustomNavigation.m; sourceTree = "<group>"; };
 		69C40D1A1D7D463000872C23 /* UIButton+XXD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+XXD.h"; sourceTree = "<group>"; };
 		69C40D1B1D7D463000872C23 /* UIButton+XXD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+XXD.m"; sourceTree = "<group>"; };
 		69E1C6291D8793AD00ED2735 /* XXDHotTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHotTradeViewController.h; sourceTree = "<group>"; };
@@ -732,6 +736,9 @@
 				69B89A731D80009E009875E1 /* XXDPushViewController.m */,
 				69B1C6161D7E64FF000CA633 /* XXDLiveImage.h */,
 				69B1C6171D7E64FF000CA633 /* XXDLiveImage.m */,
+				69C1058C1D936E8A00F4D3AE /* PopViewControllerDelegate.h */,
+				69C1058D1D93852F00F4D3AE /* XXDCustomNavigation.h */,
+				69C1058E1D93852F00F4D3AE /* XXDCustomNavigation.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1005,6 +1012,7 @@
 				3B6F5F321D7FDAF00058D2DE /* XXDSearchViewController.m in Sources */,
 				3B355B721D80F8F1008C8376 /* XXDMyAccountInfoVC.m in Sources */,
 				3B7B3E8B1D7EAF01003DBF06 /* XXDActivityTableViewCell.m in Sources */,
+				69C1058F1D93852F00F4D3AE /* XXDCustomNavigation.m in Sources */,
 				3B7B3E6E1D7E5632003DBF06 /* ProfitSkillViewController.m in Sources */,
 				697D76701D782939008D7C94 /* XXDTradeViewController.m in Sources */,
 				69B1C6111D7E4FE8000CA633 /* XXDLiveView.m in Sources */,
@@ -1093,7 +1101,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1134,7 +1142,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1152,6 +1160,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = VRQSU9ZYT4;
 				INFOPLIST_FILE = XXD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xinxidu.XXDs;
@@ -1173,6 +1182,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = VRQSU9ZYT4;
 				INFOPLIST_FILE = XXD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xinxidu.XXDs;

@@ -19,17 +19,17 @@
         [self.contentView addSubview:leftImageView];
         
         //详情
-        UILabel *detailTextView = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftImageView.frame)+10, 10, width-CGRectGetMaxX(leftImageView.frame)-22, 40)];
+        UILabel *detailTextView = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftImageView.frame)+10, 10, width-CGRectGetMaxX(leftImageView.frame)-22, 38)];
         detailTextView.font = [UIFont systemFontOfSize:14.0f];
         detailTextView.numberOfLines=2;
         detailTextView.textAlignment=NSTextAlignmentLeft;
-        detailTextView.textColor = [UIColor blackColor];
+        detailTextView.textColor = [UIColor darkGrayColor];
         detailTextView.text = jinYinNiuPing.detailString;
         [self.contentView addSubview:detailTextView];
         
         //日期
         CGFloat dateLabelWidth =  (width-CGRectGetMaxX(leftImageView.frame)-10)/2.0;
-        UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftImageView.frame) + dateLabelWidth, CGRectGetMaxY(detailTextView.frame), dateLabelWidth, 10)];
+        UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftImageView.frame)+10, CGRectGetMaxY(detailTextView.frame), dateLabelWidth, 12)];
         dateLabel.font = [UIFont systemFontOfSize:10.0];
         dateLabel.textColor = [UIColor lightGrayColor];
         dateLabel.text = jinYinNiuPing.dateString;
