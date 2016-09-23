@@ -64,7 +64,6 @@
 -(void)createHeaderView{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _islogin = [defaults boolForKey:@"isLogin"];
-    NSLog(@"create:%d",_islogin);
     _hearerView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 120)];
     _hearerView.backgroundColor = [UIColor colorWithRed:224/255.0 green:240/255.0 blue:253/255.0 alpha:1.0];
     [self.view addSubview:_hearerView];
@@ -153,7 +152,6 @@
 }
 //退出登录按钮事件
 -(void)exitLoginClick:(UIButton*)sender{
-    NSLog(@"退出登录");
     _islogin = NO;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:NO forKey:@"isLogin"];
