@@ -20,12 +20,12 @@
         for (NSInteger i = 0; i<6; i++) {
             CGFloat x = 0,y = 0,w = 0,h = 0;
             switch (i) {
-                case 0:
-                case 1:     x = width*0.2*i+15,y=0,w=width*0.2,h=48;       break;
-                case 2:     x = width*0.4+15,y=4,w=width*0.2,h=20;       break;
-                case 3:     x = width*0.4+15,y=24,w=width*0.2,h=20;       break;
-                case 4:     x = width*0.6+15,y=0,w=width*0.2-15,h=48;       break;
-                case 5:     x = width*0.8,y=0,w=width*0.2,h=48;       break;
+                case 0:     x = 15, y=0, w=width*0.2, h=50;       break;
+                case 1:     w = (width*0.8-30)/4.0, x = 15+width*0.2, y =0, h=50;   break;
+                case 2:     w = (width*0.8-30)/4.0, x = 15+width*0.2+w, y =7, h=18;       break;
+                case 3:     w = (width*0.8-30)/4.0, x = 15+width*0.2+w, y =25, h=18;       break;
+                case 4:
+                case 5:    w = (width*0.8-30)/4.0, x = 15+width*0.2+w*(i-2), y =0, h=50;       break;
             }
             XXDHotTradeLabel *hotTradeLabel = [[XXDHotTradeLabel alloc] initWithFrame:CGRectMake(x, y, w, h) text:labelStringArray[i] changeValue:[hotTrade.changeValue doubleValue]];
             if (i == 0) {  hotTradeLabel.textAlignment = NSTextAlignmentLeft; hotTradeLabel.numberOfLines=2; }
