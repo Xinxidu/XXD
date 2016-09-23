@@ -7,6 +7,7 @@
 //
 
 #import "XXDRegisterSecondViewController.h"
+#import "XXDLoginViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 @interface XXDRegisterSecondViewController ()
 @property (nonatomic,strong)UITextField *nickNameTextfield;
@@ -26,7 +27,7 @@
 }
 -(void)createUI{
     //手机号
-    UIView *phoneView = [[UIView alloc]initWithFrame:CGRectMake(0, 5+64, WIDTH, 40)];
+    UIView *phoneView = [[UIView alloc]initWithFrame:CGRectMake(0, 10+64, WIDTH, 40)];
     phoneView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:phoneView];
     
@@ -63,16 +64,28 @@
     [codeView addSubview:_pwdTextfield];
     
     UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    submitButton.frame = CGRectMake(10, CGRectGetMaxY(codeView.frame)+10, WIDTH-20, 40);
+    submitButton.frame = CGRectMake(20, CGRectGetMaxY(codeView.frame)+20, WIDTH-40, 40);
     [submitButton setTitle:@"提交" forState:UIControlStateNormal];
     [submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    submitButton.backgroundColor = [UIColor colorWithRed:216/255.0 green:154/255.0 blue:72/255.0 alpha:1.0];
+    submitButton.backgroundColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
     [submitButton addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
+    submitButton.layer.cornerRadius = 20;
+    submitButton.layer.masksToBounds = YES;
+    CALayer *layer = [CALayer layer];
+    layer.frame = CGRectMake(20, CGRectGetMaxY(codeView.frame)+20, WIDTH-40, 40);
+    layer.backgroundColor = [UIColor blueColor].CGColor;
+    layer.shadowOffset = CGSizeMake(2, 2);
+    layer.shadowOpacity = 0.8;
+    layer.cornerRadius = 20;
+    [self.view.layer addSublayer:layer];
     [self.view addSubview:submitButton];
     
 }
 -(void)submitClick{
     NSLog(@"提交");
+    [self.navigationController pushViewController:[[XXDLoginViewController alloc]init] animated:YES];
+    NSUserDefaults *us = [NSUserDefaults standardUserDefaults];
+    [us setBool:YES forKey:@"isLogin"];
 }
 #pragma mark -返回按钮点击
 - (void)backBtnClick{

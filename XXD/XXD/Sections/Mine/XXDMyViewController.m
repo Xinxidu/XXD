@@ -13,11 +13,21 @@
 #import "XXDMyFirmAccountVC.h"
 #import "XXDRegisterViewController.h"
 #import "XXDLoginViewController.h"
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
 
 @interface XXDMyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UIView *hearerView;
 @property (strong,nonatomic) UIWebView *phoneCallWebView;
+@property (strong,nonatomic) UILabel *statusLabel;//登录状态显示
+@property (strong,nonatomic) UIButton *exitLoginButton;//退出登录按钮
+@property (strong,nonatomic) UIButton *registerButton;//注册按钮
+@property (strong,nonatomic) UIButton *loginButton;//登录按钮
+@property (assign,nonatomic) BOOL islogin;//判断是否登录
+@property (strong,nonatomic) CALayer *layer;//
+@property (strong,nonatomic) CALayer *layer1;//
+@property (strong,nonatomic) CALayer *layer2;//
 @end
 
 @implementation XXDMyViewController
@@ -31,8 +41,30 @@
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _islogin = [defaults boolForKey:@"isLogin"];
+    if (_islogin == YES) {
+        _registerButton.hidden = YES;
+        _layer.hidden = YES;
+        _loginButton.hidden = YES;
+        _layer1.hidden = YES;
+        _statusLabel.text = @"已登录";
+        _exitLoginButton.hidden = NO;
+        _layer2.hidden = NO;
+    }else{
+        _registerButton.hidden = NO;
+        _layer.hidden = NO;
+        _loginButton.hidden = NO;
+        _layer1.hidden = NO;
+        _statusLabel.text = @"未登录";
+        _exitLoginButton.hidden = YES;
+        _layer2.hidden = YES;
+    }
 }
 -(void)createHeaderView{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _islogin = [defaults boolForKey:@"isLogin"];
+    NSLog(@"create:%d",_islogin);
     _hearerView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 120)];
     _hearerView.backgroundColor = [UIColor colorWithRed:224/255.0 green:240/255.0 blue:253/255.0 alpha:1.0];
     [self.view addSubview:_hearerView];
@@ -43,43 +75,69 @@
     headpicImageView.layer.masksToBounds = YES;
     [_hearerView addSubview:headpicImageView];
     //登录状态显示
-    UILabel *statusLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(headpicImageView.frame)+10, 60, 60, 20)];
-    statusLabel.text = @"未登录";
-    statusLabel.textColor = [UIColor blackColor];
-    [_hearerView addSubview:statusLabel];
+    _statusLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(headpicImageView.frame)+10, 60, 60, 20)];
+    _statusLabel.text = @"未登录";
+    if (_islogin == YES) {
+        _statusLabel.text = @"已登录";
+    }
+    _statusLabel.textColor = [UIColor blackColor];
+    [_hearerView addSubview:_statusLabel];
     //注册按钮
-    UIButton *registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    registerButton.frame = CGRectMake(CGRectGetMaxX(statusLabel.frame)+55, 55, 60, 30) ;
-    [registerButton setTitle:@"注册" forState:UIControlStateNormal];
-    registerButton.backgroundColor = [UIColor colorWithRed:249/255.0 green:14/255.0 blue:27/255.0 alpha:1.0];
-    registerButton.layer.cornerRadius = 15;
-    registerButton.layer.masksToBounds = YES;
-    CALayer *layer = [CALayer layer];
-    layer.frame = CGRectMake(CGRectGetMaxX(statusLabel.frame)+55, 55, 60, 30);
-    layer.backgroundColor = [UIColor redColor].CGColor;
-    layer.shadowOffset = CGSizeMake(2, 2);
-    layer.shadowOpacity = 0.8;
-    layer.cornerRadius = 15;
-    [_hearerView.layer addSublayer:layer];
-    [registerButton addTarget:self action:@selector(registerClick:) forControlEvents:UIControlEventTouchUpInside];
-    [_hearerView addSubview:registerButton];
+    _registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _registerButton.frame = CGRectMake(CGRectGetMaxX(_statusLabel.frame)+55, 55, 60, 30) ;
+    [_registerButton setTitle:@"注册" forState:UIControlStateNormal];
+    _registerButton.backgroundColor = [UIColor colorWithRed:249/255.0 green:14/255.0 blue:27/255.0 alpha:1.0];
+    _registerButton.layer.cornerRadius = 15;
+    _registerButton.layer.masksToBounds = YES;
+    _layer = [CALayer layer];
+    _layer.frame = CGRectMake(CGRectGetMaxX(_statusLabel.frame)+55, 55, 60, 30);
+    _layer.backgroundColor = [UIColor redColor].CGColor;
+    _layer.shadowOffset = CGSizeMake(2, 2);
+    _layer.shadowOpacity = 0.8;
+    _layer.cornerRadius = 15;
+    [_hearerView.layer addSublayer:_layer];
+    [_registerButton addTarget:self action:@selector(registerClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_hearerView addSubview:_registerButton];
     
     //登录按钮
-    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    loginButton.frame = CGRectMake(CGRectGetMaxX(registerButton.frame)+10, 55, 60, 30) ;
-    [loginButton setTitle:@"登录" forState:UIControlStateNormal];
-    loginButton.backgroundColor = [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1.0];
-    loginButton.layer.cornerRadius = 15;
-    loginButton.layer.masksToBounds = YES;
-    CALayer *layer1 = [CALayer layer];
-    layer1.frame = CGRectMake(CGRectGetMaxX(registerButton.frame)+10, 55, 60, 30);
-    layer1.backgroundColor = [UIColor greenColor].CGColor;
-    layer1.shadowOffset = CGSizeMake(2, 2);
-    layer1.shadowOpacity = 0.8;
-    layer1.cornerRadius = 15;
-    [_hearerView.layer addSublayer:layer1];
-    [loginButton addTarget:self action:@selector(loginClick:) forControlEvents:UIControlEventTouchUpInside];
-    [_hearerView addSubview:loginButton];
+    _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _loginButton.frame = CGRectMake(CGRectGetMaxX(_registerButton.frame)+10, 55, 60, 30) ;
+    [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
+    _loginButton.backgroundColor = [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1.0];
+    _loginButton.layer.cornerRadius = 15;
+    _loginButton.layer.masksToBounds = YES;
+    _layer1 = [CALayer layer];
+    _layer1.frame = CGRectMake(CGRectGetMaxX(_registerButton.frame)+10, 55, 60, 30);
+    _layer1.backgroundColor = [UIColor greenColor].CGColor;
+    _layer1.shadowOffset = CGSizeMake(2, 2);
+    _layer1.shadowOpacity = 0.8;
+    _layer1.cornerRadius = 15;
+    [_hearerView.layer addSublayer:_layer1];
+    [_loginButton addTarget:self action:@selector(loginClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_hearerView addSubview:_loginButton];
+        //退出登录按钮
+        _exitLoginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _exitLoginButton.frame = CGRectMake(WIDTH-110, 55, 100, 30);
+        [_exitLoginButton setTitle:@"退出登录" forState:UIControlStateNormal];
+        _exitLoginButton.backgroundColor = [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1.0];
+        _exitLoginButton.layer.cornerRadius = 15;
+        _exitLoginButton.layer.masksToBounds = YES;
+        _layer2 = [CALayer layer];
+        _layer2.frame = CGRectMake(WIDTH-110, 55, 100, 30);
+        _layer2.backgroundColor = [UIColor greenColor].CGColor;
+        _layer2.shadowOffset = CGSizeMake(2, 2);
+        _layer2.shadowOpacity = 0.8;
+        _layer2.cornerRadius = 15;
+        [_hearerView.layer addSublayer:_layer2];
+        [_exitLoginButton addTarget:self action:@selector(exitLoginClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_hearerView addSubview:_exitLoginButton];
+    //已登录状态下视图
+    if (_islogin == YES) {
+        _registerButton.hidden = YES;
+        _layer.hidden = YES;
+        _loginButton.hidden = YES;
+        _layer1.hidden = YES;
+    }
 }
 //注册按钮事件
 -(void)registerClick:(UIButton*)sender{
@@ -92,6 +150,20 @@
     self.hidesBottomBarWhenPushed = YES;
     [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDLoginViewController alloc]init]];
     self.hidesBottomBarWhenPushed = NO;
+}
+//退出登录按钮事件
+-(void)exitLoginClick:(UIButton*)sender{
+    NSLog(@"退出登录");
+    _islogin = NO;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:NO forKey:@"isLogin"];
+    _exitLoginButton.hidden = YES;
+    _layer2.hidden = YES;
+    _registerButton.hidden = NO;
+    _layer.hidden = NO;
+    _loginButton.hidden = NO;
+    _layer1.hidden = NO;
+    _statusLabel.text = @"未登录";
 }
 -(void)createTableView{
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_hearerView.frame), self.view.bounds.size.width, self.view.bounds.size.height-44)];
