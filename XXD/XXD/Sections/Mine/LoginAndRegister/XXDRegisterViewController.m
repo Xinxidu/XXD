@@ -29,7 +29,7 @@
 }
 -(void)createUI{
     //手机号
-    UIView *phoneView = [[UIView alloc]initWithFrame:CGRectMake(0, 5+64, WIDTH, 40)];
+    UIView *phoneView = [[UIView alloc]initWithFrame:CGRectMake(0, 10+64, WIDTH, 40)];
     phoneView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:phoneView];
     
@@ -51,25 +51,34 @@
     
     UIButton *codeButton = [UIButton buttonWithType:UIButtonTypeSystem];
     codeButton.frame = CGRectMake(WIDTH-80-10, 10, 80, 20);
-    [codeButton setTitle:@"发送验证码" forState:UIControlStateNormal];
+    [codeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
     [codeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     codeButton.titleLabel.font = [UIFont systemFontOfSize:13.0];
-    codeButton.backgroundColor = [UIColor grayColor];
+    codeButton.backgroundColor = [UIColor colorWithRed:249/255.0 green:14/255.0 blue:27/255.0 alpha:1.0];
     codeButton.layer.cornerRadius = 4;
     codeButton.layer.masksToBounds = YES;
     [codeView addSubview:codeButton];
     
     _codeTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(codeLabel.frame)+5, 8, WIDTH-60-20-80, 30)];
-    _codeTextfield.placeholder = @"4位短信验证码";
+    _codeTextfield.placeholder = @"请输入短信验证码";
     [_codeTextfield setValue:[UIFont boldSystemFontOfSize:13.0] forKeyPath:@"_placeholderLabel.font"];
     [codeView addSubview:_codeTextfield];
     
     UIButton *nextStepButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    nextStepButton.frame = CGRectMake(10, CGRectGetMaxY(codeView.frame)+10, WIDTH-20, 40);
+    nextStepButton.frame = CGRectMake(20, CGRectGetMaxY(codeView.frame)+20, WIDTH-40, 40);
     [nextStepButton setTitle:@"下一步" forState:UIControlStateNormal];
     [nextStepButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    nextStepButton.backgroundColor = [UIColor colorWithRed:216/255.0 green:154/255.0 blue:72/255.0 alpha:1.0];
+    nextStepButton.backgroundColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
     [nextStepButton addTarget:self action:@selector(nextStepClick) forControlEvents:UIControlEventTouchUpInside];
+    nextStepButton.layer.cornerRadius = 20;
+    nextStepButton.layer.masksToBounds = YES;
+    CALayer *layer = [CALayer layer];
+    layer.frame = CGRectMake(20, CGRectGetMaxY(codeView.frame)+20, WIDTH-40, 40);
+    layer.backgroundColor = [UIColor blueColor].CGColor;
+    layer.shadowOffset = CGSizeMake(2, 2);
+    layer.shadowOpacity = 0.8;
+    layer.cornerRadius = 20;
+    [self.view.layer addSublayer:layer];
     [self.view addSubview:nextStepButton];
     
 }
