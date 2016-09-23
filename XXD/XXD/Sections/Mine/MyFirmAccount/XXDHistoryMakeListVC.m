@@ -49,17 +49,18 @@
         [topView addSubview:dateTextLabel];
         
         _dateTextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _dateTextButton.frame = CGRectMake((self.view.bounds.size.width-240)/3+((self.view.bounds.size.width-240)/3+120)*i, CGRectGetMaxY(dateTextLabel.frame), 120, 40);
+        _dateTextButton.frame = CGRectMake((self.view.bounds.size.width-240)/3+((self.view.bounds.size.width-240)/3+120)*i, CGRectGetMaxY(dateTextLabel.frame), 120, 30);
         [_dateTextButton setTitle:datePlaceholderText[i] forState:UIControlStateNormal];
         [_dateTextButton setTitleColor:[UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
         _dateTextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         _dateTextButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
         _dateTextButton.layer.borderWidth = 0.5;
         _dateTextButton.layer.borderColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0].CGColor;
-        _dateTextButton.layer.cornerRadius = 20;
+        _dateTextButton.layer.cornerRadius = 15;
         _dateTextButton.layer.masksToBounds = YES;
         [_dateTextButton addTarget:self action:@selector(calendarClick:) forControlEvents:UIControlEventTouchUpInside];
         _dateTextButton.tag = 100+i;
+        _dateTextButton.backgroundColor = [UIColor whiteColor];
         [dateButtonArray addObject:_dateTextButton];
         [topView addSubview:_dateTextButton];
     }
