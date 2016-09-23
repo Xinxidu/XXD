@@ -8,8 +8,10 @@
 
 #import "XXDTradeViewController.h"
 #import "AuthcodeView.h"
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
 
-@interface XXDTradeViewController ()<UITextFieldDelegate>
+@interface XXDTradeViewController ()<UITextFieldDelegate,UIScrollViewDelegate>
 @property (strong,nonatomic) UISegmentedControl *segmentControl;//实盘，模拟盘切换
 @property (strong,nonatomic) UIView *topView;
 @property (strong,nonatomic) UITextField *accountTextField;//账号
@@ -19,6 +21,7 @@
 @property (strong,nonatomic) UIButton *loginBtn;//登录
 @property (strong,nonatomic) UIButton *kaihuBtn;//去开户
 @property (strong,nonatomic)AuthcodeView *authCodeView;//动态验证码
+@property (strong,nonatomic)UIScrollView *scrollView;//动态验证码
 @end
 
 @implementation XXDTradeViewController
@@ -29,6 +32,14 @@
     self.navigationItem.title = @"交易";
     _array = [NSMutableArray array];
     [self createUI];
+}
+-(void)createScrollView{
+    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 40)];
+    _scrollView.contentSize = CGSizeMake(WIDTH*2, HEIGHT-64);
+    _scrollView.delegate = self;
+    _scrollView.pagingEnabled = YES;
+    _scrollView.bounces = NO;
+    [self.view addSubview:_scrollView];
 }
 -(void)createUI{
     _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 40)];
