@@ -7,7 +7,6 @@
 //
 
 #import "XXDHomeViewController.h"
-#import "SDCycleScrollView.h"
 #import "UIButton+XXD.h"
 #import "XXDLiveView.h"
 #import "XXDLiveImage.h"
@@ -33,9 +32,12 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     XXDButtonTypeFinanceCalendar    //财经日历
 };
 
-@interface XXDHomeViewController ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,PopViewControllerDelegate>
+@interface XXDHomeViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,PopViewControllerDelegate>
 @property (strong,nonatomic) UIScrollView *rootScrollView;  //根视图
-@property (strong,nonatomic) SDCycleScrollView *cycleScrollView;    //顶部滚动视图
+@property (strong,nonatomic) UIScrollView *topScrollView;   //顶部滚动视图
+@property (strong,nonatomic) UIPageControl *pageControl;    //页码
+@property (strong,nonatomic) NSTimer *timer;    //定时器
+@property (assign,nonatomic) CGFloat scrollViewWidth;   //顶部滚动视图的宽度
 @property (strong,nonatomic) UIView *topBgView;     //顶部四个按钮的背景
 @property (strong,nonatomic) UIView *verticalLine;    //垂直线1
 @property (strong,nonatomic) UIView *openAccountView;   //开户
@@ -51,6 +53,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%f",WIDTH);
     self.navigationItem.title = @"银大师";
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
     self.navigationController.navigationBar.shadowImage=[UIImage new];
@@ -93,20 +96,74 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
                                   @"http://www.bz55.com/uploads/allimg/150208/139-15020P92501.jpg",
                                   @"http://www.bz55.com/uploads/allimg/130520/1-1305200S957.jpg"
                                   ];
-    // 创建滚动视图
-    self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, WIDTH, 166) shouldInfiniteLoop:YES imageNamesGroup:imagesURLStrings];
-    self.cycleScrollView.delegate = self;
-    self.cycleScrollView.autoScrollTimeInterval = 6;
-    self.cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
-    [self.rootScrollView addSubview:self.cycleScrollView];
-    //--- 模拟加载延迟
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.cycleScrollView.imageURLStringsGroup = imagesURLStrings;
-    });
+    //初始化scrollView
+    CGFloat scrollViewHeight = 166;
+    self.topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, scrollViewHeight)];
+    self.scrollViewWidth = self.topScrollView.bounds.size.width;
+    self.topScrollView.contentSize = CGSizeMake(self.scrollViewWidth*imagesURLStrings.count, 100);
+    self.topScrollView.showsHorizontalScrollIndicator = NO;
+    self.topScrollView.pagingEnabled = YES;
+    self.topScrollView.bounces = NO;
+    self.topScrollView.delegate = self;
+    [self.rootScrollView addSubview:self.topScrollView];
+    //添加4张图片
+    for (NSInteger i = 0; i<imagesURLStrings.count; i++) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.scrollViewWidth*i, 0, self.scrollViewWidth, scrollViewHeight)];
+        NSData * imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagesURLStrings[i]]];
+        imageView.image = [UIImage imageWithData:imageData];
+        imageView.userInteractionEnabled = YES;
+        imageView.tag = i;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewClick:)];
+        [imageView addGestureRecognizer:tap];
+        [self.topScrollView addSubview:imageView];
+    }
+    //初始化pageControl
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(self.scrollViewWidth*0.5-50, scrollViewHeight-15, 100, 10)];
+    self.pageControl.numberOfPages = imagesURLStrings.count;
+    self.pageControl.pageIndicatorTintColor = [UIColor whiteColor];
+    self.pageControl.currentPageIndicatorTintColor = [UIColor darkGrayColor];
+    [self.rootScrollView addSubview:self.pageControl];
+    //启动定时器
+    [self addTimer];
+}
+#pragma mark 启动定时器
+- (void)addTimer{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
+}
+#pragma mark 下一张图片
+- (void)nextImage{
+    NSInteger page = self.pageControl.currentPage;
+    if (page == 3) {
+        page = 0;
+    }else{
+        page++;
+    }
+    //设置scrollView的偏移量
+    [self.topScrollView setContentOffset:CGPointMake(page*self.scrollViewWidth, 0) animated:YES];
+}
+#pragma mark scrollView滚动时的代理
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    //设置pageControl的页码
+    NSInteger page = (self.topScrollView.contentOffset.x+self.scrollViewWidth/2.0)/self.scrollViewWidth;
+    self.pageControl.currentPage = page;
+}
+#pragma mark 开始拖拽scrollView的代理
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    //关闭定时器
+    [self.timer invalidate];
+}
+#pragma mark 结束拖拽scrollView的代理
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    //启动定时器
+    [self addTimer];
+}
+#pragma mark 滚轮视图图片点击事件
+- (void)imageViewClick:(UITapGestureRecognizer *)sender{
+    NSLog(@"%ld",sender.view.tag);
 }
 #pragma mark 创建顶部4个按钮
 - (void)creatButtions{
-    self.topBgView  = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.cycleScrollView.frame), WIDTH, WIDTH/5.1)];
+    self.topBgView  = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.topScrollView.frame), WIDTH, WIDTH/5.1)];
     self.topBgView.backgroundColor = [UIColor whiteColor];
     [self.rootScrollView addSubview:self.topBgView];
     NSArray *imageArray = @[@"icon_message_pressed",@"icon_message_pressed",@"icon_message_pressed",@"icon_message_pressed"];
@@ -128,10 +185,6 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH/5.1-1, WIDTH, 1)];
     horizontal.backgroundColor = GRAYCOLOR;
     [self.topBgView addSubview:horizontal];
-}
-#pragma mark - SDCycleScrollViewDelegate
-- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-    NSLog(@"---点击了第%ld张图片", (long)index);
 }
 #pragma mark 顶部按钮的点击事件
 - (void)buttonClick:(UIButton*)sender {
