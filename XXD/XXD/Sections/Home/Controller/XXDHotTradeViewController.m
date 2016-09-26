@@ -35,7 +35,7 @@
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, 35)];
     bgView.backgroundColor = [UIColor colorWithRed:245/255.0 green:246/255.0 blue:247/255.0 alpha:1];
     [self.view addSubview:bgView];
-    NSArray *titleArray = @[@"商品",@"最新",@"买1/卖1",@"涨跌值v",@"成交量"];
+    NSArray *titleArray = @[@"商品",@"最新",@"买1/卖1",@"涨跌值",@"成交量"];
     self.menuArray1 = @[@"涨跌幅",@"振幅",@"涨跌值"];
     self.menuArray2 = @[@"成交量",@"最高",@"最低",@"开盘",@"昨收",@"昨结",@"现量",@"持货量",@"成交额"];
     for (NSInteger i = 0; i<5; i++) {
@@ -59,6 +59,7 @@
             [dropDownButton setTitle:titleArray[i] forState:UIControlStateNormal] ;
             [dropDownButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             dropDownButton.titleLabel.font = [UIFont systemFontOfSize:12.0f];
+            dropDownButton.titleEdgeInsets = UIEdgeInsetsMake(11.5,0,11.5,(WIDTH*0.8 - 30)/4.0-48);
             dropDownButton.tag = i;
             [dropDownButton addTarget:self action:@selector(menuClick:) forControlEvents:UIControlEventTouchUpInside];
             [bgView addSubview:dropDownButton];

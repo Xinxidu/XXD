@@ -42,7 +42,6 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"gerenxinxi"] style:UIBarButtonItemStylePlain target:self action:@selector(leftChangeItemClick)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"🔍" style:UIBarButtonItemStylePlain target:self action:@selector(searchButtonClick)];
     self.title = @"行情";
-    NSInteger i = 0;
     _dataArray = [[NSMutableArray alloc]init];
     [self createScrollView];
     [self createNameButtonData];
