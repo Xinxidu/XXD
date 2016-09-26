@@ -8,6 +8,8 @@
 
 #import "XXDMainTabController.h"
 #import "XXDAppDelegate.h"
+#import "FirmLoginViewController.h"
+#import "firmBargainViewController.h"
 
 #define TabbarVC    @"vc"
 #define TabbarTitle @"title"
@@ -63,7 +65,11 @@ typedef NS_ENUM(NSInteger,XXDMainTabType) {
     }];
     self.viewControllers = [NSArray arrayWithArray:vcArray];
 }
-
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    if (item.tag ==2 ) {
+        NSLog(@"22222");
+    }
+}
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
@@ -75,8 +81,8 @@ typedef NS_ENUM(NSInteger,XXDMainTabType) {
                      @(XXDMainTabTypeHome) : @{
                              TabbarVC           : @"XXDHomeViewController",
                              TabbarTitle        : @"首页",
-                             TabbarImage        : @"icon_message_normal",
-                             TabbarSelectedImage: @"icon_message_pressed",
+                             TabbarImage        : @"tabbar_economicCalendarHL",
+                             TabbarSelectedImage: @"tabbar_economicCalendarHL",
                              }
                      ,@(XXDMainTabTypeMarket)     : @{
                              TabbarVC           : @"XXDMarketViewController",
