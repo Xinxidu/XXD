@@ -21,9 +21,14 @@
     self.view.backgroundColor=[UIColor whiteColor];
     self.title=@"我的活动";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"筛选" style:UIBarButtonItemStylePlain target:self action:@selector(searchButtonClick)];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     [self createTableView];
+}
+-(void)searchButtonClick{
+    
 }
 -(void)createTableView{
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
@@ -35,7 +40,7 @@
     [self.view addSubview:_tableView];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return 3;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -47,9 +52,17 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor whiteColor];
-    if (!(indexPath.section%2 == 0)) {
-        cell.cicleImageView.backgroundColor = [UIColor grayColor];
-        cell.activityStatusLabel.backgroundColor = [UIColor grayColor];
+    if ((indexPath.section == 0)) {
+        cell.cicleImageView.image = [UIImage imageNamed:@"be"];
+        cell.activityStatusLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"beBg"]];
+        cell.activityStatusLabel.text = @"进行中";
+    }else if (indexPath.section == 1){
+        cell.cicleImageView.image = [UIImage imageNamed:@"join"];
+        cell.activityStatusLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"joinBg"]];
+        cell.activityStatusLabel.text = @"已参与";
+    }else{
+        cell.cicleImageView.image = [UIImage imageNamed:@"end"];
+        cell.activityStatusLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"endBg"]];
         cell.activityStatusLabel.text = @"已结束";
     }
     return cell;

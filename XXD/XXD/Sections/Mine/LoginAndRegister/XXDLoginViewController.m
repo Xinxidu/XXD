@@ -46,7 +46,7 @@
     _userNameTxt.layer.masksToBounds = YES;
     _userNameTxt.placeholder=@"请输入您的用户名";
     _userNameTxt.backgroundColor = [UIColor whiteColor];
-    _userNameTxt.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gerenxinxi"]];
+    _userNameTxt.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"用户名"]];
     _userNameTxt.leftViewMode=UITextFieldViewModeAlways;
     _userNameTxt.tag=100;
     _userNameTxt.clearButtonMode = UITextFieldViewModeAlways;
@@ -62,7 +62,7 @@
     _pwdTxt.layer.masksToBounds = YES;
     _pwdTxt.placeholder=@"请输入您的密码";
     _pwdTxt.backgroundColor = [UIColor whiteColor];
-    _pwdTxt.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gerenxinxi"]];
+    _pwdTxt.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon2"]];
     _pwdTxt.leftViewMode=UITextFieldViewModeAlways;
     _pwdTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _pwdTxt.tag=101;
