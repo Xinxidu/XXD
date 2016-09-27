@@ -51,6 +51,6 @@
     _timeLable.text = model.timeString;
     _textLable.text = [NSString stringWithFormat:@"编者语:%@",model.textString];
     _Id = model.IdString;
-    _litpicimageView.image = [UIImage imageNamed:model.LitpicString];
+    _litpicimageView.image = [UIImage imageNamed:@"img4"];
 }
 @end

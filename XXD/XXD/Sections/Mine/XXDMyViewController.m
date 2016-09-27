@@ -15,6 +15,7 @@
 #import "XXDLoginViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
+#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
 
 @interface XXDMyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
@@ -25,9 +26,6 @@
 @property (strong,nonatomic) UIButton *registerButton;//注册按钮
 @property (strong,nonatomic) UIButton *loginButton;//登录按钮
 @property (assign,nonatomic) BOOL islogin;//判断是否登录
-@property (strong,nonatomic) CALayer *layer;//
-@property (strong,nonatomic) CALayer *layer1;//
-@property (strong,nonatomic) CALayer *layer2;//
 @end
 
 @implementation XXDMyViewController
@@ -39,26 +37,21 @@
     [self createTableView];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    self.navigationController.navigationBar.barTintColor = BLUECOLOR;
+    self.navigationController.tabBarController.tabBar.hidden = NO;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _islogin = [defaults boolForKey:@"isLogin"];
     if (_islogin == YES) {
         _registerButton.hidden = YES;
-        _layer.hidden = YES;
         _loginButton.hidden = YES;
-        _layer1.hidden = YES;
         _statusLabel.text = @"已登录";
         _exitLoginButton.hidden = NO;
-        _layer2.hidden = NO;
     }else{
         _registerButton.hidden = NO;
-        _layer.hidden = NO;
         _loginButton.hidden = NO;
-        _layer1.hidden = NO;
         _statusLabel.text = @"未登录";
         _exitLoginButton.hidden = YES;
-        _layer2.hidden = YES;
     }
 }
 -(void)createHeaderView{
@@ -67,14 +60,18 @@
     _hearerView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 120)];
     _hearerView.backgroundColor = [UIColor colorWithRed:224/255.0 green:240/255.0 blue:253/255.0 alpha:1.0];
     [self.view addSubview:_hearerView];
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_hearerView.frame), WIDTH, 0.5)];
+    lineView.backgroundColor = BLUECOLOR;
+    [self.view addSubview:lineView];
     //头像
-    UIImageView *headpicImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 50, 40, 40)];
+    UIImageView *headpicImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 40, 40, 40)];
     headpicImageView.backgroundColor = [UIColor grayColor];
     headpicImageView.layer.cornerRadius = 5;
     headpicImageView.layer.masksToBounds = YES;
+    headpicImageView.image = [UIImage imageNamed:@"head"];
     [_hearerView addSubview:headpicImageView];
     //登录状态显示
-    _statusLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(headpicImageView.frame)+10, 60, 60, 20)];
+    _statusLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(headpicImageView.frame)+10, 50, 60, 20)];
     _statusLabel.text = @"未登录";
     if (_islogin == YES) {
         _statusLabel.text = @"已登录";
@@ -83,59 +80,35 @@
     [_hearerView addSubview:_statusLabel];
     //注册按钮
     _registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _registerButton.frame = CGRectMake(CGRectGetMaxX(_statusLabel.frame)+55, 55, 60, 30) ;
+    _registerButton.frame = CGRectMake(CGRectGetMaxX(_statusLabel.frame)+40, (120-41)/2, 70, 41) ;
     [_registerButton setTitle:@"注册" forState:UIControlStateNormal];
-    _registerButton.backgroundColor = [UIColor colorWithRed:249/255.0 green:14/255.0 blue:27/255.0 alpha:1.0];
-    _registerButton.layer.cornerRadius = 15;
-    _registerButton.layer.masksToBounds = YES;
-    _layer = [CALayer layer];
-    _layer.frame = CGRectMake(CGRectGetMaxX(_statusLabel.frame)+55, 55, 60, 30);
-    _layer.backgroundColor = [UIColor redColor].CGColor;
-    _layer.shadowOffset = CGSizeMake(2, 2);
-    _layer.shadowOpacity = 0.8;
-    _layer.cornerRadius = 15;
-    [_hearerView.layer addSublayer:_layer];
+    _registerButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    [_registerButton setBackgroundImage:[UIImage imageNamed:@"mybtn1"] forState:UIControlStateNormal];
     [_registerButton addTarget:self action:@selector(registerClick:) forControlEvents:UIControlEventTouchUpInside];
     [_hearerView addSubview:_registerButton];
     
     //登录按钮
     _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _loginButton.frame = CGRectMake(CGRectGetMaxX(_registerButton.frame)+10, 55, 60, 30) ;
+    _loginButton.frame = CGRectMake(CGRectGetMaxX(_registerButton.frame), (120-41)/2, 70, 41) ;
     [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
-    _loginButton.backgroundColor = [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1.0];
-    _loginButton.layer.cornerRadius = 15;
-    _loginButton.layer.masksToBounds = YES;
-    _layer1 = [CALayer layer];
-    _layer1.frame = CGRectMake(CGRectGetMaxX(_registerButton.frame)+10, 55, 60, 30);
-    _layer1.backgroundColor = [UIColor greenColor].CGColor;
-    _layer1.shadowOffset = CGSizeMake(2, 2);
-    _layer1.shadowOpacity = 0.8;
-    _layer1.cornerRadius = 15;
-    [_hearerView.layer addSublayer:_layer1];
+    _loginButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    _loginButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    [_loginButton setBackgroundImage:[UIImage imageNamed:@"mybtn2"] forState:UIControlStateNormal];
     [_loginButton addTarget:self action:@selector(loginClick:) forControlEvents:UIControlEventTouchUpInside];
     [_hearerView addSubview:_loginButton];
         //退出登录按钮
         _exitLoginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _exitLoginButton.frame = CGRectMake(WIDTH-110, 55, 100, 30);
+        _exitLoginButton.frame = CGRectMake(WIDTH-125, (120-41)/2, 110, 41);
         [_exitLoginButton setTitle:@"退出登录" forState:UIControlStateNormal];
-        _exitLoginButton.backgroundColor = [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1.0];
-        _exitLoginButton.layer.cornerRadius = 15;
-        _exitLoginButton.layer.masksToBounds = YES;
-        _layer2 = [CALayer layer];
-        _layer2.frame = CGRectMake(WIDTH-110, 55, 100, 30);
-        _layer2.backgroundColor = [UIColor greenColor].CGColor;
-        _layer2.shadowOffset = CGSizeMake(2, 2);
-        _layer2.shadowOpacity = 0.8;
-        _layer2.cornerRadius = 15;
-        [_hearerView.layer addSublayer:_layer2];
+        _exitLoginButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
+        _exitLoginButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        [_exitLoginButton setBackgroundImage:[UIImage imageNamed:@"mybtn3"] forState:UIControlStateNormal];
         [_exitLoginButton addTarget:self action:@selector(exitLoginClick:) forControlEvents:UIControlEventTouchUpInside];
         [_hearerView addSubview:_exitLoginButton];
     //已登录状态下视图
     if (_islogin == YES) {
         _registerButton.hidden = YES;
-        _layer.hidden = YES;
         _loginButton.hidden = YES;
-        _layer1.hidden = YES;
     }
 }
 //注册按钮事件
@@ -156,19 +129,17 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:NO forKey:@"isLogin"];
     _exitLoginButton.hidden = YES;
-    _layer2.hidden = YES;
-    _registerButton.hidden = NO;
-    _layer.hidden = NO;
+    _registerButton.hidden = NO;;
     _loginButton.hidden = NO;
-    _layer1.hidden = NO;
     _statusLabel.text = @"未登录";
 }
 -(void)createTableView{
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_hearerView.frame), self.view.bounds.size.width, self.view.bounds.size.height-44)];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_hearerView.frame)+0.5, self.view.bounds.size.width, self.view.bounds.size.height-44)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.bounces = NO;
-    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     _tableView.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
     [self.view addSubview:_tableView];
 }
@@ -192,6 +163,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor whiteColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
@@ -206,7 +178,7 @@
             cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
             cell.textLabel.text = @"我的活动";
         }else if (indexPath.row == 1){
-            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
+            cell.imageView.image = [UIImage imageNamed:@"关于我们"];
             cell.textLabel.text = @"关于我们";
         }else{
             cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
@@ -232,13 +204,19 @@
             XXDMyFirmAccountVC *vc = [[XXDMyFirmAccountVC alloc]init];
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
         }else{//我的自选
-            
+            if (_islogin == NO) {
+                [self customAlertViewMessageString:@"登录APP,查看我的自选"];
+            }
         }
         
     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {//我的活动
-            XXDMyActivityVC *vc = [[XXDMyActivityVC alloc]init];
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
+            if (_islogin == NO) {
+                [self customAlertViewMessageString:@"登录APP,查看我的活动"];
+            }else{
+                XXDMyActivityVC *vc = [[XXDMyActivityVC alloc]init];
+                [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
+            }
         }else if (indexPath.row == 1){//关于我们
             AboutXiDuViewController *vc = [[AboutXiDuViewController alloc]init];
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
@@ -261,13 +239,25 @@
     }
     self.hidesBottomBarWhenPushed = NO;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0.1;
+-(void)customAlertViewMessageString:(NSString*)messageString{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:messageString preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDLoginViewController alloc ]init ]];
+    }];
+    [alertController addAction:cancleAction];
+    [alertController addAction:sureAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10;
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.1;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 40;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -22,6 +22,8 @@
     return self;
 }
 -(void)createUI{
+    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SIZE.width, 40)];
+    [self.contentView addSubview:topView];
     _cicleImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 12, 15, 15)];
     _cicleImageView.backgroundColor = [UIColor redColor];
     _cicleImageView.layer.cornerRadius = 7.5;

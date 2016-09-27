@@ -53,6 +53,7 @@
         cell.activityStatusLabel.backgroundColor = [UIColor grayColor];
         cell.activityStatusLabel.text = @"已结束";
     }
+    cell.picImageView.image = [UIImage imageNamed:@"img"];
     return cell;
     
 }
