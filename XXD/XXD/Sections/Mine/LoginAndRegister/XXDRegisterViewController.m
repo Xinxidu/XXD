@@ -33,8 +33,13 @@
     phoneView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:phoneView];
     
-    UILabel *phoneLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 60, 40)];
-    phoneLabel.text = @"手机号";
+    UIImageView *phoneImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 15, 20)];
+    phoneImageView.image = [UIImage imageNamed:@"icon3"];
+    [phoneView addSubview:phoneImageView];
+    
+    UILabel *phoneLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(phoneImageView.frame)+10, 0, 60, 40)];
+    phoneLabel.text = @"手机号:";
+    phoneLabel.font = [UIFont systemFontOfSize:15.0];
     [phoneView addSubview:phoneLabel];
     _phoneNumberTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(phoneLabel.frame)+5, 8, WIDTH-60-20, 30)];
     _phoneNumberTextfield.placeholder = @"请正确填写您的手机号";
@@ -45,17 +50,22 @@
     codeView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:codeView];
     
-    UILabel *codeLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 60, 40)];
-    codeLabel.text = @"验证码";
+    UIImageView *codeImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 13, 20, 14)];
+    codeImageView.image = [UIImage imageNamed:@"iconcode"];
+    [codeView addSubview:codeImageView];
+    
+    UILabel *codeLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(phoneImageView.frame)+10, 0, 60, 40)];
+    codeLabel.text = @"验证码:";
+    codeLabel.font = [UIFont systemFontOfSize:15.0];
     [codeView addSubview:codeLabel];
     
     UIButton *codeButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    codeButton.frame = CGRectMake(WIDTH-80-10, 10, 80, 20);
+    codeButton.frame = CGRectMake(WIDTH-80-10, 5, 80, 30);
     [codeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
     [codeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     codeButton.titleLabel.font = [UIFont systemFontOfSize:13.0];
     codeButton.backgroundColor = [UIColor colorWithRed:249/255.0 green:14/255.0 blue:27/255.0 alpha:1.0];
-    codeButton.layer.cornerRadius = 4;
+    codeButton.layer.cornerRadius = 15;
     codeButton.layer.masksToBounds = YES;
     [codeView addSubview:codeButton];
     

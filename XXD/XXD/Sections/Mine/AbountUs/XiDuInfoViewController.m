@@ -23,6 +23,7 @@
 -(void)createUI{
     UIImageView *topImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 100, 50)];
     topImageView.backgroundColor = [UIColor grayColor];
+    topImageView.image = [UIImage imageNamed:@"img1"];
     [self.view addSubview:topImageView];
     
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(topImageView.frame)+10, 10, 70, 35)];

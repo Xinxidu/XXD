@@ -26,26 +26,36 @@
     [self createUI];
 }
 -(void)createUI{
-    //手机号
-    UIView *phoneView = [[UIView alloc]initWithFrame:CGRectMake(0, 10+64, WIDTH, 40)];
-    phoneView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:phoneView];
+    //昵称
+    UIView *nickView = [[UIView alloc]initWithFrame:CGRectMake(0, 10+64, WIDTH, 40)];
+    nickView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:nickView];
     
-    UILabel *phoneLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 60, 40)];
-    phoneLabel.text = @"昵 称";
-    [phoneView addSubview:phoneLabel];
-    _nickNameTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(phoneLabel.frame)+5, 8, WIDTH-60-20, 30)];
+    UIImageView *nickImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 13, 20, 14)];
+    nickImageView.image = [UIImage imageNamed:@"icon1"];
+    [nickView addSubview:nickImageView];
+    
+    UILabel *nickLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(nickImageView.frame)+5, 0, 60, 40)];
+    nickLabel.text = @"昵 称:";
+    nickLabel.font = [UIFont systemFontOfSize:15.0];
+    [nickView addSubview:nickLabel];
+    _nickNameTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(nickLabel.frame)+5, 8, WIDTH-60-20, 30)];
     _nickNameTextfield.placeholder = @"1～8位字符";
     [_nickNameTextfield setValue:[UIFont boldSystemFontOfSize:13.0] forKeyPath:@"_placeholderLabel.font"];
-    [phoneView addSubview:_nickNameTextfield];
-    //验证码
-    UIView *codeView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(phoneView.frame)+0.5, WIDTH, 40)];
-    codeView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:codeView];
+    [nickView addSubview:_nickNameTextfield];
+    //密码
+    UIView *pwdView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(nickView.frame)+0.5, WIDTH, 40)];
+    pwdView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:pwdView];
     
-    UILabel *codeLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 60, 40)];
-    codeLabel.text = @"密 码";
-    [codeView addSubview:codeLabel];
+    UIImageView *pwdImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 11, 17, 18)];
+    pwdImageView.image = [UIImage imageNamed:@"icon2"];
+    [pwdView addSubview:pwdImageView];
+    
+    UILabel *pwdLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(pwdImageView.frame)+5, 0, 60, 40)];
+    pwdLabel.text = @"密 码:";
+    pwdLabel.font = [UIFont systemFontOfSize:15.0];
+    [pwdView addSubview:pwdLabel];
     
 //    UIButton *codeButton = [UIButton buttonWithType:UIButtonTypeSystem];
 //    codeButton.frame = CGRectMake(WIDTH-80-10, 10, 80, 20);
@@ -57,14 +67,14 @@
 //    codeButton.layer.masksToBounds = YES;
 //    [codeView addSubview:codeButton];
     
-    _pwdTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(codeLabel.frame)+5, 8, WIDTH-60-20, 30)];
+    _pwdTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(pwdLabel.frame)+5, 8, WIDTH-60-20, 30)];
     _pwdTextfield.placeholder = @"6～18位密码";
     [_pwdTextfield setValue:[UIFont boldSystemFontOfSize:13.0] forKeyPath:@"_placeholderLabel.font"];
     _pwdTextfield.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    [codeView addSubview:_pwdTextfield];
+    [pwdView addSubview:_pwdTextfield];
     
     UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    submitButton.frame = CGRectMake(20, CGRectGetMaxY(codeView.frame)+20, WIDTH-40, 40);
+    submitButton.frame = CGRectMake(20, CGRectGetMaxY(pwdView.frame)+20, WIDTH-40, 40);
     [submitButton setTitle:@"提交" forState:UIControlStateNormal];
     [submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     submitButton.backgroundColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
@@ -72,7 +82,7 @@
     submitButton.layer.cornerRadius = 20;
     submitButton.layer.masksToBounds = YES;
     CALayer *layer = [CALayer layer];
-    layer.frame = CGRectMake(20, CGRectGetMaxY(codeView.frame)+20, WIDTH-40, 40);
+    layer.frame = CGRectMake(20, CGRectGetMaxY(pwdView.frame)+20, WIDTH-40, 40);
     layer.backgroundColor = [UIColor blueColor].CGColor;
     layer.shadowOffset = CGSizeMake(2, 2);
     layer.shadowOpacity = 0.8;

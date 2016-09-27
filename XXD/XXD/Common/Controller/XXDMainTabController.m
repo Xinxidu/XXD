@@ -8,6 +8,13 @@
 
 #import "XXDMainTabController.h"
 #import "XXDAppDelegate.h"
+#import "FirmLoginViewController.h"
+#import "firmBargainViewController.h"
+#import "XXDHomeViewController.h"
+#import "XXDMarketViewController.h"
+#import "XXDTradeViewController.h"
+#import "XXDDiscoverViewController.h"
+#import "XXDMyViewController.h"
 
 #define TabbarVC    @"vc"
 #define TabbarTitle @"title"
@@ -23,7 +30,7 @@ typedef NS_ENUM(NSInteger,XXDMainTabType) {
     XXDMainTabTypeMy              //我的
 };
 
-@interface XXDMainTabController ()
+@interface XXDMainTabController ()<UITabBarControllerDelegate>
 @property (nonatomic,copy)  NSDictionary *configs;
 @end
 
@@ -31,79 +38,50 @@ typedef NS_ENUM(NSInteger,XXDMainTabType) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpSubNav];
+    [self createTabbar];
+    [self setImage];
 }
-
-- (NSArray*)tabbars{
-    NSMutableArray *items = [[NSMutableArray alloc] init];
-    for (NSInteger tabbar = 0; tabbar < TabBarCount; tabbar++) {
-        [items addObject:@(tabbar)];
+-(void)setImage{
+    NSArray *nameArray = @[@"首页",@"行情",@"交易",@"发现",@"我的"];
+    NSArray *selectArray = @[@"首页HL",@"行情HL",@"交易HL",@"发现HL",@"我的HL"];
+    NSArray *unSelectArray = @[@"首页",@"行情",@"交易",@"发现",@"我的"];
+    
+    for (int i=0; i<nameArray.count; i++) {
+        UITabBarItem * item = self.tabBar.items[i];
+        UIImage* unSelectImage = [UIImage imageNamed:unSelectArray[i]];
+        item.image = [unSelectImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        UIImage* selectImage = [UIImage imageNamed:selectArray[i]];
+        item.selectedImage = [selectImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        item.title =  nameArray[i];
     }
-    return items;
+}
+-(void)createTabbar{
+    XXDHomeViewController* vc1 = [[XXDHomeViewController alloc]init];
+    XXDMarketViewController *vc2 = [[XXDMarketViewController alloc]init];
+    XXDTradeViewController* vc3 = [[XXDTradeViewController alloc]init];
+    XXDDiscoverViewController* vc4 = [[XXDDiscoverViewController alloc]init];
+    XXDMyViewController* vc5 = [[XXDMyViewController alloc]init];
+    
+    UINavigationController* nav1 = [[UINavigationController alloc]initWithRootViewController:vc1];
+    UINavigationController *nav2 = [[UINavigationController alloc]initWithRootViewController:vc2];
+    UINavigationController * nav3= [[UINavigationController alloc]initWithRootViewController:vc3];
+    UINavigationController* nav4 = [[UINavigationController alloc]initWithRootViewController:vc4];
+    UINavigationController* nav5 = [[UINavigationController alloc]initWithRootViewController:vc5];
+    
+    vc1.navigationItem.title = @"首页";
+    vc2.navigationItem.title = @"行情";
+    vc3.navigationItem.title = @"交易";
+    vc4.navigationItem.title = @"发现";
+    vc5.navigationItem.title = @"我的";
+    
+    self.viewControllers = @[nav1,nav2,nav3,nav4,nav5];
 }
 
-- (void)setUpSubNav{
-    NSMutableArray *vcArray = [[NSMutableArray alloc] init];
-    [self.tabbars enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSDictionary * item =[self vcInfoForTabType:[obj integerValue]];
-        NSString *vcName = item[TabbarVC];
-        NSString *title  = item[TabbarTitle];
-        NSString *imageName = item[TabbarImage];
-        NSString *imageSelected = item[TabbarSelectedImage];
-        Class clazz = NSClassFromString(vcName);
-        UIViewController *vc = [[clazz alloc] init];
-        vc.hidesBottomBarWhenPushed = NO;
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-        nav.tabBarItem = [[UITabBarItem alloc] initWithTitle:title
-                                                       image:[UIImage imageNamed:imageName]
-                                               selectedImage:[UIImage imageNamed:imageSelected]];
-        nav.tabBarItem.tag = idx;
-        nav.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-        [vcArray addObject:nav];
-    }];
-    self.viewControllers = [NSArray arrayWithArray:vcArray];
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
-#pragma mark - VC
-- (NSDictionary *)vcInfoForTabType:(XXDMainTabType)type{
-    if (_configs == nil){
-        _configs = @{
-                     @(XXDMainTabTypeHome) : @{
-                             TabbarVC           : @"XXDHomeViewController",
-                             TabbarTitle        : @"首页",
-                             TabbarImage        : @"icon_message_normal",
-                             TabbarSelectedImage: @"icon_message_pressed",
-                             }
-                     ,@(XXDMainTabTypeMarket)     : @{
-                             TabbarVC           : @"XXDMarketViewController",
-                             TabbarTitle        : @"行情",
-                             TabbarImage        : @"icon_message_normal",
-                             TabbarSelectedImage: @"icon_message_pressed",
-                             },
-                     @(XXDMainTabTypeTrade): @{
-                             TabbarVC           : @"XXDTradeViewController",
-                             TabbarTitle        : @"交易",
-                             TabbarImage        : @"icon_message_normal",
-                             TabbarSelectedImage: @"icon_message_pressed",
-                             },
-                     @(XXDMainTabTypeDiscover): @{
-                             TabbarVC           : @"XXDDiscoverViewController",
-                             TabbarTitle        : @"发现",
-                             TabbarImage        : @"icon_message_normal",
-                             TabbarSelectedImage: @"icon_message_pressed",
-                             },
-                     @(XXDMainTabTypeMy)     : @{
-                             TabbarVC           : @"XXDMyViewController",
-                             TabbarTitle        : @"我的",
-                             TabbarImage        : @"icon_message_normal",
-                             TabbarSelectedImage: @"icon_message_pressed",
-                             }
-                     };
-    }
-    return _configs[@(type)];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 @end

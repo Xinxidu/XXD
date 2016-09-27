@@ -22,6 +22,7 @@
 		3B355B7B1D81573E008C8376 /* XXDTodayExchangeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B7A1D81573E008C8376 /* XXDTodayExchangeListVC.m */; };
 		3B355B7E1D81576C008C8376 /* XXDHistoryMakeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B7D1D81576C008C8376 /* XXDHistoryMakeListVC.m */; };
 		3B355B841D8158F4008C8376 /* XXDHistoryExchangeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B355B831D8158F4008C8376 /* XXDHistoryExchangeListVC.m */; };
+		3B4E9E221D98ACFB00190989 /* FirmLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E9E211D98ACFB00190989 /* FirmLoginViewController.m */; };
 		3B60B88A1D7D3D08002AA667 /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B60B8851D7D3D08002AA667 /* ItemTableViewCell.m */; };
 		3B60B88B1D7D3D08002AA667 /* MoreDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B60B8871D7D3D08002AA667 /* MoreDetailModel.m */; };
 		3B60B8A51D7D3D8A002AA667 /* VarietiesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B60B8A21D7D3D8A002AA667 /* VarietiesView.m */; };
@@ -123,6 +124,8 @@
 		3B355B7D1D81576C008C8376 /* XXDHistoryMakeListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHistoryMakeListVC.m; sourceTree = "<group>"; };
 		3B355B821D8158F4008C8376 /* XXDHistoryExchangeListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHistoryExchangeListVC.h; sourceTree = "<group>"; };
 		3B355B831D8158F4008C8376 /* XXDHistoryExchangeListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHistoryExchangeListVC.m; sourceTree = "<group>"; };
+		3B4E9E201D98ACFB00190989 /* FirmLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirmLoginViewController.h; sourceTree = "<group>"; };
+		3B4E9E211D98ACFB00190989 /* FirmLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirmLoginViewController.m; sourceTree = "<group>"; };
 		3B60B8841D7D3D08002AA667 /* ItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableViewCell.h; sourceTree = "<group>"; };
 		3B60B8851D7D3D08002AA667 /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
 		3B60B8861D7D3D08002AA667 /* MoreDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreDetailModel.h; sourceTree = "<group>"; };
@@ -659,6 +662,8 @@
 			children = (
 				697D766E1D782939008D7C94 /* XXDTradeViewController.h */,
 				697D766F1D782939008D7C94 /* XXDTradeViewController.m */,
+				3B4E9E201D98ACFB00190989 /* FirmLoginViewController.h */,
+				3B4E9E211D98ACFB00190989 /* FirmLoginViewController.m */,
 				3B355B731D8149D6008C8376 /* AuthcodeView.h */,
 				3B355B741D8149D6008C8376 /* AuthcodeView.m */,
 			);
@@ -844,7 +849,7 @@
 				TargetAttributes = {
 					697D76331D781300008D7C94 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = R9DE87BJ5L;
+						DevelopmentTeam = VRQSU9ZYT4;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -946,6 +951,7 @@
 				3B2EC0261D878A290019A72E /* XXDCalendarViewController.m in Sources */,
 				69B531C71D891F310055A9AE /* XXDNewerViewController.m in Sources */,
 				3B2EC02C1D878AA00019A72E /* DateView.m in Sources */,
+				3B4E9E221D98ACFB00190989 /* FirmLoginViewController.m in Sources */,
 				3B6F5F291D7FAFFE0058D2DE /* XiDuNewsCell.m in Sources */,
 				3B7B3E881D7EA8F9003DBF06 /* XXDActivityMessageVC.m in Sources */,
 				3B355B7E1D81576C008C8376 /* XXDHistoryMakeListVC.m in Sources */,
@@ -1126,7 +1132,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R9DE87BJ5L;
+				DEVELOPMENT_TEAM = VRQSU9ZYT4;
 				INFOPLIST_FILE = XXD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1147,7 +1153,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R9DE87BJ5L;
+				DEVELOPMENT_TEAM = VRQSU9ZYT4;
 				INFOPLIST_FILE = XXD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

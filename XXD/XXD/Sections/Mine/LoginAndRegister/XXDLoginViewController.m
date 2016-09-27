@@ -27,6 +27,10 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [self createUI];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.tabBarController.tabBar.hidden = YES;
+}
+
 -(void)createUI{
     UIImageView *topImageView = [[UIImageView alloc]initWithFrame:CGRectMake((WIDTH-60)/2, 20+64, 70, 70)];
     topImageView.backgroundColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
@@ -42,7 +46,7 @@
     _userNameTxt.layer.masksToBounds = YES;
     _userNameTxt.placeholder=@"请输入您的用户名";
     _userNameTxt.backgroundColor = [UIColor whiteColor];
-    _userNameTxt.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gerenxinxi"]];
+    _userNameTxt.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"用户名"]];
     _userNameTxt.leftViewMode=UITextFieldViewModeAlways;
     _userNameTxt.tag=100;
     _userNameTxt.clearButtonMode = UITextFieldViewModeAlways;
@@ -58,7 +62,7 @@
     _pwdTxt.layer.masksToBounds = YES;
     _pwdTxt.placeholder=@"请输入您的密码";
     _pwdTxt.backgroundColor = [UIColor whiteColor];
-    _pwdTxt.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gerenxinxi"]];
+    _pwdTxt.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon2"]];
     _pwdTxt.leftViewMode=UITextFieldViewModeAlways;
     _pwdTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _pwdTxt.tag=101;
@@ -80,8 +84,8 @@
     _submitButton.layer.masksToBounds = YES;
     CALayer *_layer = [CALayer layer];
     _layer.frame = CGRectMake(20, CGRectGetMaxY(_pwdTxt.frame)+20, WIDTH-40, 50);
-    _layer.backgroundColor = [UIColor redColor].CGColor;
-    _layer.shadowOffset = CGSizeMake(2, 2);
+    _layer.backgroundColor = [UIColor blueColor].CGColor;
+    _layer.shadowOffset = CGSizeMake(1, 1);
     _layer.shadowOpacity = 0.8;
     _layer.cornerRadius = 25;
     [self.view.layer addSublayer:_layer];
