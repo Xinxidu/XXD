@@ -53,9 +53,8 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%f",WIDTH);
     self.navigationItem.title = @"银大师";
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"top"] forBarMetrics:0];
     self.navigationController.navigationBar.shadowImage=[UIImage new];
     //创建根视图
     self.rootScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -64, WIDTH, HEIGHT+20)];
@@ -89,13 +88,15 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 #pragma mark 创建顶部的轮播图
 - (void)createInfiniteScrollView {
     //网络图片
-    NSArray *imagesURLStrings = @[
-                                  @"http://www.bz55.com/uploads/allimg/150818/140-150QQH359.jpg",
-                                  @"http://img8.zol.com.cn/bbs/upload/24043/24042104.jpg",
-                                  @"http://www.bz55.com/uploads/allimg/150605/139-150605153434-51.jpg",
-                                  @"http://www.bz55.com/uploads/allimg/150208/139-15020P92501.jpg",
-                                  @"http://www.bz55.com/uploads/allimg/130520/1-1305200S957.jpg"
-                                  ];
+//    NSArray *imagesURLStrings = @[
+//                                  @"http://www.bz55.com/uploads/allimg/150818/140-150QQH359.jpg",
+//                                  @"http://img8.zol.com.cn/bbs/upload/24043/24042104.jpg",
+//                                  @"http://www.bz55.com/uploads/allimg/150605/139-150605153434-51.jpg",
+//                                  @"http://www.bz55.com/uploads/allimg/150208/139-15020P92501.jpg",
+//                                  @"http://www.bz55.com/uploads/allimg/130520/1-1305200S957.jpg"
+//                                  ];
+    //本地图片数组
+    NSArray *imagesURLStrings = @[@"banner01",@"banner02",@"banner03",@"banner04"];
     //初始化scrollView
     CGFloat scrollViewHeight = 166;
     self.topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, scrollViewHeight)];
@@ -109,8 +110,9 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     //添加4张图片
     for (NSInteger i = 0; i<imagesURLStrings.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.scrollViewWidth*i, 0, self.scrollViewWidth, scrollViewHeight)];
-        NSData * imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagesURLStrings[i]]];
-        imageView.image = [UIImage imageWithData:imageData];
+//        NSData * imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagesURLStrings[i]]];
+//        imageView.image = [UIImage imageWithData:imageData];
+        imageView.image = [UIImage imageNamed:imagesURLStrings[i]];
         imageView.userInteractionEnabled = YES;
         imageView.tag = i;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewClick:)];
@@ -163,26 +165,26 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 创建顶部4个按钮
 - (void)creatButtions{
-    self.topBgView  = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.topScrollView.frame), WIDTH, WIDTH/5.1)];
+    self.topBgView  = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.topScrollView.frame), WIDTH, 65)];
     self.topBgView.backgroundColor = [UIColor whiteColor];
     [self.rootScrollView addSubview:self.topBgView];
-    NSArray *imageArray = @[@"icon_message_pressed",@"icon_message_pressed",@"icon_message_pressed",@"icon_message_pressed"];
+    NSArray *imageArray = @[@"hotTrade",@"hotActivity",@"liveNew",@"financeCalendar"];
     NSArray *nameArray = @[@"热门交易",@"热门活动",@"直播新闻",@"财经日历"];
     for (NSInteger i = 0; i < 4; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake((WIDTH-200)/5.0*(i+1)+50*i, 8, 50, WIDTH/5.1-9);
+        button.frame = CGRectMake((WIDTH-200)/5.0*(i+1)+50*i, 9, 50, 47);
         [button setImage:[UIImage imageNamed:imageArray[i]] forState:UIControlStateNormal];
         [button setTitle:nameArray[i] forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:12.0f];
         button.titleLabel.textAlignment = NSTextAlignmentCenter;
         [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         button.tag = i;
-        [button verticalImageAndTitle:5.0];
+        [button verticalImageAndTitle:3];
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.topBgView addSubview:button];
     }
     //232 233 237
-    UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, WIDTH/5.1-1, WIDTH, 1)];
+    UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, 1)];
     horizontal.backgroundColor = GRAYCOLOR;
     [self.topBgView addSubview:horizontal];
 }

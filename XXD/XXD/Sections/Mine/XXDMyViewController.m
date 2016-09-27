@@ -15,7 +15,7 @@
 #import "XXDLoginViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
-
+#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
 @interface XXDMyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UIView *hearerView;
@@ -39,7 +39,7 @@
     [self createTableView];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    self.navigationController.navigationBar.barTintColor = BLUECOLOR;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _islogin = [defaults boolForKey:@"isLogin"];

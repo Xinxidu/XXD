@@ -83,6 +83,9 @@
 		69B89A8C1D813807009875E1 /* XXDHoldProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A8B1D813807009875E1 /* XXDHoldProductView.m */; };
 		69C1058F1D93852F00F4D3AE /* XXDCustomNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C1058E1D93852F00F4D3AE /* XXDCustomNavigation.m */; };
 		69C40D1C1D7D463000872C23 /* UIButton+XXD.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C40D1B1D7D463000872C23 /* UIButton+XXD.m */; };
+		69C5BCAB1D9A420C005CF969 /* XXDOrderSwapsBSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5BCAA1D9A420C005CF969 /* XXDOrderSwapsBSCell.m */; };
+		69C5BCAF1D9A4307005CF969 /* XXDOrderSwapsBS.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5BCAE1D9A4307005CF969 /* XXDOrderSwapsBS.m */; };
+		69C5BCB21D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5BCB11D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.m */; };
 		69E1C62B1D8793AD00ED2735 /* XXDHotTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C62A1D8793AD00ED2735 /* XXDHotTradeViewController.m */; };
 		69E1C62E1D87970C00ED2735 /* XXDHotTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C62D1D87970C00ED2735 /* XXDHotTrade.m */; };
 		69E1C6311D879B0400ED2735 /* XXDHotTradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C6301D879B0400ED2735 /* XXDHotTradeCell.m */; };
@@ -241,6 +244,12 @@
 		69C1058E1D93852F00F4D3AE /* XXDCustomNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDCustomNavigation.m; sourceTree = "<group>"; };
 		69C40D1A1D7D463000872C23 /* UIButton+XXD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+XXD.h"; sourceTree = "<group>"; };
 		69C40D1B1D7D463000872C23 /* UIButton+XXD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+XXD.m"; sourceTree = "<group>"; };
+		69C5BCA91D9A420C005CF969 /* XXDOrderSwapsBSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDOrderSwapsBSCell.h; sourceTree = "<group>"; };
+		69C5BCAA1D9A420C005CF969 /* XXDOrderSwapsBSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDOrderSwapsBSCell.m; sourceTree = "<group>"; };
+		69C5BCAD1D9A4307005CF969 /* XXDOrderSwapsBS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDOrderSwapsBS.h; sourceTree = "<group>"; };
+		69C5BCAE1D9A4307005CF969 /* XXDOrderSwapsBS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDOrderSwapsBS.m; sourceTree = "<group>"; };
+		69C5BCB01D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDOrderSwapsBSViewModel.h; sourceTree = "<group>"; };
+		69C5BCB11D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDOrderSwapsBSViewModel.m; sourceTree = "<group>"; };
 		69E1C6291D8793AD00ED2735 /* XXDHotTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHotTradeViewController.h; sourceTree = "<group>"; };
 		69E1C62A1D8793AD00ED2735 /* XXDHotTradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHotTradeViewController.m; sourceTree = "<group>"; };
 		69E1C62C1D87970C00ED2735 /* XXDHotTrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHotTrade.h; sourceTree = "<group>"; };
@@ -741,6 +750,7 @@
 		69B89A751D810378009875E1 /* Trade */ = {
 			isa = PBXGroup;
 			children = (
+				69C5BCAC1D9A42F2005CF969 /* Model */,
 				69B89A7C1D813723009875E1 /* Controller */,
 				69B89A7F1D813723009875E1 /* View */,
 			);
@@ -765,6 +775,8 @@
 				69B89A881D8137ED009875E1 /* XXDDelegateView.m */,
 				69B89A8A1D813807009875E1 /* XXDHoldProductView.h */,
 				69B89A8B1D813807009875E1 /* XXDHoldProductView.m */,
+				69C5BCA91D9A420C005CF969 /* XXDOrderSwapsBSCell.h */,
+				69C5BCAA1D9A420C005CF969 /* XXDOrderSwapsBSCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -776,6 +788,17 @@
 				69C40D1B1D7D463000872C23 /* UIButton+XXD.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		69C5BCAC1D9A42F2005CF969 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				69C5BCAD1D9A4307005CF969 /* XXDOrderSwapsBS.h */,
+				69C5BCAE1D9A4307005CF969 /* XXDOrderSwapsBS.m */,
+				69C5BCB01D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.h */,
+				69C5BCB11D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		69E1C6351D87E64300ED2735 /* LiveNew */ = {
@@ -938,6 +961,7 @@
 				69E1C6311D879B0400ED2735 /* XXDHotTradeCell.m in Sources */,
 				3B7B3E801D7E5B0D003DBF06 /* BaseWKWebView.m in Sources */,
 				69B89A8C1D813807009875E1 /* XXDHoldProductView.m in Sources */,
+				69C5BCAF1D9A4307005CF969 /* XXDOrderSwapsBS.m in Sources */,
 				3B8FF8C91D86750E003D5EC1 /* XXDLeftMarketViewController.m in Sources */,
 				69B89A831D81378F009875E1 /* XXDOrderBSView.m in Sources */,
 				3B7B3E9A1D7EC0C6003DBF06 /* XXDMyActivityCell.m in Sources */,
@@ -963,6 +987,7 @@
 				69B1C6111D7E4FE8000CA633 /* XXDLiveView.m in Sources */,
 				69B89A801D813723009875E1 /* firmBargainViewController.m in Sources */,
 				3B7B3E8F1D7EBECC003DBF06 /* XXDMyViewController.m in Sources */,
+				69C5BCAB1D9A420C005CF969 /* XXDOrderSwapsBSCell.m in Sources */,
 				697D765C1D781BBC008D7C94 /* XXDMainTabController.m in Sources */,
 				697D766A1D782911008D7C94 /* XXDHomeViewController.m in Sources */,
 				3B2EC0341D87CBC60019A72E /* XXDRegisterViewController.m in Sources */,
@@ -976,6 +1001,7 @@
 				3B6F5F3B1D8008350058D2DE /* XXDMyFirmAccountVC.m in Sources */,
 				3B355B841D8158F4008C8376 /* XXDHistoryExchangeListVC.m in Sources */,
 				697D76391D781300008D7C94 /* main.m in Sources */,
+				69C5BCB21D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.m in Sources */,
 				69E1C62B1D8793AD00ED2735 /* XXDHotTradeViewController.m in Sources */,
 				3B6F5F261D7FAFFE0058D2DE /* ContactUsViewController.m in Sources */,
 				69B1C61C1D7EBD39000CA633 /* XXDTimeNewsCell.m in Sources */,

@@ -17,14 +17,14 @@
         CGFloat width = self.frame.size.width;
         for (NSInteger i = 0; i < 5; i++) {
             
-            UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(width/5.0*i, 0, width/5.0, 35)];
+            UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(width/5.0*i, 0, width/5.0, 38)];
             headLabel.text = headNameArray[i];
             headLabel.textColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1];
             headLabel.font = [UIFont systemFontOfSize:12.0f];
             headLabel.textAlignment = NSTextAlignmentCenter;
             [self addSubview:headLabel];
         }
-        UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, 35, width, 2)];
+        UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, 39, width, 1)];
         horizontal.backgroundColor = [UIColor colorWithRed:225/255.0 green:225/255.0 blue:225/255.0 alpha:1];
         [self addSubview:horizontal];
     }

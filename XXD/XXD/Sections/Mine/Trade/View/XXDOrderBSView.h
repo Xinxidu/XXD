@@ -13,9 +13,11 @@
 - (void)sureBSButtonClickWidthButtonName:(NSString *)buttonName isOrderOrSwaps:(BOOL)isOrderOrSwaps;
 - (void)cancelButtonClick;
 @end
-@interface XXDOrderBSView : UIView<UIPickerViewDelegate,UIPickerViewDataSource>
+@class XXDOrderSwapsBSViewModel;
+@interface XXDOrderBSView : UIView<UITableViewDelegate,UITableViewDataSource>
 @property (strong,nonatomic) UIButton *proNameButton;//商品名按钮
 @property (strong,nonatomic) NSArray *proNameArray;//初始化商品名数组
+@property (strong,nonatomic) UIView *dropDownView;//商品选择下拉框
 @property (strong,nonatomic) UILabel *buyPriceLabel;//买入价格加减显示
 @property (strong,nonatomic) UIButton *priceJianButton;//价格减按钮
 @property (strong,nonatomic) UILabel *buyNumLabel;//买入数量加减显示
@@ -29,8 +31,8 @@
 @property (strong,nonatomic) UIButton *totalButton;//按汇总按钮
 @property (strong,nonatomic) UIButton *detailButton;//按明细按钮
 @property (strong,nonatomic) UIButton *bsButton;//买入/卖出按钮
-@property (assign,nonatomic) BOOL isSwapsBS;//是否为调期买卖页面
 @property (strong,nonatomic) UIAlertController *sureAlertView;//买入/卖出确认弹窗
-@property (copy,nonatomic) NSString *accountString;//账号名
-- (instancetype)initWithFrame:(CGRect)frame buttonString:(NSString *)buttonString isShowTwoButtonForSwapsBS:(BOOL)isShowTwoButtonForSwapsBS accountString:(NSString *)accountString;
+@property (strong,nonatomic) UITableView *buttomTableView;//底部表格
+@property (strong,nonatomic) XXDOrderSwapsBSViewModel *orderSwapsBSViewModel;
+- (instancetype)initWithFrame:(CGRect)frame orderSwapsBSViewModel:(XXDOrderSwapsBSViewModel *)orderSwapsBSViewModel;
 @end
