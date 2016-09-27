@@ -10,8 +10,10 @@
 #import "XXDOrderBSView.h"
 #import "XXDDelegateView.h"
 #import "XXDHoldProductView.h"
+#import "XXDOrderSwapsBSViewModel.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
+#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
 typedef NS_ENUM(NSInteger,XXDButtonType){
     XXDButtonTypeOrderBuy,           //订立买
     XXDButtonTypeOrderSell,           //订立卖
@@ -22,6 +24,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 };
 @interface firmBargainViewController ()<XXDOrderBSViewDelegate>
 @property (strong,nonatomic) UIView *topView;   //顶部视图
+@property (strong,nonatomic) NSMutableArray *topButtonArray;    //顶部按钮数组
 @property (strong,nonatomic) NSArray *menuBottonNameArray;  //菜单按钮名称数组
 @property (strong,nonatomic) UIView *topUnderLine;  //顶部橘色下划线
 @property (strong,nonatomic) UIScrollView *mainScrollView;  //主视图
@@ -48,31 +51,39 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 创建菜单选项按钮
 - (void)createMenuButton{
-    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, 33)];
-    topView.backgroundColor = [UIColor colorWithRed:187/255.0 green:187/255.0 blue:187/255.0 alpha:1];
+    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, 38)];
+    topView.backgroundColor = [UIColor colorWithRed:230/255.0 green:231/255.0 blue:232/255.0 alpha:1];
     [self.view addSubview:topView];
-    CGFloat buttonWidth = (WIDTH-(self.menuBottonNameArray.count-1))/self.menuBottonNameArray.count;
+    CGFloat buttonWidth = WIDTH/self.menuBottonNameArray.count;
+    self.topButtonArray = [NSMutableArray arrayWithCapacity:self.menuBottonNameArray.count];
     //按钮
     for (NSInteger i = 0; i < self.menuBottonNameArray.count; i++) {
-        UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake((buttonWidth+1)*i, 0, buttonWidth, 30)];
-        menuButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+        UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonWidth*i, 0, buttonWidth, 37)];
+        menuButton.titleLabel.font = [UIFont boldSystemFontOfSize:13.0];
         [menuButton setTitle:self.menuBottonNameArray[i] forState:UIControlStateNormal];
-        [menuButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        menuButton.backgroundColor = [UIColor whiteColor];
+        [menuButton setTitleColor:i==0?BLUECOLOR:[UIColor blackColor] forState:UIControlStateNormal];
+        menuButton.backgroundColor = i == 0 ? [UIColor colorWithRed:243/255.0 green:244/255.0 blue:245/255.0 alpha:1] : [UIColor whiteColor];
         menuButton.tag = i;
         [menuButton addTarget:self action:@selector(topMenuButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [topView addSubview:menuButton];
+        [self.topButtonArray addObject:menuButton];
     }
     //下划线
-    self.topUnderLine = [[UIView alloc] initWithFrame:CGRectMake(0, 30, buttonWidth, 3)];
-    self.topUnderLine.backgroundColor = [UIColor orangeColor];
+    self.topUnderLine = [[UIView alloc] initWithFrame:CGRectMake(0, 35.5, buttonWidth, 1.5)];
+    self.topUnderLine.backgroundColor = BLUECOLOR;
     [topView addSubview:self.topUnderLine];
     self.topView = topView;
 }
 #pragma mark 顶部菜单按钮点击事件
 - (void)topMenuButtonClick:(UIButton *)sender{
-    CGFloat buttonWidth = (WIDTH-(self.menuBottonNameArray.count-1))/self.menuBottonNameArray.count;
-    self.topUnderLine.frame = CGRectMake((buttonWidth+1)*sender.tag, 30, buttonWidth, 3);
+    for (UIButton *item in self.topButtonArray) {
+        item.backgroundColor = [UIColor whiteColor];
+        [item setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
+    [sender setTitleColor:BLUECOLOR forState:UIControlStateNormal];
+    sender.backgroundColor = [UIColor colorWithRed:243/255.0 green:244/255.0 blue:245/255.0 alpha:1];
+    CGFloat buttonWidth = WIDTH/self.menuBottonNameArray.count;
+    self.topUnderLine.frame = CGRectMake(buttonWidth*sender.tag, 35.5, buttonWidth, 1.5);
     [self createMainViewWithButtonType:sender.tag];
 }
 - (void)createMainViewWithButtonType:(XXDButtonType)buttonType{
@@ -84,24 +95,48 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     self.mainScrollView.contentSize = CGSizeMake(WIDTH, HEIGHT*2);
     self.mainScrollView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.mainScrollView];
+    NSString *accountString = @"018000000173";
+    NSArray *tableViewData = @[@{@"holdTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"holdPirce":@"1022.0",@"swapsPrice":@"1,023.0",@"orderHold":@"34",@"surplus":@"63,478"},
+            @{@"holdTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"holdPirce":@"1022.0",@"swapsPrice":@"1,023.0",@"orderHold":@"34",@"surplus":@"63,478"},
+            @{@"holdTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"holdPirce":@"1022.0",@"swapsPrice":@"1,023.0",@"orderHold":@"34",@"surplus":@"63,478"}];
     switch (buttonType) {
         case XXDButtonTypeOrderBuy:{
-            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 300) buttonString:@"买入" isShowTwoButtonForSwapsBS:NO accountString:@"018000000173"];
+            XXDOrderSwapsBSViewModel *model = [[XXDOrderSwapsBSViewModel alloc] init];
+            model.buttonString = @"买入";
+            model.isShowTwoButtonForSwapsBS = NO;
+            model.accountString = accountString;
+            model.buttomTableViewData = tableViewData;
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 300) orderSwapsBSViewModel:model];
             orderBSView.bsDelegate = self;
             [self.mainScrollView addSubview:orderBSView];
          }break;
         case XXDButtonTypeOrderSell:{
-            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 300) buttonString:@"卖出" isShowTwoButtonForSwapsBS:NO accountString:@"018000000173"];
+            XXDOrderSwapsBSViewModel *model = [[XXDOrderSwapsBSViewModel alloc] init];
+            model.buttonString = @"卖出";
+            model.isShowTwoButtonForSwapsBS = NO;
+            model.accountString = accountString;
+            model.buttomTableViewData = tableViewData;
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 300) orderSwapsBSViewModel:model];
             orderBSView.bsDelegate = self;
             [self.mainScrollView addSubview:orderBSView];
         }break;
         case XXDButtonTypeSwapsBuy:{
-            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 340) buttonString:@"买入" isShowTwoButtonForSwapsBS:YES accountString:@"018000000173"];
+            XXDOrderSwapsBSViewModel *model = [[XXDOrderSwapsBSViewModel alloc] init];
+            model.buttonString = @"买入";
+            model.isShowTwoButtonForSwapsBS = YES;
+            model.accountString = accountString;
+            model.buttomTableViewData = tableViewData;
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 340) orderSwapsBSViewModel:model];
             orderBSView.bsDelegate = self;
             [self.mainScrollView addSubview:orderBSView];
         }break;
         case XXDButtonTypeSwapsToSell:{
-            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 340) buttonString:@"卖出" isShowTwoButtonForSwapsBS:YES accountString:@"018000000173"];
+            XXDOrderSwapsBSViewModel *model = [[XXDOrderSwapsBSViewModel alloc] init];
+            model.buttonString = @"卖出";
+            model.isShowTwoButtonForSwapsBS = YES;
+            model.accountString = accountString;
+            model.buttomTableViewData = tableViewData;
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 340) orderSwapsBSViewModel:model];
             orderBSView.bsDelegate = self;
             [self.mainScrollView addSubview:orderBSView];
         }break;
