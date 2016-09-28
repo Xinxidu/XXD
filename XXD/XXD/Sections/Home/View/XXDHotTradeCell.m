@@ -31,6 +31,7 @@
             if (i == 0) {  hotTradeLabel.textAlignment = NSTextAlignmentLeft; hotTradeLabel.numberOfLines=2; }
             [self.contentView addSubview:hotTradeLabel];
         }
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }

@@ -87,6 +87,8 @@
 		69C5BCAB1D9A420C005CF969 /* XXDOrderSwapsBSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5BCAA1D9A420C005CF969 /* XXDOrderSwapsBSCell.m */; };
 		69C5BCAF1D9A4307005CF969 /* XXDOrderSwapsBS.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5BCAE1D9A4307005CF969 /* XXDOrderSwapsBS.m */; };
 		69C5BCB21D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5BCB11D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.m */; };
+		69D54A9A1D9B5A58007D033D /* XXDDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D54A991D9B5A58007D033D /* XXDDelegate.m */; };
+		69D54A9D1D9B603A007D033D /* XXDDelegateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D54A9C1D9B603A007D033D /* XXDDelegateCell.m */; };
 		69E1C62B1D8793AD00ED2735 /* XXDHotTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C62A1D8793AD00ED2735 /* XXDHotTradeViewController.m */; };
 		69E1C62E1D87970C00ED2735 /* XXDHotTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C62D1D87970C00ED2735 /* XXDHotTrade.m */; };
 		69E1C6311D879B0400ED2735 /* XXDHotTradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C6301D879B0400ED2735 /* XXDHotTradeCell.m */; };
@@ -253,6 +255,10 @@
 		69C5BCAE1D9A4307005CF969 /* XXDOrderSwapsBS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDOrderSwapsBS.m; sourceTree = "<group>"; };
 		69C5BCB01D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDOrderSwapsBSViewModel.h; sourceTree = "<group>"; };
 		69C5BCB11D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDOrderSwapsBSViewModel.m; sourceTree = "<group>"; };
+		69D54A981D9B5A58007D033D /* XXDDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDDelegate.h; sourceTree = "<group>"; };
+		69D54A991D9B5A58007D033D /* XXDDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDDelegate.m; sourceTree = "<group>"; };
+		69D54A9B1D9B603A007D033D /* XXDDelegateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDDelegateCell.h; sourceTree = "<group>"; };
+		69D54A9C1D9B603A007D033D /* XXDDelegateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDDelegateCell.m; sourceTree = "<group>"; };
 		69E1C6291D8793AD00ED2735 /* XXDHotTradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHotTradeViewController.h; sourceTree = "<group>"; };
 		69E1C62A1D8793AD00ED2735 /* XXDHotTradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHotTradeViewController.m; sourceTree = "<group>"; };
 		69E1C62C1D87970C00ED2735 /* XXDHotTrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHotTrade.h; sourceTree = "<group>"; };
@@ -782,6 +788,8 @@
 				69B89A8B1D813807009875E1 /* XXDHoldProductView.m */,
 				69C5BCA91D9A420C005CF969 /* XXDOrderSwapsBSCell.h */,
 				69C5BCAA1D9A420C005CF969 /* XXDOrderSwapsBSCell.m */,
+				69D54A9B1D9B603A007D033D /* XXDDelegateCell.h */,
+				69D54A9C1D9B603A007D033D /* XXDDelegateCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -802,6 +810,8 @@
 				69C5BCAE1D9A4307005CF969 /* XXDOrderSwapsBS.m */,
 				69C5BCB01D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.h */,
 				69C5BCB11D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.m */,
+				69D54A981D9B5A58007D033D /* XXDDelegate.h */,
+				69D54A991D9B5A58007D033D /* XXDDelegate.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -849,7 +859,7 @@
 				TargetAttributes = {
 					697D76331D781300008D7C94 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = VRQSU9ZYT4;
+						DevelopmentTeam = R9DE87BJ5L;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -988,6 +998,7 @@
 				3B355B721D80F8F1008C8376 /* XXDMyAccountInfoVC.m in Sources */,
 				3B7B3E8B1D7EAF01003DBF06 /* XXDActivityTableViewCell.m in Sources */,
 				69C1058F1D93852F00F4D3AE /* XXDCustomNavigation.m in Sources */,
+				69D54A9D1D9B603A007D033D /* XXDDelegateCell.m in Sources */,
 				3B7B3E6E1D7E5632003DBF06 /* ProfitSkillViewController.m in Sources */,
 				697D76701D782939008D7C94 /* XXDTradeViewController.m in Sources */,
 				69B1C6111D7E4FE8000CA633 /* XXDLiveView.m in Sources */,
@@ -1011,6 +1022,7 @@
 				69E1C62B1D8793AD00ED2735 /* XXDHotTradeViewController.m in Sources */,
 				3B6F5F261D7FAFFE0058D2DE /* ContactUsViewController.m in Sources */,
 				69B1C61C1D7EBD39000CA633 /* XXDTimeNewsCell.m in Sources */,
+				69D54A9A1D9B5A58007D033D /* XXDDelegate.m in Sources */,
 				3B7B3E771D7E564D003DBF06 /* DayInvestmentCell.m in Sources */,
 				3B6F5F2A1D7FAFFE0058D2DE /* XiDuNewsDetailViewController.m in Sources */,
 				3B7B3E611D7E515A003DBF06 /* XXDQuotationViewController.m in Sources */,
@@ -1132,7 +1144,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = VRQSU9ZYT4;
+				DEVELOPMENT_TEAM = R9DE87BJ5L;
 				INFOPLIST_FILE = XXD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1153,7 +1165,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = VRQSU9ZYT4;
+				DEVELOPMENT_TEAM = R9DE87BJ5L;
 				INFOPLIST_FILE = XXD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

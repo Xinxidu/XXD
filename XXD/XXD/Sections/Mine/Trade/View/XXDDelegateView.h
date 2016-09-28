@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XXDDelegateView : UIView
-
+@interface XXDDelegateView : UIView<UITableViewDelegate,UITableViewDataSource>
+@property (strong,nonatomic) NSArray *tableViewData;
+- (instancetype)initWithFrame:(CGRect)frame tableViewData:(NSArray *)tableViewData;
 @end

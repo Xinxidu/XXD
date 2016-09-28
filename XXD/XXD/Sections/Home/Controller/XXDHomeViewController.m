@@ -22,7 +22,7 @@
 #import "XXDLiveOnLineController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
-#define GREENCOLOR [UIColor colorWithRed:0/255.0 green:142/255.0 blue:48/255.0 alpha:1]
+#define GREENCOLOR [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1]
 #define GRAYCOLOR [UIColor colorWithRed:230/255.0 green:231/255.0 blue:232/255.0 alpha:1]
 
 typedef NS_ENUM(NSInteger,XXDButtonType){

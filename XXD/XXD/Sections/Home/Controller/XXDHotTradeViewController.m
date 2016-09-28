@@ -164,7 +164,6 @@
     XXDHotTradeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
         cell = [[XXDHotTradeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId hotTrade:hotTrade];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
 }
