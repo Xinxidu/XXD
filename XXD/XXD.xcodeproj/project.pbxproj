@@ -27,6 +27,9 @@
 		3B60B88B1D7D3D08002AA667 /* MoreDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B60B8871D7D3D08002AA667 /* MoreDetailModel.m */; };
 		3B60B8A51D7D3D8A002AA667 /* VarietiesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B60B8A21D7D3D8A002AA667 /* VarietiesView.m */; };
 		3B60B8A61D7D3D8A002AA667 /* VarietyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B60B8A41D7D3D8A002AA667 /* VarietyModel.m */; };
+		3B6C690F1D9B5B0100C1CB1A /* XXDFindPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C690E1D9B5B0100C1CB1A /* XXDFindPwdViewController.m */; };
+		3B6C69121D9B5B1900C1CB1A /* XXDFindPwdSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C69111D9B5B1900C1CB1A /* XXDFindPwdSecondViewController.m */; };
+		3B6C69161D9B643800C1CB1A /* XXDMyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C69151D9B643800C1CB1A /* XXDMyAccountViewController.m */; };
 		3B6F5F171D7FAFC60058D2DE /* AboutXiDuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F151D7FAFC60058D2DE /* AboutXiDuViewController.m */; };
 		3B6F5F261D7FAFFE0058D2DE /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F191D7FAFFE0058D2DE /* ContactUsViewController.m */; };
 		3B6F5F271D7FAFFE0058D2DE /* ExchangeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F1B1D7FAFFE0058D2DE /* ExchangeInfoViewController.m */; };
@@ -136,6 +139,12 @@
 		3B60B8A21D7D3D8A002AA667 /* VarietiesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VarietiesView.m; sourceTree = "<group>"; };
 		3B60B8A31D7D3D8A002AA667 /* VarietyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VarietyModel.h; sourceTree = "<group>"; };
 		3B60B8A41D7D3D8A002AA667 /* VarietyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VarietyModel.m; sourceTree = "<group>"; };
+		3B6C690D1D9B5B0100C1CB1A /* XXDFindPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDFindPwdViewController.h; sourceTree = "<group>"; };
+		3B6C690E1D9B5B0100C1CB1A /* XXDFindPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDFindPwdViewController.m; sourceTree = "<group>"; };
+		3B6C69101D9B5B1900C1CB1A /* XXDFindPwdSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDFindPwdSecondViewController.h; sourceTree = "<group>"; };
+		3B6C69111D9B5B1900C1CB1A /* XXDFindPwdSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDFindPwdSecondViewController.m; sourceTree = "<group>"; };
+		3B6C69141D9B643800C1CB1A /* XXDMyAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDMyAccountViewController.h; sourceTree = "<group>"; };
+		3B6C69151D9B643800C1CB1A /* XXDMyAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyAccountViewController.m; sourceTree = "<group>"; };
 		3B6F5F141D7FAFC60058D2DE /* AboutXiDuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutXiDuViewController.h; sourceTree = "<group>"; };
 		3B6F5F151D7FAFC60058D2DE /* AboutXiDuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutXiDuViewController.m; sourceTree = "<group>"; };
 		3B6F5F181D7FAFFE0058D2DE /* ContactUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsViewController.h; sourceTree = "<group>"; };
@@ -324,6 +333,10 @@
 				3B2EC0361D87CC7D0019A72E /* XXDRegisterSecondViewController.m */,
 				3B2EC0381D87CCA50019A72E /* XXDLoginViewController.h */,
 				3B2EC0391D87CCA50019A72E /* XXDLoginViewController.m */,
+				3B6C690D1D9B5B0100C1CB1A /* XXDFindPwdViewController.h */,
+				3B6C690E1D9B5B0100C1CB1A /* XXDFindPwdViewController.m */,
+				3B6C69101D9B5B1900C1CB1A /* XXDFindPwdSecondViewController.h */,
+				3B6C69111D9B5B1900C1CB1A /* XXDFindPwdSecondViewController.m */,
 			);
 			path = LoginAndRegister;
 			sourceTree = "<group>";
@@ -348,6 +361,15 @@
 				3B60B8A41D7D3D8A002AA667 /* VarietyModel.m */,
 			);
 			path = Varieties;
+			sourceTree = "<group>";
+		};
+		3B6C69131D9B642400C1CB1A /* MyAccount */ = {
+			isa = PBXGroup;
+			children = (
+				3B6C69141D9B643800C1CB1A /* XXDMyAccountViewController.h */,
+				3B6C69151D9B643800C1CB1A /* XXDMyAccountViewController.m */,
+			);
+			path = MyAccount;
 			sourceTree = "<group>";
 		};
 		3B6F5F371D8007BD0058D2DE /* MyOptional */ = {
@@ -435,6 +457,7 @@
 		3B7B3E8C1D7EBE72003DBF06 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				3B6C69131D9B642400C1CB1A /* MyAccount */,
 				3B2EC0311D87CB8F0019A72E /* LoginAndRegister */,
 				69B89A751D810378009875E1 /* Trade */,
 				3B6F5F381D8007FF0058D2DE /* MyFirmAccount */,
@@ -952,6 +975,7 @@
 				3B2EC0371D87CC7D0019A72E /* XXDRegisterSecondViewController.m in Sources */,
 				3B60B88A1D7D3D08002AA667 /* ItemTableViewCell.m in Sources */,
 				3B7B3E841D7E61BD003DBF06 /* ProfessorTeamViewController.m in Sources */,
+				3B6C690F1D9B5B0100C1CB1A /* XXDFindPwdViewController.m in Sources */,
 				3B2EC03A1D87CCA50019A72E /* XXDLoginViewController.m in Sources */,
 				697D766D1D78292C008D7C94 /* XXDMarketViewController.m in Sources */,
 				3B2EC02B1D878AA00019A72E /* CalendarCell.m in Sources */,
@@ -964,6 +988,7 @@
 				3B4E9E221D98ACFB00190989 /* FirmLoginViewController.m in Sources */,
 				3B6F5F291D7FAFFE0058D2DE /* XiDuNewsCell.m in Sources */,
 				3B7B3E881D7EA8F9003DBF06 /* XXDActivityMessageVC.m in Sources */,
+				3B6C69161D9B643800C1CB1A /* XXDMyAccountViewController.m in Sources */,
 				3B355B7E1D81576C008C8376 /* XXDHistoryMakeListVC.m in Sources */,
 				69E1C6341D87CD6F00ED2735 /* XXDHotTradeLabel.m in Sources */,
 				3B355B7B1D81573E008C8376 /* XXDTodayExchangeListVC.m in Sources */,
@@ -988,6 +1013,7 @@
 				69B1C6181D7E64FF000CA633 /* XXDLiveImage.m in Sources */,
 				697D76731D782951008D7C94 /* XXDDiscoverViewController.m in Sources */,
 				3BAF05A91D93A5F700CFB105 /* XXDTodayExchangeCell.m in Sources */,
+				3B6C69121D9B5B1900C1CB1A /* XXDFindPwdSecondViewController.m in Sources */,
 				69B1C61F1D7EBD61000CA633 /* XXDJinYinNiuPingCell.m in Sources */,
 				3B60B88B1D7D3D08002AA667 /* MoreDetailModel.m in Sources */,
 				69B89A711D7FFFCE009875E1 /* XXDLiveOnLineController.m in Sources */,
