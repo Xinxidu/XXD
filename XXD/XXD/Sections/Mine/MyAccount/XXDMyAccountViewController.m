@@ -9,8 +9,9 @@
 #import "XXDMyAccountViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
-@interface XXDMyAccountViewController ()
-
+#define IOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ? YES : NO)
+@interface XXDMyAccountViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@property (nonatomic,strong) UIImageView *headImageView;//头像
 @end
 
 @implementation XXDMyAccountViewController
@@ -34,9 +35,12 @@
     titleLabel.text = @"头像";
     [topView addSubview:titleLabel];
     
-    UIImageView *headImageView = [[UIImageView alloc]initWithFrame:CGRectMake(topView.frame.size.width-10-40, (topView.frame.size.height-40)/2, 40, 40)];
-    headImageView.image = [UIImage imageNamed:@"head"];
-    [topView addSubview:headImageView];
+    _headImageView = [[UIImageView alloc]initWithFrame:CGRectMake(topView.frame.size.width-10-40, (topView.frame.size.height-40)/2, 40, 40)];
+    _headImageView.image = [UIImage imageNamed:@"head"];
+    [topView addSubview:_headImageView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(headViewTap)];
+    tap.numberOfTapsRequired = 1;
+    [_headImageView addGestureRecognizer:tap];
     //中部视图
     NSArray *array = @[@"用户名",@"密码"];
     NSArray *texAarray = @[@"lixiaoming",@"13788888866"];
@@ -49,11 +53,13 @@
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, (middleView.frame.size.height-15)/2, 60, 15)];
         titleLabel.text = array[i];
         titleLabel.font = [UIFont systemFontOfSize:15.0];
+        titleLabel.textColor = [UIColor grayColor];
         [middleView addSubview:titleLabel];
         
         UILabel *textLabel = [[UILabel alloc]initWithFrame:CGRectMake(middleView.frame.size.width-10-120, (middleView.frame.size.height-20)/2, 120, 20)];
         textLabel.text = texAarray[i];
         textLabel.font = [UIFont systemFontOfSize:15.0];
+        textLabel.textColor = [UIColor grayColor];
         textLabel.textAlignment = NSTextAlignmentRight;
         [middleView addSubview:textLabel];
     }
@@ -76,6 +82,9 @@
     [self.view.layer addSublayer:layer];
     [_exitLoginButton addTarget:self action:@selector(exitLoginClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_exitLoginButton];
+}
+-(void)headViewTap{
+    
 }
 //退出登录按钮事件
 -(void)exitLoginClick:(UIButton*)sender{

@@ -35,7 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"登录";
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     _array = [NSMutableArray array];
@@ -51,6 +51,7 @@
     _shipanButton.frame = CGRectMake(0, 64, WIDTH/2, 36);
     [_shipanButton setTitle:@"实盘" forState:UIControlStateNormal];
     [_shipanButton setTitleColor:[UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+    _shipanButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
     [_shipanButton addTarget:self action:@selector(shipanClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_shipanButton];
     
@@ -58,6 +59,7 @@
     _monipanButton.frame = CGRectMake(WIDTH/2, 64, WIDTH/2, 36);
     [_monipanButton setTitle:@"模拟盘" forState:UIControlStateNormal];
     [_monipanButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _monipanButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
     [_monipanButton addTarget:self action:@selector(monipanClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_monipanButton];
     
@@ -124,18 +126,18 @@
     
 }
 -(void)createCustomView{
-    NSArray *imgs = [NSArray arrayWithObjects:@"gerenxinxi",@"gerenxinxi",@"gerenxinxi", nil];
+    NSArray *imgs = [NSArray arrayWithObjects:@"icon1",@"icon2",@"iconcode", nil];
     NSArray *texts = [NSArray arrayWithObjects:@"请输入账号",@"请输入密码",@"请输入验证码", nil];
     for (NSInteger i=0; i<3; i++) {
-        UIView *middleView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_lineLabel2.frame)+40*i, WIDTH, 40)];
+        UIView *middleView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_lineLabel2.frame)+(40+2)*i, WIDTH, 40)];
         middleView.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:middleView];
         
-        UILabel *lineView = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(middleView.frame)+1, WIDTH, 1)];
-        lineView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
-        [self.view addSubview:lineView];
+//        UILabel *lineView = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(middleView.frame)+1, WIDTH, 1)];
+//        lineView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+//        [self.view addSubview:lineView];
         
-        UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(10, 5, 30, 30)];
+        UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(10, 13, 20, 14)];
         imageview.image = [UIImage imageNamed:imgs[i]];
         [middleView addSubview:imageview];
         
