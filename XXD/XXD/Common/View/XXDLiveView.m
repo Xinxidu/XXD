@@ -70,10 +70,10 @@
         playerButton.layer.masksToBounds = YES;
         playerButton.layer.cornerRadius = 2.0f;
         playerButton.backgroundColor = [UIColor colorWithRed:236/255.0 green:13/255.0 blue:26/255.0 alpha:1];
-        [playerButton setImage:[UIImage imageNamed:@"直播"] forState:UIControlStateNormal];
+        [playerButton setImage:[UIImage imageNamed:@"live"] forState:UIControlStateNormal];
         playerButton.titleLabel.font = [UIFont systemFontOfSize:12.0f];
         playerButton.titleLabel.textAlignment = NSTextAlignmentRight;
-        [playerButton setTitle:@"直播中..." forState:UIControlStateNormal];
+        [playerButton setTitle:@"直播中…" forState:UIControlStateNormal];
         [playerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [masterView addSubview:playerButton];
         

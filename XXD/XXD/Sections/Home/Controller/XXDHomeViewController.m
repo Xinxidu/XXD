@@ -88,13 +88,6 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 #pragma mark 创建顶部的轮播图
 - (void)createInfiniteScrollView {
     //网络图片
-//    NSArray *imagesURLStrings = @[
-//                                  @"http://www.bz55.com/uploads/allimg/150818/140-150QQH359.jpg",
-//                                  @"http://img8.zol.com.cn/bbs/upload/24043/24042104.jpg",
-//                                  @"http://www.bz55.com/uploads/allimg/150605/139-150605153434-51.jpg",
-//                                  @"http://www.bz55.com/uploads/allimg/150208/139-15020P92501.jpg",
-//                                  @"http://www.bz55.com/uploads/allimg/130520/1-1305200S957.jpg"
-//                                  ];
     //本地图片数组
     NSArray *imagesURLStrings = @[@"banner01",@"banner02",@"banner03",@"banner04"];
     //初始化scrollView
