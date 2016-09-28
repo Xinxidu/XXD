@@ -160,7 +160,7 @@
             _codeField = Txt;
             _codeField.autocapitalizationType = UITextAutocapitalizationTypeNone;
             Txt.frame = CGRectMake(CGRectGetMaxX(imageview.frame)+10, 10, self.view.bounds.size.width-CGRectGetMaxX(imageview.frame)-10-80, 20);
-            _authCodeView = [[AuthcodeView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(Txt.frame), 2, 70, 35)];
+            _authCodeView = [[AuthcodeView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(Txt.frame), 5, 70, 30)];
             _authCodeView.backgroundColor = [UIColor grayColor];
             [middleView addSubview:_authCodeView];
             
