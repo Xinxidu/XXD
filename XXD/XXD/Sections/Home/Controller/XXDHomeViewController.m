@@ -22,7 +22,7 @@
 #import "XXDLiveOnLineController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
-#define GREENCOLOR [UIColor colorWithRed:0/255.0 green:142/255.0 blue:48/255.0 alpha:1]
+#define GREENCOLOR [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1]
 #define GRAYCOLOR [UIColor colorWithRed:230/255.0 green:231/255.0 blue:232/255.0 alpha:1]
 
 typedef NS_ENUM(NSInteger,XXDButtonType){
@@ -54,7 +54,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"银大师";
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"top"] forBarMetrics:0];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
     self.navigationController.navigationBar.shadowImage=[UIImage new];
     //创建根视图
     self.rootScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -64, WIDTH, HEIGHT+20)];
@@ -88,13 +88,6 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 #pragma mark 创建顶部的轮播图
 - (void)createInfiniteScrollView {
     //网络图片
-//    NSArray *imagesURLStrings = @[
-//                                  @"http://www.bz55.com/uploads/allimg/150818/140-150QQH359.jpg",
-//                                  @"http://img8.zol.com.cn/bbs/upload/24043/24042104.jpg",
-//                                  @"http://www.bz55.com/uploads/allimg/150605/139-150605153434-51.jpg",
-//                                  @"http://www.bz55.com/uploads/allimg/150208/139-15020P92501.jpg",
-//                                  @"http://www.bz55.com/uploads/allimg/130520/1-1305200S957.jpg"
-//                                  ];
     //本地图片数组
     NSArray *imagesURLStrings = @[@"banner01",@"banner02",@"banner03",@"banner04"];
     //初始化scrollView

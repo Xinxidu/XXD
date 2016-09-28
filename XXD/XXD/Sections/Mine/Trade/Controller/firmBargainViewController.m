@@ -96,9 +96,14 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     self.mainScrollView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.mainScrollView];
     NSString *accountString = @"018000000173";
-    NSArray *tableViewData = @[@{@"holdTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"holdPirce":@"1022.0",@"swapsPrice":@"1,023.0",@"orderHold":@"34",@"surplus":@"63,478"},
+    NSArray *tableViewData =
+            @[@{@"holdTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"holdPirce":@"1022.0",@"swapsPrice":@"1,023.0",@"orderHold":@"34",@"surplus":@"63,478"},
             @{@"holdTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"holdPirce":@"1022.0",@"swapsPrice":@"1,023.0",@"orderHold":@"34",@"surplus":@"63,478"},
             @{@"holdTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"holdPirce":@"1022.0",@"swapsPrice":@"1,023.0",@"orderHold":@"34",@"surplus":@"63,478"}];
+    NSArray *delegateData =
+            @[@{@"delegateTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"delegatePirce":@"1022.0",@"avgPrice":@"1,023.0",@"volume":@"34",@"state":@"63,478"},
+            @{@"delegateTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"delegatePirce":@"1022.0",@"avgPrice":@"1,023.0",@"volume":@"34",@"state":@"63,478"},
+            @{@"delegateTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"delegatePirce":@"1022.0",@"avgPrice":@"1,023.0",@"volume":@"34",@"state":@"63,478"}];
     switch (buttonType) {
         case XXDButtonTypeOrderBuy:{
             XXDOrderSwapsBSViewModel *model = [[XXDOrderSwapsBSViewModel alloc] init];
@@ -141,11 +146,11 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
             [self.mainScrollView addSubview:orderBSView];
         }break;
         case XXDButtonTypeDelegate:{
-            XXDDelegateView *delegateView = [[XXDDelegateView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 400)];
+            XXDDelegateView *delegateView = [[XXDDelegateView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 400) tableViewData:delegateData];
             [self.mainScrollView addSubview:delegateView];
         }break;
         case XXDButtonTypeHoldProduct:{
-            XXDHoldProductView *holdProductView = [[XXDHoldProductView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 190)];
+            XXDHoldProductView *holdProductView = [[XXDHoldProductView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 390) tableViewData:tableViewData];
             [self.mainScrollView addSubview:holdProductView];
         }break;
     }

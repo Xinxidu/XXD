@@ -415,6 +415,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
     self.buttomTableView.delegate = self;
     self.buttomTableView.dataSource = self;
     self.buttomTableView.rowHeight = 50;
+    self.buttomTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self addSubview:self.buttomTableView];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

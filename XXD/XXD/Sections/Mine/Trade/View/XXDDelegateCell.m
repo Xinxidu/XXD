@@ -1,18 +1,18 @@
 //
-//  XXDOrderSwapsBSCell.m
+//  XXDDelegateCell.m
 //  XXD
 //
-//  Created by dayu on 16/9/27.
+//  Created by dayu on 16/9/28.
 //  Copyright © 2016年 xinxidu. All rights reserved.
 //
 
-#import "XXDOrderSwapsBSCell.h"
-#import "XXDOrderSwapsBS.h"
+#import "XXDDelegateCell.h"
+#import "XXDDelegate.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
-@implementation XXDOrderSwapsBSCell
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier orderSwapsBS:(XXDOrderSwapsBS *)orderSwapsBS{
+@implementation XXDDelegateCell
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier delegate:(XXDDelegate *)delegate{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        NSArray *labelStringArray = [NSArray arrayWithObjects:orderSwapsBS.holdTime,orderSwapsBS.buyPrice,orderSwapsBS.sellPrice,orderSwapsBS.holdPirce,orderSwapsBS.swapsPrice,orderSwapsBS.orderHold,orderSwapsBS.surplus, nil];
+        NSArray *labelStringArray = [NSArray arrayWithObjects:delegate.delegateTime,delegate.buyPrice,delegate.sellPrice,delegate.delegatePirce,delegate.avgPrice,delegate.volume,delegate.state, nil];
         for (NSInteger i =0; i<7; i++) {
             CGFloat x = 0, y = 0, width = WIDTH/5.0, height = 0;
             switch (i) {
