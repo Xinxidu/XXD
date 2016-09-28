@@ -54,7 +54,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"银大师";
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"top"] forBarMetrics:0];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
     self.navigationController.navigationBar.shadowImage=[UIImage new];
     //创建根视图
     self.rootScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -64, WIDTH, HEIGHT+20)];
