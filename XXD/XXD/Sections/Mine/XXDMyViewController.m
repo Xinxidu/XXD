@@ -13,6 +13,7 @@
 #import "XXDMyFirmAccountVC.h"
 #import "XXDRegisterViewController.h"
 #import "XXDLoginViewController.h"
+#import "XXDMyAccountViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 #define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
@@ -35,6 +36,7 @@
     self.navigationItem.title = @"我的";
     [self createHeaderView];
     [self createTableView];
+    [self headViewClick];
 }
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBar.barTintColor = BLUECOLOR;
@@ -99,17 +101,33 @@
         //退出登录按钮
         _exitLoginButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _exitLoginButton.frame = CGRectMake(WIDTH-125, (120-41)/2, 110, 41);
-        [_exitLoginButton setTitle:@"退出登录" forState:UIControlStateNormal];
+        [_exitLoginButton setTitle:@"lixiaoming" forState:UIControlStateNormal];
+        [_exitLoginButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         _exitLoginButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
         _exitLoginButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        [_exitLoginButton setBackgroundImage:[UIImage imageNamed:@"mybtn3"] forState:UIControlStateNormal];
-        [_exitLoginButton addTarget:self action:@selector(exitLoginClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [_exitLoginButton setBackgroundImage:[UIImage imageNamed:@"mybtn3"] forState:UIControlStateNormal];
+//        [_exitLoginButton addTarget:self action:@selector(exitLoginClick:) forControlEvents:UIControlEventTouchUpInside];
         [_hearerView addSubview:_exitLoginButton];
     //已登录状态下视图
     if (_islogin == YES) {
         _registerButton.hidden = YES;
         _loginButton.hidden = YES;
     }
+}
+//顶部个人信息点击事件
+-(void)headViewClick{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(enterToMyAccount)];
+    tap.numberOfTapsRequired = 1;
+    [_hearerView addGestureRecognizer:tap];
+}
+//跳转我的账户
+-(void)enterToMyAccount{
+    if (_islogin == YES) {
+        self.hidesBottomBarWhenPushed = YES;
+        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDMyAccountViewController alloc]init]];
+        self.hidesBottomBarWhenPushed = NO;
+    }
+    
 }
 //注册按钮事件
 -(void)registerClick:(UIButton*)sender{
@@ -123,16 +141,16 @@
     [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDLoginViewController alloc]init]];
     self.hidesBottomBarWhenPushed = NO;
 }
-//退出登录按钮事件
--(void)exitLoginClick:(UIButton*)sender{
-    _islogin = NO;
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:NO forKey:@"isLogin"];
-    _exitLoginButton.hidden = YES;
-    _registerButton.hidden = NO;;
-    _loginButton.hidden = NO;
-    _statusLabel.text = @"未登录";
-}
+////退出登录按钮事件
+//-(void)exitLoginClick:(UIButton*)sender{
+//    _islogin = NO;
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    [userDefaults setBool:NO forKey:@"isLogin"];
+//    _exitLoginButton.hidden = YES;
+//    _registerButton.hidden = NO;;
+//    _loginButton.hidden = NO;
+//    _statusLabel.text = @"未登录";
+//}
 -(void)createTableView{
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_hearerView.frame)+0.5, self.view.bounds.size.width, self.view.bounds.size.height-44)];
     _tableView.delegate = self;
@@ -166,30 +184,30 @@
     cell.textLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
+            cell.imageView.image = [UIImage imageNamed:@"我的实盘账户"];
             cell.textLabel.text = @"我的实盘账户";
         }else{
-            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
+            cell.imageView.image = [UIImage imageNamed:@"我的自选"];
             cell.textLabel.text = @"我的自选";
         }
 
     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {
-            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
+            cell.imageView.image = [UIImage imageNamed:@"我的活动"];
             cell.textLabel.text = @"我的活动";
         }else if (indexPath.row == 1){
             cell.imageView.image = [UIImage imageNamed:@"关于我们"];
             cell.textLabel.text = @"关于我们";
         }else{
-            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
+            cell.imageView.image = [UIImage imageNamed:@"联系我们"];
             cell.textLabel.text = @"联系我们";
         }
     }else{
         if (indexPath.row == 0) {
-            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
+            cell.imageView.image = [UIImage imageNamed:@"使用帮助"];
             cell.textLabel.text = @"使用帮助";
         }else{
-            cell.imageView.image = [UIImage imageNamed:@"gerenxinxi"];
+            cell.imageView.image = [UIImage imageNamed:@"设置"];
             cell.textLabel.text = @"设置";
         }
     }

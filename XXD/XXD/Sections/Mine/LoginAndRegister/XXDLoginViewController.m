@@ -8,6 +8,7 @@
 
 #import "XXDLoginViewController.h"
 #import "XXDRegisterViewController.h"
+#import "XXDFindPwdViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface XXDLoginViewController ()<UITextFieldDelegate>
@@ -109,11 +110,20 @@
     [self.view addSubview:_submitButton];
     
     //下部提示
-    UILabel *numberLabel = [[UILabel alloc]initWithFrame:CGRectMake((WIDTH-200)/2, CGRectGetMaxY(_submitButton.frame)+10, 200, 18)];
-    numberLabel.text = @"密码找回［4001-054-080］";
-    numberLabel.font = [UIFont systemFontOfSize:15.0];
-    numberLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:numberLabel];
+//    UILabel *numberLabel = [[UILabel alloc]initWithFrame:CGRectMake((WIDTH-200)/2, CGRectGetMaxY(_submitButton.frame)+10, 200, 18)];
+//    numberLabel.text = @"密码找回［4001-054-080］";
+//    numberLabel.font = [UIFont systemFontOfSize:15.0];
+//    numberLabel.textAlignment = NSTextAlignmentCenter;
+//    [self.view addSubview:numberLabel];
+    
+    UIButton *findButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    findButton.frame = CGRectMake((WIDTH-200)/2, CGRectGetMaxY(_submitButton.frame)+10, 200, 18);
+    [findButton setTitle:@"忘记密码 >" forState:UIControlStateNormal];
+    [findButton setTitleColor:[UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+    findButton.titleLabel.font = [UIFont systemFontOfSize:13.0];
+    [findButton addTarget:self action:@selector(findPassWordClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:findButton];
+    
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake((WIDTH-180)/2, HEIGHT-60, 90, 18)];
     titleLabel.text = @"没有账号？";
     titleLabel.font = [UIFont systemFontOfSize:15.0];
@@ -129,6 +139,11 @@
     [self.view addSubview:clickButton];
     
     
+}
+#pragma mark ****** 找回密码
+-(void)findPassWordClick{
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:[[XXDFindPwdViewController alloc]init] animated:YES];
 }
 #pragma mark ****** 登录判断
 - (void)passwordChange{
