@@ -38,12 +38,12 @@
     jiantouImageView.image = [UIImage imageNamed:@"right"];
     [topView addSubview:jiantouImageView];
     //下部视图
-    UIView *downView = [[UIView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(topView.frame), SIZE.width-20, 80)];
+    UIView *downView = [[UIView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(topView.frame)+2, SIZE.width-20, 80)];
     downView.layer.borderWidth = 0.2;
     downView.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5].CGColor;
     [self.contentView addSubview:downView];
     
-    _picImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150, 80)];
+    _picImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 0.5*SIZE.width, 80)];
     _picImageView.backgroundColor = [UIColor grayColor];
     _picImageView.image = [UIImage imageNamed:@"img"];
     [downView addSubview:_picImageView];
