@@ -28,7 +28,7 @@
     //国际行情视图
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(10, 10, WIDTH-20, 120)];
     [self.view addSubview:topView];
-    UILabel *internationLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, 80, 30)];
+    UILabel *internationLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 30)];
     internationLabel.text = @"国际行情";
     internationLabel.textColor = [UIColor whiteColor];
     [topView addSubview:internationLabel];
@@ -44,10 +44,10 @@
             itemButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
             [topView addSubview:itemButton];
             if (row == 0) {
-                itemButton.backgroundColor = [UIColor colorWithRed:242/255.0 green:183/255.0 blue:70/255.0 alpha:1.0];
+                itemButton.backgroundColor = [UIColor colorWithRed:215/255.0 green:130/255.0 blue:32/255.0 alpha:1.0];
                 [itemButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             }else{
-                itemButton.backgroundColor = [UIColor colorWithRed:27/255.0 green:124/255.0 blue:189/255.0 alpha:1.0];
+                itemButton.backgroundColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
                 [itemButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 if (col == 2) {
                     itemButton.hidden = YES;
@@ -58,7 +58,7 @@
     //国内行情视图
     UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(topView.frame), WIDTH-20, 150)];
     [self.view addSubview:bottomView];
-    UILabel *domesticLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, 80, 30)];
+    UILabel *domesticLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 30)];
     domesticLabel.text = @"国内行情";
     domesticLabel.textColor = [UIColor whiteColor];
     [bottomView addSubview:domesticLabel];
@@ -74,10 +74,10 @@
             itemButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
             [bottomView addSubview:itemButton];
             if (row == 0) {
-                itemButton.backgroundColor = [UIColor colorWithRed:242/255.0 green:183/255.0 blue:70/255.0 alpha:1.0];
+                itemButton.backgroundColor = [UIColor colorWithRed:215/255.0 green:130/255.0 blue:32/255.0 alpha:1.0];
                 [itemButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             }else if(row == 1){
-                itemButton.backgroundColor = [UIColor colorWithRed:27/255.0 green:124/255.0 blue:189/255.0 alpha:1.0];
+                itemButton.backgroundColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
                 [itemButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             }else{
                 itemButton.backgroundColor = [UIColor colorWithRed:88/255.0 green:165/255.0 blue:110/255.0 alpha:1.0];

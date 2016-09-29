@@ -146,7 +146,7 @@
 //        lineView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
 //        [self.view addSubview:lineView];
         
-        UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(10, 13, 20, 14)];
+        UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(10, 13, 20, 16)];
         imageview.image = [UIImage imageNamed:imgs[i]];
         [middleView addSubview:imageview];
         
