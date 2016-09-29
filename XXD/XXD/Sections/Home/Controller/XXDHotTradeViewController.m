@@ -29,8 +29,7 @@
     [super viewDidLoad];
     //导航栏
     [XXDCustomNavigation loadUIViewController:self title:@"热门交易" backSelector:@selector(backBtnClick)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh)];
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"refresh"] style:UIBarButtonItemStylePlain target:self action:@selector(refresh)];
     //表头
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, 35)];
     bgView.backgroundColor = [UIColor colorWithRed:245/255.0 green:246/255.0 blue:247/255.0 alpha:1];
@@ -61,6 +60,11 @@
             dropDownButton.titleLabel.font = [UIFont systemFontOfSize:12.0f];
             dropDownButton.titleEdgeInsets = UIEdgeInsetsMake(11.5,0,11.5,(WIDTH*0.8 - 30)/4.0-48);
             dropDownButton.tag = i;
+            if (i == 3|| i ==4) {
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(width-13, 14, 10, 7)];
+                imageView.image = [UIImage imageNamed:@"dropDown_down"];
+                [dropDownButton addSubview:imageView];
+            }
             [dropDownButton addTarget:self action:@selector(menuClick:) forControlEvents:UIControlEventTouchUpInside];
             [bgView addSubview:dropDownButton];
             if (i == 3) {
@@ -129,6 +133,11 @@
         optionButton.titleEdgeInsets = UIEdgeInsetsMake(6.5,0,6.5,(WIDTH*0.8 - 30)/4.0-5-text.length*12-(text.length-1));
         [optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [optionView addSubview:optionButton];
+        if (i == 0) {
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((WIDTH*0.8 - 30)/4.0-18, 9, 10, 7)];
+            imageView.image = [UIImage imageNamed:@"dropDown_up"];
+            [optionButton addSubview:imageView];
+        }
     }
     return  optionView;
 }

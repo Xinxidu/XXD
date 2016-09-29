@@ -16,6 +16,7 @@
 @class XXDOrderSwapsBSViewModel;
 @interface XXDOrderBSView : UIView<UITableViewDelegate,UITableViewDataSource>
 @property (strong,nonatomic) UIButton *proNameButton;//商品名按钮
+@property (strong,nonatomic) UIImageView *dropDownButton;//下拉图标
 @property (strong,nonatomic) NSArray *proNameArray;//初始化商品名数组
 @property (strong,nonatomic) UIView *dropDownView;//商品选择下拉框
 @property (strong,nonatomic) UILabel *buyPriceLabel;//买入价格加减显示
