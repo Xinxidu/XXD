@@ -44,16 +44,16 @@
     cell.backgroundColor = [UIColor whiteColor];
     if ((indexPath.section == 0)) {
         cell.cicleImageView.image = [UIImage imageNamed:@"be"];
-        cell.activityStatusLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"beBg"]];
         cell.activityStatusLabel.text = @"进行中";
+        cell.activityStatusImage.image = [UIImage imageNamed:@"beBg"];
     }else if (indexPath.section == 1){
         cell.cicleImageView.image = [UIImage imageNamed:@"join"];
-        cell.activityStatusLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"joinBg"]];
         cell.activityStatusLabel.text = @"已参与";
+        cell.activityStatusImage.image = [UIImage imageNamed:@"joinBg"];
     }else{
         cell.cicleImageView.image = [UIImage imageNamed:@"end"];
-        cell.activityStatusLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"endBg"]];
         cell.activityStatusLabel.text = @"已结束";
+        cell.activityStatusImage.image = [UIImage imageNamed:@"endBg"];
     }
 
     return cell;
