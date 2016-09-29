@@ -408,6 +408,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
     UIView *horizontal_2 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(horizontal_1.frame)+37, WIDTH, 1)];
     horizontal_2.backgroundColor = LIGHTGRAYCOLOR;
     [self addSubview:horizontal_2];
+    
 }
 #pragma mark 创建底部表格
 - (void)createButtomTableView{
@@ -415,6 +416,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
     self.buttomTableView.delegate = self;
     self.buttomTableView.dataSource = self;
     self.buttomTableView.rowHeight = 50;
+    self.buttomTableView.bounces = NO;
     self.buttomTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self addSubview:self.buttomTableView];
 }
