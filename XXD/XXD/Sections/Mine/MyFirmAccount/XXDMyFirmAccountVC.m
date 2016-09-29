@@ -87,6 +87,7 @@
         cell.textLabel.text = @"交易";
         cell.textLabel.textColor = BLUECOLOR;
         cell.backgroundColor = [UIColor colorWithRed:224/255.0 green:240/255.0 blue:253/255.0 alpha:1.0];
+        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"右侧箭头"]];
     }
     return cell;
     
