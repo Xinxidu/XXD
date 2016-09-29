@@ -39,6 +39,17 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
         [proNameButton addTarget:self action:@selector(showProductDropDown) forControlEvents:UIControlEventTouchUpInside];
         [self insertSubview:proNameButton atIndex:1];
         self.proNameButton = proNameButton;
+        UIView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(174/320.0*WIDTH-29, 1, 28, 28)];
+        bgView.layer.masksToBounds = YES;
+        bgView.layer.cornerRadius = 14.0f;
+        bgView.backgroundColor = [UIColor whiteColor];
+        [self.proNameButton addSubview:bgView];
+        self.dropDownButton = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 16, 10)];
+        self.dropDownButton.center = bgView.center;
+        self.dropDownButton.image = [UIImage imageNamed:@"dropDown_down"];
+        [bgView addSubview:self.dropDownButton];
+        
+        [self.proNameButton addSubview:self.dropDownButton];
         CGRect buyPriceViewFrome = CGRectMake(10, CGRectGetMaxY(proNameButton.frame)+10, proNameButton.frame.size.width, 30);
         //是否显示调期买卖的两个按钮
         if (self.orderSwapsBSViewModel.isShowTwoButtonForSwapsBS == YES) {
@@ -115,7 +126,16 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
         button.layer.masksToBounds = YES;
         button.layer.cornerRadius = 15.0f;
         [button addTarget:self action:@selector(buyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self insertSubview:button atIndex:0];
+        
+        //添加按钮阴影
+        CALayer *layer = [CALayer layer];
+        layer.frame = button.frame;
+        layer.backgroundColor = [UIColor redColor].CGColor;
+        layer.shadowOffset = CGSizeMake(2, 2);
+        layer.shadowOpacity = 0.6;
+        layer.cornerRadius = 15.0f;
+        [self.layer insertSublayer:layer atIndex:0];
+        [self insertSubview:button atIndex:1];
         self.bsButton = button;
         //初始化表格显示数据
         self.sellPrice = 1006;
@@ -158,9 +178,11 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
     if (self.dropDownView == nil) {
         self.dropDownView = [self createDropDownWithMenuArray:self.proNameArray];
         [self insertSubview:self.dropDownView belowSubview:self.proNameButton];
+        self.dropDownButton.image = [UIImage imageNamed:@"dropDown_up"];
     }else{
         [self.dropDownView removeFromSuperview];
         self.dropDownView = nil;
+        self.dropDownButton.image = [UIImage imageNamed:@"dropDown_down"];
     }
 }
 #pragma mark 创建加减按钮
