@@ -43,7 +43,7 @@
     downView.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5].CGColor;
     [self.contentView addSubview:downView];
     
-    _picImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 0.5*SIZE.width, 80)];
+    _picImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, (195/320.0)*SIZE.width, 80)];
     _picImageView.backgroundColor = [UIColor grayColor];
     _picImageView.image = [UIImage imageNamed:@"img"];
     [downView addSubview:_picImageView];
