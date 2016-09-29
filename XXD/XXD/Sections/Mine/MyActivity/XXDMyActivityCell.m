@@ -38,12 +38,12 @@
     jiantouImageView.image = [UIImage imageNamed:@"right"];
     [topView addSubview:jiantouImageView];
     //下部视图
-    UIView *downView = [[UIView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(topView.frame), SIZE.width-20, 80)];
+    UIView *downView = [[UIView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(topView.frame)+2, SIZE.width-20, 80)];
     downView.layer.borderWidth = 0.2;
     downView.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5].CGColor;
     [self.contentView addSubview:downView];
     
-    _picImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150, 80)];
+    _picImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, (195/320.0)*SIZE.width, 80)];
     _picImageView.backgroundColor = [UIColor grayColor];
     _picImageView.image = [UIImage imageNamed:@"img"];
     [downView addSubview:_picImageView];
@@ -51,14 +51,18 @@
     UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_picImageView.frame), 0, SIZE.width-_picImageView.frame.size.width-20, 80)];
     [downView addSubview:rightView];
     
-    _activityStatusLabel = [[UILabel alloc]initWithFrame:CGRectMake((rightView.frame.size.width-50)/2, 0, 50, 15)];
-    _activityStatusLabel.text = @"进行中";
-    _activityStatusLabel.font = [UIFont systemFontOfSize:13.0];
+    _activityStatusImage = [[UIImageView alloc]initWithFrame:CGRectMake((rightView.frame.size.width-44)/2, 0, 44, 15)];
+//    _activityStatusImage.image = [UIImage imageNamed:@"beBg"];
+    [rightView addSubview:_activityStatusImage];
+    
+    _activityStatusLabel = [[UILabel alloc]initWithFrame:CGRectMake(4, 0, 36, 14)];
+    _activityStatusLabel.font = [UIFont systemFontOfSize:10.0];
     _activityStatusLabel.textColor = [UIColor whiteColor];
     _activityStatusLabel.textAlignment = NSTextAlignmentCenter;
-    [rightView addSubview:_activityStatusLabel];
+    _activityStatusLabel.text = @"进行中";
+    [_activityStatusImage addSubview:_activityStatusLabel];
     
-    _takeDateLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_activityStatusLabel.frame)+10, rightView.frame.size.width, 14)];
+    _takeDateLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_activityStatusImage.frame)+10, rightView.frame.size.width, 14)];
     _takeDateLabel.text = @"活动日期";
     _takeDateLabel.font = [UIFont systemFontOfSize:14.0];
     _takeDateLabel.textColor = [UIColor blackColor];

@@ -30,7 +30,7 @@
     [self.view addSubview:_tableView];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return 3;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -42,6 +42,20 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor whiteColor];
+    if ((indexPath.section == 0)) {
+        cell.cicleImageView.image = [UIImage imageNamed:@"be"];
+        cell.activityStatusLabel.text = @"进行中";
+        cell.activityStatusImage.image = [UIImage imageNamed:@"beBg"];
+    }else if (indexPath.section == 1){
+        cell.cicleImageView.image = [UIImage imageNamed:@"join"];
+        cell.activityStatusLabel.text = @"已参与";
+        cell.activityStatusImage.image = [UIImage imageNamed:@"joinBg"];
+    }else{
+        cell.cicleImageView.image = [UIImage imageNamed:@"end"];
+        cell.activityStatusLabel.text = @"已结束";
+        cell.activityStatusImage.image = [UIImage imageNamed:@"endBg"];
+    }
+
     return cell;
     
 }
@@ -49,7 +63,7 @@
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 150;
+    return 130;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 5;

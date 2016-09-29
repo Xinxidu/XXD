@@ -14,6 +14,7 @@
 @property (nonatomic,strong)UILabel *takeDateLabel;//参与日期
 @property (nonatomic,strong)UILabel *activityDateLabel;//活动日期
 @property (nonatomic,strong)UILabel *activityStatusLabel;//活动状态
+@property (nonatomic,strong)UIImageView *activityStatusImage;//活动背景图片
 @property (nonatomic,strong)UIImageView *cicleImageView;//⭕️
 @property (nonatomic,strong)UILabel*  activityStartLabel;//开始时间
 @property (nonatomic,strong)UILabel*  activityEndLabel;//结束时间
