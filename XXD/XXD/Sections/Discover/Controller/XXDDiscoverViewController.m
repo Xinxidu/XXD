@@ -14,6 +14,7 @@
 #import "XXDPushViewController.h"
 #import "XXDLiveOnLineController.h"
 #import "XXDNewerViewController.h"
+#import "FirmLoginViewController.h"
 
 @interface XXDDiscoverViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
@@ -105,7 +106,9 @@
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:team];
         }
     }else{
-            NSLog(@"模拟盘交易");
+        FirmLoginViewController *firm = [[FirmLoginViewController alloc]init];
+        firm.isMonipan = YES;
+        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:firm];
     }
     self.hidesBottomBarWhenPushed = NO;
 }

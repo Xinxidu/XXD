@@ -8,9 +8,11 @@
 
 #import "XXDRegisterViewController.h"
 #import "XXDRegisterSecondViewController.h"
+#import "XXDLoginViewController.h"
+#import "XXDFindPwdViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
-@interface XXDRegisterViewController ()
+@interface XXDRegisterViewController ()<UITextFieldDelegate>
 @property (nonatomic,strong)UITextField *phoneNumberTextfield;
 @property (nonatomic,strong)UITextField *codeTextfield;
 
@@ -41,9 +43,12 @@
     phoneLabel.text = @"手机号:";
     phoneLabel.font = [UIFont systemFontOfSize:15.0];
     [phoneView addSubview:phoneLabel];
-    _phoneNumberTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(phoneLabel.frame)+5, 8, WIDTH-60-20, 30)];
+    _phoneNumberTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(phoneLabel.frame)+5, 8, WIDTH-60-20-20, 30)];
     _phoneNumberTextfield.placeholder = @"请正确填写您的手机号";
     [_phoneNumberTextfield setValue:[UIFont boldSystemFontOfSize:13.0] forKeyPath:@"_placeholderLabel.font"];
+    _phoneNumberTextfield.keyboardType = UIKeyboardTypeNumberPad;
+    _phoneNumberTextfield.clearButtonMode = UITextFieldViewModeAlways;
+    _phoneNumberTextfield.text = @"1234567890";
     [phoneView addSubview:_phoneNumberTextfield];
     //验证码
     UIView *codeView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(phoneView.frame)+0.5, WIDTH, 40)];
@@ -69,9 +74,10 @@
     codeButton.layer.masksToBounds = YES;
     [codeView addSubview:codeButton];
     
-    _codeTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(codeLabel.frame)+5, 8, WIDTH-60-20-80, 30)];
+    _codeTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(codeLabel.frame)+5, 8, WIDTH-60-20-80-20, 30)];
     _codeTextfield.placeholder = @"请输入短信验证码";
     [_codeTextfield setValue:[UIFont boldSystemFontOfSize:13.0] forKeyPath:@"_placeholderLabel.font"];
+    _codeTextfield.clearButtonMode = UITextFieldViewModeAlways;
     [codeView addSubview:_codeTextfield];
     
     UIButton *nextStepButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -90,11 +96,62 @@
     layer.cornerRadius = 20;
     [self.view.layer addSublayer:layer];
     [self.view addSubview:nextStepButton];
+    //下部提示
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake((WIDTH-100)/2, CGRectGetMaxY(nextStepButton.frame)+20, 50, 18)];
+    titleLabel.text = @"请直接";
+    titleLabel.font = [UIFont systemFontOfSize:15.0];
+    titleLabel.textAlignment = NSTextAlignmentRight;
+    titleLabel.textColor = [UIColor grayColor];
+    [self.view addSubview:titleLabel];
+    UIButton *clickButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    clickButton.frame = CGRectMake(CGRectGetMaxX(titleLabel.frame), CGRectGetMaxY(nextStepButton.frame)+20, 50, 18);
+    [clickButton setTitle:@"登录 >" forState:UIControlStateNormal];
+    [clickButton setTitleColor:[UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+    clickButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    [clickButton addTarget:self action:@selector(enterToLogin) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:clickButton];
+    
+    UILabel *findLabel = [[UILabel alloc]initWithFrame:CGRectMake((WIDTH-180)/2, CGRectGetMaxY(clickButton.frame)+5, 90, 18)];
+    findLabel.text = @"如忘记密码,";
+    findLabel.font = [UIFont systemFontOfSize:15.0];
+    findLabel.textAlignment = NSTextAlignmentRight;
+    findLabel.textColor = [UIColor grayColor];
+    [self.view addSubview:findLabel];
+    UIButton *findButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    findButton.frame = CGRectMake(CGRectGetMaxX(findLabel.frame), CGRectGetMaxY(clickButton.frame)+5, 90, 18);
+    [findButton setTitle:@"立即找回 >" forState:UIControlStateNormal];
+    [findButton setTitleColor:[UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+    findButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    [findButton addTarget:self action:@selector(enterToFindPwd) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:findButton];
+
     
 }
--(void)nextStepClick{
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [_phoneNumberTextfield resignFirstResponder];
+    [_codeTextfield resignFirstResponder];    
+}
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    _phoneNumberTextfield.textColor = [UIColor blackColor];
+}
+#pragma mark -已注册直接登录
+-(void)enterToLogin{
     self.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:[[XXDRegisterSecondViewController alloc]init] animated:YES];
+    [self.navigationController pushViewController:[[XXDLoginViewController alloc]init] animated:YES];
+}
+#pragma mark -忘记密码，找回
+-(void)enterToFindPwd{
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:[[XXDFindPwdViewController alloc]init] animated:YES];
+}
+-(void)nextStepClick{
+    NSLog(@"%@",_phoneNumberTextfield.text);
+    if ([_phoneNumberTextfield.text  isEqual: @"1234567890"]) {
+        _phoneNumberTextfield.text = @"该手机号已注册";
+    }else{
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:[[XXDRegisterSecondViewController alloc]init] animated:YES];
+    }
 }
 #pragma mark -返回按钮点击
 - (void)backBtnClick{

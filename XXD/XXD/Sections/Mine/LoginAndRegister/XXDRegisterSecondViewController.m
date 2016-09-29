@@ -12,6 +12,7 @@
 @interface XXDRegisterSecondViewController ()
 @property (nonatomic,strong)UITextField *nickNameTextfield;
 @property (nonatomic,strong)UITextField *pwdTextfield;
+@property (nonatomic,strong)UITextField *surePwdTextfield;
 @end
 
 @implementation XXDRegisterSecondViewController
@@ -36,7 +37,7 @@
     [nickView addSubview:nickImageView];
     
     UILabel *nickLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(nickImageView.frame)+5, 0, 60, 40)];
-    nickLabel.text = @"昵 称:";
+    nickLabel.text = @"用 户 名:";
     nickLabel.font = [UIFont systemFontOfSize:15.0];
     [nickView addSubview:nickLabel];
     _nickNameTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(nickLabel.frame)+5, 8, WIDTH-60-20, 30)];
@@ -53,28 +54,37 @@
     [pwdView addSubview:pwdImageView];
     
     UILabel *pwdLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(pwdImageView.frame)+5, 0, 60, 40)];
-    pwdLabel.text = @"密 码:";
+    pwdLabel.text = @"密      码:";
     pwdLabel.font = [UIFont systemFontOfSize:15.0];
     [pwdView addSubview:pwdLabel];
-    
-//    UIButton *codeButton = [UIButton buttonWithType:UIButtonTypeSystem];
-//    codeButton.frame = CGRectMake(WIDTH-80-10, 10, 80, 20);
-//    [codeButton setTitle:@"6~18位密码" forState:UIControlStateNormal];
-//    [codeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    codeButton.titleLabel.font = [UIFont systemFontOfSize:13.0];
-//    codeButton.backgroundColor = [UIColor grayColor];
-//    codeButton.layer.cornerRadius = 4;
-//    codeButton.layer.masksToBounds = YES;
-//    [codeView addSubview:codeButton];
     
     _pwdTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(pwdLabel.frame)+5, 8, WIDTH-60-20, 30)];
     _pwdTextfield.placeholder = @"6～18位密码";
     [_pwdTextfield setValue:[UIFont boldSystemFontOfSize:13.0] forKeyPath:@"_placeholderLabel.font"];
     _pwdTextfield.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [pwdView addSubview:_pwdTextfield];
+    //确认密码
+    UIView *surePwdView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(pwdView.frame)+0.5, WIDTH, 40)];
+    surePwdView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:surePwdView];
+    
+    UIImageView *surepwdImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 11, 17, 18)];
+    surepwdImageView.image = [UIImage imageNamed:@"icon2"];
+    [surePwdView addSubview:surepwdImageView];
+    
+    UILabel *surepwdLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(surepwdImageView.frame)+5, 0, 70, 40)];
+    surepwdLabel.text = @"确认密码:";
+    surepwdLabel.font = [UIFont systemFontOfSize:15.0];
+    [surePwdView addSubview:surepwdLabel];
+    
+    _surePwdTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(surepwdLabel.frame)+5, 8, WIDTH-70-20, 30)];
+    _surePwdTextfield.placeholder = @"6～18位密码";
+    [_surePwdTextfield setValue:[UIFont boldSystemFontOfSize:13.0] forKeyPath:@"_placeholderLabel.font"];
+    _surePwdTextfield.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    [surePwdView addSubview:_surePwdTextfield];
     
     UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    submitButton.frame = CGRectMake(20, CGRectGetMaxY(pwdView.frame)+20, WIDTH-40, 40);
+    submitButton.frame = CGRectMake(20, CGRectGetMaxY(surePwdView.frame)+20, WIDTH-40, 40);
     [submitButton setTitle:@"提交" forState:UIControlStateNormal];
     [submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     submitButton.backgroundColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
@@ -82,7 +92,7 @@
     submitButton.layer.cornerRadius = 20;
     submitButton.layer.masksToBounds = YES;
     CALayer *layer = [CALayer layer];
-    layer.frame = CGRectMake(20, CGRectGetMaxY(pwdView.frame)+20, WIDTH-40, 40);
+    layer.frame = CGRectMake(20, CGRectGetMaxY(surePwdView.frame)+20, WIDTH-40, 40);
     layer.backgroundColor = [UIColor blueColor].CGColor;
     layer.shadowOffset = CGSizeMake(2, 2);
     layer.shadowOpacity = 0.8;
@@ -94,8 +104,6 @@
 -(void)submitClick{
     NSLog(@"提交");
     [self.navigationController pushViewController:[[XXDLoginViewController alloc]init] animated:YES];
-//    NSUserDefaults *us = [NSUserDefaults standardUserDefaults];
-//    [us setBool:YES forKey:@"isLogin"];
 }
 #pragma mark -返回按钮点击
 - (void)backBtnClick{

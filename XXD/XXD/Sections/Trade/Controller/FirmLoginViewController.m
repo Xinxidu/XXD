@@ -72,6 +72,15 @@
     [self.view addSubview:_lineLabel2];
     [self createUI];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    if (_isMonipan == YES) {
+        [_shipanButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [_monipanButton setTitleColor:[UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+        _lineLabel1.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+        [self.view addSubview:_lineLabel2];
+        _lineLabel2.backgroundColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    }
+}
 -(void)shipanClick:(UIButton*)sender{
     [_shipanButton setTitleColor:[UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
     [_monipanButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
@@ -137,7 +146,7 @@
 //        lineView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
 //        [self.view addSubview:lineView];
         
-        UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(10, 13, 20, 14)];
+        UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(10, 13, 20, 16)];
         imageview.image = [UIImage imageNamed:imgs[i]];
         [middleView addSubview:imageview];
         

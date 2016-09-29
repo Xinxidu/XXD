@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FirmLoginViewController : UIViewController
-
+@property (assign,nonatomic)BOOL isMonipan;
 @end
