@@ -12,10 +12,12 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withJinYinNiuPing:(XXDJinYinNiuPing *)jinYinNiuPing{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         CGFloat width = self.contentView.frame.size.width;
+        self.backgroundColor = [UIColor colorWithRed:245/255.0 green:249/255.0 blue:252/255.0 alpha:1];
         //图片
         UIImageView *leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 80, 50)];
-        leftImageView.backgroundColor = [UIColor cyanColor];
         leftImageView.image = [UIImage imageNamed:jinYinNiuPing.imageString];
+        leftImageView.layer.masksToBounds = YES;
+        leftImageView.layer.cornerRadius= 3.0f;
         [self.contentView addSubview:leftImageView];
         
         //详情

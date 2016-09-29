@@ -382,7 +382,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
         XXDJinYinNiuPingCell *cell=[tableView dequeueReusableCellWithIdentifier:cellId];
         if (cell == nil) {
             XXDJinYinNiuPing *jinYinNiuPing = [[XXDJinYinNiuPing alloc] init];
-            jinYinNiuPing.imageString = @"aaa";
+            jinYinNiuPing.imageString = @"img5";
             jinYinNiuPing.detailString = @"阿萨德发的发生大发事大法师打发斯蒂芬";
             jinYinNiuPing.dateString = @"2016/09/01 07:16:30";
             cell = [[XXDJinYinNiuPingCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId withJinYinNiuPing:jinYinNiuPing];
@@ -403,7 +403,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 20)];
-    bgView.backgroundColor = [UIColor whiteColor];
+    bgView.backgroundColor = [UIColor colorWithRed:245/255.0 green:249/255.0 blue:252/255.0 alpha:1];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH*0.5-5, 0, 10, 10)];
     imageView.image = [UIImage imageNamed:@"dropDownButton"];
     [bgView addSubview:imageView];

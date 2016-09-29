@@ -15,6 +15,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         CGFloat width = self.contentView.frame.size.width;
         CGFloat height = self.contentView.frame.size.height;
+        self.backgroundColor = [UIColor colorWithRed:245/255.0 green:249/255.0 blue:252/255.0 alpha:1];
         //时间标签
         UIImageView *timeView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 37, 13)];
         timeView.image = [UIImage imageNamed:@"timeBg"];
