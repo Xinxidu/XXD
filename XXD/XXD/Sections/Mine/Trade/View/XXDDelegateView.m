@@ -35,11 +35,13 @@
         UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, headHeight, width, 1)];
         horizontal.backgroundColor = LIGHTGRAYCOLOR;
         [self addSubview:horizontal];
+        
         //表格
         UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(horizontal.frame), width, tableViewData.count*rowHeight) style:UITableViewStylePlain];
         tableView.delegate = self;
         tableView.dataSource = self;
         tableView.rowHeight = rowHeight;
+        tableView.bounces = NO;
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self addSubview:tableView];
     }

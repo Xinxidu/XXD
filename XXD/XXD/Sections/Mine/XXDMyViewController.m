@@ -59,21 +59,21 @@
 -(void)createHeaderView{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _islogin = [defaults boolForKey:@"isLogin"];
-    _hearerView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 120)];
+    _hearerView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 90)];
     _hearerView.backgroundColor = [UIColor colorWithRed:224/255.0 green:240/255.0 blue:253/255.0 alpha:1.0];
     [self.view addSubview:_hearerView];
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_hearerView.frame), WIDTH, 0.5)];
     lineView.backgroundColor = BLUECOLOR;
     [self.view addSubview:lineView];
     //头像
-    UIImageView *headpicImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 40, 40, 40)];
+    UIImageView *headpicImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 25, 40, 40)];
     headpicImageView.backgroundColor = [UIColor grayColor];
-    headpicImageView.layer.cornerRadius = 5;
+    headpicImageView.layer.cornerRadius = 3;
     headpicImageView.layer.masksToBounds = YES;
     headpicImageView.image = [UIImage imageNamed:@"head"];
     [_hearerView addSubview:headpicImageView];
     //登录状态显示
-    _statusLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(headpicImageView.frame)+10, 50, 60, 20)];
+    _statusLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(headpicImageView.frame)+10, 35, 60, 20)];
     _statusLabel.text = @"未登录";
     if (_islogin == YES) {
         _statusLabel.text = @"已登录";
@@ -82,7 +82,7 @@
     [_hearerView addSubview:_statusLabel];
     //注册按钮
     _registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _registerButton.frame = CGRectMake(CGRectGetMaxX(_statusLabel.frame)+40, (120-41)/2, 70, 41) ;
+    _registerButton.frame = CGRectMake(CGRectGetMaxX(_statusLabel.frame)+40, (90-41)/2, 70, 41) ;
     [_registerButton setTitle:@"注册" forState:UIControlStateNormal];
     _registerButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
     [_registerButton setBackgroundImage:[UIImage imageNamed:@"mybtn1"] forState:UIControlStateNormal];
@@ -91,7 +91,7 @@
     
     //登录按钮
     _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _loginButton.frame = CGRectMake(CGRectGetMaxX(_registerButton.frame), (120-41)/2, 70, 41) ;
+    _loginButton.frame = CGRectMake(CGRectGetMaxX(_registerButton.frame), (90-41)/2, 70, 41) ;
     [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
     _loginButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
     _loginButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -100,7 +100,7 @@
     [_hearerView addSubview:_loginButton];
         //退出登录按钮
         _exitLoginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _exitLoginButton.frame = CGRectMake(WIDTH-125, (120-41)/2, 110, 41);
+        _exitLoginButton.frame = CGRectMake(WIDTH-125, (90-41)/2, 110, 41);
         [_exitLoginButton setTitle:@"lixiaoming" forState:UIControlStateNormal];
         [_exitLoginButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         _exitLoginButton.titleLabel.font = [UIFont systemFontOfSize:15.0];

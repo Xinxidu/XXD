@@ -117,6 +117,7 @@
         self.buttomTableView.delegate = self;
         self.buttomTableView.dataSource = self;
         self.buttomTableView.rowHeight = 50;
+        self.buttomTableView.bounces = NO;
         self.buttomTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self addSubview:self.buttomTableView];
     }

@@ -92,7 +92,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
         self.mainScrollView = nil;
     }
     self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.topView.frame), WIDTH, HEIGHT-CGRectGetMaxY(self.topView.frame))];
-    self.mainScrollView.contentSize = CGSizeMake(WIDTH, HEIGHT*2);
+    self.mainScrollView.contentSize = CGSizeMake(WIDTH, HEIGHT);
     self.mainScrollView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.mainScrollView];
     NSString *accountString = @"018000000173";
@@ -104,6 +104,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
             @[@{@"delegateTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"delegatePirce":@"1022.0",@"avgPrice":@"1,023.0",@"volume":@"34",@"state":@"63,478"},
             @{@"delegateTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"delegatePirce":@"1022.0",@"avgPrice":@"1,023.0",@"volume":@"34",@"state":@"63,478"},
             @{@"delegateTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"delegatePirce":@"1022.0",@"avgPrice":@"1,023.0",@"volume":@"34",@"state":@"63,478"}];
+    CGFloat viewHeight = 0;
     switch (buttonType) {
         case XXDButtonTypeOrderBuy:{
             XXDOrderSwapsBSViewModel *model = [[XXDOrderSwapsBSViewModel alloc] init];
@@ -111,7 +112,8 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
             model.isShowTwoButtonForSwapsBS = NO;
             model.accountString = accountString;
             model.buttomTableViewData = tableViewData;
-            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 300) orderSwapsBSViewModel:model];
+            viewHeight = 224+tableViewData.count*50;
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, viewHeight) orderSwapsBSViewModel:model];
             orderBSView.bsDelegate = self;
             [self.mainScrollView addSubview:orderBSView];
          }break;
@@ -121,7 +123,8 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
             model.isShowTwoButtonForSwapsBS = NO;
             model.accountString = accountString;
             model.buttomTableViewData = tableViewData;
-            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 300) orderSwapsBSViewModel:model];
+            viewHeight = 224+tableViewData.count*50;
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, viewHeight) orderSwapsBSViewModel:model];
             orderBSView.bsDelegate = self;
             [self.mainScrollView addSubview:orderBSView];
         }break;
@@ -131,7 +134,8 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
             model.isShowTwoButtonForSwapsBS = YES;
             model.accountString = accountString;
             model.buttomTableViewData = tableViewData;
-            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 340) orderSwapsBSViewModel:model];
+            viewHeight = 264+tableViewData.count*50;
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, viewHeight) orderSwapsBSViewModel:model];
             orderBSView.bsDelegate = self;
             [self.mainScrollView addSubview:orderBSView];
         }break;
@@ -141,19 +145,23 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
             model.isShowTwoButtonForSwapsBS = YES;
             model.accountString = accountString;
             model.buttomTableViewData = tableViewData;
-            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 340) orderSwapsBSViewModel:model];
+            viewHeight = 264+tableViewData.count*50;
+            XXDOrderBSView *orderBSView = [[XXDOrderBSView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, viewHeight) orderSwapsBSViewModel:model];
             orderBSView.bsDelegate = self;
             [self.mainScrollView addSubview:orderBSView];
         }break;
         case XXDButtonTypeDelegate:{
-            XXDDelegateView *delegateView = [[XXDDelegateView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 400) tableViewData:delegateData];
+            viewHeight = 38+delegateData.count*50;
+            XXDDelegateView *delegateView = [[XXDDelegateView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, viewHeight) tableViewData:delegateData];
             [self.mainScrollView addSubview:delegateView];
         }break;
         case XXDButtonTypeHoldProduct:{
-            XXDHoldProductView *holdProductView = [[XXDHoldProductView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 390) tableViewData:tableViewData];
+            viewHeight = 219+tableViewData.count*50;
+            XXDHoldProductView *holdProductView = [[XXDHoldProductView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, viewHeight) tableViewData:tableViewData];
             [self.mainScrollView addSubview:holdProductView];
         }break;
     }
+    self.mainScrollView.contentSize = CGSizeMake(WIDTH, viewHeight);
 }
 #pragma mark 商品名称弹窗代理方法
 - (void)showProductListAlert:(UIAlertController *)alert{
