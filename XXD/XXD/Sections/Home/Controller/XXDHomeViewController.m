@@ -24,7 +24,7 @@
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 #define GREENCOLOR [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1]
 #define GRAYCOLOR [UIColor colorWithRed:230/255.0 green:231/255.0 blue:232/255.0 alpha:1]
-
+#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
 typedef NS_ENUM(NSInteger,XXDButtonType){
     XXDButtonTypeHotTrade,              //热门交易
     XXDButtonTypeHotActivity,           //热门活动
@@ -47,6 +47,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 @property (strong,nonatomic) UITableView *buttomTableView;  //底部TableView
 @property (assign,nonatomic) NSInteger flagForTable;    //切换实时快讯和金银牛评tableView的标记
 @property (strong,nonatomic) NSMutableArray *timeNewsArray;
+@property (assign,nonatomic) CGFloat tableViewHeight;
 @end
 
 @implementation XXDHomeViewController
@@ -60,7 +61,8 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     self.rootScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -64, WIDTH, HEIGHT+20)];
     self.rootScrollView.bounces = NO;
     self.rootScrollView.backgroundColor = [UIColor colorWithRed:244/255.0 green:248/255.0 blue:251/255.0 alpha:1];
-    self.rootScrollView.contentSize = CGSizeMake(WIDTH, HEIGHT*2);
+    self.rootScrollView.showsVerticalScrollIndicator = NO;
+//    self.rootScrollView.contentSize = CGSizeMake(WIDTH, HEIGHT*2);
     [self.view addSubview:self.rootScrollView];
     [self createInfiniteScrollView];    //顶部的轮播图
     [self creatButtions];   //顶部的四个按钮
@@ -72,12 +74,12 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     self.timeNewsButton = [self createBottomButtonWidthTitle:@"实时快讯" x:-1];
     [self.timeNewsButton setTitleColor:[UIColor colorWithRed:23/255.0 green:137/255.0 blue:241/255.0 alpha:1.0] forState:UIControlStateNormal];//23 137 241
     self.timeNewsButton.backgroundColor = GRAYCOLOR;
-    self.timeNewsButton.titleEdgeInsets = UIEdgeInsetsMake(11, (WIDTH-1)*0.5 -92, 11, 32);
+    self.timeNewsButton.titleEdgeInsets = UIEdgeInsetsMake(10, (WIDTH-1)*0.5 -96, 10, 32);
     //创建实时快讯按钮
     self.jinYinNiuPingButton = [self createBottomButtonWidthTitle:@"金银牛评" x:WIDTH/2.0-1];
     [self.jinYinNiuPingButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.jinYinNiuPingButton.backgroundColor = [UIColor whiteColor];
-    self.jinYinNiuPingButton.titleEdgeInsets = UIEdgeInsetsMake(11, 32, 11, (WIDTH-1)*0.5 -92);
+    self.jinYinNiuPingButton.titleEdgeInsets = UIEdgeInsetsMake(10, 32, 10, (WIDTH-1)*0.5 -96);
     //初始化数据
     self.timeNewsArray  = [NSMutableArray arrayWithObjects:@"俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是",@"俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是",@"俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是",@"俺的沙发多发的发的发的是发的是发达地方",nil];
 
@@ -282,7 +284,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     [self.openAccountView addSubview:label];
     UIButton *openAccountButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(label.frame), 2.5, 72, 20)];
     [openAccountButton setTitle:@"立即开户>>" forState:UIControlStateNormal];
-    openAccountButton.titleLabel.font = [UIFont systemFontOfSize:12.0f];
+    openAccountButton.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
     [openAccountButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     openAccountButton.backgroundColor = [UIColor colorWithRed:236/255.0 green:13/255.0 blue:26/255.0 alpha:1];
     openAccountButton.layer.cornerRadius = 2;
@@ -323,7 +325,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 - (UIButton *)createBottomButtonWidthTitle:(NSString *)title x:(CGFloat)x{
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(self.liveView.frame)+9, (WIDTH-1.0)/2.0+2, 37)];
     [button setTitle:title forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
     button.layer.borderColor = GRAYCOLOR.CGColor;
     button.layer.borderWidth = 1;
     [button addTarget:self action:@selector(buttomButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -334,6 +336,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 - (void)buttomButtonClick:(UIButton *)sender{
     [sender setTitleColor:[UIColor colorWithRed:23/255.0 green:137/255.0 blue:241/255.0 alpha:1.0] forState:UIControlStateNormal];//23 137 241
     sender.backgroundColor = GRAYCOLOR;
+    _tableViewHeight = 0;
     if ([sender.titleLabel.text isEqualToString:@"实时快讯"]) {
         self.flagForTable = 0;
         [self.jinYinNiuPingButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -351,12 +354,12 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
         [self.buttomTableView removeFromSuperview];
         self.buttomTableView = nil;
     }
-    self.buttomTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.timeNewsButton.frame), WIDTH, HEIGHT-100) style:UITableViewStylePlain];
+    self.buttomTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.timeNewsButton.frame), WIDTH, HEIGHT) style:UITableViewStylePlain];
     self.buttomTableView.delegate = self;
     self.buttomTableView.dataSource = self;
     self.buttomTableView.separatorStyle = self.flagForTable == 0 ? UITableViewCellSeparatorStyleNone : UITableViewCellSeparatorStyleSingleLine ;
     self.buttomTableView.showsVerticalScrollIndicator = NO;
-    self.buttomTableView.bounces=YES;
+    self.buttomTableView.bounces=NO;
     [self.rootScrollView addSubview:self.buttomTableView];
 }
 #pragma mark UITableView代理
@@ -369,7 +372,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
         XXDTimeNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         if (cell == nil) {
             XXDTimeNews *timeNews = [[XXDTimeNews alloc] init];
-            timeNews.timeString = @"13:36";
+            timeNews.timeString = @"23:36";
             timeNews.detailString = [self.timeNewsArray objectAtIndex:indexPath.row];
             cell = [[XXDTimeNewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId withTimeNews:timeNews];
         }
@@ -389,10 +392,34 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
         return cell;
     }
 }
+#pragma mark 行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *detailString = [self.timeNewsArray objectAtIndex:indexPath.row];
-    CGFloat height = [detailString boundingRectWithSize:CGSizeMake(WIDTH-45, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:11.0f] forKey:NSFontAttributeName] context:nil].size.height;
+    CGFloat height = [detailString boundingRectWithSize:CGSizeMake(WIDTH-45, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:14.0f] forKey:NSFontAttributeName] context:nil].size.height;
     return self.flagForTable == 0 ? height+18 : 70;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 20;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 20)];
+    bgView.backgroundColor = [UIColor whiteColor];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH*0.5-5, 0, 10, 10)];
+    imageView.image = [UIImage imageNamed:@"dropDownButton"];
+    [bgView addSubview:imageView];
+    UIButton *loadMoreButton = [[UIButton alloc] initWithFrame:bgView.frame];
+    [loadMoreButton addTarget:self action:@selector(loadMoreTableViewData) forControlEvents:UIControlEventTouchUpInside];
+    [bgView addSubview:loadMoreButton];
+    return bgView;
+}
+- (void)loadMoreTableViewData{
+    NSLog(@"加载更多");
+}
+#pragma mark 根据所有行高的和改变tableView的高度和rootScrollView的容量高度
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    _tableViewHeight += cell.contentView.frame.size.height;
+    self.buttomTableView.frame = CGRectMake(0, CGRectGetMaxY(self.timeNewsButton.frame), WIDTH, _tableViewHeight+20);
+    self.rootScrollView.contentSize = CGSizeMake(WIDTH, CGRectGetMaxY(self.liveView.frame)+_tableViewHeight+20);
 }
 - (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];}
 @end

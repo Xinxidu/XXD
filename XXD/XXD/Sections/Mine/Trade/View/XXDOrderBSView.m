@@ -77,7 +77,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
         [buyPriceView addSubview:self.priceJianButton];
         //价格Label
         self.buyPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, 0, CGRectGetWidth(buyPriceView.frame)-70, 30)];
-        self.buyPriceLabel.text = @"1,006.0";
+        self.buyPriceLabel.text = @"1,006";
         self.buyPriceLabel.textColor = [UIColor blackColor];
         self.buyPriceLabel.font = [UIFont systemFontOfSize:14];
         self.buyPriceLabel.textAlignment = NSTextAlignmentCenter;
