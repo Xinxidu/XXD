@@ -9,24 +9,23 @@
 #import "XXDCalendarViewController.h"
 #import "DateView.h"
 #import "XXDPushViewController.h"
-#import "CalendarCell.h"
+#import "XXDCalendar.h"
+#import "XXDCalendarCell.h"
 #import "XXDCustomNavigation.h"
 #define HEIGHT CGRectGetHeight(self.view.bounds)
 #define WIDTH CGRectGetWidth(self.view.bounds)
-#define CALENDARBUTTONWIDTH 60
-#define CALENDARBUTTONHEIGHT 44
-#define CALENDARITEMWIDTH (WIDTH-CALENDARBUTTONWIDTH*2)/5.0-1
-#define GOLD [UIColor colorWithRed:195/255.0 green:150/255.0 blue:69/255.0 alpha:1.0]
-#define GRAY [UIColor colorWithRed:230/255.0 green:229/255.0 blue:227/255.0 alpha:1.0]
-
+#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
+#define GRAYCOLOR [UIColor colorWithRed:245/255.0 green:246/255.0 blue:247/255.0 alpha:1]
+#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
 @interface XXDCalendarViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
-
+@property (strong,nonatomic) UIButton *calendarButton;//日历按钮
 @property (strong,nonatomic) UIScrollView *dateScrollView;//日期选项卡
 @property (strong,nonatomic) NSMutableArray *dayArray;//日期数组
 @property (strong,nonatomic) NSMutableArray *weekArray;//星期数组
 @property (strong,nonatomic) NSMutableArray *viewArray;//日期View数组
 @property (strong,nonatomic) UIAlertController *calendarAlert;//日期弹窗
 @property (strong,nonatomic) NSDate *selectedDate;//选中日期
+@property (strong,nonatomic) NSArray *dataArray;//表格数据
 @property (strong,nonatomic) UITableView *tableView;//表格
 @property (strong,nonatomic) UIAlertController *dateAlert;//自定义日历控制器弹窗
 @end
@@ -35,26 +34,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dataArray = @[@{@"dateString":@"09-13",@"timeString":@"10:10",@"country":@"中国",@"starNum":@"3",@"title":@"中国8月城镇固定资产投资月率",@"preValue":@"0.31",@"publish":@"0.58",@"liduoArray":@[@"加元",@"原油"],@"likongArray":@[@"美元"]},
+                           @{@"dateString":@"09-13",@"timeString":@"20:10",@"country":@"英国",@"starNum":@"5",@"title":@"英国9月利率决议比例(升息-不变-隆息)",@"preValue":@"0.31",@"calculate":@"-145",@"publish":@"0.58"},
+                           @{@"dateString":@"09-23",@"timeString":@"10:10",@"country":@"英国",@"starNum":@"5",@"title":@"英国9月扩大资产购买滚莫投资比例（扩",@"preValue":@"0.31",@"calculate":@"-145",@"publish":@"0.58",@"liduoArray":@[@"美元"],@"likongArray":@[@"加元",@"原油"]},
+                           @{@"dateString":@"09-13",@"timeString":@"10:10",@"country":@"中国",@"starNum":@"3",@"title":@"中国8月城镇固定资产投资月率",@"preValue":@"0.31",@"calculate":@"-145",@"publish":@"0.58",@"liduoArray":@[@"美元"],@"likongArray":@[@"加元",@"原油"]},
+                           @{@"dateString":@"09-13",@"timeString":@"20:10",@"country":@"中国",@"starNum":@"3",@"title":@"中国8月城镇固定资产投资月率",@"preValue":@"0.31",@"calculate":@"-145",@"publish":@"0.58",@"liduoArray":@[@"加元",@"原油"],@"likongArray":@[@"美元"]}];
     [XXDCustomNavigation loadUIViewController:self title:@"财经日历" backSelector:@selector(backBtnClick)];
     self.viewArray = [NSMutableArray array];
     //日历按钮
-    UIButton *calendarButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, CALENDARBUTTONWIDTH-1, CALENDARBUTTONHEIGHT)];
-    calendarButton.backgroundColor = GRAY;
-    [calendarButton setImage:[UIImage imageNamed:@"calendar"] forState:UIControlStateNormal];
-    [calendarButton addTarget:self action:@selector(calendarClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:calendarButton];
+    UIImageView *calendarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 34, 18)];
+    calendarImageView.image = [UIImage imageNamed:@"calendarBtn"];
+    self.calendarButton = [[UIButton alloc] initWithFrame:CGRectMake(3, 5, 28.7, 12)];
+    //获取当天的日期
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM dd"];
+    [self.calendarButton setTitle:[formatter stringFromDate:[NSDate date]] forState:UIControlStateNormal];
+    [self.calendarButton setTitleColor:BLUECOLOR forState:UIControlStateNormal];
+    self.calendarButton.titleLabel.font = [UIFont systemFontOfSize:10.0f];
+    [self.calendarButton addTarget:self action:@selector(calendarClick:) forControlEvents:UIControlEventTouchUpInside];
+    [calendarImageView addSubview:self.calendarButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:calendarImageView];
     //获取本月的"日"和星期数组
     self.dayArray = [self getDayArrayFromDate:[NSDate date]];
     self.weekArray = [self getWeekArrayFromDate:[NSDate date]];
     //创建日期选项卡 UIScrollView
     [self createScrollViewWithDate:[NSDate date]];
     //是否公布按钮
-    UIButton *isPublishButton = [[UIButton alloc] initWithFrame:CGRectMake(WIDTH-CALENDARBUTTONWIDTH+1, 64, CALENDARBUTTONWIDTH-1, CALENDARBUTTONHEIGHT)];
-    isPublishButton.backgroundColor = GOLD;
-    [isPublishButton setTitle:@"未公布" forState:UIControlStateNormal];
-    [isPublishButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    isPublishButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    UIButton *isPublishButton = [[UIButton alloc] initWithFrame:CGRectMake(WIDTH-55, 64, 55, 38)];
+    isPublishButton.backgroundColor = GRAYCOLOR;
+    [isPublishButton setTitle:@"已公布" forState:UIControlStateNormal];
+    [isPublishButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    isPublishButton.titleLabel.font = [UIFont boldSystemFontOfSize:12.0];
     [self.view addSubview:isPublishButton];
+    UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, 37, 55, 1)];
+    horizontal.backgroundColor = BLUECOLOR;
+    [isPublishButton addSubview:horizontal];
     [self createTableView];//初始化表格视图
     [self initCustomAlert];//初始化自定义弹窗
 }
@@ -67,20 +81,6 @@
     [super viewDidDisappear:animated];
     [self.delegate changeNavigationBarColor];
 }
-//#pragma mark ****** 右上角在线解套
-//-(void)createOnline{
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"在线解套" style:UIBarButtonItemStyleDone target:self action:@selector(onLine)];
-//    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:15.0f],NSFontAttributeName, nil] forState:UIControlStateNormal];
-//    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
-//}
-//#pragma mark ****** 在线解套
-//-(void)onLine{
-//    
-//    OnlineReleaseViewController* vc = [[OnlineReleaseViewController alloc]init];
-//    vc.hidesBottomBarWhenPushed = YES;
-//    [BasePushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
-//}
-
 #pragma mark 初始化自定义弹窗
 - (void)initCustomAlert{
     if (_dateAlert == nil) {
@@ -105,32 +105,38 @@
 #pragma mark 初始化表格
 - (void)createTableView{
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_dateScrollView.frame), WIDTH, HEIGHT-_dateScrollView.frame.size.height-49) style:UITableViewStylePlain];
-    _tableView.backgroundColor=[UIColor colorWithRed:243/255.0 green:244/255.0 blue:245/255.0 alpha:1.0];
     _tableView.delegate=self;
     _tableView.dataSource=self;
-    _tableView.bounces=YES;
+    _tableView.bounces=NO;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.showsVerticalScrollIndicator = NO;
-    _tableView.separatorColor=[UIColor grayColor];
+    _tableView.rowHeight = 100;
     [self.view addSubview:_tableView];
     
 }
 #pragma mark tableView的代理方法
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString* cellId = @"cell";
-    CalendarCell *cell=[tableView dequeueReusableCellWithIdentifier:cellId];
-    if (cell==nil) {
-        cell=[[CalendarCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    XXDCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil){
+        XXDCalendar *calendar = [[XXDCalendar alloc] init];
+        calendar.dateString = self.dataArray[indexPath.row][@"dateString"];
+        calendar.timeString = self.dataArray[indexPath.row][@"timeString"];
+        calendar.country = self.dataArray[indexPath.row][@"country"];
+        calendar.starNum = self.dataArray[indexPath.row][@"starNum"];
+        calendar.title = self.dataArray[indexPath.row][@"title"];
+        calendar.preValue = self.dataArray[indexPath.row][@"preValue"];
+        calendar.calculate = self.dataArray[indexPath.row][@"calculate"];
+        calendar.publish = self.dataArray[indexPath.row][@"publish"];
+        calendar.liduoArray = self.dataArray[indexPath.row][@"liduoArray"];
+        calendar.likongArray = self.dataArray[indexPath.row][@"likongArray"];
+        cell = [[XXDCalendarCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId calendar:calendar];
     }
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
 }
-#pragma mark tableView的代理返回cell高度和个数
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 7;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return self.dataArray.count;
 }
 #pragma mark 日历按钮点击事件
 - (void)calendarClick:(UIButton *)sender{
@@ -150,6 +156,10 @@
     self.weekArray = [self getWeekArrayFromDate:date];
     [self createScrollViewWithDate:date];
     self.selectedDate = date;
+    //改变日历按钮的显示日期
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM dd"];
+    [self.calendarButton setTitle:[formatter stringFromDate:date] forState:UIControlStateNormal];
 }
 
 #pragma mark 获取指定日期的NSDateComponents对象
@@ -206,20 +216,19 @@
         [self.dateScrollView removeFromSuperview];
         self.dateScrollView = nil;
     }
-    self.dateScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(CALENDARBUTTONWIDTH, 64, WIDTH-CALENDARBUTTONWIDTH*2, CALENDARBUTTONHEIGHT)];
-    self.dateScrollView.contentSize = CGSizeMake((CALENDARITEMWIDTH+1)*self.dayArray.count, 40);
-    self.dateScrollView.backgroundColor = [UIColor whiteColor];
+    self.dateScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, WIDTH-55,38)];
+    self.dateScrollView.contentSize = CGSizeMake((WIDTH-55)/6.0*self.dayArray.count, 38);
+    self.dateScrollView.backgroundColor = GRAYCOLOR;
     self.dateScrollView.showsHorizontalScrollIndicator = NO;
     self.dateScrollView.delegate = self;
     self.dateScrollView.bounces = NO;
     [self.view addSubview:self.dateScrollView];
     for (int i = 0; i< self.dayArray.count; i++) {
-        DateView *aView = [[DateView alloc] initWithFrame:CGRectMake(1+i*(CALENDARITEMWIDTH+1), 0, CALENDARITEMWIDTH, CALENDARBUTTONHEIGHT) calendarItemSize:CGSizeMake(CALENDARITEMWIDTH, CALENDARBUTTONHEIGHT)];
-        aView.backgroundColor = GRAY;
+        DateView *aView = [[DateView alloc] initWithFrame:CGRectMake(i*(WIDTH-55)/6.0, 0, (WIDTH-55)/6.0, 38) calendarItemSize:CGSizeMake((WIDTH-55)/6.0, 38)];
         aView.tag = i+1;
         [self.dateScrollView addSubview:aView];
-        aView.weekDayLabel.text = [self.weekArray objectAtIndex:i];
         aView.dayLabel.text = [self.dayArray objectAtIndex:i];
+        aView.weekDayLabel.text = [self.weekArray objectAtIndex:i];
         //添加点击事件让UIView能点击
         UITapGestureRecognizer*tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewClick:)];
         [aView addGestureRecognizer:tapGesture];
@@ -229,32 +238,32 @@
     NSDateComponents *components = [self getDateComponents:date];
     NSInteger day = [components day];
     DateView *currentView = (DateView *)[self.viewArray objectAtIndex:day-1];
-    currentView.backgroundColor = GOLD;
+    currentView.backgroundColor = BLUECOLOR;
     currentView.weekDayLabel.textColor = [UIColor whiteColor];
     currentView.dayLabel.textColor = [UIColor whiteColor];
     if (day>3&&day<self.self.dayArray.count-3) {
-        self.dateScrollView.contentOffset = CGPointMake(1+(day -3)*(CALENDARITEMWIDTH+1), 0);
+        self.dateScrollView.contentOffset = CGPointMake(1+(day -3)*(WIDTH-55)/6.0, 0);
     }else if (day<=3) {
         self.dateScrollView.contentOffset = CGPointMake(1, 0);
     }else {
-        self.dateScrollView.contentOffset = CGPointMake(1+(self.dayArray.count-5)*(CALENDARITEMWIDTH+1), 0);
+        self.dateScrollView.contentOffset = CGPointMake(1+(self.dayArray.count-5)*(WIDTH-55)/6.0, 0);
     }
 }
 
 #pragma mark 日历选项卡点击事件
 - (void)viewClick:(UITapGestureRecognizer *)sender{
     for (DateView *aView in self.viewArray) {
-        aView.backgroundColor = GRAY;
-        aView.weekDayLabel.textColor = GOLD;
-        aView.dayLabel.textColor = GOLD;
+        aView.backgroundColor = GRAYCOLOR;
+        aView.weekDayLabel.textColor = [UIColor blackColor];
+        aView.dayLabel.textColor = [UIColor blackColor];
     }
     DateView *aView= (DateView *)sender.view;
-    aView.backgroundColor = GOLD;
+    aView.backgroundColor = BLUECOLOR;
     aView.weekDayLabel.textColor = [UIColor whiteColor];
     aView.dayLabel.textColor = [UIColor whiteColor];
     //让选中的View居中
-    if ((self.dateScrollView.contentOffset.x>1&&self.dateScrollView.contentOffset.x<1+(self.dayArray.count-5)*(CALENDARITEMWIDTH+1))||sender.view.tag ==4||sender.view.tag ==5 || sender.view.tag ==self.dayArray.count-4||sender.view.tag == self.dayArray.count-3) {
-        [self.dateScrollView setContentOffset:CGPointMake(1+(sender.view.tag -3)*(CALENDARITEMWIDTH+1), 0) animated:YES];
+    if ((self.dateScrollView.contentOffset.x>1&&self.dateScrollView.contentOffset.x<1+(self.dayArray.count-5)*(WIDTH-55)/6.0)||sender.view.tag ==4||sender.view.tag ==5 || sender.view.tag ==self.dayArray.count-4||sender.view.tag == self.dayArray.count-3) {
+        [self.dateScrollView setContentOffset:CGPointMake(1+(sender.view.tag -3)*(WIDTH-55)/6.0, 0) animated:YES];
     }
 }
 
@@ -262,8 +271,8 @@
     //防止UIScrollView往最左边或最右边偏移时出界
     if (self.dateScrollView.contentOffset.x<1){
         [self.dateScrollView setContentOffset:CGPointMake(1, 0)];
-    }else if (self.dateScrollView.contentOffset.x>1+(self.dayArray.count-5)*(CALENDARITEMWIDTH+1)){
-        [self.dateScrollView setContentOffset:CGPointMake(1+(self.dayArray.count-5)*(CALENDARITEMWIDTH+1), 0)];
+    }else if (self.dateScrollView.contentOffset.x>1+(self.dayArray.count-5)*(WIDTH-55)/6.0){
+        [self.dateScrollView setContentOffset:CGPointMake(1+(self.dayArray.count-5)*(WIDTH-55)/6.0, 0)];
     }
 }
 
