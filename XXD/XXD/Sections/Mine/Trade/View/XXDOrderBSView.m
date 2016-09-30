@@ -39,9 +39,9 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
         [proNameButton addTarget:self action:@selector(showProductDropDown) forControlEvents:UIControlEventTouchUpInside];
         [self insertSubview:proNameButton atIndex:1];
         self.proNameButton = proNameButton;
-        UIView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(174/320.0*WIDTH-29, 1, 28, 28)];
+        UIView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(174/320.0*WIDTH-28, 2, 26, 26)];
         bgView.layer.masksToBounds = YES;
-        bgView.layer.cornerRadius = 14.0f;
+        bgView.layer.cornerRadius = 13.0f;
         bgView.backgroundColor = [UIColor whiteColor];
         [self.proNameButton addSubview:bgView];
         self.dropDownButton = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 16, 10)];
