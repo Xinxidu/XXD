@@ -39,6 +39,12 @@
 		3B6F5F2F1D7FB0F00058D2DE /* BaseWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F2E1D7FB0F00058D2DE /* BaseWebRequest.m */; };
 		3B6F5F321D7FDAF00058D2DE /* XXDSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F311D7FDAF00058D2DE /* XXDSearchViewController.m */; };
 		3B6F5F3B1D8008350058D2DE /* XXDMyFirmAccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F5F3A1D8008350058D2DE /* XXDMyFirmAccountVC.m */; };
+		3B706FFE1D9DF948005C6076 /* XXDShiShiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B706FFD1D9DF948005C6076 /* XXDShiShiViewController.m */; };
+		3B7070011D9DF9B5005C6076 /* XXDTouTiaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7070001D9DF9B5005C6076 /* XXDTouTiaoViewController.m */; };
+		3B7070041D9DFF0B005C6076 /* XXDJinRongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7070031D9DFF0B005C6076 /* XXDJinRongViewController.m */; };
+		3B7070071D9E0206005C6076 /* XXDCustomScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7070061D9E0206005C6076 /* XXDCustomScrollViewController.m */; };
+		3B70700C1D9E0E9B005C6076 /* SGTopTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7070091D9E0E9B005C6076 /* SGTopTitleView.m */; };
+		3B70700D1D9E0E9B005C6076 /* UIView+SGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B70700B1D9E0E9B005C6076 /* UIView+SGExtension.m */; };
 		3B7B3E611D7E515A003DBF06 /* XXDQuotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E601D7E515A003DBF06 /* XXDQuotationViewController.m */; };
 		3B7B3E6C1D7E5632003DBF06 /* ProfitSkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E671D7E5632003DBF06 /* ProfitSkillCell.m */; };
 		3B7B3E6D1D7E5632003DBF06 /* ProfitSkillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E691D7E5632003DBF06 /* ProfitSkillModel.m */; };
@@ -164,6 +170,18 @@
 		3B6F5F311D7FDAF00058D2DE /* XXDSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDSearchViewController.m; sourceTree = "<group>"; };
 		3B6F5F391D8008350058D2DE /* XXDMyFirmAccountVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDMyFirmAccountVC.h; sourceTree = "<group>"; };
 		3B6F5F3A1D8008350058D2DE /* XXDMyFirmAccountVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyFirmAccountVC.m; sourceTree = "<group>"; };
+		3B706FFC1D9DF948005C6076 /* XXDShiShiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDShiShiViewController.h; sourceTree = "<group>"; };
+		3B706FFD1D9DF948005C6076 /* XXDShiShiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDShiShiViewController.m; sourceTree = "<group>"; };
+		3B706FFF1D9DF9B5005C6076 /* XXDTouTiaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDTouTiaoViewController.h; sourceTree = "<group>"; };
+		3B7070001D9DF9B5005C6076 /* XXDTouTiaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDTouTiaoViewController.m; sourceTree = "<group>"; };
+		3B7070021D9DFF0B005C6076 /* XXDJinRongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDJinRongViewController.h; sourceTree = "<group>"; };
+		3B7070031D9DFF0B005C6076 /* XXDJinRongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDJinRongViewController.m; sourceTree = "<group>"; };
+		3B7070051D9E0206005C6076 /* XXDCustomScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDCustomScrollViewController.h; sourceTree = "<group>"; };
+		3B7070061D9E0206005C6076 /* XXDCustomScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDCustomScrollViewController.m; sourceTree = "<group>"; };
+		3B7070081D9E0E9B005C6076 /* SGTopTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTopTitleView.h; sourceTree = "<group>"; };
+		3B7070091D9E0E9B005C6076 /* SGTopTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTopTitleView.m; sourceTree = "<group>"; };
+		3B70700A1D9E0E9B005C6076 /* UIView+SGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SGExtension.h"; sourceTree = "<group>"; };
+		3B70700B1D9E0E9B005C6076 /* UIView+SGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SGExtension.m"; sourceTree = "<group>"; };
 		3B7B3E5F1D7E515A003DBF06 /* XXDQuotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDQuotationViewController.h; sourceTree = "<group>"; };
 		3B7B3E601D7E515A003DBF06 /* XXDQuotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDQuotationViewController.m; sourceTree = "<group>"; };
 		3B7B3E661D7E5632003DBF06 /* ProfitSkillCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfitSkillCell.h; sourceTree = "<group>"; };
@@ -847,8 +865,20 @@
 		69E1C6351D87E64300ED2735 /* LiveNew */ = {
 			isa = PBXGroup;
 			children = (
+				3B7070081D9E0E9B005C6076 /* SGTopTitleView.h */,
+				3B7070091D9E0E9B005C6076 /* SGTopTitleView.m */,
+				3B70700A1D9E0E9B005C6076 /* UIView+SGExtension.h */,
+				3B70700B1D9E0E9B005C6076 /* UIView+SGExtension.m */,
 				69E1C6361D87EE3300ED2735 /* XXDLiveNewViewController.h */,
 				69E1C6371D87EE3300ED2735 /* XXDLiveNewViewController.m */,
+				3B706FFC1D9DF948005C6076 /* XXDShiShiViewController.h */,
+				3B706FFD1D9DF948005C6076 /* XXDShiShiViewController.m */,
+				3B706FFF1D9DF9B5005C6076 /* XXDTouTiaoViewController.h */,
+				3B7070001D9DF9B5005C6076 /* XXDTouTiaoViewController.m */,
+				3B7070021D9DFF0B005C6076 /* XXDJinRongViewController.h */,
+				3B7070031D9DFF0B005C6076 /* XXDJinRongViewController.m */,
+				3B7070051D9E0206005C6076 /* XXDCustomScrollViewController.h */,
+				3B7070061D9E0206005C6076 /* XXDCustomScrollViewController.m */,
 			);
 			path = LiveNew;
 			sourceTree = "<group>";
@@ -887,7 +917,7 @@
 				TargetAttributes = {
 					697D76331D781300008D7C94 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = R9DE87BJ5L;
+						DevelopmentTeam = VRQSU9ZYT4;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -982,6 +1012,7 @@
 				3B7B3E841D7E61BD003DBF06 /* ProfessorTeamViewController.m in Sources */,
 				3B6C690F1D9B5B0100C1CB1A /* XXDFindPwdViewController.m in Sources */,
 				3B2EC03A1D87CCA50019A72E /* XXDLoginViewController.m in Sources */,
+				3B70700D1D9E0E9B005C6076 /* UIView+SGExtension.m in Sources */,
 				697D766D1D78292C008D7C94 /* XXDMarketViewController.m in Sources */,
 				3BAF05AC1D93AD8300CFB105 /* XXDHistoryMarketListCell.m in Sources */,
 				3B60B8A61D7D3D8A002AA667 /* VarietyModel.m in Sources */,
@@ -1003,6 +1034,9 @@
 				3B6F5F171D7FAFC60058D2DE /* AboutXiDuViewController.m in Sources */,
 				3B6F5F2B1D7FAFFE0058D2DE /* XiDuNewsModel.m in Sources */,
 				3B6F5F2C1D7FAFFE0058D2DE /* XiDuNewsViewController.m in Sources */,
+				3B7070041D9DFF0B005C6076 /* XXDJinRongViewController.m in Sources */,
+				3B70700C1D9E0E9B005C6076 /* SGTopTitleView.m in Sources */,
+				3B706FFE1D9DF948005C6076 /* XXDShiShiViewController.m in Sources */,
 				69E1C6311D879B0400ED2735 /* XXDHotTradeCell.m in Sources */,
 				3B7B3E801D7E5B0D003DBF06 /* BaseWKWebView.m in Sources */,
 				69B89A8C1D813807009875E1 /* XXDHoldProductView.m in Sources */,
@@ -1011,6 +1045,7 @@
 				69B89A831D81378F009875E1 /* XXDOrderBSView.m in Sources */,
 				3B7B3E9A1D7EC0C6003DBF06 /* XXDMyActivityCell.m in Sources */,
 				697D763C1D781300008D7C94 /* XXDAppDelegate.m in Sources */,
+				3B7070011D9DF9B5005C6076 /* XXDTouTiaoViewController.m in Sources */,
 				3B6F5F281D7FAFFE0058D2DE /* XiDuInfoViewController.m in Sources */,
 				69B1C6231D7EC0D1000CA633 /* XXDTimeNews.m in Sources */,
 				3B355B751D8149D6008C8376 /* AuthcodeView.m in Sources */,
@@ -1030,6 +1065,7 @@
 				3B7B3E8B1D7EAF01003DBF06 /* XXDActivityTableViewCell.m in Sources */,
 				69C1058F1D93852F00F4D3AE /* XXDCustomNavigation.m in Sources */,
 				69D54A9D1D9B603A007D033D /* XXDDelegateCell.m in Sources */,
+				3B7070071D9E0206005C6076 /* XXDCustomScrollViewController.m in Sources */,
 				3B7B3E6E1D7E5632003DBF06 /* ProfitSkillViewController.m in Sources */,
 				697D76701D782939008D7C94 /* XXDTradeViewController.m in Sources */,
 				69B1C6111D7E4FE8000CA633 /* XXDLiveView.m in Sources */,
@@ -1176,7 +1212,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R9DE87BJ5L;
+				DEVELOPMENT_TEAM = VRQSU9ZYT4;
 				INFOPLIST_FILE = XXD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1197,7 +1233,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R9DE87BJ5L;
+				DEVELOPMENT_TEAM = VRQSU9ZYT4;
 				INFOPLIST_FILE = XXD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
