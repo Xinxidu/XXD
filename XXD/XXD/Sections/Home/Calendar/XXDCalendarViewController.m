@@ -39,6 +39,7 @@
                            @{@"dateString":@"09-13",@"timeString":@"20:10",@"country":@"中国",@"starNum":@"3",@"title":@"中国8月城镇固定资产投资月率",@"preValue":@"0.31",@"calculate":@"-145",@"publish":@"0.58",@"liduoArray":@[@"加元",@"原油"],@"likongArray":@[@"美元"]}];
     [XXDCustomNavigation loadUIViewController:self title:@"财经日历" backSelector:@selector(backBtnClick)];
     self.viewArray = [NSMutableArray array];
+    self.selectedDate = [NSDate date];
     //日历按钮
     UIImageView *calendarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 34, 18)];
     calendarImageView.image = [UIImage imageNamed:@"calendarBtn"];
@@ -126,9 +127,7 @@
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
     datePicker.timeZone = [NSTimeZone timeZoneWithName:@"Asia/beijing"];
-    if (self.selectedDate!=nil) {
-        [datePicker setDate:self.selectedDate animated:YES];
-    }
+    [datePicker setDate:self.selectedDate animated:YES];
     [_dateAlert.view addSubview:datePicker];
     UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [self sureActionForDatePicker:[datePicker date]];
