@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XXDMyActivityModel.h"
 
 @interface XXDMyActivityCell : UITableViewCell
 @property (nonatomic,strong)UIImageView *picImageView;//图片
@@ -18,4 +19,6 @@
 @property (nonatomic,strong)UIImageView *cicleImageView;//⭕️
 @property (nonatomic,strong)UILabel*  activityStartLabel;//开始时间
 @property (nonatomic,strong)UILabel*  activityEndLabel;//结束时间
+
+-(void)configModel:(XXDMyActivityModel*)model;
 @end

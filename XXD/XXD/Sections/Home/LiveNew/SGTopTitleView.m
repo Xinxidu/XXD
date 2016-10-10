@@ -135,6 +135,7 @@ static CGFloat const indicatorHeight = 2;
     
     // 1.标题颜色变成红色,设置高亮状态下的颜色， 以及指示器位置
     [self staticTitleLabelSelecteded:selLabel];
+    selLabel.backgroundColor = [UIColor grayColor];
     
     // 2.代理方法实现
     NSInteger index = selLabel.tag;
@@ -231,7 +232,6 @@ static CGFloat const indicatorHeight = 2;
 //    CGSize labelSize = [self sizeWithText:firstLabel.text font:labelFontOfSize maxSize:CGSizeMake(MAXFLOAT, labelH)];
     _indicatorView.SG_width = _scrollTitleLabel.frame.size.width;
     _indicatorView.SG_centerX = firstLabel.SG_centerX;
-    NSLog(@"%f",_scrollTitleLabel.frame.size.height);
 }
 
 /** scrollTitleClick的点击事件 */

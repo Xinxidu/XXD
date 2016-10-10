@@ -7,6 +7,7 @@
 //
 
 #import "XXDMyActivityCell.h"
+#import "UIImageView+WebCache.h"
 #define SIZE [UIScreen mainScreen].bounds.size
 @implementation XXDMyActivityCell
 
@@ -69,7 +70,7 @@
     _takeDateLabel.textAlignment = NSTextAlignmentCenter;
     [rightView addSubview:_takeDateLabel];
     
-    _activityStartLabel = [[UILabel alloc]initWithFrame:CGRectMake((rightView.frame.size.width-70)/2, CGRectGetMaxY(_takeDateLabel.frame)+5, 70, 13)];
+    _activityStartLabel = [[UILabel alloc]initWithFrame:CGRectMake((rightView.frame.size.width-75)/2, CGRectGetMaxY(_takeDateLabel.frame)+5, 75, 13)];
     _activityStartLabel.text = @"2016.08.08";
     _activityStartLabel.font = [UIFont systemFontOfSize:13.0];
     _activityStartLabel.textColor = [UIColor grayColor];
@@ -92,6 +93,28 @@
     [rightView addSubview:rightImageView];
     
     
+}
+-(void)configModel:(XXDMyActivityModel *)model{
+    _titleLabel.text = model.title;
+    _activityStartLabel.text = model.createDate;
+    _activityEndLabel.text = model.activeTime;
+    NSString *str = [NSString stringWithFormat:@"http://app.service.xiduoil.com%@",model.picUrl];
+    [_picImageView sd_setImageWithURL:[NSURL URLWithString:str] placeholderImage:[UIImage imageNamed:@"img"]];
+    NSString *statusStr = [model.status stringValue];
+    if ([statusStr isEqualToString:@"0"]) {
+        _cicleImageView.image = [UIImage imageNamed:@"be"];
+        _activityStatusLabel.text = @"进行中";
+        _activityStatusImage.image = [UIImage imageNamed:@"beBg"];
+    }else if ([statusStr isEqualToString:@"1"]){
+        _cicleImageView.image = [UIImage imageNamed:@"join"];
+        _activityStatusLabel.text = @"已参与";
+        _activityStatusImage.image = [UIImage imageNamed:@"joinBg"];
+    }else{
+        _cicleImageView.image = [UIImage imageNamed:@"end"];
+        _activityStatusLabel.text = @"已结束";
+        _activityStatusImage.image = [UIImage imageNamed:@"endBg"];
+    }
+
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

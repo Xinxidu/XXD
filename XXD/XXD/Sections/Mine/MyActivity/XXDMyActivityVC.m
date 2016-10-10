@@ -8,9 +8,13 @@
 
 #import "XXDMyActivityVC.h"
 #import "XXDMyActivityCell.h"
+#import "XXDMyActivityModel.h"
+#import "AFNetworking.h"
+#define URL @"http://app.service.xiduoil.com/app/controller/avtive/query/json"
 
 @interface XXDMyActivityVC ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic,strong)UITableView *tableView;
+@property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) NSMutableArray* dataArray;
 @end
 
 @implementation XXDMyActivityVC
@@ -25,9 +29,47 @@
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
+    _dataArray = [[NSMutableArray alloc]init];
     [self createTableView];
+    [self requestWebServiceData];
 }
 -(void)searchButtonClick{
+    
+}
+#pragma mark ****** 数据请求
+-(void)requestWebServiceData{
+    NSDictionary* dic = [[NSDictionary alloc]initWithObjectsAndKeys:
+                         @"",@"status",
+                         @"1",@"currentPage",
+                         @"15",@"pageSize",
+                         nil];
+    AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
+    [manager GET:URL parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSArray*  array = responseObject[@"resultList"];
+        [_dataArray removeAllObjects];
+        for (NSDictionary *dict in array) {
+            XXDMyActivityModel* model = [[XXDMyActivityModel alloc]init];
+            model.title = dict[@"title"];
+            NSArray* array = [dict[@"activeTime"] componentsSeparatedByString:@" "];
+            NSString* time = array[0];
+            model.activeTime = time;
+            NSArray* array1 = [dict[@"createDate"] componentsSeparatedByString:@" "];
+            NSString* date1 = array1[0];
+            model.createDate = date1;
+            model.type = dict[@"type"];
+            model.status = dict[@"status"];
+            model.picUrl = dict[@"picUrl"];
+            [_dataArray addObject:model];
+        }
+            if (array.count==0) {
+//                [self showAlert:@"加载失败..."];
+            }
+        else
+//            [self showAlert:@"加载失败..."];
+        [_tableView reloadData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        [self showAlert:@"加载失败..."];
+    }];
     
 }
 -(void)createTableView{
@@ -40,7 +82,7 @@
     [self.view addSubview:_tableView];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return _dataArray.count;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -64,6 +106,10 @@
         cell.cicleImageView.image = [UIImage imageNamed:@"end"];
         cell.activityStatusLabel.text = @"已结束";
         cell.activityStatusImage.image = [UIImage imageNamed:@"endBg"];
+    }
+    if (_dataArray.count>0) {
+        XXDMyActivityModel* model = _dataArray[indexPath.section];
+        [cell configModel:model];
     }
     return cell;
     
