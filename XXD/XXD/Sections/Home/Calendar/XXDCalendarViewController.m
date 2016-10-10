@@ -39,6 +39,7 @@
                            @{@"dateString":@"09-13",@"timeString":@"20:10",@"country":@"中国",@"starNum":@"3",@"title":@"中国8月城镇固定资产投资月率",@"preValue":@"0.31",@"calculate":@"-145",@"publish":@"0.58",@"liduoArray":@[@"加元",@"原油"],@"likongArray":@[@"美元"]}];
     [XXDCustomNavigation loadUIViewController:self title:@"财经日历" backSelector:@selector(backBtnClick)];
     self.viewArray = [NSMutableArray array];
+    self.selectedDate = [NSDate date];
     //日历按钮
     UIImageView *calendarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 34, 18)];
     calendarImageView.image = [UIImage imageNamed:@"calendarBtn"];
@@ -68,7 +69,7 @@
     horizontal.backgroundColor = BLUECOLOR;
     [isPublishButton addSubview:horizontal];
     [self createTableView];//初始化表格视图
-    [self initCustomAlert];//初始化自定义弹窗
+//    [self initCustomAlert];//初始化自定义弹窗
 }
 #pragma mark -返回按钮点击
 - (void)backBtnClick{
@@ -79,27 +80,10 @@
     [super viewDidDisappear:animated];
     [self.delegate changeNavigationBarColor];
 }
-#pragma mark 初始化自定义弹窗
-- (void)initCustomAlert{
-    if (_dateAlert == nil) {
-        _dateAlert = [UIAlertController alertControllerWithTitle:@"请选择日期" message:@"\n\n\n\n\n\n\n\n"  preferredStyle:UIAlertControllerStyleAlert];
-        //添加日历控件
-        UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 50, 270, 150)];
-        datePicker.datePickerMode = UIDatePickerModeDate;
-        [datePicker setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
-        datePicker.timeZone = [NSTimeZone timeZoneWithName:@"Asia/beijing"];
-        if (self.selectedDate!=nil) {
-            [datePicker setDate:self.selectedDate animated:YES];
-        }
-        [_dateAlert.view addSubview:datePicker];
-        UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            [self sureActionForDatePicker:[datePicker date]];
-        }];
-        [_dateAlert addAction:sureAction];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        [_dateAlert addAction:cancelAction];
-    }
-}
+//#pragma mark 初始化自定义弹窗
+//- (void)initCustomAlert{
+//    
+//}
 #pragma mark 初始化表格
 - (void)createTableView{
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_dateScrollView.frame), WIDTH, HEIGHT-_dateScrollView.frame.size.height-49) style:UITableViewStylePlain];
@@ -137,6 +121,20 @@
 }
 #pragma mark 日历按钮点击事件
 - (void)calendarClick:(UIButton *)sender{
+    _dateAlert = [UIAlertController alertControllerWithTitle:@"请选择日期" message:@"\n\n\n\n\n\n\n\n"  preferredStyle:UIAlertControllerStyleAlert];
+    //添加日历控件
+    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 50, 270, 150)];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    [datePicker setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
+    datePicker.timeZone = [NSTimeZone timeZoneWithName:@"Asia/beijing"];
+    [datePicker setDate:self.selectedDate animated:YES];
+    [_dateAlert.view addSubview:datePicker];
+    UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [self sureActionForDatePicker:[datePicker date]];
+    }];
+    [_dateAlert addAction:sureAction];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [_dateAlert addAction:cancelAction];
     [self presentViewController:_dateAlert animated:YES completion:nil];
 }
 
@@ -263,6 +261,17 @@
     }else{
         [self.dateScrollView setContentOffset:CGPointMake((self.dayArray.count-6)*(WIDTH-55)/6.0, 0) animated:YES];
     }
+    NSString *dayString = [aView.dayLabel.text integerValue]<10 ? [NSString stringWithFormat:@"0%@",aView.dayLabel.text] : aView.dayLabel.text;
+    //改变日历按钮的日期
+    NSString *calendarString = self.calendarButton.titleLabel.text;
+    calendarString = [calendarString stringByReplacingCharactersInRange:NSMakeRange(3, 2) withString:dayString];
+    [self.calendarButton setTitle:calendarString forState:UIControlStateNormal];
+    //改变日历控件选中日期
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *selectDateString = [dateFormatter stringFromDate:self.selectedDate];
+    selectDateString = [selectDateString stringByReplacingCharactersInRange:NSMakeRange(8, 2) withString:dayString];
+    self.selectedDate = [dateFormatter dateFromString:selectDateString];
 }
 - (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];
 }
