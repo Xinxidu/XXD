@@ -5,7 +5,6 @@
 //  Created by pan on 16/9/13.
 //  Copyright © 2016年 xinxidu. All rights reserved.
 //
-
 #import "XXDCalendarViewController.h"
 #import "DateView.h"
 #import "XXDPushViewController.h"
@@ -29,11 +28,10 @@
 @property (strong,nonatomic) UITableView *tableView;//表格
 @property (strong,nonatomic) UIAlertController *dateAlert;//自定义日历控制器弹窗
 @end
-
 @implementation XXDCalendarViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.dataArray = @[@{@"dateString":@"09-13",@"timeString":@"10:10",@"country":@"中国",@"starNum":@"3",@"title":@"中国8月城镇固定资产投资月率",@"preValue":@"0.31",@"publish":@"0.58",@"liduoArray":@[@"加元",@"原油"],@"likongArray":@[@"美元"]},
                            @{@"dateString":@"09-13",@"timeString":@"20:10",@"country":@"英国",@"starNum":@"5",@"title":@"英国9月利率决议比例(升息-不变-隆息)",@"preValue":@"0.31",@"calculate":@"-145",@"publish":@"0.58"},
                            @{@"dateString":@"09-23",@"timeString":@"10:10",@"country":@"英国",@"starNum":@"5",@"title":@"英国9月扩大资产购买滚莫投资比例（扩",@"preValue":@"0.31",@"calculate":@"-145",@"publish":@"0.58",@"liduoArray":@[@"美元"],@"likongArray":@[@"加元",@"原油"]},
@@ -112,7 +110,6 @@
     _tableView.showsVerticalScrollIndicator = NO;
     _tableView.rowHeight = 100;
     [self.view addSubview:_tableView];
-    
 }
 #pragma mark tableView的代理方法
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -161,7 +158,6 @@
     [formatter setDateFormat:@"MM dd"];
     [self.calendarButton setTitle:[formatter stringFromDate:date] forState:UIControlStateNormal];
 }
-
 #pragma mark 获取指定日期的NSDateComponents对象
 - (NSDateComponents *)getDateComponents:(NSDate *)date{
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -209,7 +205,6 @@
     }
     return array;
 }
-
 #pragma mark 创建日期选项卡
 - (void)createScrollViewWithDate:(NSDate *)date{
     if (self.dateScrollView!=nil) {
@@ -241,15 +236,14 @@
     currentView.backgroundColor = BLUECOLOR;
     currentView.weekDayLabel.textColor = [UIColor whiteColor];
     currentView.dayLabel.textColor = [UIColor whiteColor];
-    if (day>3&&day<self.self.dayArray.count-3) {
-        self.dateScrollView.contentOffset = CGPointMake(1+(day -3)*(WIDTH-55)/6.0, 0);
-    }else if (day<=3) {
-        self.dateScrollView.contentOffset = CGPointMake(1, 0);
+    if (day>4&&day<self.dayArray.count-2) {
+        self.dateScrollView.contentOffset = CGPointMake((day -4)*(WIDTH-55)/6.0, 0);
+    }else if (day<=4) {
+        self.dateScrollView.contentOffset = CGPointZero;
     }else {
-        self.dateScrollView.contentOffset = CGPointMake(1+(self.dayArray.count-5)*(WIDTH-55)/6.0, 0);
+        self.dateScrollView.contentOffset = CGPointMake((self.dayArray.count-6)*(WIDTH-55)/6.0, 0);
     }
 }
-
 #pragma mark 日历选项卡点击事件
 - (void)viewClick:(UITapGestureRecognizer *)sender{
     for (DateView *aView in self.viewArray) {
@@ -262,21 +256,14 @@
     aView.weekDayLabel.textColor = [UIColor whiteColor];
     aView.dayLabel.textColor = [UIColor whiteColor];
     //让选中的View居中
-    if ((self.dateScrollView.contentOffset.x>1&&self.dateScrollView.contentOffset.x<1+(self.dayArray.count-5)*(WIDTH-55)/6.0)||sender.view.tag ==4||sender.view.tag ==5 || sender.view.tag ==self.dayArray.count-4||sender.view.tag == self.dayArray.count-3) {
-        [self.dateScrollView setContentOffset:CGPointMake(1+(sender.view.tag -3)*(WIDTH-55)/6.0, 0) animated:YES];
+    if (sender.view.tag > 3 && sender.view.tag < self.dayArray.count - 1) {
+        [self.dateScrollView setContentOffset:CGPointMake((sender.view.tag -4)*(WIDTH-55)/6.0, 0) animated:YES];
+    }else if (sender.view.tag <= 3){
+        [self.dateScrollView setContentOffset:CGPointZero animated:YES];
+    }else{
+        [self.dateScrollView setContentOffset:CGPointMake((self.dayArray.count-6)*(WIDTH-55)/6.0, 0) animated:YES];
     }
 }
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    //防止UIScrollView往最左边或最右边偏移时出界
-    if (self.dateScrollView.contentOffset.x<1){
-        [self.dateScrollView setContentOffset:CGPointMake(1, 0)];
-    }else if (self.dateScrollView.contentOffset.x>1+(self.dayArray.count-5)*(WIDTH-55)/6.0){
-        [self.dateScrollView setContentOffset:CGPointMake(1+(self.dayArray.count-5)*(WIDTH-55)/6.0, 0)];
-    }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];
 }
 @end

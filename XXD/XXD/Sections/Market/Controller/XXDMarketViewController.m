@@ -36,6 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
     self.navigationController.navigationBar.translucent = NO;
