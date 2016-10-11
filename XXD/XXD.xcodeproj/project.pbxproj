@@ -68,6 +68,7 @@
 		3BAF05AC1D93AD8300CFB105 /* XXDHistoryMarketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05AB1D93AD8300CFB105 /* XXDHistoryMarketListCell.m */; };
 		3BAF05AF1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05AE1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m */; };
 		6933F6971D790B7A009CB88F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6933F6961D790B7A009CB88F /* Default-568h@2x.png */; };
+		696BC0F11DAB74D8003589C0 /* XXDSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 696BC0F01DAB74D8003589C0 /* XXDSetupViewController.m */; };
 		697D76391D781300008D7C94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D76381D781300008D7C94 /* main.m */; };
 		697D763C1D781300008D7C94 /* XXDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D763B1D781300008D7C94 /* XXDAppDelegate.m */; };
 		697D76441D781300008D7C94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 697D76431D781300008D7C94 /* Assets.xcassets */; };
@@ -228,6 +229,8 @@
 		3BAF05AD1D93ADAA00CFB105 /* XXDHistoryExchangeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHistoryExchangeCell.h; sourceTree = "<group>"; };
 		3BAF05AE1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHistoryExchangeCell.m; sourceTree = "<group>"; };
 		6933F6961D790B7A009CB88F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		696BC0EF1DAB74D8003589C0 /* XXDSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDSetupViewController.h; sourceTree = "<group>"; };
+		696BC0F01DAB74D8003589C0 /* XXDSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDSetupViewController.m; sourceTree = "<group>"; };
 		697D76341D781300008D7C94 /* XXD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XXD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697D76381D781300008D7C94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		697D763A1D781300008D7C94 /* XXDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXDAppDelegate.h; sourceTree = "<group>"; };
@@ -483,6 +486,7 @@
 		3B7B3E8C1D7EBE72003DBF06 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				696BC0EE1DAB74CA003589C0 /* Setup */,
 				3B6C69131D9B642400C1CB1A /* MyAccount */,
 				3B2EC0311D87CB8F0019A72E /* LoginAndRegister */,
 				69B89A751D810378009875E1 /* Trade */,
@@ -491,7 +495,6 @@
 				3B7B3E901D7EC041003DBF06 /* AbountUs */,
 				3B7B3E911D7EC041003DBF06 /* CallUs */,
 				3B7B3E921D7EC041003DBF06 /* MyActivity */,
-				3B7B3E931D7EC041003DBF06 /* Setup */,
 				3B7B3E941D7EC041003DBF06 /* UserHelp */,
 				3B7B3E8D1D7EBECC003DBF06 /* XXDMyViewController.h */,
 				3B7B3E8E1D7EBECC003DBF06 /* XXDMyViewController.m */,
@@ -544,13 +547,6 @@
 			path = MyActivity;
 			sourceTree = "<group>";
 		};
-		3B7B3E931D7EC041003DBF06 /* Setup */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Setup;
-			sourceTree = "<group>";
-		};
 		3B7B3E941D7EC041003DBF06 /* UserHelp */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +561,15 @@
 				B431A3CF173B42D828D67E6C /* Pods-XXD.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		696BC0EE1DAB74CA003589C0 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				696BC0EF1DAB74D8003589C0 /* XXDSetupViewController.h */,
+				696BC0F01DAB74D8003589C0 /* XXDSetupViewController.m */,
+			);
+			path = Setup;
 			sourceTree = "<group>";
 		};
 		697D762B1D781300008D7C94 = {
@@ -1058,6 +1063,7 @@
 				69B1C6181D7E64FF000CA633 /* XXDLiveImage.m in Sources */,
 				697D76731D782951008D7C94 /* XXDDiscoverViewController.m in Sources */,
 				3BAF05A91D93A5F700CFB105 /* XXDTodayExchangeCell.m in Sources */,
+				696BC0F11DAB74D8003589C0 /* XXDSetupViewController.m in Sources */,
 				3B6C69121D9B5B1900C1CB1A /* XXDFindPwdSecondViewController.m in Sources */,
 				69BC4A601D9DFF140035328C /* XXDCalendarCell.m in Sources */,
 				69B1C61F1D7EBD61000CA633 /* XXDJinYinNiuPingCell.m in Sources */,

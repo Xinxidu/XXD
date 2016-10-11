@@ -14,6 +14,7 @@
 #import "XXDRegisterViewController.h"
 #import "XXDLoginViewController.h"
 #import "XXDMyAccountViewController.h"
+#import "XXDSetupViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 #define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
@@ -252,7 +253,8 @@
         if (indexPath.row == 0) {//使用帮助
             
         }else{//设置
-            
+            XXDSetupViewController *vc = [[XXDSetupViewController alloc] init];
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
         }
     }
     self.hidesBottomBarWhenPushed = NO;
