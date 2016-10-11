@@ -42,7 +42,7 @@
     tap.numberOfTapsRequired = 1;
     [_headImageView addGestureRecognizer:tap];
     //中部视图
-    NSArray *array = @[@"用户名",@"密码"];
+    NSArray *array = @[@"用户名",@"手机号"];
     NSArray *texAarray = @[@"lixiaoming",@"13788888866"];
     UIView *middleView;
     for (NSInteger i=0; i<array.count; i++) {

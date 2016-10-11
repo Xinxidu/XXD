@@ -13,7 +13,8 @@
 #import "XiDuNewsDetailViewController.h"
 #define WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
 #define HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
-#define URL @"http://175.102.13.51:8080/XDSY/ZhuBan"
+#define URL @"http://app.service.xiduoil.com/ZhuBan"
+//http://app.service.xiduoil.com/ZhuBan?type=.guanwang&defference=gonggao&indexPage=1&pageRows=10
 @interface XiDuNewsViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong,nonatomic) UIRefreshControl *reFresh;//下拉刷新控件
 @property (strong,nonatomic) UIActivityIndicatorView *activity;//加载刷新控件
@@ -44,7 +45,7 @@
     NSDictionary* parameters = [[NSDictionary alloc]initWithObjectsAndKeys:
                                 @".guanwang",@"type",
                                 @"gonggao",@"defference",
-                                [NSString stringWithFormat:@"%ld",(long)_page],@"indexPage",
+                                [NSString stringWithFormat:@"%ld",(long)_page],@"indexPage",@"10",@"pageRows",
                                 nil];
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
     [manager GET:URL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

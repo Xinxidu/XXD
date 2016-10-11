@@ -9,6 +9,9 @@
 #import "XXDLoginViewController.h"
 #import "XXDRegisterViewController.h"
 #import "XXDFindPwdViewController.h"
+#import "BaseWebRequest.h"
+#import <AFNetworking/AFNetworking.h>
+#define URL @"http://app.service.xiduoil.com/app/controller/user/login/json"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface XXDLoginViewController ()<UITextFieldDelegate>
@@ -169,10 +172,35 @@
 }
 #pragma mark ****** 完成登录
 -(void)submitClick{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:YES forKey:@"isLogin"];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSDictionary* dic = [[NSDictionary alloc]initWithObjectsAndKeys:
+                         _userNameTxt.text,@"name",
+                         _pwdTxt.text,@"pwd",
+                         nil];
+    AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
+    [manager GET:URL parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *key = responseObject[@"key"];
+        if ([key isEqualToString:@"0"]) {
+            [self alertwithTitle:@"登录失败，请检验您的信息填写是否有误！"];
+        }else{
+            NSDictionary *userInfoDict = responseObject[@"userInfo"];
+            NSLog(@"userInfoDict=%@",userInfoDict);
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    }];
+
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    [userDefaults setBool:YES forKey:@"isLogin"];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
 }
+#pragma mark -弹出框
+-(void)alertwithTitle:(NSString *)titleString{
+    UIAlertController *AlertController = [UIAlertController alertControllerWithTitle:titleString message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
+    [AlertController addAction:action];
+    [self presentViewController:AlertController animated:YES completion:nil];
+}
+
 #pragma mark -返回按钮点击
 - (void)backBtnClick{
     [self.navigationController popToRootViewControllerAnimated:YES];
