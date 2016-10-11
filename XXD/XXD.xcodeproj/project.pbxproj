@@ -46,6 +46,7 @@
 		3B7070071D9E0206005C6076 /* XXDCustomScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7070061D9E0206005C6076 /* XXDCustomScrollViewController.m */; };
 		3B70700C1D9E0E9B005C6076 /* SGTopTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7070091D9E0E9B005C6076 /* SGTopTitleView.m */; };
 		3B70700D1D9E0E9B005C6076 /* UIView+SGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B70700B1D9E0E9B005C6076 /* UIView+SGExtension.m */; };
+		3B732BA31DAC72470042B494 /* XXDProfessorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B732BA21DAC72470042B494 /* XXDProfessorDetailViewController.m */; };
 		3B7B3E611D7E515A003DBF06 /* XXDQuotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E601D7E515A003DBF06 /* XXDQuotationViewController.m */; };
 		3B7B3E6C1D7E5632003DBF06 /* ProfitSkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E671D7E5632003DBF06 /* ProfitSkillCell.m */; };
 		3B7B3E6D1D7E5632003DBF06 /* ProfitSkillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E691D7E5632003DBF06 /* ProfitSkillModel.m */; };
@@ -67,6 +68,8 @@
 		3BAF05A91D93A5F700CFB105 /* XXDTodayExchangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05A81D93A5F700CFB105 /* XXDTodayExchangeCell.m */; };
 		3BAF05AC1D93AD8300CFB105 /* XXDHistoryMarketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05AB1D93AD8300CFB105 /* XXDHistoryMarketListCell.m */; };
 		3BAF05AF1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05AE1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m */; };
+		3BBE4C721DAB7EAE0079F7A6 /* XXDProfessorTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE4C711DAB7EAE0079F7A6 /* XXDProfessorTeamCell.m */; };
+		3BBE4C751DAB7ECE0079F7A6 /* XXDProfessorTeamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE4C741DAB7ECE0079F7A6 /* XXDProfessorTeamModel.m */; };
 		6933F6971D790B7A009CB88F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6933F6961D790B7A009CB88F /* Default-568h@2x.png */; };
 		697D76391D781300008D7C94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D76381D781300008D7C94 /* main.m */; };
 		697D763C1D781300008D7C94 /* XXDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D763B1D781300008D7C94 /* XXDAppDelegate.m */; };
@@ -185,6 +188,8 @@
 		3B7070091D9E0E9B005C6076 /* SGTopTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTopTitleView.m; sourceTree = "<group>"; };
 		3B70700A1D9E0E9B005C6076 /* UIView+SGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SGExtension.h"; sourceTree = "<group>"; };
 		3B70700B1D9E0E9B005C6076 /* UIView+SGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SGExtension.m"; sourceTree = "<group>"; };
+		3B732BA11DAC72470042B494 /* XXDProfessorDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDProfessorDetailViewController.h; sourceTree = "<group>"; };
+		3B732BA21DAC72470042B494 /* XXDProfessorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDProfessorDetailViewController.m; sourceTree = "<group>"; };
 		3B7B3E5F1D7E515A003DBF06 /* XXDQuotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDQuotationViewController.h; sourceTree = "<group>"; };
 		3B7B3E601D7E515A003DBF06 /* XXDQuotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDQuotationViewController.m; sourceTree = "<group>"; };
 		3B7B3E661D7E5632003DBF06 /* ProfitSkillCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfitSkillCell.h; sourceTree = "<group>"; };
@@ -227,6 +232,10 @@
 		3BAF05AB1D93AD8300CFB105 /* XXDHistoryMarketListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHistoryMarketListCell.m; sourceTree = "<group>"; };
 		3BAF05AD1D93ADAA00CFB105 /* XXDHistoryExchangeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDHistoryExchangeCell.h; sourceTree = "<group>"; };
 		3BAF05AE1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHistoryExchangeCell.m; sourceTree = "<group>"; };
+		3BBE4C701DAB7EAE0079F7A6 /* XXDProfessorTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDProfessorTeamCell.h; sourceTree = "<group>"; };
+		3BBE4C711DAB7EAE0079F7A6 /* XXDProfessorTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDProfessorTeamCell.m; sourceTree = "<group>"; };
+		3BBE4C731DAB7ECE0079F7A6 /* XXDProfessorTeamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDProfessorTeamModel.h; sourceTree = "<group>"; };
+		3BBE4C741DAB7ECE0079F7A6 /* XXDProfessorTeamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDProfessorTeamModel.m; sourceTree = "<group>"; };
 		6933F6961D790B7A009CB88F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		697D76341D781300008D7C94 /* XXD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XXD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697D76381D781300008D7C94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -465,6 +474,12 @@
 			children = (
 				3B7B3E821D7E61BD003DBF06 /* ProfessorTeamViewController.h */,
 				3B7B3E831D7E61BD003DBF06 /* ProfessorTeamViewController.m */,
+				3BBE4C701DAB7EAE0079F7A6 /* XXDProfessorTeamCell.h */,
+				3BBE4C711DAB7EAE0079F7A6 /* XXDProfessorTeamCell.m */,
+				3BBE4C731DAB7ECE0079F7A6 /* XXDProfessorTeamModel.h */,
+				3BBE4C741DAB7ECE0079F7A6 /* XXDProfessorTeamModel.m */,
+				3B732BA11DAC72470042B494 /* XXDProfessorDetailViewController.h */,
+				3B732BA21DAC72470042B494 /* XXDProfessorDetailViewController.m */,
 			);
 			path = ProfessorTeam;
 			sourceTree = "<group>";
@@ -1014,6 +1029,7 @@
 				3B24B3011D9272DE004FAC80 /* CustomScrollViewController.m in Sources */,
 				3B2EC0371D87CC7D0019A72E /* XXDRegisterSecondViewController.m in Sources */,
 				3B60B88A1D7D3D08002AA667 /* ItemTableViewCell.m in Sources */,
+				3B732BA31DAC72470042B494 /* XXDProfessorDetailViewController.m in Sources */,
 				3B7B3E841D7E61BD003DBF06 /* ProfessorTeamViewController.m in Sources */,
 				3B6C690F1D9B5B0100C1CB1A /* XXDFindPwdViewController.m in Sources */,
 				3B2CAAC81DAB3B1C000BD24B /* XXDMyActivityModel.m in Sources */,
@@ -1044,6 +1060,7 @@
 				3B70700C1D9E0E9B005C6076 /* SGTopTitleView.m in Sources */,
 				3B706FFE1D9DF948005C6076 /* XXDShiShiViewController.m in Sources */,
 				69E1C6311D879B0400ED2735 /* XXDHotTradeCell.m in Sources */,
+				3BBE4C721DAB7EAE0079F7A6 /* XXDProfessorTeamCell.m in Sources */,
 				3B7B3E801D7E5B0D003DBF06 /* BaseWKWebView.m in Sources */,
 				69B89A8C1D813807009875E1 /* XXDHoldProductView.m in Sources */,
 				69C5BCAF1D9A4307005CF969 /* XXDOrderSwapsBS.m in Sources */,
@@ -1075,6 +1092,7 @@
 				3B7B3E6E1D7E5632003DBF06 /* ProfitSkillViewController.m in Sources */,
 				697D76701D782939008D7C94 /* XXDTradeViewController.m in Sources */,
 				69B1C6111D7E4FE8000CA633 /* XXDLiveView.m in Sources */,
+				3BBE4C751DAB7ECE0079F7A6 /* XXDProfessorTeamModel.m in Sources */,
 				69B89A801D813723009875E1 /* firmBargainViewController.m in Sources */,
 				3B7B3E8F1D7EBECC003DBF06 /* XXDMyViewController.m in Sources */,
 				69C5BCAB1D9A420C005CF969 /* XXDOrderSwapsBSCell.m in Sources */,
