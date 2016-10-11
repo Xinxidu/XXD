@@ -62,6 +62,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)cellViewClick:(UITapGestureRecognizer *)sender{
+    self.hidesBottomBarWhenPushed = YES;
     switch (sender.view.tag) {
         case 0:
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDPersonalInfoViewController alloc]init]];

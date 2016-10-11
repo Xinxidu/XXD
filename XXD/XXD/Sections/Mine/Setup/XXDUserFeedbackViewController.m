@@ -53,7 +53,33 @@
     [self.view addSubview:self.opinionTextView];
     [self addPromptContent];
     //联系方式
+    UIView *contactBgView = [[UIView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.opinionTextView.frame)+10, WIDTH-20, 40)];
+    contactBgView.layer.borderWidth = 0.5f;
+    contactBgView.layer.borderColor = LIGHTGRAYCOLOR.CGColor;
+    contactBgView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:contactBgView];
+    UITextField *contact = [[UITextField alloc] initWithFrame:CGRectMake(10, 14, WIDTH-40, 12)];
+    contact.textColor = DARKGRAYCOLOR;
+    contact.placeholder = @"请留下您的联系方式";
+    contact.font = [UIFont systemFontOfSize:12.0f];
+    [contactBgView addSubview:contact];
     //提交
+    UIButton *commitButton = [[UIButton alloc] initWithFrame:CGRectMake((WIDTH-240)*0.5, CGRectGetMaxY(contactBgView.frame)+20, 240, 42)];
+    commitButton.backgroundColor = BLUECOLOR;
+    commitButton.layer.masksToBounds = YES;
+    commitButton.layer.cornerRadius = 21.0f;
+    [commitButton setTitle:@"提交" forState:UIControlStateNormal];
+    [commitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    commitButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    [commitButton addTarget:self action:@selector(commitClick) forControlEvents:UIControlEventTouchUpInside];
+    CALayer *layer = [[CALayer alloc] init];
+    layer.frame = commitButton.frame;
+    layer.backgroundColor = BLUECOLOR.CGColor;
+    layer.shadowOffset = CGSizeMake(2, 2);
+    layer.shadowOpacity = 0.6;
+    layer.cornerRadius = 21.0f;
+    [self.view.layer addSublayer:layer];
+    [self.view addSubview:commitButton];
 }
 - (void)backBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
@@ -87,6 +113,9 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
     [super touchesBegan:touches withEvent:event];
+}
+- (void)commitClick{
+    
 }
 - (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];
 }
