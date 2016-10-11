@@ -10,8 +10,12 @@
 #import "XXDRegisterSecondViewController.h"
 #import "XXDLoginViewController.h"
 #import "XXDFindPwdViewController.h"
+#import "BaseWebRequest.h"
+#import <AFNetworking/AFNetworking.h>
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
+#define URL @"http://app.service.xiduoil.com/app/controller/user/getCode/json"
+#define codeURL @"http://app.service.xiduoil.com/app/controller/user/validCode/json"
 @interface XXDRegisterViewController ()<UITextFieldDelegate>
 @property (nonatomic,strong)UITextField *phoneNumberTextfield;
 @property (nonatomic,strong)UITextField *codeTextfield;
@@ -72,6 +76,7 @@
     codeButton.backgroundColor = [UIColor colorWithRed:249/255.0 green:14/255.0 blue:27/255.0 alpha:1.0];
     codeButton.layer.cornerRadius = 15;
     codeButton.layer.masksToBounds = YES;
+    [codeButton addTarget:self action:@selector(getCodeButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [codeView addSubview:codeButton];
     
     _codeTextfield = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(codeLabel.frame)+5, 8, WIDTH-60-20-80-20, 30)];
@@ -127,6 +132,33 @@
 
     
 }
+#pragma mark -获取验证码
+-(void)getCodeButtonClick{
+    NSDictionary* dic = [[NSDictionary alloc]initWithObjectsAndKeys:
+                         @"appSMS",@"type",
+                         _phoneNumberTextfield.text,@"mob",
+                         @"0",@"source",
+                         nil];
+    AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
+    [manager GET:URL parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *str = responseObject[@"k"];
+        NSLog(@"%@",str);
+        if ([str isEqualToString:@"0"]) {
+            [self alertwithTitle:@"获取验证码成功"];
+        }else{
+            [self alertwithTitle:@"获取验证码失败，请稍后获取！"];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    }];
+
+}
+#pragma mark -弹出框
+-(void)alertwithTitle:(NSString *)titleString{
+    UIAlertController *AlertController = [UIAlertController alertControllerWithTitle:titleString message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
+    [AlertController addAction:action];
+    [self presentViewController:AlertController animated:YES completion:nil];
+}
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [_phoneNumberTextfield resignFirstResponder];
     [_codeTextfield resignFirstResponder];    
@@ -144,14 +176,27 @@
     self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:[[XXDFindPwdViewController alloc]init] animated:YES];
 }
+#pragma mark -下一步，检验验证码
 -(void)nextStepClick{
-    NSLog(@"%@",_phoneNumberTextfield.text);
-    if ([_phoneNumberTextfield.text  isEqual: @"1234567890"]) {
-        _phoneNumberTextfield.text = @"该手机号已注册";
-    }else{
-        self.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:[[XXDRegisterSecondViewController alloc]init] animated:YES];
-    }
+    NSDictionary* dic = [[NSDictionary alloc]initWithObjectsAndKeys:
+                         @"appSMS",@"type",
+                         _phoneNumberTextfield.text,@"mob",
+                         _codeTextfield.text,@"code",
+                         nil];
+    AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
+    [manager GET:codeURL parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *key = responseObject[@"key"];
+        if ([key isEqualToString:@"0"]) {
+            [self alertwithTitle:@"验证码有误，请重新填写！"];
+        }else{
+            XXDRegisterSecondViewController *registVC = [[XXDRegisterSecondViewController alloc]init];
+            NSTimeInterval a = [[NSDate date] timeIntervalSince1970];
+            registVC.times = [NSString stringWithFormat:@"%.0f", a];//转为字符型
+            self.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:registVC animated:YES];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    }];
 }
 #pragma mark -返回按钮点击
 - (void)backBtnClick{

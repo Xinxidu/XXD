@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface XXDRegisterViewController : UIViewController
-
 @end

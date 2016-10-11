@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface XXDRegisterSecondViewController : UIViewController
-
+@property (nonatomic,copy)NSString *times;//当前时间戳
 @end
