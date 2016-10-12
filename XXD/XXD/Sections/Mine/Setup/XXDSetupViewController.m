@@ -11,11 +11,13 @@
 #import "XXDPersonalInfoViewController.h"
 #import "XXDPushViewController.h"
 #import "XXDUserFeedbackViewController.h"
+#define APPID @"414478124"  //当前是微信在itunes上的唯一标识，app上架之后需要替换成app的唯一标识
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define DARKGRAYCOLOR [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]   //#333333
 #define GRAYCOLOR [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]   //#999999
 #define LIGHTGRAYCOLOR [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1]  //#dedede
 @interface XXDSetupViewController ()
+@property (nonatomic,copy) NSString *currentVersion;
 @end
 
 @implementation XXDSetupViewController
@@ -48,6 +50,7 @@
             NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
             NSString *version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
             NSString *build = [infoDictionary objectForKey:@"CFBundleVersion"];
+            self.currentVersion = [NSString stringWithFormat:@"%@.%@",version,build];
             NSString *currentVersion = [NSString stringWithFormat:@"当前版本%@.%@",version,build];
             CGFloat width = [currentVersion boundingRectWithSize:CGSizeMake(1000, 13) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:13.0f] forKey:NSFontAttributeName] context:nil].size.width;
             UILabel *currentVersionLabel = [[UILabel alloc] initWithFrame:CGRectMake(WIDTH-width-44, 13.5, width, 13)];
@@ -57,22 +60,46 @@
             [cellView addSubview:currentVersionLabel];
         }
     }
+    //如果当前版本和发布的版本一致则显示"已是最新版本"
+    if ([self.currentVersion isEqualToString:[self getVersionForAppStore]]) {
+        UILabel *newestVersionLabel = [[UILabel alloc] initWithFrame:CGRectMake((WIDTH-172.5)*0.5, CGRectGetMaxY(bgView.frame)+20, 172.5, 30)];
+//        [UIColor colorWithRed:140/255.0 green:188/255.0 blue:248/255.0 alpha:1];
+//        newestVersionLabel.backgroundColor = [UIColor]
+    }
 }
 - (void)backBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
 }
+#pragma mark 获取AppStore上的版本
+- (NSString *)getVersionForAppStore{
+    NSString *string = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",APPID]] encoding:NSUTF8StringEncoding error:nil];
+    NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+    NSArray *array = jsonDic[@"results"];
+    NSDictionary *dic = [array lastObject];
+    NSString *version = dic[@"version"];
+    return version;
+}
 - (void)cellViewClick:(UITapGestureRecognizer *)sender{
     self.hidesBottomBarWhenPushed = YES;
     switch (sender.view.tag) {
-        case 0:
+        case 0://个人消息
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDPersonalInfoViewController alloc]init]];
             break;
-        case 1:
+        case 1://用户反馈
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDUserFeedbackViewController alloc]init]];
             break;
-        case 2:
+        case 2:{//版本更新
+            //获取发布版本的Version
+            NSLog(@"%@",[self getVersionForAppStore]);
             
-            break;
+            
+            //如果当前版本和发布的版本不一致则提出警告框提示用户去AppStore更新app
+//            NSLog(@"%@",string);
+//            NSString *appInfo = [string substringFromIndex:[string rangeOfString:@"\"version\":"].location];
+//            appInfo = [[appInfo substringToIndex: [string rangeOfString:@","].location] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+//            NSLog(@"%@",appInfo);
+        }break;
     }
 }
 - (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];}
