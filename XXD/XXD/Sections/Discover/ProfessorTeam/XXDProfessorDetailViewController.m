@@ -88,16 +88,6 @@
     jianjieContent.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
     jianjieContent.userInteractionEnabled = NO;
     [self.view addSubview:jianjieContent];
-//    UILabel *jianjieContent = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(jianjieTitle.frame)+20, CGRectGetMaxY(horizontalLabel.frame), WIDTH-CGRectGetMaxX(verticalLabel.frame)-10*2, HEIGHT-CGRectGetMinY(jianjieTitle.frame))];
-//    NSString *jianjieString = [_jianjie stringByReplacingOccurrencesOfString:@" " withString:@"1"];
-//    jianjieContent.text = jianjieString;
-//    jianjieContent.font = [UIFont systemFontOfSize:13.0];
-//    jianjieContent.textAlignment = NSTextAlignmentLeft;
-//    jianjieContent.lineBreakMode = NSLineBreakByCharWrapping;
-//    jianjieContent.numberOfLines = 0;
-//    jianjieContent.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
-//    jianjieContent.userInteractionEnabled = NO;
-//    [self.view addSubview:jianjieContent];
 }
 #pragma mark 根据Label的内容和字体大小获取lalel的大小
 - (CGSize)getLabelSizeWithString:(NSString *)labelString fontSize:(CGFloat)fontSize{
