@@ -34,7 +34,7 @@
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.showsVerticalScrollIndicator = NO;
-    _tableView.bounces=NO;
+    _tableView.bounces=YES;
     [self.view addSubview:_tableView];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -78,7 +78,8 @@
 #pragma mark 根据所有行高的和改变tableView的高度和rootScrollView的容量高度
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     _tableViewHeight += cell.contentView.frame.size.height;
-    _tableView.frame = CGRectMake(0, 42, WIDTH, HEIGHT);
+//    _tableView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
+_tableView.frame = CGRectMake(0, 42, WIDTH, _tableViewHeight+20);
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
