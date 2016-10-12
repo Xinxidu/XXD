@@ -56,9 +56,10 @@
     _nameLabel.text = model.name;
     _touxianLabel.text = [NSString stringWithFormat:@"--%@",model.touxian];
     _shanchangLabel.text = [NSString stringWithFormat:@"擅长：%@",model.shanchang];
+    
     _nameLabel.frame = CGRectMake(CGRectGetMaxX(_headImageView.frame)+10, 12, [self getLabelSizeWithString:model.name fontSize:14].width, 14);
-    _touxianLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_nameLabel.frame), 13, SIZE.width-CGRectGetMaxX(_nameLabel.frame), 14)];
-    _shanchangLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_headImageView.frame)+10, CGRectGetMaxY(_nameLabel.frame)+3, SIZE.width-(CGRectGetMaxX(_headImageView.frame)+5)-40, 30)];
+    _touxianLabel.frame =  CGRectMake(CGRectGetMaxX(_nameLabel.frame), 13, SIZE.width-CGRectGetMaxX(_nameLabel.frame), 14);
+    _shanchangLabel.frame =  CGRectMake(CGRectGetMaxX(_headImageView.frame)+10, CGRectGetMaxY(_nameLabel.frame)+3, SIZE.width-(CGRectGetMaxX(_headImageView.frame)+5)-40, 30);
 }
 #pragma mark 根据Label的内容和字体大小获取lalel的大小
 - (CGSize)getLabelSizeWithString:(NSString *)labelString fontSize:(CGFloat)fontSize{

@@ -70,7 +70,7 @@
     
     // 1 计算滚动的位置
     CGFloat offsetX = index * self.view.frame.size.width;
-    self.mainScrollView.contentOffset = CGPointMake(offsetX, 0);
+    self.mainScrollView.contentOffset = CGPointMake(offsetX, -64);
     
     // 2.给对应位置添加对应子控制器
     [self showVc:index];

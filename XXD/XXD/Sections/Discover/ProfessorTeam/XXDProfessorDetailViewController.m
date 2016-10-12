@@ -63,10 +63,12 @@
         titleLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
         [self.view addSubview:titleLabel];
         
-        UILabel *contentLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(titleLabel.frame)+20, CGRectGetMaxY(bgImageView.frame)+10+8+36*i, WIDTH-CGRectGetMaxX(verticalLabel.frame)-10*2, 20)];
+        UILabel *contentLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(titleLabel.frame)+20, CGRectGetMaxY(bgImageView.frame)+10+4+36*i, WIDTH-CGRectGetMaxX(verticalLabel.frame)-10*2, 28)];
         contentLabel.text = contentArray[i];
         contentLabel.font = [UIFont systemFontOfSize:13.0];
         contentLabel.textAlignment = NSTextAlignmentLeft;
+        contentLabel.numberOfLines = 0;
+        contentLabel.adjustsFontSizeToFitWidth = YES;
         contentLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
         [self.view addSubview:contentLabel];
     }
@@ -79,7 +81,7 @@
     [self.view addSubview:jianjieTitle];
     
     UITextView *jianjieContent = [[UITextView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(jianjieTitle.frame)+20, CGRectGetMaxY(horizontalLabel.frame), WIDTH-CGRectGetMaxX(verticalLabel.frame)-10*2, HEIGHT-CGRectGetMinY(jianjieTitle.frame))];
-    NSString *jianjieString = [_jianjie stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *jianjieString = [_jianjie stringByReplacingOccurrencesOfString:@" " withString:@"1"];
     jianjieContent.text = jianjieString;
     jianjieContent.font = [UIFont systemFontOfSize:13.0];
     jianjieContent.textAlignment = NSTextAlignmentLeft;
