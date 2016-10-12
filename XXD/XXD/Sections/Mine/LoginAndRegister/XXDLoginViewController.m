@@ -189,9 +189,9 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];
 
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    [userDefaults setBool:YES forKey:@"isLogin"];
-//    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:YES forKey:@"isLogin"];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 #pragma mark -弹出框
 -(void)alertwithTitle:(NSString *)titleString{

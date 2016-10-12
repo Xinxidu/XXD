@@ -33,11 +33,6 @@
 }
 #pragma mark ****** 数据请求
 -(void)requestWebServiceData{
-//    NSDictionary* dic = [[NSDictionary alloc]initWithObjectsAndKeys:
-//                         @"",@"status",
-//                         @"1",@"currentPage",
-//                         @"15",@"pageSize",
-//                         nil];
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
     [manager GET:URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSArray*  array = responseObject[@"data"];
@@ -53,12 +48,7 @@
             model.jianjie = dict[@"jianjie"];
             [_dataArray addObject:model];
         }
-        if (array.count==0) {
-            //                [self showAlert:@"加载失败..."];
-        }
-        else
-            //            [self showAlert:@"加载失败..."];
-            [_tableView reloadData];
+        [_tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //        [self showAlert:@"加载失败..."];
     }];
