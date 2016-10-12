@@ -97,6 +97,8 @@
 		69BC4A5A1D9DFE460035328C /* XXDCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BC4A591D9DFE460035328C /* XXDCalendar.m */; };
 		69BC4A5D1D9DFEE10035328C /* DateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BC4A5C1D9DFEE10035328C /* DateView.m */; };
 		69BC4A601D9DFF140035328C /* XXDCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BC4A5F1D9DFF140035328C /* XXDCalendarCell.m */; };
+		69BFEA661DAC8CBC001F57D1 /* XXDPersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BFEA651DAC8CBC001F57D1 /* XXDPersonalInfoViewController.m */; };
+		69BFEA691DAC8DE2001F57D1 /* XXDUserFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BFEA681DAC8DE2001F57D1 /* XXDUserFeedbackViewController.m */; };
 		69C1058F1D93852F00F4D3AE /* XXDCustomNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C1058E1D93852F00F4D3AE /* XXDCustomNavigation.m */; };
 		69C40D1C1D7D463000872C23 /* UIButton+XXD.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C40D1B1D7D463000872C23 /* UIButton+XXD.m */; };
 		69C5BCAB1D9A420C005CF969 /* XXDOrderSwapsBSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5BCAA1D9A420C005CF969 /* XXDOrderSwapsBSCell.m */; };
@@ -289,6 +291,10 @@
 		69BC4A5C1D9DFEE10035328C /* DateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateView.m; sourceTree = "<group>"; };
 		69BC4A5E1D9DFF140035328C /* XXDCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDCalendarCell.h; sourceTree = "<group>"; };
 		69BC4A5F1D9DFF140035328C /* XXDCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDCalendarCell.m; sourceTree = "<group>"; };
+		69BFEA641DAC8CBC001F57D1 /* XXDPersonalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDPersonalInfoViewController.h; sourceTree = "<group>"; };
+		69BFEA651DAC8CBC001F57D1 /* XXDPersonalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDPersonalInfoViewController.m; sourceTree = "<group>"; };
+		69BFEA671DAC8DE2001F57D1 /* XXDUserFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDUserFeedbackViewController.h; sourceTree = "<group>"; };
+		69BFEA681DAC8DE2001F57D1 /* XXDUserFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDUserFeedbackViewController.m; sourceTree = "<group>"; };
 		69C1058C1D936E8A00F4D3AE /* PopViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopViewControllerDelegate.h; sourceTree = "<group>"; };
 		69C1058D1D93852F00F4D3AE /* XXDCustomNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDCustomNavigation.h; sourceTree = "<group>"; };
 		69C1058E1D93852F00F4D3AE /* XXDCustomNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDCustomNavigation.m; sourceTree = "<group>"; };
@@ -583,6 +589,10 @@
 			children = (
 				696BC0EF1DAB74D8003589C0 /* XXDSetupViewController.h */,
 				696BC0F01DAB74D8003589C0 /* XXDSetupViewController.m */,
+				69BFEA641DAC8CBC001F57D1 /* XXDPersonalInfoViewController.h */,
+				69BFEA651DAC8CBC001F57D1 /* XXDPersonalInfoViewController.m */,
+				69BFEA671DAC8DE2001F57D1 /* XXDUserFeedbackViewController.h */,
+				69BFEA681DAC8DE2001F57D1 /* XXDUserFeedbackViewController.m */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -1034,6 +1044,7 @@
 				3B24B3011D9272DE004FAC80 /* CustomScrollViewController.m in Sources */,
 				3B2EC0371D87CC7D0019A72E /* XXDRegisterSecondViewController.m in Sources */,
 				3B60B88A1D7D3D08002AA667 /* ItemTableViewCell.m in Sources */,
+				69BFEA691DAC8DE2001F57D1 /* XXDUserFeedbackViewController.m in Sources */,
 				3B732BA31DAC72470042B494 /* XXDProfessorDetailViewController.m in Sources */,
 				3B7B3E841D7E61BD003DBF06 /* ProfessorTeamViewController.m in Sources */,
 				3B6C690F1D9B5B0100C1CB1A /* XXDFindPwdViewController.m in Sources */,
@@ -1061,6 +1072,7 @@
 				3B6F5F171D7FAFC60058D2DE /* AboutXiDuViewController.m in Sources */,
 				3B6F5F2B1D7FAFFE0058D2DE /* XiDuNewsModel.m in Sources */,
 				3B6F5F2C1D7FAFFE0058D2DE /* XiDuNewsViewController.m in Sources */,
+				69BFEA661DAC8CBC001F57D1 /* XXDPersonalInfoViewController.m in Sources */,
 				3B7070041D9DFF0B005C6076 /* XXDJinRongViewController.m in Sources */,
 				3B70700C1D9E0E9B005C6076 /* SGTopTitleView.m in Sources */,
 				3B706FFE1D9DF948005C6076 /* XXDShiShiViewController.m in Sources */,

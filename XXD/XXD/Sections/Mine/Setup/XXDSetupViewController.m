@@ -8,6 +8,9 @@
 
 #import "XXDSetupViewController.h"
 #import "XXDCustomNavigation.h"
+#import "XXDPersonalInfoViewController.h"
+#import "XXDPushViewController.h"
+#import "XXDUserFeedbackViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define DARKGRAYCOLOR [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]   //#333333
 #define GRAYCOLOR [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]   //#999999
@@ -59,12 +62,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)cellViewClick:(UITapGestureRecognizer *)sender{
+    self.hidesBottomBarWhenPushed = YES;
     switch (sender.view.tag) {
         case 0:
-            
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDPersonalInfoViewController alloc]init]];
             break;
         case 1:
-            
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDUserFeedbackViewController alloc]init]];
             break;
         case 2:
             
