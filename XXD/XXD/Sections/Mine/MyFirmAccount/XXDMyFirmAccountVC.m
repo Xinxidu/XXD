@@ -7,7 +7,6 @@
 //
 
 #import "XXDMyFirmAccountVC.h"
-#import "XXDPushViewController.h"
 #import "firmBargainViewController.h"
 #import "XXDMyAccountInfoVC.h"
 #import "XXDTodayMakeListVC.h"
@@ -95,17 +94,17 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.hidesBottomBarWhenPushed = YES;
     if (indexPath.row == 0) {
-        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDMyAccountInfoVC alloc]init]];
+        [self.navigationController pushViewController:[[XXDMyAccountInfoVC alloc]init] animated:YES];
     }else if (indexPath.row == 1){
-        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDTodayMakeListVC alloc]init]];
+        [self.navigationController pushViewController:[[XXDTodayMakeListVC alloc]init] animated:YES];
     }else if (indexPath.row == 2){
-        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDTodayExchangeListVC alloc]init]];
+        [self.navigationController pushViewController:[[XXDTodayExchangeListVC alloc]init] animated:YES];
     }else if (indexPath.row == 3){
-        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDHistoryMakeListVC alloc]init]];
-    }else if(indexPath.row == 4){
-        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDHistoryExchangeListVC alloc]init]];
+        [self.navigationController pushViewController:[[XXDHistoryMakeListVC alloc]init] animated:YES];
+    }else if (indexPath.row == 4){
+        [self.navigationController pushViewController:[[XXDHistoryExchangeListVC alloc]init] animated:YES];
     }else{
-        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[firmBargainViewController alloc] init]];
+        [self.navigationController pushViewController:[[firmBargainViewController alloc]init] animated:YES];
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

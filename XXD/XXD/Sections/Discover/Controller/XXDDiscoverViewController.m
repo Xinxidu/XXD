@@ -11,7 +11,6 @@
 #import "ProfitSkillViewController.h"
 #import "ProfessorTeamViewController.h"
 #import "XXDActivityMessageVC.h"
-#import "XXDPushViewController.h"
 #import "XXDLiveOnLineController.h"
 #import "XXDNewerViewController.h"
 #import "FirmLoginViewController.h"
@@ -89,26 +88,21 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.hidesBottomBarWhenPushed = YES;
     if (indexPath.section == 0) {   //活动消息
-        XXDActivityMessageVC *activityVC = [[XXDActivityMessageVC alloc]init];
-        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:activityVC];
+        [self.navigationController pushViewController:[[XXDActivityMessageVC alloc] init] animated:YES];
     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {   //在线直播
-            XXDLiveOnLineController *liveOnLineController = [[XXDLiveOnLineController alloc] init];
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:liveOnLineController];
+            [self.navigationController pushViewController:[[XXDLiveOnLineController alloc] init] animated:YES];
         }else if(indexPath.row == 1){  //投资策略
-            DaysInvestmentViewController *daysIn = [[DaysInvestmentViewController alloc]init];
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:daysIn];
+            [self.navigationController pushViewController:[[DaysInvestmentViewController alloc] init] animated:YES];
         }else if (indexPath.row == 2){  //盈利技巧
-            ProfitSkillViewController *profit = [[ProfitSkillViewController alloc]init];
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:profit];
+            [self.navigationController pushViewController:[[ProfitSkillViewController alloc] init] animated:YES];
         }else{  //名师团队
-            ProfessorTeamViewController *team = [[ProfessorTeamViewController alloc]init];
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:team];
+            [self.navigationController pushViewController:[[ProfessorTeamViewController alloc] init] animated:YES];
         }
     }else{
         FirmLoginViewController *firm = [[FirmLoginViewController alloc]init];
         firm.isMonipan = YES;
-        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:firm];
+        [self.navigationController pushViewController:firm animated:YES];
     }
     self.hidesBottomBarWhenPushed = NO;
 }

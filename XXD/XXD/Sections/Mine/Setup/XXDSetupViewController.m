@@ -9,7 +9,6 @@
 #import "XXDSetupViewController.h"
 #import "XXDCustomNavigation.h"
 #import "XXDPersonalInfoViewController.h"
-#import "XXDPushViewController.h"
 #import "XXDUserFeedbackViewController.h"
 #define APPID @"414478124"  //当前是微信在itunes上的唯一标识，app上架之后需要替换成app的唯一标识
 #define APPNAME @"wei-xin"  //app上架之后需要替换成银大师的拼音名称
@@ -95,10 +94,10 @@
     self.hidesBottomBarWhenPushed = YES;
     switch (sender.view.tag) {
         case 0://个人消息
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDPersonalInfoViewController alloc]init]];
+            [self.navigationController pushViewController:[[XXDPersonalInfoViewController alloc]init] animated:YES];
             break;
         case 1://用户反馈
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDUserFeedbackViewController alloc]init]];
+            [self.navigationController pushViewController:[[XXDUserFeedbackViewController alloc]init] animated:YES];
             break;
         case 2:{//版本更新
             //如果当前版本和发布的版本不一致则提出警告框提示用户去AppStore更新app
