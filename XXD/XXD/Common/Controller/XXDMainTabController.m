@@ -30,6 +30,10 @@
         Class clazz = NSClassFromString(classNameArray[i]);
         UIViewController *vc = [[clazz alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        if ([nav respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+            nav.interactivePopGestureRecognizer.enabled = YES;
+            [nav.interactivePopGestureRecognizer setDelegate:(id<UIGestureRecognizerDelegate>)self];
+        }
         nav.navigationBar.barStyle = UIBarStyleBlackTranslucent;
         vc.navigationItem.title = titleArray[i];
         [navArray addObject:nav];
