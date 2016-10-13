@@ -19,6 +19,7 @@
 #import "XXDHotActivityViewController.h"
 #import "XXDLiveNewViewController.h"
 #import "XXDLiveOnLineController.h"
+#import "FirmRegisterViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 #define GREENCOLOR [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1]
@@ -294,7 +295,11 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 立即开户按钮点击
 - (void)openAccountClick{
-    NSLog(@"立即开户");
+    self.hidesBottomBarWhenPushed = YES;
+    FirmRegisterViewController *firm = [[FirmRegisterViewController alloc]init];
+    firm.delegate = self;
+    [self.navigationController pushViewController:firm animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
 }
 #pragma mark 创建直播视图
 - (void)createLiveView{
