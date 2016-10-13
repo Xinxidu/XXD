@@ -12,6 +12,7 @@
 #import "XXDPushViewController.h"
 #import "XXDUserFeedbackViewController.h"
 #define APPID @"414478124"  //当前是微信在itunes上的唯一标识，app上架之后需要替换成app的唯一标识
+#define APPNAME @"wei-xin"  //app上架之后需要替换成银大师的拼音名称
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define DARKGRAYCOLOR [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]   //#333333
 #define GRAYCOLOR1 [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]   //#666666
@@ -103,7 +104,7 @@
             //如果当前版本和发布的版本不一致则提出警告框提示用户去AppStore更新app
             if (![self.currentVersion isEqualToString:[self getVersionForAppStore]]) {
                 _sureAlertView = [UIAlertController alertControllerWithTitle:@"" message:@"\n\n\n\n\n\n" preferredStyle:UIAlertControllerStyleAlert];
-                UIView *customAlertView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 270, 155)];
+                UIView *customAlertView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 270, 150)];
                 customAlertView.backgroundColor = [UIColor whiteColor];
                 //弹窗标题
                 UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 270, 42)];
@@ -125,37 +126,37 @@
                 }
                 [customAlertView addSubview:contentView];
                 //弹窗底部按钮
-                //确定
-                UIButton *sureButton = [[UIButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(contentView.frame) + 15, 105, 30)];
-                [sureButton setTitle:@"是" forState:UIControlStateNormal];
-                [sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                sureButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
-                sureButton.layer.masksToBounds = YES;
-                sureButton.layer.cornerRadius = 15.0f;
-                sureButton.backgroundColor = [UIColor redColor];
-                [sureButton addTarget:self action:@selector(sureButtonClick) forControlEvents:UIControlEventTouchUpInside];
-                [customAlertView addSubview:sureButton];
-                //取消
-                UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(145, CGRectGetMaxY(contentView.frame) + 15, 105, 30)];
-                [cancelButton setTitle:@"否" forState:UIControlStateNormal];
-                [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
-                cancelButton.layer.masksToBounds = YES;
-                cancelButton.layer.cornerRadius = 15.0f;
-                cancelButton.backgroundColor = GRAYCOLOR1;
-                [cancelButton addTarget:self action:@selector(cancelButtonClick) forControlEvents:UIControlEventTouchUpInside];
-                [customAlertView addSubview:cancelButton];
+                for (NSInteger i = 0; i<2; i++) {
+                    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(20+125*i, CGRectGetMaxY(contentView.frame) + 15, 105, 30)];
+                    [button setTitle:(i==0?@"是":@"否") forState:UIControlStateNormal];
+                    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                    button.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+                    button.layer.masksToBounds = YES;
+                    button.layer.cornerRadius = 15.0f;
+                    button.backgroundColor = i==0?[UIColor redColor]:GRAYCOLOR1;
+                    button.tag = i;
+                    [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+                    CALayer *layer = [CALayer layer];
+                    layer.frame = button.frame;
+                    layer.backgroundColor = i==0?[UIColor redColor].CGColor:GRAYCOLOR1.CGColor;
+                    layer.shadowOffset = CGSizeMake(2, 2);
+                    layer.shadowOpacity = 0.6f;
+                    layer.cornerRadius = 15.0f;
+                    [customAlertView.layer addSublayer:layer];
+                    [customAlertView addSubview:button];
+                }
                 [_sureAlertView.view addSubview:customAlertView];
                 [self presentViewController:_sureAlertView animated:YES completion:nil];
             }
         }break;
     }
 }
-- (void)sureButtonClick{
+- (void)buttonClick:(UIButton *)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-- (void)cancelButtonClick{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (sender.tag == 0) {
+        NSString *url = [NSString stringWithFormat:@"https://itunes.apple.com/cn/app/%@/id%@?mt=8",APPNAME,APPID];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    }
 }
 - (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];}
 @end
