@@ -225,15 +225,13 @@
         if (indexPath.row == 0) {//我的实盘账户
             NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
             BOOL isLogin = [user boolForKey:@"FirmLogin"];
-//            if (isLogin ==YES) {
-//                XXDMyFirmAccountVC *vc = [[XXDMyFirmAccountVC alloc]init];
-//                [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
-//            }else{
-//                FirmLoginViewController *firm = [[FirmLoginViewController alloc]init];
-//                [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:firm];
-//            }
-            XXDMyFirmAccountVC *vc = [[XXDMyFirmAccountVC alloc]init];
-            [self.navigationController pushViewController:vc animated:YES];
+            if (isLogin ==YES) {
+                XXDMyFirmAccountVC *vc = [[XXDMyFirmAccountVC alloc]init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }else{
+                FirmLoginViewController *firm = [[FirmLoginViewController alloc]init];
+                [self.navigationController pushViewController:firm animated:YES];
+            }
         }else{//我的自选
             if (_islogin == NO) {
                 [self customAlertViewMessageString:@"登录APP,查看我的自选"];
