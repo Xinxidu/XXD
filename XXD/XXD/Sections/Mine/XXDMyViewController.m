@@ -240,7 +240,7 @@
             [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
         }else{//联系我们
             //拨打电话
-            NSString *telephoneNumber =  @"400-105-4080";
+            NSString *telephoneNumber =  @"4001-054-080";
             NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",telephoneNumber]];
             if ( !_phoneCallWebView ) {
                 _phoneCallWebView = [[UIWebView alloc]initWithFrame:CGRectZero];

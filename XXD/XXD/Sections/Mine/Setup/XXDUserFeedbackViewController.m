@@ -15,6 +15,7 @@
 #define LIGHTGRAYCOLOR [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1]  //#dedede
 @interface XXDUserFeedbackViewController ()<UITextViewDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) UITextView *opinionTextView;//意见文本视图
+@property (strong,nonatomic) UIWebView *phoneCallWebView;
 @property (nonatomic,strong) UIImageView *promptImageView;//意见提示图标
 @property (nonatomic,strong) UILabel *promptLabel;//意见提示标签
 @property (nonatomic,strong) UIView *contactBgView;//联系方式的背景视图
@@ -38,6 +39,7 @@
     bgView.backgroundColor = [UIColor colorWithRed:225/255.0 green:241/255.0 blue:254/255.0 alpha:1];
     [self.view addSubview:bgView];
     UILabel *decription = [[UILabel alloc] initWithFrame:CGRectMake(10, 7, WIDTH-20, 86)];
+    decription.userInteractionEnabled = YES;
     decription.textColor = DARKGRAYCOLOR;
     decription.font = [UIFont systemFontOfSize:14.5f];
     decription.numberOfLines = 4;
@@ -50,6 +52,10 @@
     [content addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, contentString.length)];
     decription.attributedText = content;
     [bgView addSubview:decription];
+    //拨打电话
+    UIButton *phoneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 70, 100, 14)];
+    [phoneButton addTarget:self action:@selector(phoneClick) forControlEvents:UIControlEventTouchUpInside];
+    [decription addSubview:phoneButton];
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 99.5, WIDTH, 0.5)];
     lineView.backgroundColor = [UIColor colorWithRed:140/255.0 green:188/255.0 blue:248/255.0 alpha:1];
     [bgView addSubview:lineView];
@@ -96,6 +102,15 @@
 }
 - (void)backBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)phoneClick{
+    NSString *telephoneNumber =  @"4001-054-080";
+    NSLog(@"%@",telephoneNumber);
+    NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",telephoneNumber]];
+    if ( !_phoneCallWebView ) {
+        _phoneCallWebView = [[UIWebView alloc]initWithFrame:CGRectZero];
+    }
+    [_phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneURL]];
 }
 #pragma mark 添加意见的提示内容
 - (void)addPromptContent{
