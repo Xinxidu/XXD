@@ -41,21 +41,23 @@
     self.viewControllers = [NSArray arrayWithArray:navArray];
 }
 - (void)setImage{
-    NSArray *nameArray = @[@"首页",@"行情",@"交易",@"发现",@"我的"];
-    NSArray *selectArray = @[@"首页HL",@"行情HL",@"交易HL",@"发现HL",@"我的HL"];
-    NSArray *unSelectArray = @[@"首页",@"行情",@"交易",@"发现",@"我的"];
+    NSArray *nameArray = @[@"首页",@"行情",@"",@"发现",@"我的"];
+    NSArray *selectArray = @[@"shouyeHL",@"hangqingHL",@"jiaoyiHL",@"faxianHL",@"wodeHL"];
+    NSArray *unSelectArray = @[@"shouye",@"hangqing",@"jiaoyi",@"faxian",@"wode"];
     for (int i=0; i<nameArray.count; i++) {
         UITabBarItem * item = self.tabBar.items[i];
-//        if (i == 2) {
-//            item.imageInsets=UIEdgeInsetsMake(0, 0,0, 0);//CGFloat top, left, bottom, right;
-//            item.imageInsets=UIEdgeInsetsMake(8, 0,-8, 0);
-//            item.title = @"";
-//        }
         UIImage* unSelectImage = [UIImage imageNamed:unSelectArray[i]];
         item.image = [unSelectImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         UIImage* selectImage = [UIImage imageNamed:selectArray[i]];
         item.selectedImage = [selectImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         item.title =  nameArray[i];
+        [item setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0] forKey:NSForegroundColorAttributeName] forState:UIControlStateSelected];
+        if (i == 2) {
+            item.imageInsets=UIEdgeInsetsMake(0, 0,0, 0);//CGFloat top, left, bottom, right;
+            item.imageInsets=UIEdgeInsetsMake(8, 0,-8, 0);
+            [item setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor clearColor] forKey:NSForegroundColorAttributeName] forState:UIControlStateNormal];
+            [item setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor clearColor] forKey:NSForegroundColorAttributeName] forState:UIControlStateSelected];
+        }
     }
 }
 - (void)didReceiveMemoryWarning {
