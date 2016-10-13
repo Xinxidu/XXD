@@ -65,6 +65,7 @@
 		3B7B3E971D7EC07D003DBF06 /* XXDMyActivityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E961D7EC07D003DBF06 /* XXDMyActivityVC.m */; };
 		3B7B3E9A1D7EC0C6003DBF06 /* XXDMyActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E991D7EC0C6003DBF06 /* XXDMyActivityCell.m */; };
 		3B8FF8C91D86750E003D5EC1 /* XXDLeftMarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8FF8C81D86750E003D5EC1 /* XXDLeftMarketViewController.m */; };
+		3BA5F70A1DAF2600008271F4 /* FirmRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5F7091DAF2600008271F4 /* FirmRegisterViewController.m */; };
 		3BAF05A61D93853A00CFB105 /* XXDTodayMakeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05A51D93853A00CFB105 /* XXDTodayMakeListCell.m */; };
 		3BAF05A91D93A5F700CFB105 /* XXDTodayExchangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05A81D93A5F700CFB105 /* XXDTodayExchangeCell.m */; };
 		3BAF05AC1D93AD8300CFB105 /* XXDHistoryMarketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05AB1D93AD8300CFB105 /* XXDHistoryMarketListCell.m */; };
@@ -229,6 +230,8 @@
 		3B7B3E991D7EC0C6003DBF06 /* XXDMyActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyActivityCell.m; sourceTree = "<group>"; };
 		3B8FF8C71D86750E003D5EC1 /* XXDLeftMarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLeftMarketViewController.h; sourceTree = "<group>"; };
 		3B8FF8C81D86750E003D5EC1 /* XXDLeftMarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLeftMarketViewController.m; sourceTree = "<group>"; };
+		3BA5F7081DAF2600008271F4 /* FirmRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirmRegisterViewController.h; sourceTree = "<group>"; };
+		3BA5F7091DAF2600008271F4 /* FirmRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirmRegisterViewController.m; sourceTree = "<group>"; };
 		3BAF05A41D93853A00CFB105 /* XXDTodayMakeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDTodayMakeListCell.h; sourceTree = "<group>"; };
 		3BAF05A51D93853A00CFB105 /* XXDTodayMakeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDTodayMakeListCell.m; sourceTree = "<group>"; };
 		3BAF05A71D93A5F700CFB105 /* XXDTodayExchangeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDTodayExchangeCell.h; sourceTree = "<group>"; };
@@ -751,6 +754,8 @@
 				697D766F1D782939008D7C94 /* XXDTradeViewController.m */,
 				3B4E9E201D98ACFB00190989 /* FirmLoginViewController.h */,
 				3B4E9E211D98ACFB00190989 /* FirmLoginViewController.m */,
+				3BA5F7081DAF2600008271F4 /* FirmRegisterViewController.h */,
+				3BA5F7091DAF2600008271F4 /* FirmRegisterViewController.m */,
 				3B355B731D8149D6008C8376 /* AuthcodeView.h */,
 				3B355B741D8149D6008C8376 /* AuthcodeView.m */,
 			);
@@ -1114,6 +1119,7 @@
 				3BBE4C751DAB7ECE0079F7A6 /* XXDProfessorTeamModel.m in Sources */,
 				69B89A801D813723009875E1 /* firmBargainViewController.m in Sources */,
 				3B7B3E8F1D7EBECC003DBF06 /* XXDMyViewController.m in Sources */,
+				3BA5F70A1DAF2600008271F4 /* FirmRegisterViewController.m in Sources */,
 				69C5BCAB1D9A420C005CF969 /* XXDOrderSwapsBSCell.m in Sources */,
 				697D765C1D781BBC008D7C94 /* XXDMainTabController.m in Sources */,
 				697D766A1D782911008D7C94 /* XXDHomeViewController.m in Sources */,
