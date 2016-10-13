@@ -10,7 +10,7 @@
 @implementation XXDCustomNavigation
 + (void)loadUIViewController:(UIViewController *)viewController title:(NSString *)title backSelector:(SEL)backSelector{
     viewController.view.backgroundColor = [UIColor whiteColor];
-    viewController.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1];
+    viewController.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1];
     viewController.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     viewController.navigationItem.title = title;
     viewController.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};

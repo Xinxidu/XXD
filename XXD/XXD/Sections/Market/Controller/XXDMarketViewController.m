@@ -38,7 +38,7 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1];
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"菜单"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(leftChangeItemClick)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"搜索"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(searchButtonClick)];
@@ -48,11 +48,8 @@
     [self createNameButtonData];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-}
--(void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:10/255.0 green:46/255.0 blue:60/255.0 alpha:1.0];
 }
 
 -(void)leftChangeItemClick{

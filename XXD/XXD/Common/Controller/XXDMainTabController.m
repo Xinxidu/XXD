@@ -30,6 +30,7 @@
         Class clazz = NSClassFromString(classNameArray[i]);
         UIViewController *vc = [[clazz alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        nav.navigationBar.barTintColor = [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0];//14,41,70
 //        if ([nav respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
 //            nav.interactivePopGestureRecognizer.enabled = YES;
 //            [nav.interactivePopGestureRecognizer setDelegate:(id<UIGestureRecognizerDelegate>)self];
