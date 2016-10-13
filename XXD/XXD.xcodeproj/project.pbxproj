@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F863EDD7DC62F1E2F344F8F /* libPods-XXD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1696AF4DC74005A5A3024F13 /* libPods-XXD.a */; };
 		3B24B3011D9272DE004FAC80 /* CustomScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B24B3001D9272DE004FAC80 /* CustomScrollViewController.m */; };
+		3B2713031DAE03EF008EDA1E /* XXDCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2713021DAE03EF008EDA1E /* XXDCollectViewController.m */; };
 		3B2CAAC81DAB3B1C000BD24B /* XXDMyActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2CAAC71DAB3B1C000BD24B /* XXDMyActivityModel.m */; };
 		3B2EC0261D878A290019A72E /* XXDCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC0251D878A290019A72E /* XXDCalendarViewController.m */; };
 		3B2EC0301D8793A30019A72E /* XXDHotActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC02F1D8793A30019A72E /* XXDHotActivityViewController.m */; };
@@ -64,6 +65,7 @@
 		3B7B3E971D7EC07D003DBF06 /* XXDMyActivityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E961D7EC07D003DBF06 /* XXDMyActivityVC.m */; };
 		3B7B3E9A1D7EC0C6003DBF06 /* XXDMyActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E991D7EC0C6003DBF06 /* XXDMyActivityCell.m */; };
 		3B8FF8C91D86750E003D5EC1 /* XXDLeftMarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8FF8C81D86750E003D5EC1 /* XXDLeftMarketViewController.m */; };
+		3BA5F70A1DAF2600008271F4 /* FirmRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5F7091DAF2600008271F4 /* FirmRegisterViewController.m */; };
 		3BAF05A61D93853A00CFB105 /* XXDTodayMakeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05A51D93853A00CFB105 /* XXDTodayMakeListCell.m */; };
 		3BAF05A91D93A5F700CFB105 /* XXDTodayExchangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05A81D93A5F700CFB105 /* XXDTodayExchangeCell.m */; };
 		3BAF05AC1D93AD8300CFB105 /* XXDHistoryMarketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05AB1D93AD8300CFB105 /* XXDHistoryMarketListCell.m */; };
@@ -89,7 +91,6 @@
 		69B1C6261D7EC12B000CA633 /* XXDJinYinNiuPing.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B1C6251D7EC12B000CA633 /* XXDJinYinNiuPing.m */; };
 		69B531C71D891F310055A9AE /* XXDNewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B531C61D891F310055A9AE /* XXDNewerViewController.m */; };
 		69B89A711D7FFFCE009875E1 /* XXDLiveOnLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A701D7FFFCE009875E1 /* XXDLiveOnLineController.m */; };
-		69B89A741D80009E009875E1 /* XXDPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A731D80009E009875E1 /* XXDPushViewController.m */; };
 		69B89A801D813723009875E1 /* firmBargainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A7E1D813723009875E1 /* firmBargainViewController.m */; };
 		69B89A831D81378F009875E1 /* XXDOrderBSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A821D81378F009875E1 /* XXDOrderBSView.m */; };
 		69B89A891D8137ED009875E1 /* XXDDelegateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B89A881D8137ED009875E1 /* XXDDelegateView.m */; };
@@ -117,6 +118,8 @@
 		1696AF4DC74005A5A3024F13 /* libPods-XXD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XXD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B24B2FF1D9272DE004FAC80 /* CustomScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollViewController.h; sourceTree = "<group>"; };
 		3B24B3001D9272DE004FAC80 /* CustomScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomScrollViewController.m; sourceTree = "<group>"; };
+		3B2713011DAE03EF008EDA1E /* XXDCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDCollectViewController.h; sourceTree = "<group>"; };
+		3B2713021DAE03EF008EDA1E /* XXDCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDCollectViewController.m; sourceTree = "<group>"; };
 		3B2CAAC61DAB3B1C000BD24B /* XXDMyActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDMyActivityModel.h; sourceTree = "<group>"; };
 		3B2CAAC71DAB3B1C000BD24B /* XXDMyActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyActivityModel.m; sourceTree = "<group>"; };
 		3B2EC0241D878A290019A72E /* XXDCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDCalendarViewController.h; sourceTree = "<group>"; };
@@ -227,6 +230,8 @@
 		3B7B3E991D7EC0C6003DBF06 /* XXDMyActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyActivityCell.m; sourceTree = "<group>"; };
 		3B8FF8C71D86750E003D5EC1 /* XXDLeftMarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLeftMarketViewController.h; sourceTree = "<group>"; };
 		3B8FF8C81D86750E003D5EC1 /* XXDLeftMarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLeftMarketViewController.m; sourceTree = "<group>"; };
+		3BA5F7081DAF2600008271F4 /* FirmRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirmRegisterViewController.h; sourceTree = "<group>"; };
+		3BA5F7091DAF2600008271F4 /* FirmRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirmRegisterViewController.m; sourceTree = "<group>"; };
 		3BAF05A41D93853A00CFB105 /* XXDTodayMakeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDTodayMakeListCell.h; sourceTree = "<group>"; };
 		3BAF05A51D93853A00CFB105 /* XXDTodayMakeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDTodayMakeListCell.m; sourceTree = "<group>"; };
 		3BAF05A71D93A5F700CFB105 /* XXDTodayExchangeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDTodayExchangeCell.h; sourceTree = "<group>"; };
@@ -275,8 +280,6 @@
 		69B531C61D891F310055A9AE /* XXDNewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDNewerViewController.m; sourceTree = "<group>"; };
 		69B89A6F1D7FFFCE009875E1 /* XXDLiveOnLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLiveOnLineController.h; sourceTree = "<group>"; };
 		69B89A701D7FFFCE009875E1 /* XXDLiveOnLineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLiveOnLineController.m; sourceTree = "<group>"; };
-		69B89A721D80009E009875E1 /* XXDPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDPushViewController.h; sourceTree = "<group>"; };
-		69B89A731D80009E009875E1 /* XXDPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDPushViewController.m; sourceTree = "<group>"; };
 		69B89A7D1D813723009875E1 /* firmBargainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = firmBargainViewController.h; sourceTree = "<group>"; };
 		69B89A7E1D813723009875E1 /* firmBargainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = firmBargainViewController.m; sourceTree = "<group>"; };
 		69B89A811D81378F009875E1 /* XXDOrderBSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDOrderBSView.h; sourceTree = "<group>"; };
@@ -751,6 +754,8 @@
 				697D766F1D782939008D7C94 /* XXDTradeViewController.m */,
 				3B4E9E201D98ACFB00190989 /* FirmLoginViewController.h */,
 				3B4E9E211D98ACFB00190989 /* FirmLoginViewController.m */,
+				3BA5F7081DAF2600008271F4 /* FirmRegisterViewController.h */,
+				3BA5F7091DAF2600008271F4 /* FirmRegisterViewController.m */,
 				3B355B731D8149D6008C8376 /* AuthcodeView.h */,
 				3B355B741D8149D6008C8376 /* AuthcodeView.m */,
 			);
@@ -782,8 +787,6 @@
 		69B1C6121D7E64A5000CA633 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				69B89A721D80009E009875E1 /* XXDPushViewController.h */,
-				69B89A731D80009E009875E1 /* XXDPushViewController.m */,
 				69B1C6161D7E64FF000CA633 /* XXDLiveImage.h */,
 				69B1C6171D7E64FF000CA633 /* XXDLiveImage.m */,
 				69C1058C1D936E8A00F4D3AE /* PopViewControllerDelegate.h */,
@@ -912,6 +915,8 @@
 				3B7070001D9DF9B5005C6076 /* XXDTouTiaoViewController.m */,
 				3B7070021D9DFF0B005C6076 /* XXDJinRongViewController.h */,
 				3B7070031D9DFF0B005C6076 /* XXDJinRongViewController.m */,
+				3B2713011DAE03EF008EDA1E /* XXDCollectViewController.h */,
+				3B2713021DAE03EF008EDA1E /* XXDCollectViewController.m */,
 				3B7070051D9E0206005C6076 /* XXDCustomScrollViewController.h */,
 				3B7070061D9E0206005C6076 /* XXDCustomScrollViewController.m */,
 			);
@@ -1057,6 +1062,7 @@
 				69E1C6381D87EE3300ED2735 /* XXDLiveNewViewController.m in Sources */,
 				3B2EC0261D878A290019A72E /* XXDCalendarViewController.m in Sources */,
 				69B531C71D891F310055A9AE /* XXDNewerViewController.m in Sources */,
+				3B2713031DAE03EF008EDA1E /* XXDCollectViewController.m in Sources */,
 				3B4E9E221D98ACFB00190989 /* FirmLoginViewController.m in Sources */,
 				3B6F5F291D7FAFFE0058D2DE /* XiDuNewsCell.m in Sources */,
 				3B7B3E881D7EA8F9003DBF06 /* XXDActivityMessageVC.m in Sources */,
@@ -1113,6 +1119,7 @@
 				3BBE4C751DAB7ECE0079F7A6 /* XXDProfessorTeamModel.m in Sources */,
 				69B89A801D813723009875E1 /* firmBargainViewController.m in Sources */,
 				3B7B3E8F1D7EBECC003DBF06 /* XXDMyViewController.m in Sources */,
+				3BA5F70A1DAF2600008271F4 /* FirmRegisterViewController.m in Sources */,
 				69C5BCAB1D9A420C005CF969 /* XXDOrderSwapsBSCell.m in Sources */,
 				697D765C1D781BBC008D7C94 /* XXDMainTabController.m in Sources */,
 				697D766A1D782911008D7C94 /* XXDHomeViewController.m in Sources */,
@@ -1121,7 +1128,6 @@
 				3B7B3E6D1D7E5632003DBF06 /* ProfitSkillModel.m in Sources */,
 				3B7B3E781D7E564D003DBF06 /* DaysDetailController.m in Sources */,
 				3B6F5F2F1D7FB0F00058D2DE /* BaseWebRequest.m in Sources */,
-				69B89A741D80009E009875E1 /* XXDPushViewController.m in Sources */,
 				3B7B3E6C1D7E5632003DBF06 /* ProfitSkillCell.m in Sources */,
 				3BAF05A61D93853A00CFB105 /* XXDTodayMakeListCell.m in Sources */,
 				3B6F5F3B1D8008350058D2DE /* XXDMyFirmAccountVC.m in Sources */,

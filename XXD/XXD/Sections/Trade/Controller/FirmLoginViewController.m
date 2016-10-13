@@ -8,6 +8,7 @@
 
 #import "FirmLoginViewController.h"
 #import "AuthcodeView.h"
+#import "FirmRegisterViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface FirmLoginViewController ()<UITextFieldDelegate>
@@ -130,7 +131,7 @@
     [clickButton setTitleColor:[UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
     clickButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
     clickButton.titleLabel.textAlignment = NSTextAlignmentLeft;
-//    [clickButton addTarget:self action:@selector(gotoRegister) forControlEvents:UIControlEventTouchUpInside];
+    [clickButton addTarget:self action:@selector(gotoRegister) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:clickButton];
     
 }
@@ -209,6 +210,10 @@
     }
     
     return YES;
+}
+-(void)gotoRegister{
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:[[FirmRegisterViewController alloc]init] animated:YES];
 }
 #pragma mark 键盘收起
 -(void)keyboardHide:(UITapGestureRecognizer*)tap{

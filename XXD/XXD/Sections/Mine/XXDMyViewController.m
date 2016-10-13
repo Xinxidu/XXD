@@ -9,7 +9,6 @@
 #import "XXDMyViewController.h"
 #import "XXDMyActivityVC.h"
 #import "AboutXiDuViewController.h"
-#import "XXDPushViewController.h"
 #import "XXDMyFirmAccountVC.h"
 #import "XXDRegisterViewController.h"
 #import "XXDLoginViewController.h"
@@ -17,7 +16,7 @@
 #import "XXDSetupViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
-#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
+#define BLUECOLOR [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0]
 @interface XXDMyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UIView *hearerView;
@@ -34,6 +33,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"我的";
+//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+//        [self.navigationController.interactivePopGestureRecognizer setDelegate:(id<UIGestureRecognizerDelegate>)self];
+//    }
     [self createHeaderView];
     [self createTableView];
     [self headViewClick];
@@ -124,7 +127,7 @@
 -(void)enterToMyAccount{
     if (_islogin == YES) {
         self.hidesBottomBarWhenPushed = YES;
-        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDMyAccountViewController alloc]init]];
+        [self.navigationController pushViewController:[[XXDMyAccountViewController alloc]init] animated:YES];
         self.hidesBottomBarWhenPushed = NO;
     }
     
@@ -132,13 +135,13 @@
 //注册按钮事件
 -(void)registerClick:(UIButton*)sender{
     self.hidesBottomBarWhenPushed = YES;
-    [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDRegisterViewController alloc]init]];
+    [self.navigationController pushViewController:[[XXDRegisterViewController alloc]init] animated:YES];
     self.hidesBottomBarWhenPushed = NO;
 }
 //登录按钮事件
 -(void)loginClick:(UIButton*)sender{
     self.hidesBottomBarWhenPushed = YES;
-    [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDLoginViewController alloc]init]];
+    [self.navigationController pushViewController:[[XXDLoginViewController alloc]init] animated:YES];
     self.hidesBottomBarWhenPushed = NO;
 }
 ////退出登录按钮事件
@@ -184,30 +187,30 @@
     cell.textLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            cell.imageView.image = [UIImage imageNamed:@"我的实盘账户"];
+            cell.imageView.image = [UIImage imageNamed:@"wodeshipanzhanghu"];
             cell.textLabel.text = @"我的实盘账户";
         }else{
-            cell.imageView.image = [UIImage imageNamed:@"我的自选"];
+            cell.imageView.image = [UIImage imageNamed:@"wodezixuan"];
             cell.textLabel.text = @"我的自选";
         }
 
     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {
-            cell.imageView.image = [UIImage imageNamed:@"我的活动"];
+            cell.imageView.image = [UIImage imageNamed:@"wodehuodong"];
             cell.textLabel.text = @"我的活动";
         }else if (indexPath.row == 1){
-            cell.imageView.image = [UIImage imageNamed:@"关于我们"];
+            cell.imageView.image = [UIImage imageNamed:@"guanyuwowen"];
             cell.textLabel.text = @"关于我们";
         }else{
-            cell.imageView.image = [UIImage imageNamed:@"联系我们"];
+            cell.imageView.image = [UIImage imageNamed:@"lianxiwowen"];
             cell.textLabel.text = @"联系我们";
         }
     }else{
         if (indexPath.row == 0) {
-            cell.imageView.image = [UIImage imageNamed:@"使用帮助"];
+            cell.imageView.image = [UIImage imageNamed:@"shiyongbangzhu"];
             cell.textLabel.text = @"使用帮助";
         }else{
-            cell.imageView.image = [UIImage imageNamed:@"设置"];
+            cell.imageView.image = [UIImage imageNamed:@"shezhi"];
             cell.textLabel.text = @"设置";
         }
     }
@@ -220,7 +223,7 @@
         
         if (indexPath.row == 0) {//我的实盘账户
             XXDMyFirmAccountVC *vc = [[XXDMyFirmAccountVC alloc]init];
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
+            [self.navigationController pushViewController:vc animated:YES];
         }else{//我的自选
             if (_islogin == NO) {
                 [self customAlertViewMessageString:@"登录APP,查看我的自选"];
@@ -232,15 +235,13 @@
             if (_islogin == NO) {
                 [self customAlertViewMessageString:@"登录APP,查看我的活动"];
             }else{
-                XXDMyActivityVC *vc = [[XXDMyActivityVC alloc]init];
-                [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
+                [self.navigationController pushViewController:[[XXDMyActivityVC alloc]init] animated:YES];
             }
         }else if (indexPath.row == 1){//关于我们
-            AboutXiDuViewController *vc = [[AboutXiDuViewController alloc]init];
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
+            [self.navigationController pushViewController:[[AboutXiDuViewController alloc]init] animated:YES];
         }else{//联系我们
             //拨打电话
-            NSString *telephoneNumber =  @"400-105-4080";
+            NSString *telephoneNumber =  @"4001-054-080";
             NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",telephoneNumber]];
             if ( !_phoneCallWebView ) {
                 _phoneCallWebView = [[UIWebView alloc]initWithFrame:CGRectZero];
@@ -252,8 +253,7 @@
         if (indexPath.row == 0) {//使用帮助
             
         }else{//设置
-            XXDSetupViewController *vc = [[XXDSetupViewController alloc] init];
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:vc];
+            [self.navigationController pushViewController:[[XXDSetupViewController alloc] init] animated:YES];
         }
     }
     self.hidesBottomBarWhenPushed = NO;
@@ -262,7 +262,7 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:messageString preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
     UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDLoginViewController alloc ]init ]];
+        [self.navigationController pushViewController:[[XXDLoginViewController alloc ] init] animated:YES];
     }];
     [alertController addAction:cancleAction];
     [alertController addAction:sureAction];

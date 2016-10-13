@@ -15,7 +15,6 @@
 #import "XXDJinYinNiuPing.h"
 #import "XXDJinYinNiuPingCell.h"
 #import "XXDCalendarViewController.h"
-#import "XXDPushViewController.h"
 #import "XXDHotTradeViewController.h"
 #import "XXDHotActivityViewController.h"
 #import "XXDLiveNewViewController.h"
@@ -190,22 +189,22 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
         case XXDButtonTypeHotTrade:{
             XXDHotTradeViewController *hotTradeVc = [[XXDHotTradeViewController alloc] init];
             hotTradeVc.delegate = self;
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:hotTradeVc];
+            [self.navigationController pushViewController:hotTradeVc animated:YES];
         }break;
         case XXDButtonTypeHotActivity:{
             XXDHotActivityViewController *hotActivityVc = [[XXDHotActivityViewController alloc] init];
             hotActivityVc.delegate = self;
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:hotActivityVc];
+            [self.navigationController pushViewController:hotActivityVc animated:YES];
         }break;
         case XXDButtonTypeLiveNew:{
             XXDLiveNewViewController *liveNewVc = [[XXDLiveNewViewController alloc] init];
             liveNewVc.delegate = self;
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:liveNewVc];
+            [self.navigationController pushViewController:liveNewVc animated:YES];
         }break;
         case XXDButtonTypeFinanceCalendar:{
             XXDCalendarViewController *calendarVc = [[XXDCalendarViewController alloc] init];
             calendarVc.delegate = self;
-            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:calendarVc];
+            [self.navigationController pushViewController:calendarVc animated:YES];
         }break;
     }
     self.hidesBottomBarWhenPushed = NO;
@@ -314,7 +313,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     self.hidesBottomBarWhenPushed = YES;
     XXDLiveOnLineController *liveOnVc = [[XXDLiveOnLineController alloc] init];
     liveOnVc.delegate = self;
-    [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:liveOnVc];
+    [self.navigationController pushViewController:liveOnVc animated:YES];
     self.hidesBottomBarWhenPushed = NO;
 }
 - (void)changeNavigationBarColor{
