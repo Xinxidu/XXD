@@ -34,9 +34,8 @@
 -(void)createUI{
     UIButton *_topButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _topButton.frame = CGRectMake(100, 100, 100, 40);
-    [_topButton setTitle:@"click" forState:UIControlStateNormal];
-    [_topButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_topButton setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
+    [_topButton setTitle:@"登录" forState:UIControlStateNormal];
+    [_topButton setTitleColor:[UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
     [_topButton addTarget:self action:@selector(topButtonChangeClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_topButton];
 

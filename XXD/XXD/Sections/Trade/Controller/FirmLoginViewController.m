@@ -116,7 +116,7 @@
     [self.view.layer addSublayer:layer];
     _loginBtn.backgroundColor=[UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
     _loginBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
-    //    [_loginBtn addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [_loginBtn addTarget:self action:@selector(FirmloginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_loginBtn];
     //------ 去开户 ------
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake((WIDTH-170)/2, CGRectGetMaxY(_loginBtn.frame)+15, 85, 18)];
@@ -211,6 +211,13 @@
     
     return YES;
 }
+#pragma mark 实盘登录
+-(void)FirmloginBtnClick{
+    NSUserDefaults *userd = [NSUserDefaults standardUserDefaults];
+    [userd setBool:YES forKey:@"FirmLogin"];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+#pragma mark 跳转到实盘注册
 -(void)gotoRegister{
     self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:[[FirmRegisterViewController alloc]init] animated:YES];
