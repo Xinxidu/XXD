@@ -42,6 +42,11 @@
     NSArray *unSelectArray = @[@"首页",@"行情",@"交易",@"发现",@"我的"];
     for (int i=0; i<nameArray.count; i++) {
         UITabBarItem * item = self.tabBar.items[i];
+//        if (i == 2) {
+//            item.imageInsets=UIEdgeInsetsMake(0, 0,0, 0);//CGFloat top, left, bottom, right;
+//            item.imageInsets=UIEdgeInsetsMake(8, 0,-8, 0);
+//            item.title = @"";
+//        }
         UIImage* unSelectImage = [UIImage imageNamed:unSelectArray[i]];
         item.image = [unSelectImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         UIImage* selectImage = [UIImage imageNamed:selectArray[i]];

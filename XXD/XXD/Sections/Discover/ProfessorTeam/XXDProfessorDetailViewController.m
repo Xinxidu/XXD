@@ -86,7 +86,7 @@
     jianjieContent.font = [UIFont systemFontOfSize:13.0];
     jianjieContent.textAlignment = NSTextAlignmentLeft;
     jianjieContent.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
-    jianjieContent.userInteractionEnabled = NO;
+    jianjieContent.editable = NO;
     [self.view addSubview:jianjieContent];
 }
 #pragma mark 根据Label的内容和字体大小获取lalel的大小

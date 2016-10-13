@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F863EDD7DC62F1E2F344F8F /* libPods-XXD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1696AF4DC74005A5A3024F13 /* libPods-XXD.a */; };
 		3B24B3011D9272DE004FAC80 /* CustomScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B24B3001D9272DE004FAC80 /* CustomScrollViewController.m */; };
+		3B2713031DAE03EF008EDA1E /* XXDCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2713021DAE03EF008EDA1E /* XXDCollectViewController.m */; };
 		3B2CAAC81DAB3B1C000BD24B /* XXDMyActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2CAAC71DAB3B1C000BD24B /* XXDMyActivityModel.m */; };
 		3B2EC0261D878A290019A72E /* XXDCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC0251D878A290019A72E /* XXDCalendarViewController.m */; };
 		3B2EC0301D8793A30019A72E /* XXDHotActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EC02F1D8793A30019A72E /* XXDHotActivityViewController.m */; };
@@ -117,6 +118,8 @@
 		1696AF4DC74005A5A3024F13 /* libPods-XXD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XXD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B24B2FF1D9272DE004FAC80 /* CustomScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollViewController.h; sourceTree = "<group>"; };
 		3B24B3001D9272DE004FAC80 /* CustomScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomScrollViewController.m; sourceTree = "<group>"; };
+		3B2713011DAE03EF008EDA1E /* XXDCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDCollectViewController.h; sourceTree = "<group>"; };
+		3B2713021DAE03EF008EDA1E /* XXDCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDCollectViewController.m; sourceTree = "<group>"; };
 		3B2CAAC61DAB3B1C000BD24B /* XXDMyActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDMyActivityModel.h; sourceTree = "<group>"; };
 		3B2CAAC71DAB3B1C000BD24B /* XXDMyActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDMyActivityModel.m; sourceTree = "<group>"; };
 		3B2EC0241D878A290019A72E /* XXDCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDCalendarViewController.h; sourceTree = "<group>"; };
@@ -912,6 +915,8 @@
 				3B7070001D9DF9B5005C6076 /* XXDTouTiaoViewController.m */,
 				3B7070021D9DFF0B005C6076 /* XXDJinRongViewController.h */,
 				3B7070031D9DFF0B005C6076 /* XXDJinRongViewController.m */,
+				3B2713011DAE03EF008EDA1E /* XXDCollectViewController.h */,
+				3B2713021DAE03EF008EDA1E /* XXDCollectViewController.m */,
 				3B7070051D9E0206005C6076 /* XXDCustomScrollViewController.h */,
 				3B7070061D9E0206005C6076 /* XXDCustomScrollViewController.m */,
 			);
@@ -1057,6 +1062,7 @@
 				69E1C6381D87EE3300ED2735 /* XXDLiveNewViewController.m in Sources */,
 				3B2EC0261D878A290019A72E /* XXDCalendarViewController.m in Sources */,
 				69B531C71D891F310055A9AE /* XXDNewerViewController.m in Sources */,
+				3B2713031DAE03EF008EDA1E /* XXDCollectViewController.m in Sources */,
 				3B4E9E221D98ACFB00190989 /* FirmLoginViewController.m in Sources */,
 				3B6F5F291D7FAFFE0058D2DE /* XiDuNewsCell.m in Sources */,
 				3B7B3E881D7EA8F9003DBF06 /* XXDActivityMessageVC.m in Sources */,

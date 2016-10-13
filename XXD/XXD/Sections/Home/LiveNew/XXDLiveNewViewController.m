@@ -11,6 +11,7 @@
 #import "XXDShiShiViewController.h"
 #import "XXDTouTiaoViewController.h"
 #import "XXDJinRongViewController.h"
+#import "XXDCollectViewController.h"
 #import "SGTopTitleView.h"
 
 #define WIDTH [UIScreen mainScreen].bounds.size.width
@@ -27,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [XXDCustomNavigation loadUIViewController:self title:@"直播新闻" backSelector:@selector(backBtnClick)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"我的收藏" style:UIBarButtonItemStylePlain target:self action: @selector(myCollect)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"我的收藏" style:UIBarButtonItemStylePlain target:self action: @selector(myCollectClick)];
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     [self.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.0]} forState:UIControlStateNormal];
     [self customUI];
@@ -143,8 +144,9 @@
     [self.delegate changeNavigationBarColor];
 }
 #pragma mark 我的收藏
-- (void)myCollect{
-
+- (void)myCollectClick{
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:[[XXDCollectViewController alloc]init] animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
