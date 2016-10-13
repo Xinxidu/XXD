@@ -12,7 +12,7 @@
 #import "AFNetworking.h"
 #import "BaseWKWebView.h"
 #import "BaseWebRequest.h"
-#define URL @"http://175.102.13.51:8080/XDSY/Detail"
+#define URL @"http://app.service.xiduoil.com/Detail"
 #define SIZE [[UIScreen mainScreen] bounds].size
 @interface XiDuNewsDetailViewController ()
 @property (strong,nonatomic) BaseWKWebView *wkWebView;
@@ -32,8 +32,7 @@
     //网络请求
     _Id=[[NSUserDefaults standardUserDefaults]objectForKey:@"id"];
     NSDictionary* parmarters = [[NSDictionary alloc]initWithObjectsAndKeys:
-                                @"OfficialDto",@"type",
-                                _Id,@"id",
+                                _Id,@"id",@"OfficialDto",@"type",
                                 nil];
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
     [manager GET:URL parameters:parmarters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

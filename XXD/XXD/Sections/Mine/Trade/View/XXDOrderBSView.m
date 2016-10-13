@@ -268,9 +268,9 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
     NSString *num = self.buyNumLabel.text;
     NSString *price = self.buyPriceLabel.text;
     NSArray *labelStringArray = [NSArray arrayWithObjects:@"账号：",accountString,
-                                                                                                 @"商品名称：",productName,
-                                                                                                 @"数量：",num,
-                                                                                                 @"价格：",price,nil];
+                                                          @"商品名称：",productName,
+                                                          @"数量：",num,
+                                                          @"价格：",price,nil];
     NSMutableArray *labelArray = [NSMutableArray arrayWithCapacity:8];
     for (NSInteger row = 0; row < 4; row++) {
         CGFloat x = 0,y = row*22,width = 0,height = 22;

@@ -111,10 +111,11 @@
     _scroll.tag = 50;
     _scroll.pagingEnabled = YES;
     _scroll.bounces = NO;
+    _scroll.showsHorizontalScrollIndicator = NO;
     
     [self.view addSubview:_scroll];
     _lineView = [[UIView alloc]initWithFrame:CGRectMake(0, _scroll.frame.size.height-2, LINEWIDTH, 2)];
-    _lineView.backgroundColor = [UIColor colorWithRed:0.73 green:0.51 blue:0.05 alpha:1];
+    _lineView.backgroundColor = [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0];
     [_scroll addSubview:_lineView];
     
     NSArray* arr = [[NSArray alloc]initWithObjects:@"品种",@"成交量",@"最高",@"最低", nil];

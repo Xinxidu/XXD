@@ -13,7 +13,7 @@
 #import "DaysDetailController.h"
 
 #define SIZE [UIScreen mainScreen].bounds.size
-#define URL @"http://175.102.13.51:8080/XDSY/ZhuBan"
+#define URL @"http://app.service.xiduoil.com/ZhuBan"
 @interface ProfitSkillViewController ()
 {
     BaseTableView* _tableView;
@@ -44,7 +44,7 @@
     else _page = 1;
     NSDictionary* paramenters = [[NSDictionary alloc]initWithObjectsAndKeys:@".guanwang",@"type",
                                                                                                                                 @"touzi",@"defference",
-                                                                                                                               [NSString stringWithFormat:@"%ld",(long)_page],@"indexPage",
+                                                                                                                               [NSString stringWithFormat:@"%ld",(long)_page],@"indexPage",@"10",@"pageRows",
                                                                                                                                 nil];
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
     [manager GET:URL parameters:paramenters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

@@ -7,6 +7,7 @@
 //
 
 #import "DayInvestmentCell.h"
+#import "UIImageView+WebCache.h"
 #define SIZE [[UIScreen mainScreen] bounds].size
 @implementation DayInvestmentCell
 
@@ -51,6 +52,9 @@
     _timeLable.text = model.timeString;
     _textLable.text = [NSString stringWithFormat:@"编者语:%@",model.textString];
     _Id = model.IdString;
-    _litpicimageView.image = [UIImage imageNamed:@"img4"];
+    NSString *str = [NSString stringWithFormat:@"http://175.102.13.51:8080/XDSY/ZhuBan%@",model.LitpicString];
+    [_litpicimageView sd_setImageWithURL:[NSURL URLWithString:str] placeholderImage:[UIImage imageNamed:@"img4"]];
+    NSLog(@"%@",model.LitpicString);
+//    _litpicimageView.image = [UIImage imageNamed:@"img4"];
 }
 @end

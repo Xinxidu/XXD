@@ -8,7 +8,10 @@
 
 #import "XXDRegisterSecondViewController.h"
 #import "XXDLoginViewController.h"
+#import "BaseWebRequest.h"
+#import <AFNetworking/AFNetworking.h>
 #define WIDTH [UIScreen mainScreen].bounds.size.width
+#define URL @"http://app.service.xiduoil.com/app/controller/user/reg/json"
 @interface XXDRegisterSecondViewController ()
 @property (nonatomic,strong)UITextField *nickNameTextfield;
 @property (nonatomic,strong)UITextField *pwdTextfield;
@@ -101,9 +104,31 @@
     [self.view addSubview:submitButton];
     
 }
+#pragma mark -提交注册
 -(void)submitClick{
-    NSLog(@"提交");
-    [self.navigationController pushViewController:[[XXDLoginViewController alloc]init] animated:YES];
+    NSDictionary* dic = [[NSDictionary alloc]initWithObjectsAndKeys:
+                         _times,@"times",
+                         _nickNameTextfield.text,@"name",
+                         _pwdTextfield.text,@"pwd",@"0",@"source",
+                         nil];
+    AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
+    [manager GET:URL parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *key = responseObject[@"key"];
+        if ([key isEqualToString:@"0"]) {
+            [self alertwithTitle:@"抱歉，请重新填写注册信息！"];
+        }else{
+            self.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:[[XXDLoginViewController alloc]init] animated:YES];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    }];
+}
+#pragma mark -弹出框
+-(void)alertwithTitle:(NSString *)titleString{
+    UIAlertController *AlertController = [UIAlertController alertControllerWithTitle:titleString message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
+    [AlertController addAction:action];
+    [self presentViewController:AlertController animated:YES completion:nil];
 }
 #pragma mark -返回按钮点击
 - (void)backBtnClick{

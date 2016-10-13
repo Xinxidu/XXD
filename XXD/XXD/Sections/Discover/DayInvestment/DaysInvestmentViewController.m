@@ -14,7 +14,7 @@
 
 
 #define SIZE [[UIScreen mainScreen] bounds].size
-#define URL @"http://175.102.13.51:8080/XDSY/ZhuBan"
+#define URL @"http://app.service.xiduoil.com/ZhuBan"
 
 @interface DaysInvestmentViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -47,7 +47,7 @@
     NSDictionary* dic = [[NSDictionary alloc]initWithObjectsAndKeys:
                          @".guanwang",@"type",
                          @"hangqing",@"defference",
-                         [NSString stringWithFormat:@"%ld",(long)_page],@"indexPage",
+                         [NSString stringWithFormat:@"%ld",(long)_page],@"indexPage",@"10",@"pageRows",
                          nil];
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
     [manager GET:URL parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

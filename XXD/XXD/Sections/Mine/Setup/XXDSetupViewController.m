@@ -8,11 +8,18 @@
 
 #import "XXDSetupViewController.h"
 #import "XXDCustomNavigation.h"
+#import "XXDPersonalInfoViewController.h"
+#import "XXDPushViewController.h"
+#import "XXDUserFeedbackViewController.h"
+#define APPID @"414478124"  //当前是微信在itunes上的唯一标识，app上架之后需要替换成app的唯一标识
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define DARKGRAYCOLOR [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]   //#333333
+#define GRAYCOLOR1 [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]   //#666666
 #define GRAYCOLOR [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]   //#999999
 #define LIGHTGRAYCOLOR [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1]  //#dedede
 @interface XXDSetupViewController ()
+@property (nonatomic,copy) NSString *currentVersion;
+@property (nonatomic,strong) UIAlertController *sureAlertView;
 @end
 
 @implementation XXDSetupViewController
@@ -45,6 +52,7 @@
             NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
             NSString *version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
             NSString *build = [infoDictionary objectForKey:@"CFBundleVersion"];
+            self.currentVersion = [NSString stringWithFormat:@"%@.%@",version,build];
             NSString *currentVersion = [NSString stringWithFormat:@"当前版本%@.%@",version,build];
             CGFloat width = [currentVersion boundingRectWithSize:CGSizeMake(1000, 13) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:13.0f] forKey:NSFontAttributeName] context:nil].size.width;
             UILabel *currentVersionLabel = [[UILabel alloc] initWithFrame:CGRectMake(WIDTH-width-44, 13.5, width, 13)];
@@ -54,22 +62,100 @@
             [cellView addSubview:currentVersionLabel];
         }
     }
+    //如果当前版本和发布的版本一致则显示"已是最新版本"
+    if ([self.currentVersion isEqualToString:[self getVersionForAppStore]]) {
+        UILabel *newestVersionLabel = [[UILabel alloc] initWithFrame:CGRectMake((WIDTH-172.5)*0.5, CGRectGetMaxY(bgView.frame)+20, 172.5, 30)];
+        newestVersionLabel.text = @"已是最新版本";
+        newestVersionLabel.textColor = GRAYCOLOR1;
+        newestVersionLabel.font = [UIFont systemFontOfSize:14.0f];
+        newestVersionLabel.textAlignment = NSTextAlignmentCenter;
+        newestVersionLabel.backgroundColor = [UIColor colorWithRed:225/255.0 green:241/255.0 blue:254/255.0 alpha:1];
+        newestVersionLabel.layer.masksToBounds = YES;
+        newestVersionLabel.layer.cornerRadius = 15.0f;
+        newestVersionLabel.layer.borderColor = [UIColor colorWithRed:140/255.0 green:188/255.0 blue:248/255.0 alpha:1].CGColor;
+        newestVersionLabel.layer.borderWidth = 0.8f;
+        [self.view addSubview:newestVersionLabel];
+    }
 }
 - (void)backBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
 }
+#pragma mark 获取AppStore上的版本
+- (NSString *)getVersionForAppStore{
+    NSString *string = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",APPID]] encoding:NSUTF8StringEncoding error:nil];
+    NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+    NSArray *array = jsonDic[@"results"];
+    NSDictionary *dic = [array lastObject];
+    NSString *version = dic[@"version"];
+    return version;
+}
 - (void)cellViewClick:(UITapGestureRecognizer *)sender{
+    self.hidesBottomBarWhenPushed = YES;
     switch (sender.view.tag) {
-        case 0:
-            
+        case 0://个人消息
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDPersonalInfoViewController alloc]init]];
             break;
-        case 1:
-            
+        case 1://用户反馈
+            [XXDPushViewController customPushViewController:self.navigationController WithTargetViewController:[[XXDUserFeedbackViewController alloc]init]];
             break;
-        case 2:
-            
-            break;
+        case 2:{//版本更新
+            //如果当前版本和发布的版本不一致则提出警告框提示用户去AppStore更新app
+            if (![self.currentVersion isEqualToString:[self getVersionForAppStore]]) {
+                _sureAlertView = [UIAlertController alertControllerWithTitle:@"" message:@"\n\n\n\n\n\n" preferredStyle:UIAlertControllerStyleAlert];
+                UIView *customAlertView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 270, 155)];
+                customAlertView.backgroundColor = [UIColor whiteColor];
+                //弹窗标题
+                UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 270, 42)];
+                titleView.backgroundColor = [UIColor colorWithRed:227/255.0 green:241/255.0 blue:1 alpha:1];//227,241,255
+                titleView.text = @"提示";
+                titleView.textColor = [UIColor blackColor];
+                titleView.textAlignment = NSTextAlignmentCenter;
+                titleView.font = [UIFont boldSystemFontOfSize:17.0];
+                [customAlertView addSubview:titleView];
+                //弹窗内容
+                UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(20,CGRectGetMaxY(titleView.frame)+5, 250, 44)];
+                NSArray *labelStringArray = @[[NSString stringWithFormat:@"软件已升级为最高版本%@",[self getVersionForAppStore]],@"是否立即升级？"];
+                for (NSInteger i = 0; i < 2; i++) {
+                    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 22*i, 250, 22)];
+                    label.text = labelStringArray[i];
+                    label.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
+                    label.font = [UIFont systemFontOfSize:14.0f];
+                    [contentView addSubview:label];
+                }
+                [customAlertView addSubview:contentView];
+                //弹窗底部按钮
+                //确定
+                UIButton *sureButton = [[UIButton alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(contentView.frame) + 15, 105, 30)];
+                [sureButton setTitle:@"是" forState:UIControlStateNormal];
+                [sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                sureButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+                sureButton.layer.masksToBounds = YES;
+                sureButton.layer.cornerRadius = 15.0f;
+                sureButton.backgroundColor = [UIColor redColor];
+                [sureButton addTarget:self action:@selector(sureButtonClick) forControlEvents:UIControlEventTouchUpInside];
+                [customAlertView addSubview:sureButton];
+                //取消
+                UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(145, CGRectGetMaxY(contentView.frame) + 15, 105, 30)];
+                [cancelButton setTitle:@"否" forState:UIControlStateNormal];
+                [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+                cancelButton.layer.masksToBounds = YES;
+                cancelButton.layer.cornerRadius = 15.0f;
+                cancelButton.backgroundColor = GRAYCOLOR1;
+                [cancelButton addTarget:self action:@selector(cancelButtonClick) forControlEvents:UIControlEventTouchUpInside];
+                [customAlertView addSubview:cancelButton];
+                [_sureAlertView.view addSubview:customAlertView];
+                [self presentViewController:_sureAlertView animated:YES completion:nil];
+            }
+        }break;
     }
+}
+- (void)sureButtonClick{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)cancelButtonClick{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];}
 @end
