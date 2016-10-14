@@ -31,7 +31,7 @@
     headLabel.font = [UIFont systemFontOfSize:14.0f];
     [headView addSubview:headLabel];
     UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH-53, 23, 43, 43)];
-    headImageView.image = [UIImage imageNamed:@"headImage"];
+    headImageView.image = [UIImage imageNamed:@"head"];
     headImageView.layer.masksToBounds = YES;
     headImageView.layer.cornerRadius = 3.0f;
     [headView addSubview:headImageView];
