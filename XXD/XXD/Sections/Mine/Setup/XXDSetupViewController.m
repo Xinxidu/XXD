@@ -26,7 +26,7 @@
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 74, WIDTH, 122)];
     bgView.backgroundColor = LINEGRAY;
     [self.view addSubview:bgView];
-    NSArray *titleArray = @[@"个人消息",@"用户反馈",@"版本更新"];
+    NSArray *titleArray = @[@"个人信息",@"用户反馈",@"版本更新"];
     for (NSInteger i=0; i<3; i++) {
         UIView *cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0.5+40.5*i, WIDTH, 40)];
         cellView.backgroundColor = [UIColor whiteColor];

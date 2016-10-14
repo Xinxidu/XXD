@@ -40,7 +40,7 @@
     decription.numberOfLines = 4;
     NSString *contentString = @"感谢您提出宝贵的建议和意见，您留下的每个字都对我们非常重要。如果您有非常紧急的需求和问题，您可以直接拨打我们的客服电话：4001-054-080 我们将竭诚为您服务！";
     NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:contentString];
-    NSDictionary *attributeDic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:NSUnderlineStyleSingle],NSUnderlineStyleAttributeName,MAINCOLOR,NSForegroundColorAttributeName, nil];
+    NSDictionary *attributeDic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:NSUnderlineStyleSingle],NSUnderlineStyleAttributeName,[UIColor blueColor],NSForegroundColorAttributeName, nil];
     [content addAttributes:attributeDic range:NSMakeRange(60, 12)];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle setLineSpacing:5];

@@ -40,7 +40,7 @@
     topImageView.backgroundColor = MAINCOLOR;
     topImageView.layer.cornerRadius = 35;
     topImageView.layer.masksToBounds = YES;
-    topImageView.image = [UIImage imageNamed:@"headImage"];
+    topImageView.image = [UIImage imageNamed:@"head"];
     [self.view addSubview:topImageView];
     
     UIView *userView = [[UIView alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(topImageView.frame)+20, WIDTH-40, 40)];
