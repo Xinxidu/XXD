@@ -32,7 +32,7 @@
     titleLabel.numberOfLines = 0;
     [self.view addSubview:titleLabel];
     //初始化WKWebView
-    _wkWebView = [[BaseWKWebView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topImageView.frame)+10, WIDTH, HEIGHT)];
+    _wkWebView = [[BaseWKWebView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topImageView.frame)+10, WIDTH, HEIGHT-50-40)];
     [self.view addSubview:_wkWebView];
     //网络请求
     BaseWebRequest *webRequest = [[BaseWebRequest alloc] init];
