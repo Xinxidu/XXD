@@ -26,7 +26,7 @@
     _tableView.dataSource = self;
     _tableView.bounces = NO;
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    _tableView.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0];
+    _tableView.backgroundColor = BGGRAY;
     [self.view addSubview:_tableView];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

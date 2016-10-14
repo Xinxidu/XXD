@@ -10,7 +10,6 @@
 #import "XXDLoginViewController.h"
 #import "BaseWebRequest.h"
 #import <AFNetworking/AFNetworking.h>
-#define WIDTH [UIScreen mainScreen].bounds.size.width
 #define URL @"http://app.service.xiduoil.com/app/controller/user/reg/json"
 @interface XXDRegisterSecondViewController ()
 @property (nonatomic,strong)UITextField *nickNameTextfield;
@@ -23,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    self.view.backgroundColor = BGGRAY;
     self.navigationItem.title = @"注册";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -90,13 +89,13 @@
     submitButton.frame = CGRectMake(20, CGRectGetMaxY(surePwdView.frame)+20, WIDTH-40, 40);
     [submitButton setTitle:@"提交" forState:UIControlStateNormal];
     [submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    submitButton.backgroundColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    submitButton.backgroundColor = MAINCOLOR;
     [submitButton addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
     submitButton.layer.cornerRadius = 20;
     submitButton.layer.masksToBounds = YES;
     CALayer *layer = [CALayer layer];
     layer.frame = CGRectMake(20, CGRectGetMaxY(surePwdView.frame)+20, WIDTH-40, 40);
-    layer.backgroundColor = [UIColor blueColor].CGColor;
+    layer.backgroundColor = MAINCOLOR.CGColor;
     layer.shadowOffset = CGSizeMake(2, 2);
     layer.shadowOpacity = 0.8;
     layer.cornerRadius = 20;

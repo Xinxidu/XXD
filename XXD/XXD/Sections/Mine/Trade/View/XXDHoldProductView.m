@@ -72,7 +72,7 @@
                 numLabel.textColor = [UIColor blackColor];
                 numLabel.font = [UIFont systemFontOfSize:14.0f];
                 if (row==0&&col==1) {
-                    numLabel.textColor = [UIColor redColor];
+                    numLabel.textColor = RED;
                 }
                 [numLabelArray addObject:numLabel];
                 [v addSubview:numLabel];
@@ -97,7 +97,7 @@
             UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(WIDTH/5.0*i, CGRectGetMaxY(horizontal_1.frame), WIDTH/5.0, 37)];
             headLabel.text = headNameArray[i];
             headLabel.textColor = LIGHTGRAY;
-            headLabel.backgroundColor = [UIColor colorWithRed:243/255.0 green:244/255.0 blue:245/255.0 alpha:1];
+            headLabel.backgroundColor = BGGRAY;
             headLabel.font = [UIFont systemFontOfSize:12.0f];
             headLabel.textAlignment = NSTextAlignmentCenter;
             [self addSubview:headLabel];

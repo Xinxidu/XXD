@@ -8,7 +8,6 @@
 
 #import "DayInvestmentCell.h"
 #import "UIImageView+WebCache.h"
-#define SIZE [[UIScreen mainScreen] bounds].size
 @implementation DayInvestmentCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -25,7 +24,7 @@
     _litpicimageView.layer.masksToBounds = YES;
     [self.contentView addSubview:_litpicimageView];
     
-    UIView* rightBgView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_litpicimageView.frame)+10, 10, SIZE.width-130, 60)];
+    UIView* rightBgView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_litpicimageView.frame)+10, 10, WIDTH-130, 60)];
     [self.contentView addSubview:rightBgView];
     
     _titleLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 2, rightBgView.frame.size.width, 14)];

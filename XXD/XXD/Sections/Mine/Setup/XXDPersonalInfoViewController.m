@@ -8,10 +8,6 @@
 
 #import "XXDPersonalInfoViewController.h"
 #import "XXDCustomNavigation.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define DARKGRAYCOLOR [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]   //#333333
-#define GRAYCOLOR [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]   //#666666
-#define LIGHTGRAYCOLOR [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1]  //#dedede
 @interface XXDPersonalInfoViewController ()
 
 @end
@@ -21,17 +17,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [XXDCustomNavigation loadUIViewController:self title:@"个人信息" backSelector:@selector(backBtnClick)];
-    self.view.backgroundColor = [UIColor colorWithRed:245/255.0 green:246/255.0 blue:247/255.0 alpha:1];
+    self.view.backgroundColor = BGGRAY;
     //头像
     UIView *bgView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 74, WIDTH, 90)];
-    bgView1.backgroundColor = LIGHTGRAYCOLOR;
+    bgView1.backgroundColor = LINEGRAY;
     [self.view addSubview:bgView1];
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0.5, WIDTH, 89)];
     headView.backgroundColor = [UIColor whiteColor];
     [bgView1 addSubview:headView];
     UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 37.5, 40, 14)];
     headLabel.text = @"头像";
-    headLabel.textColor = DARKGRAYCOLOR;
+    headLabel.textColor = DARKGRAY;
     headLabel.font = [UIFont systemFontOfSize:14.0f];
     [headView addSubview:headLabel];
     UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH-53, 23, 43, 43)];
@@ -41,7 +37,7 @@
     [headView addSubview:headImageView];
     //用户名 手机号
     UIView *bgView2 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(bgView1.frame)+10, WIDTH, 81.5)];
-    bgView2.backgroundColor = LIGHTGRAYCOLOR;
+    bgView2.backgroundColor = LINEGRAY;
     [self.view addSubview:bgView2];
     NSArray *titleArray = @[@"用户名",@"手机号"];
     NSArray *valueArray = @[@"lixiaoming",@"18623578910"];
@@ -51,12 +47,12 @@
         [bgView2 addSubview:aView];
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 110, 40)];
         titleLabel.text = titleArray[i];
-        titleLabel.textColor = DARKGRAYCOLOR;
+        titleLabel.textColor = DARKGRAY;
         titleLabel.font = [UIFont systemFontOfSize:14.0f];
         [aView addSubview:titleLabel];
         UILabel *valueLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 0, WIDTH-130, 40)];
         valueLabel.text = valueArray[i];
-        valueLabel.textColor = GRAYCOLOR;
+        valueLabel.textColor = GRAY;
         valueLabel.font = [UIFont systemFontOfSize:13.0f];
         valueLabel.textAlignment = NSTextAlignmentRight;
         [aView addSubview:valueLabel];

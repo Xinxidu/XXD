@@ -26,7 +26,7 @@
 #define DARKGREEN [UIColor colorWithRed:1/255.0 green:155/255.0 blue:92/255.0 alpha:1]  //#019b5c
 //红色
 #define RED [UIColor redColor]  //#ff0000
-//负责背景色
+//辅助背景色
 #define HEADERBG [UIColor colorWithRed:227/255.0 green:241/255.0 blue:1 alpha:1]  //#f6f6f6
 
 #endif /* XXDPrefixHeader_pch */

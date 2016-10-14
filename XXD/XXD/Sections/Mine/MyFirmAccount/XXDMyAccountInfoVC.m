@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    self.view.backgroundColor = BGGRAY;
     self.navigationItem.title = @"账户信息";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -29,7 +29,7 @@
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 64+20, self.view.bounds.size.width, 40)];
     topView.backgroundColor = [UIColor colorWithRed:225/255.0 green:241/255.0 blue:254/255.0 alpha:1.0];
     topView.layer.borderWidth = 0.3;
-    topView.layer.borderColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0].CGColor;
+    topView.layer.borderColor = MAINCOLOR.CGColor;
     [self.view addSubview:topView];
     //账户
     UILabel *zhanghuLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 10, 40, 20)];
@@ -53,12 +53,12 @@
     anquanLabel.font = [UIFont systemFontOfSize:14.0];
     anquanLabel.textColor = [UIColor whiteColor];
     anquanLabel.textAlignment = NSTextAlignmentCenter;
-    anquanLabel.backgroundColor = [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1.0];
+    anquanLabel.backgroundColor = DARKGREEN;
     anquanLabel.layer.cornerRadius = 15.0;
     anquanLabel.layer.masksToBounds = YES;
     CALayer *layer = [CALayer layer];
     layer.frame = CGRectMake(CGRectGetMaxX(fengxianLabel.frame)+2, 5, 60, 30);
-    layer.backgroundColor = [UIColor blueColor].CGColor;
+    layer.backgroundColor = DARKGREEN.CGColor;
     layer.shadowOffset = CGSizeMake(1, 1);
     layer.shadowOpacity = 0.8;
     layer.cornerRadius = 15;

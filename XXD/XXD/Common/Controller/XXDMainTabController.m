@@ -30,7 +30,7 @@
         Class clazz = NSClassFromString(classNameArray[i]);
         UIViewController *vc = [[clazz alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-        nav.navigationBar.barTintColor = [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0];//14,41,70
+        nav.navigationBar.barTintColor = MAINCOLOR;
 //        if ([nav respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
 //            nav.interactivePopGestureRecognizer.enabled = YES;
 //            [nav.interactivePopGestureRecognizer setDelegate:(id<UIGestureRecognizerDelegate>)self];
@@ -52,7 +52,7 @@
         UIImage* selectImage = [UIImage imageNamed:selectArray[i]];
         item.selectedImage = [selectImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         item.title =  nameArray[i];
-        [item setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0] forKey:NSForegroundColorAttributeName] forState:UIControlStateSelected];
+        [item setTitleTextAttributes:[NSDictionary dictionaryWithObject:MAINCOLOR forKey:NSForegroundColorAttributeName] forState:UIControlStateSelected];
         if (i == 2) {
             item.imageInsets=UIEdgeInsetsMake(0, 0,0, 0);//CGFloat top, left, bottom, right;
             item.imageInsets=UIEdgeInsetsMake(8, 0,-8, 0);

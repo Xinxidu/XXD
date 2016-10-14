@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    self.view.backgroundColor = BGGRAY;
     self.navigationItem.title = @"登录";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -37,7 +37,7 @@
 
 -(void)createUI{
     UIImageView *topImageView = [[UIImageView alloc]initWithFrame:CGRectMake((WIDTH-60)/2, 20+64, 70, 70)];
-    topImageView.backgroundColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    topImageView.backgroundColor = MAINCOLOR;
     topImageView.layer.cornerRadius = 35;
     topImageView.layer.masksToBounds = YES;
     topImageView.image = [UIImage imageNamed:@"headImage"];
@@ -99,12 +99,12 @@
     [_submitButton setTitle:@"完成登录" forState:UIControlStateNormal];
     [_submitButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     _submitButton.titleLabel.font = [UIFont systemFontOfSize:18.0];
-    _submitButton.backgroundColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    _submitButton.backgroundColor = MAINCOLOR;
     _submitButton.layer.cornerRadius = 25;
     _submitButton.layer.masksToBounds = YES;
     CALayer *_layer = [CALayer layer];
     _layer.frame = CGRectMake(20, CGRectGetMaxY(pwdView.frame)+20, WIDTH-40, 50);
-    _layer.backgroundColor = [UIColor blueColor].CGColor;
+    _layer.backgroundColor = MAINCOLOR.CGColor;
     _layer.shadowOffset = CGSizeMake(1, 1);
     _layer.shadowOpacity = 0.8;
     _layer.cornerRadius = 25;
@@ -122,7 +122,7 @@
     UIButton *findButton = [UIButton buttonWithType:UIButtonTypeSystem];
     findButton.frame = CGRectMake((WIDTH-200)/2, CGRectGetMaxY(_submitButton.frame)+10, 200, 18);
     [findButton setTitle:@"忘记密码 >" forState:UIControlStateNormal];
-    [findButton setTitleColor:[UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [findButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
     findButton.titleLabel.font = [UIFont systemFontOfSize:13.0];
     [findButton addTarget:self action:@selector(findPassWordClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:findButton];
@@ -136,7 +136,7 @@
     UIButton *clickButton = [UIButton buttonWithType:UIButtonTypeSystem];
     clickButton.frame = CGRectMake(CGRectGetMaxX(titleLabel.frame), HEIGHT-60, 90, 18);
     [clickButton setTitle:@"注册一个吧 >" forState:UIControlStateNormal];
-    [clickButton setTitleColor:[UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [clickButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
     clickButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
     [clickButton addTarget:self action:@selector(gotoRegister) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:clickButton];

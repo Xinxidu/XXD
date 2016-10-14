@@ -15,9 +15,6 @@
 #import "XXDMyAccountViewController.h"
 #import "XXDSetupViewController.h"
 #import "FirmLoginViewController.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
-#define BLUECOLOR [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0]//14,41,70
 @interface XXDMyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UIView *hearerView;
@@ -43,7 +40,7 @@
     [self headViewClick];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor = BLUECOLOR;
+    self.navigationController.navigationBar.barTintColor = MAINCOLOR;
     self.navigationController.tabBarController.tabBar.hidden = NO;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -67,7 +64,7 @@
     _hearerView.backgroundColor = [UIColor colorWithRed:224/255.0 green:240/255.0 blue:253/255.0 alpha:1.0];
     [self.view addSubview:_hearerView];
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_hearerView.frame), WIDTH, 0.5)];
-    lineView.backgroundColor = BLUECOLOR;
+    lineView.backgroundColor = MAINCOLOR;
     [self.view addSubview:lineView];
     //头像
     UIImageView *headpicImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 25, 40, 40)];
@@ -162,7 +159,7 @@
     _tableView.bounces = NO;
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    _tableView.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    _tableView.backgroundColor = BGGRAY;
     [self.view addSubview:_tableView];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

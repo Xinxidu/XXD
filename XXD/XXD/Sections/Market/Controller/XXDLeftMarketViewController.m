@@ -47,7 +47,7 @@
                 itemButton.backgroundColor = [UIColor colorWithRed:215/255.0 green:130/255.0 blue:32/255.0 alpha:1.0];
                 [itemButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             }else{
-                itemButton.backgroundColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+                itemButton.backgroundColor = MAINCOLOR;
                 [itemButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 if (col == 2) {
                     itemButton.hidden = YES;
@@ -77,7 +77,7 @@
                 itemButton.backgroundColor = [UIColor colorWithRed:215/255.0 green:130/255.0 blue:32/255.0 alpha:1.0];
                 [itemButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             }else if(row == 1){
-                itemButton.backgroundColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+                itemButton.backgroundColor = MAINCOLOR;
                 [itemButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             }else{
                 itemButton.backgroundColor = [UIColor colorWithRed:88/255.0 green:165/255.0 blue:110/255.0 alpha:1.0];

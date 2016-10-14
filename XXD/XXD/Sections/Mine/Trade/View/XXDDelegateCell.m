@@ -38,7 +38,7 @@
         }
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, 49, WIDTH, 1)];
-        horizontal.backgroundColor = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1];  //#dedede;
+        horizontal.backgroundColor = LINEGRAY;
         [self.contentView addSubview:horizontal];
     }
     return self;

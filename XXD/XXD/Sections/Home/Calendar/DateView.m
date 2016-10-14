@@ -12,12 +12,12 @@
     if (self) {
         self.dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 6, size.width, 12)];
         self.dayLabel.textAlignment = NSTextAlignmentCenter;
-        self.dayLabel.textColor = [UIColor blackColor];
+        self.dayLabel.textColor = DARKGRAY;
         self.dayLabel.font = [UIFont boldSystemFontOfSize:12.0];
         [self addSubview:self.dayLabel];
         self.weekDayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, size.width, 12)];
         self.weekDayLabel.textAlignment = NSTextAlignmentCenter;
-        self.weekDayLabel.textColor = [UIColor blackColor];
+        self.weekDayLabel.textColor = DARKGRAY;
         self.weekDayLabel.font = [UIFont boldSystemFontOfSize:12.0];
         [self addSubview:self.weekDayLabel];
     }
