@@ -9,8 +9,6 @@
 #import "FirmRegisterViewController.h"
 #import "BaseWebRequest.h"
 #import "XXDCustomNavigation.h"
-#define WIDTH CGRectGetWidth(self.view.bounds)
-#define HEIGHT CGRectGetHeight(self.view.bounds)
 #define API @"http://trade.huatongsilver.com:80/accountweb/web/reg2/reg.html"
 @interface FirmRegisterViewController ()
 @end
@@ -33,8 +31,7 @@
 -(void)createUI{
     //初始化WebView
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, -45, WIDTH, HEIGHT+45)];
-    webView.scrollView.scrollEnabled = YES;
-    webView.scrollView.showsVerticalScrollIndicator = YES;
+    webView.scrollView.bounces = NO;
     [self.view addSubview:webView];
     //加载WKWebView
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:API]]];

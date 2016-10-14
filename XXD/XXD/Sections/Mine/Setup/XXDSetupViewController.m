@@ -63,7 +63,7 @@
         }
     }
     //如果当前版本和发布的版本一致则显示"已是最新版本"
-    if ([self.currentVersion isEqualToString:[self getVersionForAppStore]]) {
+    if ([self getVersionForAppStore]!=nil&&[self.currentVersion isEqualToString:[self getVersionForAppStore]]) {
         UILabel *newestVersionLabel = [[UILabel alloc] initWithFrame:CGRectMake((WIDTH-172.5)*0.5, CGRectGetMaxY(bgView.frame)+20, 172.5, 30)];
         newestVersionLabel.text = @"已是最新版本";
         newestVersionLabel.textColor = GRAYCOLOR1;
@@ -83,12 +83,16 @@
 #pragma mark 获取AppStore上的版本
 - (NSString *)getVersionForAppStore{
     NSString *string = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",APPID]] encoding:NSUTF8StringEncoding error:nil];
-    NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-    NSArray *array = jsonDic[@"results"];
-    NSDictionary *dic = [array lastObject];
-    NSString *version = dic[@"version"];
-    return version;
+    if (string!=nil&&string.length>0) {
+        NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+        NSArray *array = jsonDic[@"results"];
+        NSDictionary *dic = [array lastObject];
+        NSString *version = dic[@"version"];
+        return version;
+    }else{
+        return nil;
+    }
 }
 - (void)cellViewClick:(UITapGestureRecognizer *)sender{
     self.hidesBottomBarWhenPushed = YES;
@@ -101,7 +105,7 @@
             break;
         case 2:{//版本更新
             //如果当前版本和发布的版本不一致则提出警告框提示用户去AppStore更新app
-            if (![self.currentVersion isEqualToString:[self getVersionForAppStore]]) {
+            if ([self getVersionForAppStore]!=nil&&![self.currentVersion isEqualToString:[self getVersionForAppStore]]) {
                 _sureAlertView = [UIAlertController alertControllerWithTitle:@"" message:@"\n\n\n\n\n\n" preferredStyle:UIAlertControllerStyleAlert];
                 UIView *customAlertView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 270, 150)];
                 customAlertView.backgroundColor = [UIColor whiteColor];

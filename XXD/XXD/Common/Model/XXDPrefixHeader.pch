@@ -1,0 +1,25 @@
+//
+//  XXDPrefixHeader.pch
+//  XXD
+//
+//  Created by dayu on 16/10/13.
+//  Copyright © 2016年 xinxidu. All rights reserved.
+//
+
+#ifndef XXDPrefixHeader_pch
+#define XXDPrefixHeader_pch
+
+//16进制颜色转RGB
+#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+//app主体色
+#define MAINCOLOR [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0]
+//屏幕高宽
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
+//4种灰色
+#define DARKGRAY [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]   //#666666
+#define GRAY [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]   //#666666
+#define LIGHTGRAY [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]   //#999999
+#define LINE [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1]  //#dedede
+
+#endif /* XXDPrefixHeader_pch */

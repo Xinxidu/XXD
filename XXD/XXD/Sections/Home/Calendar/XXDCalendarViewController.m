@@ -10,8 +10,7 @@
 #import "XXDCalendar.h"
 #import "XXDCalendarCell.h"
 #import "XXDCustomNavigation.h"
-#define HEIGHT CGRectGetHeight(self.view.bounds)
-#define WIDTH CGRectGetWidth(self.view.bounds)
+
 #define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
 #define GRAYCOLOR [UIColor colorWithRed:245/255.0 green:246/255.0 blue:247/255.0 alpha:1]
 #define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]

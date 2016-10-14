@@ -323,6 +323,7 @@
 		69E1C6331D87CD6F00ED2735 /* XXDHotTradeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDHotTradeLabel.m; sourceTree = "<group>"; };
 		69E1C6361D87EE3300ED2735 /* XXDLiveNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLiveNewViewController.h; sourceTree = "<group>"; };
 		69E1C6371D87EE3300ED2735 /* XXDLiveNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLiveNewViewController.m; sourceTree = "<group>"; };
+		69EEA6011DAF87F000D32265 /* XXDPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDPrefixHeader.pch; sourceTree = "<group>"; };
 		8A1EB41BB141BBB1A5B05B48 /* Pods-XXD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XXD/Pods-XXD.debug.xcconfig"; sourceTree = "<group>"; };
 		B431A3CF173B42D828D67E6C /* Pods-XXD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXD.release.xcconfig"; path = "Pods/Target Support Files/Pods-XXD/Pods-XXD.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -792,6 +793,7 @@
 				69C1058C1D936E8A00F4D3AE /* PopViewControllerDelegate.h */,
 				69C1058D1D93852F00F4D3AE /* XXDCustomNavigation.h */,
 				69C1058E1D93852F00F4D3AE /* XXDCustomNavigation.m */,
+				69EEA6011DAF87F000D32265 /* XXDPrefixHeader.pch */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -957,7 +959,7 @@
 				TargetAttributes = {
 					697D76331D781300008D7C94 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = VRQSU9ZYT4;
+						DevelopmentTeam = R9DE87BJ5L;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1260,7 +1262,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = VRQSU9ZYT4;
+				DEVELOPMENT_TEAM = R9DE87BJ5L;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/XXD/Common/Model/XXDPrefixHeader.pch";
 				INFOPLIST_FILE = XXD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1281,7 +1285,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = VRQSU9ZYT4;
+				DEVELOPMENT_TEAM = R9DE87BJ5L;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/XXD/Common/Model/XXDPrefixHeader.pch";
 				INFOPLIST_FILE = XXD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

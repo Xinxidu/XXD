@@ -11,8 +11,6 @@
 #import "XiDuNewsCell.h"
 #import "BaseTableView.h"
 #import "XiDuNewsDetailViewController.h"
-#define WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
-#define HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
 #define URL @"http://app.service.xiduoil.com/ZhuBan"
 //http://app.service.xiduoil.com/ZhuBan?type=.guanwang&defference=gonggao&indexPage=1&pageRows=10
 @interface XiDuNewsViewController ()<UITableViewDelegate,UITableViewDataSource>
