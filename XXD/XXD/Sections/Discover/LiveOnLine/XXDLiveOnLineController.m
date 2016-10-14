@@ -56,11 +56,6 @@
     detail.liveOnlineName = liveView.liveImage.liveName;
     self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detail animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
-}
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    [self.delegate changeNavigationBarColor];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
