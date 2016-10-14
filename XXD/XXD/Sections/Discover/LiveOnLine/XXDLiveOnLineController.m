@@ -7,7 +7,7 @@
 //
 
 #import "XXDLiveOnLineController.h"
-#import "XXDLiveView.h"
+#import "XXDLiveOnLineView.h"
 #import "XXDLiveImage.h"
 #import "XXDCustomNavigation.h"
 #import "XXDLiveOnlineDetailController.h"
@@ -31,7 +31,7 @@
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     scrollView.bounces = NO;
     scrollView.backgroundColor = BGGRAY;
-    scrollView.contentSize = CGSizeMake(WIDTH, 97*self.dataArray.count);
+    scrollView.contentSize = CGSizeMake(WIDTH, 157*self.dataArray.count);
     [self.view addSubview:scrollView];
     for (NSInteger i = 0; i < self.dataArray.count; i++) {
         //直播间
@@ -39,7 +39,7 @@
         liveImage.liveName = self.dataArray[i];
         liveImage.info = @"特点：抢反弹一马当先抓涨停十拿九稳";
         liveImage.teacherPush = @"西都金融研究院每周不定时推荐一到两支股票";
-        XXDLiveView *liveView = [[XXDLiveView alloc] initWithFrame:CGRectMake(0, 107*i+10, WIDTH, 97) liveImageModel:liveImage];
+        XXDLiveOnLineView *liveView = [[XXDLiveOnLineView alloc] initWithFrame:CGRectMake(0, 157*i+10, WIDTH, 147) liveImageModel:liveImage];
         liveView.tag = i;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(liveViewClick:)];
         [liveView addGestureRecognizer:tap];
@@ -52,15 +52,10 @@
 }
 - (void)liveViewClick:(UITapGestureRecognizer *)sender{
     XXDLiveOnlineDetailController *detail = [[XXDLiveOnlineDetailController alloc] init];
-    XXDLiveView *liveView = (XXDLiveView *)sender.view;
+    XXDLiveOnLineView *liveView = (XXDLiveOnLineView *)sender.view;
     detail.liveOnlineName = liveView.liveImage.liveName;
     self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detail animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
-}
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    [self.delegate changeNavigationBarColor];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

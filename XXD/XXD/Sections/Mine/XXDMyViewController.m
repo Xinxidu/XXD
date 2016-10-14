@@ -106,8 +106,6 @@
         [_exitLoginButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         _exitLoginButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
         _exitLoginButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-//        [_exitLoginButton setBackgroundImage:[UIImage imageNamed:@"mybtn3"] forState:UIControlStateNormal];
-//        [_exitLoginButton addTarget:self action:@selector(exitLoginClick:) forControlEvents:UIControlEventTouchUpInside];
         [_hearerView addSubview:_exitLoginButton];
     //已登录状态下视图
     if (_islogin == YES) {
@@ -142,16 +140,6 @@
     [self.navigationController pushViewController:[[XXDLoginViewController alloc]init] animated:YES];
     self.hidesBottomBarWhenPushed = NO;
 }
-////退出登录按钮事件
-//-(void)exitLoginClick:(UIButton*)sender{
-//    _islogin = NO;
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    [userDefaults setBool:NO forKey:@"isLogin"];
-//    _exitLoginButton.hidden = YES;
-//    _registerButton.hidden = NO;;
-//    _loginButton.hidden = NO;
-//    _statusLabel.text = @"未登录";
-//}
 -(void)createTableView{
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_hearerView.frame)+0.5, self.view.bounds.size.width, self.view.bounds.size.height-44)];
     _tableView.delegate = self;
