@@ -9,8 +9,6 @@
 #import "FirmLoginViewController.h"
 #import "AuthcodeView.h"
 #import "FirmRegisterViewController.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface FirmLoginViewController ()<UITextFieldDelegate>
 @property (strong,nonatomic) UISegmentedControl *segmentControl;//实盘，模拟盘切换
 @property (strong,nonatomic) UIView *topView;

@@ -29,7 +29,7 @@
 - (void)createScrollView{
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     scrollView.bounces = NO;
-    scrollView.backgroundColor = [UIColor colorWithRed:245/255.0 green:246/255.0 blue:247/255.0 alpha:1];
+    scrollView.backgroundColor = BGGRAY;
     scrollView.contentSize = CGSizeMake(WIDTH, 97*self.dataArray.count);
     [self.view addSubview:scrollView];
     for (NSInteger i = 0; i < self.dataArray.count; i++) {

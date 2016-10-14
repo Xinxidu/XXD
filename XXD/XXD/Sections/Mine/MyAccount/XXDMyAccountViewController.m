@@ -7,8 +7,6 @@
 //
 
 #import "XXDMyAccountViewController.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 #define IOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ? YES : NO)
 @interface XXDMyAccountViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic,strong) UIImageView *headImageView;//头像
@@ -19,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    self.view.backgroundColor = BGGRAY;
     self.navigationItem.title = @"我的账户";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -70,12 +68,12 @@
     [_exitLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _exitLoginButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
     _exitLoginButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    _exitLoginButton.backgroundColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    _exitLoginButton.backgroundColor = MAINCOLOR;
     _exitLoginButton.layer.cornerRadius = 20;
     _exitLoginButton.layer.masksToBounds = YES;
     CALayer *layer = [CALayer layer];
     layer.frame = CGRectMake(30, CGRectGetMaxY(middleView.frame)+20, WIDTH-30*2, 40);
-    layer.backgroundColor = [UIColor blueColor].CGColor;
+    layer.backgroundColor = MAINCOLOR.CGColor;
     layer.shadowOffset = CGSizeMake(2, 2);
     layer.shadowOpacity = 0.8;
     layer.cornerRadius = 20;

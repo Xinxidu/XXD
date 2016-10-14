@@ -32,7 +32,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"refresh"] style:UIBarButtonItemStylePlain target:self action:@selector(refresh)];
     //表头
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, 35)];
-    bgView.backgroundColor = [UIColor colorWithRed:245/255.0 green:246/255.0 blue:247/255.0 alpha:1];
+    bgView.backgroundColor = BGGRAY;
     [self.view addSubview:bgView];
     NSArray *titleArray = @[@"商品",@"最新",@"买1/卖1",@"涨跌值",@"成交量"];
     self.menuArray1 = @[@"涨跌幅",@"振幅",@"涨跌值"];
@@ -120,7 +120,7 @@
 #pragma mark 创建下拉菜单
 - (UIView *)createDropDownWithMenuArray:(NSArray *)menuArray tag:(NSInteger)tag{
     UIView *optionView = [[UIView alloc] initWithFrame:CGRectMake(15+WIDTH*0.2+ (WIDTH*0.8 - 30)/4.0*(tag-1), 64, (WIDTH*0.8 - 30)/4.0, menuArray.count*25+10)];
-    optionView.backgroundColor = [UIColor colorWithRed:245/255.0 green:246/255.0 blue:247/255.0 alpha:1];
+    optionView.backgroundColor = BGGRAY;
     optionView.layer.borderWidth = 0.5;
     optionView.layer.borderColor = [UIColor colorWithRed:230/255.0 green:231/255.0 blue:232/255.0 alpha:1].CGColor;
     for (NSInteger i = 0; i < menuArray.count; i++) {

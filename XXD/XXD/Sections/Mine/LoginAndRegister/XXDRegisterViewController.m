@@ -12,8 +12,6 @@
 #import "XXDFindPwdViewController.h"
 #import "BaseWebRequest.h"
 #import <AFNetworking/AFNetworking.h>
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 #define URL @"http://app.service.xiduoil.com/app/controller/user/getCode/json"
 #define codeURL @"http://app.service.xiduoil.com/app/controller/user/validCode/json"
 @interface XXDRegisterViewController ()<UITextFieldDelegate>
@@ -27,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    self.view.backgroundColor = BGGRAY;
     self.navigationItem.title = @"注册";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -89,13 +87,13 @@
     nextStepButton.frame = CGRectMake(20, CGRectGetMaxY(codeView.frame)+20, WIDTH-40, 40);
     [nextStepButton setTitle:@"下一步" forState:UIControlStateNormal];
     [nextStepButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    nextStepButton.backgroundColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    nextStepButton.backgroundColor = MAINCOLOR;
     [nextStepButton addTarget:self action:@selector(nextStepClick) forControlEvents:UIControlEventTouchUpInside];
     nextStepButton.layer.cornerRadius = 20;
     nextStepButton.layer.masksToBounds = YES;
     CALayer *layer = [CALayer layer];
     layer.frame = CGRectMake(20, CGRectGetMaxY(codeView.frame)+20, WIDTH-40, 40);
-    layer.backgroundColor = [UIColor blueColor].CGColor;
+    layer.backgroundColor = MAINCOLOR.CGColor;
     layer.shadowOffset = CGSizeMake(2, 2);
     layer.shadowOpacity = 0.8;
     layer.cornerRadius = 20;
@@ -111,7 +109,7 @@
     UIButton *clickButton = [UIButton buttonWithType:UIButtonTypeSystem];
     clickButton.frame = CGRectMake(CGRectGetMaxX(titleLabel.frame), CGRectGetMaxY(nextStepButton.frame)+20, 50, 18);
     [clickButton setTitle:@"登录 >" forState:UIControlStateNormal];
-    [clickButton setTitleColor:[UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [clickButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
     clickButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
     [clickButton addTarget:self action:@selector(enterToLogin) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:clickButton];
@@ -125,7 +123,7 @@
     UIButton *findButton = [UIButton buttonWithType:UIButtonTypeSystem];
     findButton.frame = CGRectMake(CGRectGetMaxX(findLabel.frame), CGRectGetMaxY(clickButton.frame)+5, 90, 18);
     [findButton setTitle:@"立即找回 >" forState:UIControlStateNormal];
-    [findButton setTitleColor:[UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [findButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
     findButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
     [findButton addTarget:self action:@selector(enterToFindPwd) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:findButton];

@@ -42,7 +42,7 @@
                 _label.text=[NSString stringWithFormat:@"%@%@",arr1[i],arr2[i]];
                 _label.font=[UIFont systemFontOfSize:13.0];
                 _label.numberOfLines=0;
-                _label.textColor=[UIColor blackColor];
+                _label.textColor=DARKGRAY;
                 [self.view addSubview:_label];
             }
             UIImageView *imgV=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"map.png"]];
