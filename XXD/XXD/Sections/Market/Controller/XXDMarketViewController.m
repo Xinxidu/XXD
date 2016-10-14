@@ -15,8 +15,6 @@
 #import "XXDLeftMarketViewController.h"
 #define ADD @"++"
 #define SUB @"--"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 #define GLODENCOLOR [UIColor colorWithRed:186/255.0 green:128/255.0 blue:15/255.0 alpha:1.0]
 #define LINEWIDTH self.view.bounds.size.width/5
 #define URL @""
@@ -38,7 +36,7 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1];
+    self.navigationController.navigationBar.barTintColor = MAINCOLOR;
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"菜单"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(leftChangeItemClick)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"搜索"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(searchButtonClick)];
@@ -48,7 +46,7 @@
     [self createNameButtonData];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0];
+    self.navigationController.navigationBar.barTintColor = MAINCOLOR;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
 }
 
@@ -112,7 +110,7 @@
     
     [self.view addSubview:_scroll];
     _lineView = [[UIView alloc]initWithFrame:CGRectMake(0, _scroll.frame.size.height-2, LINEWIDTH, 2)];
-    _lineView.backgroundColor = [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0];
+    _lineView.backgroundColor = MAINCOLOR;
     [_scroll addSubview:_lineView];
     
     NSArray* arr = [[NSArray alloc]initWithObjects:@"品种",@"成交量",@"最高",@"最低", nil];

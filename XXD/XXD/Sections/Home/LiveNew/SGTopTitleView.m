@@ -185,7 +185,7 @@ static CGFloat const indicatorHeight = 2;
         _scrollTitleLabel.tag = i;
         
         // 设置高亮文字颜色
-        _scrollTitleLabel.highlightedTextColor = selectedTitleAndIndicatorViewColor;
+        _scrollTitleLabel.highlightedTextColor = MAINCOLOR;
         
         // 计算内容的Size
         CGSize labelSize = [self sizeWithText:_scrollTitleLabel.text font:labelFontOfSize maxSize:CGSizeMake(MAXFLOAT, labelH)];
@@ -221,7 +221,7 @@ static CGFloat const indicatorHeight = 2;
     
     // 添加指示器
     self.indicatorView = [[UIView alloc] init];
-    _indicatorView.backgroundColor = selectedTitleAndIndicatorViewColor;
+    _indicatorView.backgroundColor = MAINCOLOR;
     _indicatorView.SG_height = indicatorHeight;
     _indicatorView.SG_y = self.frame.size.height - indicatorHeight;
     [self addSubview:_indicatorView];

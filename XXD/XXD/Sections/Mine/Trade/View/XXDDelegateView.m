@@ -9,8 +9,6 @@
 #import "XXDDelegateView.h"
 #import "XXDDelegate.h"
 #import "XXDDelegateCell.h"
-#define GRAYCOLOR [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]   //#999999
-#define LIGHTGRAYCOLOR [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1]  //#dedede
 @implementation XXDDelegateView
 
 - (instancetype)initWithFrame:(CGRect)frame tableViewData:(NSArray *)tableViewData{
@@ -27,13 +25,13 @@
             UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(width/5.0*i, 0, width/5.0, headHeight)];
             headLabel.text = headNameArray[i];
             headLabel.backgroundColor = [UIColor colorWithRed:243/255.0 green:244/255.0 blue:245/255.0 alpha:1];
-            headLabel.textColor = GRAYCOLOR;
+            headLabel.textColor = LIGHTGRAY;
             headLabel.font = [UIFont systemFontOfSize:12.0f];
             headLabel.textAlignment = NSTextAlignmentCenter;
             [self addSubview:headLabel];
         }
         UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, headHeight, width, 1)];
-        horizontal.backgroundColor = LIGHTGRAYCOLOR;
+        horizontal.backgroundColor = LINEGRAY;
         [self addSubview:horizontal];
         
         //表格

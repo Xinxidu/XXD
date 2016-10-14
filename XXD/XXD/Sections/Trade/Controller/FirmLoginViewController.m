@@ -36,7 +36,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"登录";
-    self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    self.view.backgroundColor = BGGRAY;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     _array = [NSMutableArray array];
@@ -51,7 +51,7 @@
     _shipanButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _shipanButton.frame = CGRectMake(0, 64, WIDTH/2, 36);
     [_shipanButton setTitle:@"实盘" forState:UIControlStateNormal];
-    [_shipanButton setTitleColor:[UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [_shipanButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
     _shipanButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
     [_shipanButton addTarget:self action:@selector(shipanClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_shipanButton];
@@ -65,7 +65,7 @@
     [self.view addSubview:_monipanButton];
     
     _lineLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_shipanButton.frame), WIDTH/2, 1)];
-    _lineLabel1.backgroundColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    _lineLabel1.backgroundColor = MAINCOLOR;
     [self.view addSubview:_lineLabel1];
     
     _lineLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(WIDTH/2, CGRectGetMaxY(_monipanButton.frame), WIDTH/2, 1)];
@@ -75,26 +75,29 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     if (_isMonipan == YES) {
-        [_shipanButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [_monipanButton setTitleColor:[UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+        [_shipanButton setTitleColor:DARKGRAY forState:UIControlStateNormal];
+        _shipanButton.backgroundColor = BGGRAY;
+        [_monipanButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
         _lineLabel1.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
         [self.view addSubview:_lineLabel2];
-        _lineLabel2.backgroundColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+        _lineLabel2.backgroundColor = MAINCOLOR;
     }
 }
 -(void)shipanClick:(UIButton*)sender{
-    [_shipanButton setTitleColor:[UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
-    [_monipanButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    _lineLabel1.backgroundColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    [_shipanButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
+    _shipanButton.backgroundColor = BGGRAY;
+    [_monipanButton setTitleColor:DARKGRAY forState:UIControlStateNormal];
+    _lineLabel1.backgroundColor = MAINCOLOR;
     _lineLabel2.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
 //    [self createUI];
 }
 -(void)monipanClick:(UIButton*)sender{
-    [_shipanButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [_monipanButton setTitleColor:[UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [_shipanButton setTitleColor:DARKGRAY forState:UIControlStateNormal];
+    [_monipanButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
+    _monipanButton.backgroundColor = BGGRAY;
     _lineLabel1.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
     [self.view addSubview:_lineLabel2];
-    _lineLabel2.backgroundColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    _lineLabel2.backgroundColor = MAINCOLOR;
 //    [self createUI];
 }
 -(void)createUI{
@@ -114,7 +117,7 @@
     layer.shadowOpacity = 0.8;
     layer.cornerRadius = 20;
     [self.view.layer addSublayer:layer];
-    _loginBtn.backgroundColor=[UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    _loginBtn.backgroundColor = MAINCOLOR;
     _loginBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
     [_loginBtn addTarget:self action:@selector(FirmloginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_loginBtn];
@@ -128,7 +131,7 @@
     UIButton *clickButton = [UIButton buttonWithType:UIButtonTypeSystem];
     clickButton.frame = CGRectMake(CGRectGetMaxX(titleLabel.frame), CGRectGetMaxY(_loginBtn.frame)+15, 85, 18);
     [clickButton setTitle:@"实盘开户 >" forState:UIControlStateNormal];
-    [clickButton setTitleColor:[UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [clickButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
     clickButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
     clickButton.titleLabel.textAlignment = NSTextAlignmentLeft;
     [clickButton addTarget:self action:@selector(gotoRegister) forControlEvents:UIControlEventTouchUpInside];

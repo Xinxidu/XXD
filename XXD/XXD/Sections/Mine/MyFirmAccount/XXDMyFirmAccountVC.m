@@ -13,7 +13,6 @@
 #import "XXDTodayExchangeListVC.h"
 #import "XXDHistoryMakeListVC.h"
 #import "XXDHistoryExchangeListVC.h"
-#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
 @interface XXDMyFirmAccountVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @end
@@ -33,7 +32,7 @@
     //退出账户按钮
     UIButton *exitButton = [UIButton buttonWithType:UIButtonTypeSystem];
     exitButton.frame = CGRectMake((self.view.bounds.size.width-220)/2, CGRectGetMaxY(_tableView.frame)+30, 220, 40);
-    exitButton.backgroundColor = BLUECOLOR;
+    exitButton.backgroundColor = MAINCOLOR;
     [exitButton setTitle:@"退出账户" forState:UIControlStateNormal];
     [exitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     exitButton.titleLabel.font = [UIFont systemFontOfSize:16.0];
@@ -42,7 +41,7 @@
     //添加按钮阴影
     CALayer *layer = [CALayer layer];
     layer.frame = exitButton.frame;
-    layer.backgroundColor = BLUECOLOR.CGColor;
+    layer.backgroundColor = MAINCOLOR.CGColor;
     layer.shadowOffset = CGSizeMake(2, 2);
     layer.shadowOpacity = 0.6;
     layer.cornerRadius = 20;
@@ -84,7 +83,7 @@
         cell.textLabel.text = @"历史调期单";
     }else{
         cell.textLabel.text = @"交易";
-        cell.textLabel.textColor = BLUECOLOR;
+        cell.textLabel.textColor = MAINCOLOR;
         cell.backgroundColor = [UIColor colorWithRed:224/255.0 green:240/255.0 blue:253/255.0 alpha:1.0];
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"右侧箭头"]];
     }

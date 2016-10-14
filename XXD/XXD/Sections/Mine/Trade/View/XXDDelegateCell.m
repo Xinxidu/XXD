@@ -8,7 +8,7 @@
 
 #import "XXDDelegateCell.h"
 #import "XXDDelegate.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
+
 @implementation XXDDelegateCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier delegate:(XXDDelegate *)delegate{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
