@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"银大师";
+    self.navigationItem.title = @"";
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
     self.navigationController.navigationBar.shadowImage=[UIImage new];
     //创建根视图
