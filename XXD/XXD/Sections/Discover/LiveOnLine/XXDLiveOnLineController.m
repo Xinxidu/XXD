@@ -10,6 +10,7 @@
 #import "XXDLiveView.h"
 #import "XXDLiveImage.h"
 #import "XXDCustomNavigation.h"
+#import "XXDLiveOnlineDetailController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface XXDLiveOnLineController ()
@@ -39,12 +40,23 @@
         liveImage.info = @"特点：抢反弹一马当先抓涨停十拿九稳";
         liveImage.teacherPush = @"西都金融研究院每周不定时推荐一到两支股票";
         XXDLiveView *liveView = [[XXDLiveView alloc] initWithFrame:CGRectMake(0, 107*i+10, WIDTH, 97) liveImageModel:liveImage];
+        liveView.tag = i;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(liveViewClick:)];
+        [liveView addGestureRecognizer:tap];
         [scrollView addSubview:liveView];
     }
 }
 - (void)backBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
     [self.delegate changeNavigationBarColor];
+}
+- (void)liveViewClick:(UITapGestureRecognizer *)sender{
+    XXDLiveOnlineDetailController *detail = [[XXDLiveOnlineDetailController alloc] init];
+    XXDLiveView *liveView = (XXDLiveView *)sender.view;
+    detail.liveOnlineName = liveView.liveImage.liveName;
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detail animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
 }
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];

@@ -13,6 +13,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        self.liveImage = liveImage;
         //直播图片
         UIImageView *liveView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 6, 90, 60)];
         liveView.image = [UIImage imageNamed:@"video"];
