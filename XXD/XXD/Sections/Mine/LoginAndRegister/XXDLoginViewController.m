@@ -43,47 +43,50 @@
     topImageView.image = [UIImage imageNamed:@"headImage"];
     [self.view addSubview:topImageView];
     
-    UIView *userView = [[UIView alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(topImageView.frame)+20, WIDTH-40, 50)];
+    UIView *userView = [[UIView alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(topImageView.frame)+20, WIDTH-40, 40)];
     userView.backgroundColor = [UIColor whiteColor];
     userView.layer.borderWidth = 0.5;
     userView.layer.borderColor = [[UIColor lightGrayColor]CGColor];
-    userView.layer.cornerRadius = 25;
+    userView.layer.cornerRadius = 20;
     userView.layer.masksToBounds = YES;
     [self.view addSubview:userView];
     
-    UIImageView *leftImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 18, 20, 14)];
+    UIImageView *leftImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 13, 20, 14)];
     leftImageView.image = [UIImage imageNamed:@"icon1"];
     [userView addSubview:leftImageView];
 
     //------ 用户名文本框 ------
-    _userNameTxt = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftImageView.frame)+5, 0, userView.frame.size.width-40, 50)];
+    _userNameTxt = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftImageView.frame)+5, 0, userView.frame.size.width-40, 40)];
     _userNameTxt.placeholder=@"请输入您的用户名";
     _userNameTxt.backgroundColor = [UIColor whiteColor];
     _userNameTxt.leftViewMode=UITextFieldViewModeAlways;
     _userNameTxt.tag=100;
     _userNameTxt.clearButtonMode = UITextFieldViewModeAlways;
+    [_userNameTxt setValue:[UIFont boldSystemFontOfSize:16.0] forKeyPath:@"_placeholderLabel.font"];
+    _userNameTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [_userNameTxt setDelegate:self];
 //    [_userNameTxt addTarget:self action:@selector(passwordChange) forControlEvents:UIControlEventEditingChanged];//监听TextField的实时变化
     [userView addSubview:_userNameTxt];
     
     
     //------ 密码文本框 ------
-    UIView *pwdView = [[UIView alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(userView.frame)+20, WIDTH-40, 50)];
+    UIView *pwdView = [[UIView alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(userView.frame)+20, WIDTH-40, 40)];
     pwdView.backgroundColor = [UIColor whiteColor];
     pwdView.layer.borderWidth = 0.5;
     pwdView.layer.borderColor = [[UIColor lightGrayColor]CGColor];
-    pwdView.layer.cornerRadius = 25;
+    pwdView.layer.cornerRadius = 20;
     pwdView.layer.masksToBounds = YES;
     [self.view addSubview:pwdView];
     
-    UIImageView *pwdleftImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 16, 17, 18)];
+    UIImageView *pwdleftImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 11, 17, 18)];
     pwdleftImageView.image = [UIImage imageNamed:@"icon2"];
     [pwdView addSubview:pwdleftImageView];
     
-    _pwdTxt = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(pwdleftImageView.frame)+5, 0, pwdView.frame.size.width-40, 50)];
+    _pwdTxt = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(pwdleftImageView.frame)+5, 0, pwdView.frame.size.width-40, 40)];
     _pwdTxt.placeholder=@"请输入您的密码";
     _pwdTxt.backgroundColor = [UIColor whiteColor];
     _pwdTxt.leftViewMode=UITextFieldViewModeAlways;
+    [_pwdTxt setValue:[UIFont boldSystemFontOfSize:16.0] forKeyPath:@"_placeholderLabel.font"];
     _pwdTxt.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _pwdTxt.tag=101;
     
@@ -95,19 +98,19 @@
     [pwdView addSubview:_pwdTxt];
     //------ 完成登录按钮 ------
     _submitButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    _submitButton.frame = CGRectMake(20, CGRectGetMaxY(pwdView.frame)+20, WIDTH-40, 50);
+    _submitButton.frame = CGRectMake(20, CGRectGetMaxY(pwdView.frame)+20, WIDTH-40, 40);
     [_submitButton setTitle:@"完成登录" forState:UIControlStateNormal];
     [_submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _submitButton.titleLabel.font = [UIFont systemFontOfSize:18.0];
     _submitButton.backgroundColor = MAINCOLOR;
-    _submitButton.layer.cornerRadius = 25;
+    _submitButton.layer.cornerRadius = 20;
     _submitButton.layer.masksToBounds = YES;
     CALayer *_layer = [CALayer layer];
-    _layer.frame = CGRectMake(20, CGRectGetMaxY(pwdView.frame)+20, WIDTH-40, 50);
+    _layer.frame = CGRectMake(20, CGRectGetMaxY(pwdView.frame)+20, WIDTH-40, 40);
     _layer.backgroundColor = MAINCOLOR.CGColor;
     _layer.shadowOffset = CGSizeMake(1, 1);
     _layer.shadowOpacity = 0.8;
-    _layer.cornerRadius = 25;
+    _layer.cornerRadius = 20;
     [self.view.layer addSublayer:_layer];
     [_submitButton addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_submitButton];
