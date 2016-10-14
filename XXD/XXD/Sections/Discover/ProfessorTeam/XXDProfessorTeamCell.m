@@ -20,32 +20,28 @@
     return self;
 }
 -(void)createUI{
-    _headImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 50, 50)];
-    _headImageView.layer.cornerRadius = 25;
+    _headImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 7.5, 57, 57)];
+    _headImageView.layer.cornerRadius = 28.5;
     _headImageView.layer.masksToBounds = YES;
     _headImageView.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:_headImageView];
     
-    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_headImageView.frame)+10, 12, 60, 14)];
+    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_headImageView.frame)+10, 10, 60, 13)];
     _nameLabel.text = @"韩云老师";
-    _nameLabel.font = [UIFont boldSystemFontOfSize:14.0];
+    _nameLabel.font = [UIFont boldSystemFontOfSize:13.0];
     _nameLabel.textColor = [UIColor blackColor];
-//    UIFont *fnt = [UIFont boldSystemFontOfSize:14.0];
-//    _nameLabel.font = fnt;
-//    CGSize size = [_nameLabel.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:fnt,NSFontAttributeName, nil]];
-//    _nameLabel.frame = CGRectMake(CGRectGetMaxX(_headImageView.frame)+10, 12, size.width, 14);
     [self.contentView addSubview:_nameLabel];
     
-    _touxianLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_nameLabel.frame), 13, SIZE.width-CGRectGetMaxX(_nameLabel.frame), 14)];
+    _touxianLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_nameLabel.frame), 10, SIZE.width-CGRectGetMaxX(_nameLabel.frame), 13)];
     _touxianLabel.text = @"--特约评论嘉宾";
-    _touxianLabel.font = [UIFont systemFontOfSize:14.0];
-    _touxianLabel.textColor = [UIColor grayColor];
+    _touxianLabel.font = [UIFont systemFontOfSize:13.0];
+    _touxianLabel.textColor = GRAY;
     [self.contentView addSubview:_touxianLabel];
     
-    _shanchangLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_headImageView.frame)+10, CGRectGetMaxY(_nameLabel.frame)+3, SIZE.width-(CGRectGetMaxX(_headImageView.frame)+5)-40, 30)];
+    _shanchangLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_headImageView.frame)+10, CGRectGetMaxY(_nameLabel.frame)+2, SIZE.width-(CGRectGetMaxX(_headImageView.frame)+5)-40, 30)];
     _shanchangLabel.text = @"擅长：通过宏观经济面，基本面，技术面发现机会";
     _shanchangLabel.font = [UIFont systemFontOfSize:11.0];
-    _shanchangLabel.textColor = [UIColor grayColor];
+    _shanchangLabel.textColor = GRAY;
     _shanchangLabel.textAlignment = NSTextAlignmentLeft;
     _shanchangLabel.lineBreakMode = NSLineBreakByCharWrapping;
     _shanchangLabel.numberOfLines = 0;
@@ -56,10 +52,15 @@
     _nameLabel.text = model.name;
     _touxianLabel.text = [NSString stringWithFormat:@"--%@",model.touxian];
     _shanchangLabel.text = [NSString stringWithFormat:@"擅长：%@",model.shanchang];
+    NSMutableAttributedString * attributedString1 = [[NSMutableAttributedString alloc] initWithString:_shanchangLabel.text];
+    NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle1 setLineSpacing:2.0];
+    [attributedString1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle1 range:NSMakeRange(0, [_shanchangLabel.text length])];
+    [_shanchangLabel setAttributedText:attributedString1];
     
-    _nameLabel.frame = CGRectMake(CGRectGetMaxX(_headImageView.frame)+10, 12, [self getLabelSizeWithString:model.name fontSize:14].width, 14);
-    _touxianLabel.frame =  CGRectMake(CGRectGetMaxX(_nameLabel.frame), 13, SIZE.width-CGRectGetMaxX(_nameLabel.frame), 14);
-    _shanchangLabel.frame =  CGRectMake(CGRectGetMaxX(_headImageView.frame)+10, CGRectGetMaxY(_nameLabel.frame)+3, SIZE.width-(CGRectGetMaxX(_headImageView.frame)+5)-40, 30);
+    _nameLabel.frame = CGRectMake(CGRectGetMaxX(_headImageView.frame)+10, 10, [self getLabelSizeWithString:model.name fontSize:13].width, 13);
+    _touxianLabel.frame =  CGRectMake(CGRectGetMaxX(_nameLabel.frame), 10, SIZE.width-CGRectGetMaxX(_nameLabel.frame), 13);
+    _shanchangLabel.frame =  CGRectMake(CGRectGetMaxX(_headImageView.frame)+10, CGRectGetMaxY(_nameLabel.frame)+4, SIZE.width-(CGRectGetMaxX(_headImageView.frame)+10)-40, 30);
 }
 #pragma mark 根据Label的内容和字体大小获取lalel的大小
 - (CGSize)getLabelSizeWithString:(NSString *)labelString fontSize:(CGFloat)fontSize{
