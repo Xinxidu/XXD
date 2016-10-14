@@ -36,9 +36,9 @@
     headImageView.layer.masksToBounds = YES;
     [self.view addSubview:headImageView];
     
-    UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(headImageView.frame)+20, CGRectGetMinY(headImageView.frame)+17, 200, 16)];
+    UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(headImageView.frame)+23, CGRectGetMinY(headImageView.frame)+17, 200, 15)];
     nameLabel.text = _name;
-    nameLabel.font = [UIFont boldSystemFontOfSize:16.0];
+    nameLabel.font = [UIFont boldSystemFontOfSize:15.0];
     [self.view addSubview:nameLabel];
     //内部灰色线条
     UILabel *horizontalLabel;
@@ -67,7 +67,7 @@
         contentLabel.textAlignment = NSTextAlignmentLeft;
         contentLabel.numberOfLines = 0;
         contentLabel.adjustsFontSizeToFitWidth = YES;
-        contentLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
+        contentLabel.textColor = GRAY;
         [self.view addSubview:contentLabel];
     }
     //下部
@@ -83,7 +83,7 @@
     jianjieContent.text = jianjieString;
     jianjieContent.font = [UIFont systemFontOfSize:13.0];
     jianjieContent.textAlignment = NSTextAlignmentLeft;
-    jianjieContent.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
+    jianjieContent.textColor = GRAY;
     jianjieContent.editable = NO;
     [self.view addSubview:jianjieContent];
 }
