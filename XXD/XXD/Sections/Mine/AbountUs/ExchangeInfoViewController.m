@@ -9,8 +9,6 @@
 #import "ExchangeInfoViewController.h"
 #import "BaseWKWebView.h"
 #import "BaseWebRequest.h"
-#define WIDTH CGRectGetWidth(self.view.bounds)
-#define HEIGHT CGRectGetHeight(self.view.bounds)
 #define API @"http://app.service.xiduoil.com/ZhuBan?type=.guanwang&defference=jiaoyi"
 @interface ExchangeInfoViewController ()
 @property (strong,nonatomic) BaseWKWebView *wkWebView;

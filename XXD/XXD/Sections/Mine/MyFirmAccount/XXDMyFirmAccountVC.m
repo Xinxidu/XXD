@@ -39,7 +39,6 @@
     exitButton.titleLabel.font = [UIFont systemFontOfSize:16.0];
     exitButton.layer.cornerRadius = 20;
     exitButton.layer.masksToBounds = YES;
-    
     //添加按钮阴影
     CALayer *layer = [CALayer layer];
     layer.frame = exitButton.frame;
@@ -48,6 +47,7 @@
     layer.shadowOpacity = 0.6;
     layer.cornerRadius = 20;
     [self.view.layer addSublayer:layer];
+    [exitButton addTarget:self action:@selector(exitFirmAccountClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:exitButton];
 }
 -(void)createTableView{
@@ -109,6 +109,11 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 40;
+}
+-(void)exitFirmAccountClick{
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    [user setBool:NO forKey:@"FirmLogin"];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark -返回按钮点击
 - (void)backBtnClick{

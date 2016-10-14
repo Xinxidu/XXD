@@ -7,11 +7,8 @@
 //
 
 #import "ContactUsViewController.h"
-//#import "BaseNavigation.h"
 #import "BaseWebRequest.h"
 #import <AFNetworking/AFNetworking.h>
-#define WIDTH CGRectGetWidth(self.view.bounds)
-#define HEIGHT CGRectGetHeight(self.view.bounds)
 #define API @"http://app.service.xiduoil.com/ZhuBan?type=.guanwang&defference=lianxi"
 @interface ContactUsViewController ()<UIWebViewDelegate>
 @property (strong,nonatomic) UILabel *label;

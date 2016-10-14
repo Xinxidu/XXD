@@ -8,7 +8,6 @@
 
 #import "XXDTimeNewsCell.h"
 #import "XXDTimeNews.h"
-#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
 #define LIGHTGRAYCOLOR [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1]  //#dedede
 @implementation XXDTimeNewsCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withTimeNews:(XXDTimeNews *)timeNews{
@@ -31,7 +30,7 @@
         verticalLine.backgroundColor = LIGHTGRAYCOLOR;
         [self.contentView insertSubview:verticalLine atIndex:0];
         UIView *circleView = [[UIView alloc] initWithFrame:CGRectMake(56.1, 15, 5, 5)];
-        circleView.backgroundColor = BLUECOLOR;
+        circleView.backgroundColor = MAINCOLOR;
         circleView.layer.masksToBounds = YES;
         circleView.layer.cornerRadius = 2.5f;
         [self.contentView insertSubview:circleView atIndex:1];

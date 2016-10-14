@@ -14,9 +14,10 @@
 #import "XXDLoginViewController.h"
 #import "XXDMyAccountViewController.h"
 #import "XXDSetupViewController.h"
+#import "FirmLoginViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
-#define BLUECOLOR [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0]
+#define BLUECOLOR [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0]//14,41,70
 @interface XXDMyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UIView *hearerView;
@@ -222,8 +223,15 @@
     if (indexPath.section == 0) {
         
         if (indexPath.row == 0) {//我的实盘账户
-            XXDMyFirmAccountVC *vc = [[XXDMyFirmAccountVC alloc]init];
-            [self.navigationController pushViewController:vc animated:YES];
+            NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+            BOOL isLogin = [user boolForKey:@"FirmLogin"];
+            if (isLogin ==YES) {
+                XXDMyFirmAccountVC *vc = [[XXDMyFirmAccountVC alloc]init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }else{
+                FirmLoginViewController *firm = [[FirmLoginViewController alloc]init];
+                [self.navigationController pushViewController:firm animated:YES];
+            }
         }else{//我的自选
             if (_islogin == NO) {
                 [self customAlertViewMessageString:@"登录APP,查看我的自选"];

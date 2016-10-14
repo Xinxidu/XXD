@@ -19,11 +19,12 @@
 #import "XXDHotActivityViewController.h"
 #import "XXDLiveNewViewController.h"
 #import "XXDLiveOnLineController.h"
+#import "FirmRegisterViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 #define GREENCOLOR [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1]
 #define GRAYCOLOR [UIColor colorWithRed:230/255.0 green:231/255.0 blue:232/255.0 alpha:1]
-#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
+#define DARKBLUECOLOR [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0]
 typedef NS_ENUM(NSInteger,XXDButtonType){
     XXDButtonTypeHotTrade,              //热门交易
     XXDButtonTypeHotActivity,           //热门活动
@@ -71,7 +72,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     [self createLiveView];      //创建直播视图
     //创建实时快讯按钮
     self.timeNewsButton = [self createBottomButtonWidthTitle:@"实时快讯" x:-1];
-    [self.timeNewsButton setTitleColor:[UIColor colorWithRed:23/255.0 green:137/255.0 blue:241/255.0 alpha:1.0] forState:UIControlStateNormal];//23 137 241
+    [self.timeNewsButton setTitleColor:DARKBLUECOLOR forState:UIControlStateNormal];
     self.timeNewsButton.backgroundColor = GRAYCOLOR;
     self.timeNewsButton.titleEdgeInsets = UIEdgeInsetsMake(10, (WIDTH-1)*0.5 -96, 10, 32);
     //创建实时快讯按钮
@@ -294,7 +295,11 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 立即开户按钮点击
 - (void)openAccountClick{
-    NSLog(@"立即开户");
+    self.hidesBottomBarWhenPushed = YES;
+    FirmRegisterViewController *firm = [[FirmRegisterViewController alloc]init];
+    firm.delegate = self;
+    [self.navigationController pushViewController:firm animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
 }
 #pragma mark 创建直播视图
 - (void)createLiveView{
@@ -333,7 +338,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 底部两个按钮点击事件
 - (void)buttomButtonClick:(UIButton *)sender{
-    [sender setTitleColor:[UIColor colorWithRed:23/255.0 green:137/255.0 blue:241/255.0 alpha:1.0] forState:UIControlStateNormal];//23 137 241
+    [sender setTitleColor:DARKBLUECOLOR forState:UIControlStateNormal];//23 137 241
     sender.backgroundColor = GRAYCOLOR;
     _tableViewHeight = 0;
     if ([sender.titleLabel.text isEqualToString:@"实时快讯"]) {
