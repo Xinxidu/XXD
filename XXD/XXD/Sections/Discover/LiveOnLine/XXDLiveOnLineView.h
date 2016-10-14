@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 @class XXDLiveImage;
 @interface XXDLiveOnLineView : UIView
+@property (nonatomic,strong) XXDLiveImage *liveImage;
 - (instancetype)initWithFrame:(CGRect)frame liveImageModel:(XXDLiveImage *)liveImage;
 @end
