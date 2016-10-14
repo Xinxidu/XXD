@@ -27,9 +27,9 @@
             label.font = [UIFont systemFontOfSize:12.0f];
             label.text = labelStringArray[i];
             label.textAlignment = NSTextAlignmentCenter;
-            label.textColor = i !=1 || i !=2 ? [UIColor blackColor] : [UIColor redColor];
+            label.textColor = i !=1 || i !=2 ? [UIColor blackColor] : RED;
             if (i == 1 || i ==2) {
-                label.textColor = [UIColor redColor] ;
+                label.textColor = RED;
             }else{
                 label.textColor = [UIColor blackColor] ;
             }
@@ -37,7 +37,7 @@
         }
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, 49, WIDTH, 1)];
-        horizontal.backgroundColor = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1];  //#dedede;
+        horizontal.backgroundColor = LINEGRAY;
         [self.contentView addSubview:horizontal];
     }
     return self;

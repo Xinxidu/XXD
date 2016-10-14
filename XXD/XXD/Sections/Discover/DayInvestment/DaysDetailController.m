@@ -6,13 +6,10 @@
 //  Copyright © 2016年 Secret. All rights reserved.
 //
 #import "DaysDetailController.h"
-//#import "BaseNavigation.h"
 #import <AVKit/AVKit.h>
 #import "BaseWKWebView.h"
 #import <AFNetworking/AFNetworking.h>
-
 #define URL @"http://175.102.13.51:8080/XDSY/Detail"
-#define SIZE [[UIScreen mainScreen] bounds].size
 @interface DaysDetailController ()
 @property (strong,nonatomic) BaseWKWebView *wkWebView;
 @end
@@ -24,7 +21,7 @@
     self.title = @"详情";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    _wkWebView = [[BaseWKWebView alloc] initWithFrame:CGRectMake(0,0, SIZE.width  , SIZE.height)];
+    _wkWebView = [[BaseWKWebView alloc] initWithFrame:CGRectMake(0,0, WIDTH, HEIGHT)];
     [self.view addSubview:_wkWebView];
     [self getDataFromWeb];
 }

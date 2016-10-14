@@ -24,7 +24,7 @@
         for (NSInteger i = 0; i < 5; i++) {
             UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(width/5.0*i, 0, width/5.0, headHeight)];
             headLabel.text = headNameArray[i];
-            headLabel.backgroundColor = [UIColor colorWithRed:243/255.0 green:244/255.0 blue:245/255.0 alpha:1];
+            headLabel.backgroundColor = BGGRAY;
             headLabel.textColor = LIGHTGRAY;
             headLabel.font = [UIFont systemFontOfSize:12.0f];
             headLabel.textAlignment = NSTextAlignmentCenter;

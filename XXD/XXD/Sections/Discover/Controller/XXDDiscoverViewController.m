@@ -28,7 +28,7 @@
     [self createTableView];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0];
+    self.navigationController.navigationBar.barTintColor = MAINCOLOR;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
 }
 -(void)createTableView{
@@ -38,7 +38,7 @@
     _tableView.bounces = NO;
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    _tableView.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    _tableView.backgroundColor = BGGRAY;
     [self.view addSubview:_tableView];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -62,24 +62,24 @@
     cell.backgroundColor = [UIColor whiteColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (indexPath.section == 0) {
-        cell.imageView.image = [UIImage imageNamed:@"活动消息"];
+        cell.imageView.image = [UIImage imageNamed:@"huodongxiaoxi"];
         cell.textLabel.text = @"活动消息";
     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {
-            cell.imageView.image = [UIImage imageNamed:@"在线直播"];
+            cell.imageView.image = [UIImage imageNamed:@"zaixianzhibo"];
             cell.textLabel.text = @"在线直播";
         }else if(indexPath.row == 1){
-            cell.imageView.image = [UIImage imageNamed:@"投资策略"];
+            cell.imageView.image = [UIImage imageNamed:@"touzicelue"];
             cell.textLabel.text = @"投资策略";
         }else if (indexPath.row == 2){
-            cell.imageView.image = [UIImage imageNamed:@"盈利技巧"];
+            cell.imageView.image = [UIImage imageNamed:@"yinglijiqiao"];
             cell.textLabel.text = @"盈利技巧";
         }else{
-            cell.imageView.image = [UIImage imageNamed:@"名师团队"];
+            cell.imageView.image = [UIImage imageNamed:@"mingshituandui"];
             cell.textLabel.text = @"名师团队";
         }
     }else{
-            cell.imageView.image = [UIImage imageNamed:@"模拟盘交易"];
+            cell.imageView.image = [UIImage imageNamed:@"molipanjiaoyi"];
             cell.textLabel.text = @"模拟盘交易";
     }
     return cell;

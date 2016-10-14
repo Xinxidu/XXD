@@ -35,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
+    self.view.backgroundColor = BGGRAY;
     self.navigationController.navigationBar.barTintColor = MAINCOLOR;
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"菜单"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(leftChangeItemClick)];
@@ -119,8 +119,8 @@
         [self.view addSubview:lable];
         [lable setText:arr[i]];
         lable.font = [UIFont systemFontOfSize:14.0];
-        lable.textColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
-        lable.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
+        lable.textColor = [UIColor grayColor];
+        lable.backgroundColor = BGGRAY;
         lable.textAlignment = NSTextAlignmentCenter;
     }
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_scroll.frame)+30, WIDTH, HEIGHT-CGRectGetMaxY(_scroll.frame)-64-30) style:UITableViewStylePlain];

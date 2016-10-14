@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
 - (instancetype)initWithFrame:(CGRect)frame orderSwapsBSViewModel:(XXDOrderSwapsBSViewModel *)orderSwapsBSViewModel{
     if (self = [super initWithFrame:frame]) {
         self.orderSwapsBSViewModel = orderSwapsBSViewModel;
-        self.backgroundColor = [UIColor colorWithRed:252/255.0 green:253/255.0 blue:254/255.0 alpha:1];
+        self.backgroundColor = [UIColor whiteColor];
         //商品名称  白银升贴水1000   龙天勇银    白银现货排期  白银基差1000
         self.proNameArray = @[@"白银升贴水1000",@"龙天勇银",@"白银现货排期",@"白银基差1000"];
         UIButton *proNameButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 174/320.0*WIDTH, 30)];
@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
             self.totalButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
             self.totalButton.layer.masksToBounds = YES;
             self.totalButton.layer.cornerRadius = 15.0f;
-            self.totalButton.backgroundColor = [UIColor redColor];
+            self.totalButton.backgroundColor = RED;
             [self.totalButton addTarget:self action:@selector(totalButtonClick) forControlEvents:UIControlEventTouchUpInside];
             [self insertSubview:self.totalButton atIndex:0];
             //按汇总
@@ -117,7 +117,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
         [button setTitle:self.orderSwapsBSViewModel.buttonString forState:UIControlStateNormal];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
-        button.backgroundColor = [UIColor redColor];
+        button.backgroundColor = RED;
         button.layer.masksToBounds = YES;
         button.layer.cornerRadius = 15.0f;
         [button addTarget:self action:@selector(buyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -125,7 +125,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
         //添加按钮阴影
         CALayer *layer = [CALayer layer];
         layer.frame = button.frame;
-        layer.backgroundColor = [UIColor redColor].CGColor;
+        layer.backgroundColor = RED.CGColor;
         layer.shadowOffset = CGSizeMake(2, 2);
         layer.shadowOpacity = 0.6;
         layer.cornerRadius = 15.0f;
@@ -250,7 +250,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
     customAlertView.backgroundColor = [UIColor whiteColor];
     //弹窗标题
     UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 270, 42)];
-    titleView.backgroundColor = [UIColor colorWithRed:227/255.0 green:241/255.0 blue:1 alpha:1];//227,241,255
+    titleView.backgroundColor = HEADERBG;//227,241,255
     titleView.text = @"提示";
     titleView.textColor = [UIColor blackColor];
     titleView.textAlignment = NSTextAlignmentCenter;
@@ -277,7 +277,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
                 width = col==0 ?44:206;
             }
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(x, y, width, height)];
-            label.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
+            label.textColor = DARKGRAY;
             label.font = [UIFont systemFontOfSize:14.0f];
             [contentView addSubview:label];
             [labelArray addObject:label];
@@ -296,7 +296,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
     sureButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
     sureButton.layer.masksToBounds = YES;
     sureButton.layer.cornerRadius = 15.0f;
-    sureButton.backgroundColor = [UIColor redColor];
+    sureButton.backgroundColor = RED;
     [sureButton addTarget:self action:@selector(sureButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [customAlertView addSubview:sureButton];
     //取消
@@ -399,12 +399,12 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
 }
 #pragma mark 按汇总按钮点击事件
 - (void)totalButtonClick{
-    self.totalButton.backgroundColor = [UIColor redColor];
+    self.totalButton.backgroundColor = RED;
     self.detailButton.backgroundColor = GRAY;
 }
 #pragma mark 按明细按钮点击事件
 - (void)detailButtonClick{
-    self.detailButton.backgroundColor = [UIColor redColor];
+    self.detailButton.backgroundColor = RED;
     self.totalButton.backgroundColor = GRAY;
 }
 #pragma mark 创建底部表格表头
@@ -417,7 +417,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
         UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(WIDTH/5.0*i, CGRectGetMaxY(horizontal_1.frame), WIDTH/5.0, 37)];
         headLabel.text = headNameArray[i];
         headLabel.textColor = LIGHTGRAY;
-        headLabel.backgroundColor = [UIColor colorWithRed:243/255.0 green:244/255.0 blue:245/255.0 alpha:1];
+        headLabel.backgroundColor = BGGRAY;
         headLabel.font = [UIFont systemFontOfSize:12.0f];
         headLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:headLabel];
