@@ -38,7 +38,7 @@
         UIButton *playerButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 42, 72, 18)];
         playerButton.layer.masksToBounds = YES;
         playerButton.layer.cornerRadius = 2.0f;
-        playerButton.backgroundColor = [UIColor colorWithRed:236/255.0 green:13/255.0 blue:26/255.0 alpha:1];
+        playerButton.backgroundColor = RED;
         [playerButton setImage:[UIImage imageNamed:@"playerBtn"] forState:UIControlStateNormal];
         playerButton.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
         playerButton.titleLabel.textAlignment = NSTextAlignmentRight;
@@ -56,9 +56,9 @@
         NSString *str1 = [NSString stringWithFormat:@"%@",liveImage.teacherPush];
         NSString *str2 = [NSString stringWithFormat:@"〡名师荐股〡%@",liveImage.teacherPush];
         NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:str2];
-        [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0,6)];
+        [str addAttribute:NSForegroundColorAttributeName value:RED range:NSMakeRange(0,6)];
         [str addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:10.7] range:NSMakeRange(0,6)];
-        [str addAttribute:NSForegroundColorAttributeName value:[UIColor darkGrayColor] range:NSMakeRange(6,str1.length)];
+        [str addAttribute:NSForegroundColorAttributeName value:GRAY range:NSMakeRange(6,str1.length)];
         [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:10.7f] range:NSMakeRange(6,str1.length)];
         pushText.attributedText = str;
         [bgView addSubview:pushText];

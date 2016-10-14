@@ -47,7 +47,7 @@
         if (i<3) {
             UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(x,0,width,35)];
             titleLabel.text = titleArray[i];
-            titleLabel.textColor = [UIColor blackColor];
+            titleLabel.textColor = DARKGRAY;
             if (i!=0) {
                 titleLabel.textAlignment = NSTextAlignmentCenter;
             }
@@ -56,7 +56,7 @@
         }else{
             UIButton *dropDownButton = [[UIButton alloc] initWithFrame:CGRectMake(x, 0, width, 35)];
             [dropDownButton setTitle:titleArray[i] forState:UIControlStateNormal] ;
-            [dropDownButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [dropDownButton setTitleColor:DARKGRAY forState:UIControlStateNormal];
             dropDownButton.titleLabel.font = [UIFont systemFontOfSize:12.0f];
             dropDownButton.titleEdgeInsets = UIEdgeInsetsMake(11.5,0,11.5,(WIDTH*0.8 - 30)/4.0-48);
             dropDownButton.tag = i;
@@ -126,7 +126,7 @@
     for (NSInteger i = 0; i < menuArray.count; i++) {
         UIButton *optionButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 25*i+5, (WIDTH*0.8 - 30)/4.0-5, 25)];
         [optionButton setTitle:menuArray[i] forState:UIControlStateNormal];
-        [optionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [optionButton setTitleColor:DARKGRAY forState:UIControlStateNormal];
         optionButton.titleLabel.font = [UIFont systemFontOfSize:12.0f];
         optionButton.tag = tag;
         NSString *text = (NSString *)menuArray[i];

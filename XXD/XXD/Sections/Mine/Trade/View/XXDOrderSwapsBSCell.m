@@ -8,7 +8,6 @@
 
 #import "XXDOrderSwapsBSCell.h"
 #import "XXDOrderSwapsBS.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
 @implementation XXDOrderSwapsBSCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier orderSwapsBS:(XXDOrderSwapsBS *)orderSwapsBS{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {

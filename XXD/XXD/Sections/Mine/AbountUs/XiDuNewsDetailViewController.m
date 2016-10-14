@@ -7,13 +7,11 @@
 //
 
 #import "XiDuNewsDetailViewController.h"
-//#import "BaseNavigation.h"
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
 #import "BaseWKWebView.h"
 #import "BaseWebRequest.h"
 #define URL @"http://app.service.xiduoil.com/Detail"
-#define SIZE [[UIScreen mainScreen] bounds].size
 @interface XiDuNewsDetailViewController ()
 @property (strong,nonatomic) BaseWKWebView *wkWebView;
 @end
@@ -27,7 +25,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     //创建WKWebView
-    _wkWebView = [[BaseWKWebView alloc] initWithFrame:CGRectMake(0, 0, SIZE.width, SIZE.height)];
+    _wkWebView = [[BaseWKWebView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
     [self.view addSubview:_wkWebView];
     //网络请求
     _Id=[[NSUserDefaults standardUserDefaults]objectForKey:@"id"];

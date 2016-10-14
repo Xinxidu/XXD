@@ -9,12 +9,6 @@
 #import "XXDHoldProductView.h"
 #import "XXDOrderSwapsBS.h"
 #import "XXDOrderSwapsBSCell.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
-#define GREENCOLOR [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1]
-#define DARKGRAYCOLOR [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]   //#666666
-#define GRAYCOLOR [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]   //#999999
-#define LIGHTGRAYCOLOR [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1]  //#dedede
 @implementation XXDHoldProductView
 
 - (instancetype)initWithFrame:(CGRect)frame  tableViewData:(NSArray *)tableViewData{
@@ -23,12 +17,12 @@
         self.backgroundColor = [UIColor colorWithRed:252/255.0 green:253/255.0 blue:254/255.0 alpha:1];
         UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(-1, 10, WIDTH+2, 50)];
         topView.backgroundColor = [UIColor colorWithRed:225/255.0 green:241/255.0 blue:254/255.0 alpha:1];//225 241 254
-        topView.layer.borderColor = BLUECOLOR.CGColor;
+        topView.layer.borderColor = MAINCOLOR.CGColor;
         topView.layer.borderWidth = 0.4;
         //账户
         UILabel *accountTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 45, 50)];
         accountTitleLabel.text = @"账户:";
-        accountTitleLabel.textColor = DARKGRAYCOLOR;
+        accountTitleLabel.textColor = GRAY;
         accountTitleLabel.font = [UIFont systemFontOfSize:14.0f];
         [topView addSubview:accountTitleLabel];
         UILabel *accountLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(accountTitleLabel.frame), 0, 100, 50)];
@@ -39,13 +33,13 @@
         //风险覆盖率
         UILabel *safeTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(WIDTH/2.0+10, 0, 75, 50)];
         safeTitleLabel.text = @"风险覆盖率";
-        safeTitleLabel.textColor = DARKGRAYCOLOR;
+        safeTitleLabel.textColor = GRAY;
         safeTitleLabel.font = [UIFont systemFontOfSize:14.0f];
         [topView addSubview:safeTitleLabel];
         UILabel *safeLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(safeTitleLabel.frame)+5, 10, 60, 30)];
         safeLabel.text = @"安全";
         safeLabel.textColor = [UIColor whiteColor];
-        safeLabel.backgroundColor = GREENCOLOR;
+        safeLabel.backgroundColor = DARKGREEN;
         safeLabel.layer.masksToBounds = YES;
         safeLabel.layer.cornerRadius = 15.0f;
         safeLabel.font = [UIFont systemFontOfSize:14.0f];
@@ -54,7 +48,7 @@
          [self addSubview:topView];
         //中间视图
         UIView *middleView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topView.frame)+10, WIDTH, 100)];
-        middleView.backgroundColor = LIGHTGRAYCOLOR;
+        middleView.backgroundColor = LINEGRAY;
         [self addSubview:middleView];
         //初始化表头数组
         self.titleArray = @[@"可用履约资金",@"浮动盈亏",@"当前资产",@"实际资产"];
@@ -69,7 +63,7 @@
                 v.backgroundColor = [UIColor whiteColor];
                 //表头
                 UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, width-10, 28)];
-                titleLabel.textColor = DARKGRAYCOLOR;
+                titleLabel.textColor = GRAY;
                 titleLabel.font = [UIFont systemFontOfSize:14.0f];
                 [titleLabelArray addObject:titleLabel];
                 [v addSubview:titleLabel];
@@ -97,19 +91,19 @@
         //表格表头
         NSArray *headNameArray = @[@"持货时间",@"买/卖",@"持货/可调",@"订立/持货",@"盈亏/剩余"];
         UIView *horizontal_1 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(middleView.frame)+10., WIDTH, 1)];
-        horizontal_1.backgroundColor = LIGHTGRAYCOLOR;
+        horizontal_1.backgroundColor = LINEGRAY;
         [self addSubview:horizontal_1];
         for (NSInteger i = 0; i < 5; i++) {
             UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(WIDTH/5.0*i, CGRectGetMaxY(horizontal_1.frame), WIDTH/5.0, 37)];
             headLabel.text = headNameArray[i];
-            headLabel.textColor = GRAYCOLOR;
+            headLabel.textColor = LIGHTGRAY;
             headLabel.backgroundColor = [UIColor colorWithRed:243/255.0 green:244/255.0 blue:245/255.0 alpha:1];
             headLabel.font = [UIFont systemFontOfSize:12.0f];
             headLabel.textAlignment = NSTextAlignmentCenter;
             [self addSubview:headLabel];
         }
         UIView *horizontal_2 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(horizontal_1.frame)+37, WIDTH, 1)];
-        horizontal_2.backgroundColor = LIGHTGRAYCOLOR;
+        horizontal_2.backgroundColor = LINEGRAY;
         [self addSubview:horizontal_2];
         
         //底部表格

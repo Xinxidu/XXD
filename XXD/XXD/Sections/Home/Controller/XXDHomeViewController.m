@@ -20,11 +20,7 @@
 #import "XXDLiveNewViewController.h"
 #import "XXDLiveOnLineController.h"
 #import "FirmRegisterViewController.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
-#define GREENCOLOR [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1]
-#define GRAYCOLOR [UIColor colorWithRed:230/255.0 green:231/255.0 blue:232/255.0 alpha:1]
-#define DARKBLUECOLOR [UIColor colorWithRed:14/255.0 green:41/255.0 blue:70/255.0 alpha:1.0]
+#define BGCOLOR [UIColor colorWithRed:230/255.0 green:231/255.0 blue:232/255.0 alpha:1]
 typedef NS_ENUM(NSInteger,XXDButtonType){
     XXDButtonTypeHotTrade,              //热门交易
     XXDButtonTypeHotActivity,           //热门活动
@@ -60,7 +56,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     //创建根视图
     self.rootScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -64, WIDTH, HEIGHT+20)];
     self.rootScrollView.bounces = NO;
-    self.rootScrollView.backgroundColor = [UIColor colorWithRed:244/255.0 green:248/255.0 blue:251/255.0 alpha:1];
+    self.rootScrollView.backgroundColor = BGGRAY;
     self.rootScrollView.showsVerticalScrollIndicator = NO;
 //    self.rootScrollView.contentSize = CGSizeMake(WIDTH, HEIGHT*2);
     [self.view addSubview:self.rootScrollView];
@@ -72,8 +68,8 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     [self createLiveView];      //创建直播视图
     //创建实时快讯按钮
     self.timeNewsButton = [self createBottomButtonWidthTitle:@"实时快讯" x:-1];
-    [self.timeNewsButton setTitleColor:DARKBLUECOLOR forState:UIControlStateNormal];
-    self.timeNewsButton.backgroundColor = GRAYCOLOR;
+    [self.timeNewsButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
+    self.timeNewsButton.backgroundColor = BGCOLOR;
     self.timeNewsButton.titleEdgeInsets = UIEdgeInsetsMake(10, (WIDTH-1)*0.5 -96, 10, 32);
     //创建实时快讯按钮
     self.jinYinNiuPingButton = [self createBottomButtonWidthTitle:@"金银牛评" x:WIDTH/2.0-1];
@@ -178,9 +174,8 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.topBgView addSubview:button];
     }
-    //232 233 237
     UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, 1)];
-    horizontal.backgroundColor = GRAYCOLOR;
+    horizontal.backgroundColor = BGCOLOR;
     [self.topBgView addSubview:horizontal];
 }
 #pragma mark 顶部按钮的点击事件
@@ -220,7 +215,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 #pragma mark 创建垂直线
 - (UIView *)createVerticlalLineWithLength:(CGFloat)length{
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake((WIDTH-1.0)/2.0, CGRectGetMaxY(self.topBgView.frame)+10, 1, length)];
-    line.backgroundColor = GRAYCOLOR;
+    line.backgroundColor = BGCOLOR;
     [self.rootScrollView addSubview:line];
     return line;
 }
@@ -244,17 +239,17 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
         UILabel *num1 = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(productName.frame), viewWidth-x, 22)];
         num1.font = [UIFont systemFontOfSize:20.0];
         num1.text = num1Array[i];
-        num1.textColor = (i == 0 ? GREENCOLOR : [UIColor redColor]);
+        num1.textColor = (i == 0 ? DARKGREEN : RED);
         [v addSubview:num1];
         UILabel *num2 = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(num1.frame), viewWidth/2.0-x, 15)];
         num2.font = [UIFont systemFontOfSize:12.0];
         num2.text = num2Array[i];
-        num2.textColor = (i == 0 ? GREENCOLOR : [UIColor redColor]);
+        num2.textColor = (i == 0 ? DARKGREEN : RED);
         [v addSubview:num2];
         UILabel *num3 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(num2.frame), CGRectGetMaxY(num1.frame), viewWidth-CGRectGetMaxX(num2.frame), 15)];
         num3.font = [UIFont systemFontOfSize:12.0];
         num3.text = num3Array[i];
-        num3.textColor = (i == 0 ? GREENCOLOR : [UIColor redColor]);
+        num3.textColor = (i == 0 ? DARKGREEN : RED);
         [v addSubview:num3];
         if (i == 0) {
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(featuredProductsClick1)];
@@ -276,7 +271,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 #pragma mark 立即开户
 - (void)createOpenAccount{
     self.openAccountView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.verticalLine.frame), WIDTH, 25)];
-    self.openAccountView.backgroundColor = GRAYCOLOR;
+    self.openAccountView.backgroundColor = BGCOLOR;
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake((WIDTH-247)*0.5, 0, 175, 25)];
     label.textColor = [UIColor darkGrayColor];
     label.text = @"新开实盘账号，开启财富之旅!";
@@ -286,7 +281,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     [openAccountButton setTitle:@"立即开户>>" forState:UIControlStateNormal];
     openAccountButton.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
     [openAccountButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    openAccountButton.backgroundColor = [UIColor colorWithRed:236/255.0 green:13/255.0 blue:26/255.0 alpha:1];
+    openAccountButton.backgroundColor = RED;
     openAccountButton.layer.cornerRadius = 2;
     openAccountButton.layer.masksToBounds = YES;
     [openAccountButton addTarget:self action:@selector(openAccountClick) forControlEvents:UIControlEventTouchUpInside];
@@ -305,7 +300,6 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 - (void)createLiveView{
     XXDLiveImage *liveImage = [[XXDLiveImage alloc] init];
     liveImage.liveName = @"股赢天下";
-    liveImage.viewColor = [UIColor colorWithRed:242/255.0 green:167/255.0 blue:162/255.0 alpha:1.0]; //242 167 162
     liveImage.info = @"特点：抢反弹一马当先抓涨停十拿九稳";
     liveImage.teacherPush = @"西都金融研究院每周不定时推荐一到两支股票";
     self.liveView = [[XXDLiveView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.openAccountView.frame)+10, WIDTH, 97) liveImageModel:liveImage];
@@ -330,7 +324,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(self.liveView.frame)+9, (WIDTH-1.0)/2.0+2, 37)];
     [button setTitle:title forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-    button.layer.borderColor = GRAYCOLOR.CGColor;
+    button.layer.borderColor = BGCOLOR.CGColor;
     button.layer.borderWidth = 1;
     [button addTarget:self action:@selector(buttomButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.rootScrollView addSubview:button];
@@ -338,8 +332,8 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 底部两个按钮点击事件
 - (void)buttomButtonClick:(UIButton *)sender{
-    [sender setTitleColor:DARKBLUECOLOR forState:UIControlStateNormal];//23 137 241
-    sender.backgroundColor = GRAYCOLOR;
+    [sender setTitleColor:MAINCOLOR forState:UIControlStateNormal];//23 137 241
+    sender.backgroundColor = BGCOLOR;
     _tableViewHeight = 0;
     if ([sender.titleLabel.text isEqualToString:@"实时快讯"]) {
         self.flagForTable = 0;
