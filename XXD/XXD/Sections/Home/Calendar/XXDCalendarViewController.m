@@ -11,9 +11,6 @@
 #import "XXDCalendarCell.h"
 #import "XXDCustomNavigation.h"
 
-#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
-#define GRAYCOLOR [UIColor colorWithRed:245/255.0 green:246/255.0 blue:247/255.0 alpha:1]
-#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
 @interface XXDCalendarViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 @property (strong,nonatomic) UIButton *calendarButton;//日历按钮
 @property (strong,nonatomic) UIScrollView *dateScrollView;//日期选项卡
@@ -46,7 +43,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM dd"];
     [self.calendarButton setTitle:[formatter stringFromDate:[NSDate date]] forState:UIControlStateNormal];
-    [self.calendarButton setTitleColor:BLUECOLOR forState:UIControlStateNormal];
+    [self.calendarButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
     self.calendarButton.titleLabel.font = [UIFont systemFontOfSize:10.0f];
     [self.calendarButton addTarget:self action:@selector(calendarClick:) forControlEvents:UIControlEventTouchUpInside];
     [calendarImageView addSubview:self.calendarButton];
@@ -58,13 +55,13 @@
     [self createScrollViewWithDate:[NSDate date]];
     //是否公布按钮
     UIButton *isPublishButton = [[UIButton alloc] initWithFrame:CGRectMake(WIDTH-55, 64, 55, 38)];
-    isPublishButton.backgroundColor = GRAYCOLOR;
+    isPublishButton.backgroundColor = BGGRAY;
     [isPublishButton setTitle:@"已公布" forState:UIControlStateNormal];
     [isPublishButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     isPublishButton.titleLabel.font = [UIFont boldSystemFontOfSize:12.0];
     [self.view addSubview:isPublishButton];
     UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, 37, 55, 1)];
-    horizontal.backgroundColor = BLUECOLOR;
+    horizontal.backgroundColor = MAINCOLOR;
     [isPublishButton addSubview:horizontal];
     [self createTableView];//初始化表格视图
 //    [self initCustomAlert];//初始化自定义弹窗
@@ -209,7 +206,7 @@
     }
     self.dateScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, WIDTH-55,38)];
     self.dateScrollView.contentSize = CGSizeMake((WIDTH-55)/6.0*self.dayArray.count, 38);
-    self.dateScrollView.backgroundColor = GRAYCOLOR;
+    self.dateScrollView.backgroundColor = BGGRAY;
     self.dateScrollView.showsHorizontalScrollIndicator = NO;
     self.dateScrollView.delegate = self;
     self.dateScrollView.bounces = NO;
@@ -229,7 +226,7 @@
     NSDateComponents *components = [self getDateComponents:date];
     NSInteger day = [components day];
     DateView *currentView = (DateView *)[self.viewArray objectAtIndex:day-1];
-    currentView.backgroundColor = BLUECOLOR;
+    currentView.backgroundColor = MAINCOLOR;
     currentView.weekDayLabel.textColor = [UIColor whiteColor];
     currentView.dayLabel.textColor = [UIColor whiteColor];
     if (day>4&&day<self.dayArray.count-2) {
@@ -243,12 +240,12 @@
 #pragma mark 日历选项卡点击事件
 - (void)viewClick:(UITapGestureRecognizer *)sender{
     for (DateView *aView in self.viewArray) {
-        aView.backgroundColor = GRAYCOLOR;
+        aView.backgroundColor = BGGRAY;
         aView.weekDayLabel.textColor = [UIColor blackColor];
         aView.dayLabel.textColor = [UIColor blackColor];
     }
     DateView *aView= (DateView *)sender.view;
-    aView.backgroundColor = BLUECOLOR;
+    aView.backgroundColor = MAINCOLOR;
     aView.weekDayLabel.textColor = [UIColor whiteColor];
     aView.dayLabel.textColor = [UIColor whiteColor];
     //让选中的View居中

@@ -8,11 +8,6 @@
 
 #import "XXDUserFeedbackViewController.h"
 #import "XXDCustomNavigation.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
-#define DARKGRAYCOLOR [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]   //#333333
-#define GRAYCOLOR [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]   //#999999
-#define LIGHTGRAYCOLOR [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1]  //#dedede
 @interface XXDUserFeedbackViewController ()<UITextViewDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) UITextView *opinionTextView;//意见文本视图
 @property (strong,nonatomic) UIWebView *phoneCallWebView;
@@ -40,12 +35,12 @@
     [self.view addSubview:bgView];
     UILabel *decription = [[UILabel alloc] initWithFrame:CGRectMake(10, 7, WIDTH-20, 86)];
     decription.userInteractionEnabled = YES;
-    decription.textColor = DARKGRAYCOLOR;
+    decription.textColor = DARKGRAY;
     decription.font = [UIFont systemFontOfSize:14.5f];
     decription.numberOfLines = 4;
     NSString *contentString = @"感谢您提出宝贵的建议和意见，您留下的每个字都对我们非常重要。如果您有非常紧急的需求和问题，您可以直接拨打我们的客服电话：4001-054-080 我们将竭诚为您服务！";
     NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:contentString];
-    NSDictionary *attributeDic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:NSUnderlineStyleSingle],NSUnderlineStyleAttributeName,BLUECOLOR,NSForegroundColorAttributeName, nil];
+    NSDictionary *attributeDic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:NSUnderlineStyleSingle],NSUnderlineStyleAttributeName,MAINCOLOR,NSForegroundColorAttributeName, nil];
     [content addAttributes:attributeDic range:NSMakeRange(60, 12)];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle setLineSpacing:5];
@@ -62,20 +57,20 @@
     //意见
     self.opinionTextView = [[UITextView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(bgView.frame)+10, WIDTH-20, 200)];
     self.opinionTextView.layer.borderWidth = 0.5;
-    self.opinionTextView.layer.borderColor = LIGHTGRAYCOLOR.CGColor;
+    self.opinionTextView.layer.borderColor = LINEGRAY.CGColor;
     self.opinionTextView.font = [UIFont systemFontOfSize:12.0f];
-    self.opinionTextView.textColor = DARKGRAYCOLOR;
+    self.opinionTextView.textColor = DARKGRAY;
     self.opinionTextView.delegate = self;
     [self.view addSubview:self.opinionTextView];
     [self addPromptContent];
     //联系方式
     self.contactBgView = [[UIView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.opinionTextView.frame)+10, WIDTH-20, 40)];
     self.contactBgView.layer.borderWidth = 0.5f;
-    self.contactBgView.layer.borderColor = LIGHTGRAYCOLOR.CGColor;
+    self.contactBgView.layer.borderColor = LINEGRAY.CGColor;
     self.contactBgView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.contactBgView];
     self.contactTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 14, WIDTH-40, 12)];
-    self.contactTextField.textColor = DARKGRAYCOLOR;
+    self.contactTextField.textColor = DARKGRAY;
     self.contactTextField.keyboardType = UIKeyboardTypePhonePad;
     self.contactTextField.placeholder = @"请留下您的联系方式";
     self.contactTextField.delegate = self;
@@ -84,7 +79,7 @@
     [self.contactBgView addSubview:self.contactTextField];
     //提交
     UIButton *commitButton = [[UIButton alloc] initWithFrame:CGRectMake((WIDTH-240)*0.5, CGRectGetMaxY(self.contactBgView.frame)+20, 240, 42)];
-    commitButton.backgroundColor = BLUECOLOR;
+    commitButton.backgroundColor = MAINCOLOR;
     commitButton.layer.masksToBounds = YES;
     commitButton.layer.cornerRadius = 21.0f;
     [commitButton setTitle:@"提交" forState:UIControlStateNormal];
@@ -93,7 +88,7 @@
     [commitButton addTarget:self action:@selector(commitClick) forControlEvents:UIControlEventTouchUpInside];
     CALayer *layer = [[CALayer alloc] init];
     layer.frame = commitButton.frame;
-    layer.backgroundColor = BLUECOLOR.CGColor;
+    layer.backgroundColor = MAINCOLOR.CGColor;
     layer.shadowOffset = CGSizeMake(2, 2);
     layer.shadowOpacity = 0.6;
     layer.cornerRadius = 21.0f;
@@ -118,7 +113,7 @@
     self.promptImageView.image = [UIImage imageNamed:@"prompt"];
     [self.opinionTextView addSubview:self.promptImageView];
     self.promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 10, WIDTH-45, 12)];
-    self.promptLabel.textColor = GRAYCOLOR;
+    self.promptLabel.textColor = LIGHTGRAY;
     self.promptLabel.font = [UIFont systemFontOfSize:12.0f];
     self.promptLabel.text = @"请写下您的宝贵意见，我们会及时处理......";
     [self.opinionTextView addSubview:self.promptLabel];
@@ -139,7 +134,7 @@
     }
 }
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-    self.promptLabel.textColor = GRAYCOLOR;
+    self.promptLabel.textColor = LIGHTGRAY;
     _currentView = textView;
     return YES;
 }

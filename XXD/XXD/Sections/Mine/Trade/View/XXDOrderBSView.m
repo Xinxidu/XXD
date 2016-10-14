@@ -10,11 +10,6 @@
 #import "XXDOrderSwapsBSViewModel.h"
 #import "XXDOrderSwapsBS.h"
 #import "XXDOrderSwapsBSCell.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
-#define DARKGRAYCOLOR [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]   //#666666
-#define GRAYCOLOR [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]   //#999999
-#define LIGHTGRAYCOLOR [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1]  //#dedede
 typedef NS_ENUM(NSInteger,XXDJiaJianType) {
     XXDJiaJianTypeBuyPriceJian,     //买入价格减
     XXDJiaJianTypeBuyPriceJia,      //买入价格加
@@ -33,7 +28,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
         [proNameButton setTitle:@"白银升贴水1000" forState:UIControlStateNormal];
         [proNameButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         proNameButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
-        proNameButton.backgroundColor = BLUECOLOR;
+        proNameButton.backgroundColor = MAINCOLOR;
         proNameButton.layer.masksToBounds = YES;
         proNameButton.layer.cornerRadius = 15.0f;
         [proNameButton addTarget:self action:@selector(showProductDropDown) forControlEvents:UIControlEventTouchUpInside];
@@ -70,7 +65,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
             self.detailButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
             self.detailButton.layer.masksToBounds = YES;
             self.detailButton.layer.cornerRadius = 15.0f;
-            self.detailButton.backgroundColor = DARKGRAYCOLOR;
+            self.detailButton.backgroundColor = GRAY;
             [self.detailButton addTarget:self action:@selector(detailButtonClick) forControlEvents:UIControlEventTouchUpInside];
             [self insertSubview:self.detailButton atIndex:0];
             
@@ -79,7 +74,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
         //买入价格
         UIView *buyPriceView = [[UIView alloc] initWithFrame:buyPriceViewFrome];
         buyPriceView.backgroundColor = [UIColor whiteColor];
-        buyPriceView.layer.borderColor = BLUECOLOR.CGColor;
+        buyPriceView.layer.borderColor = MAINCOLOR.CGColor;
         buyPriceView.layer.borderWidth = 1;
         buyPriceView.layer.masksToBounds = YES;
         buyPriceView.layer.cornerRadius = 15.0f;
@@ -100,7 +95,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
         //买入数量
         UIView *buyNumView = [[UIView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(buyPriceView.frame)+10, proNameButton.frame.size.width, 30)];
         buyNumView.backgroundColor = [UIColor whiteColor];
-        buyNumView.layer.borderColor = BLUECOLOR.CGColor;
+        buyNumView.layer.borderColor = MAINCOLOR.CGColor;
         buyNumView.layer.borderWidth = 1;
         buyNumView.layer.cornerRadius = 15.0f;
         //数量减按钮
@@ -156,7 +151,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
     UIView *optionView = [[UIView alloc] initWithFrame:CGRectMake(10, 25, 174/320.0*WIDTH, 140)];
     optionView.backgroundColor = [UIColor whiteColor];
     optionView.layer.borderWidth = 1;
-    optionView.layer.borderColor = BLUECOLOR.CGColor;
+    optionView.layer.borderColor = MAINCOLOR.CGColor;
     for (NSInteger i = 0; i < menuArray.count; i++) {
         UIButton *optionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 29*i+19, CGRectGetWidth(optionView.frame), 29)];
         [optionButton setTitle:menuArray[i] forState:UIControlStateNormal];
@@ -202,7 +197,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
     [jiaJianButton setTitle:buttonString forState:UIControlStateNormal];
     jiaJianButton.layer.masksToBounds = YES;
     jiaJianButton.layer.cornerRadius = frome.size.height/2.0;
-    jiaJianButton.backgroundColor = BLUECOLOR;
+    jiaJianButton.backgroundColor = MAINCOLOR;
     jiaJianButton.tag = jiaJianType;
     [jiaJianButton addTarget:self action:@selector(jiaJianButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     return jiaJianButton;
@@ -311,7 +306,7 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
     cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
     cancelButton.layer.masksToBounds = YES;
     cancelButton.layer.cornerRadius = 15.0f;
-    cancelButton.backgroundColor = DARKGRAYCOLOR;
+    cancelButton.backgroundColor = GRAY;
     [cancelButton addTarget:self action:@selector(cancelButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [customAlertView addSubview:cancelButton];
     
@@ -384,51 +379,51 @@ typedef NS_ENUM(NSInteger,XXDJiaJianType) {
         if (i >3 && i!=6) {
             label.textColor = [UIColor blackColor];
         }else{
-            label.textColor = GRAYCOLOR;
+            label.textColor = LIGHTGRAY;
         }
     }
     //表格分割线
     UIView *h1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35, WIDTH*110/320.0, 1)];
-    h1.backgroundColor = LIGHTGRAYCOLOR;
+    h1.backgroundColor = LINEGRAY;
     [rightView addSubview:h1];
     UIView *h2 = [[UIView alloc] initWithFrame:CGRectMake(0, 75, WIDTH*110/320.0, 1)];
-    h2.backgroundColor = LIGHTGRAYCOLOR;
+    h2.backgroundColor = LINEGRAY;
     [rightView addSubview:h2];
     UIView *v1 = [[UIView alloc] initWithFrame:CGRectMake(WIDTH*30/320.0, 5, 1, 110)];
-    v1.backgroundColor = LIGHTGRAYCOLOR;
+    v1.backgroundColor = LINEGRAY;
     [rightView addSubview:v1];
     UIView *v2 = [[UIView alloc] initWithFrame:CGRectMake(WIDTH*80/320.0, 5, 1, 110)];
-    v2.backgroundColor = LIGHTGRAYCOLOR;
+    v2.backgroundColor = LINEGRAY;
     [rightView addSubview:v2];
     [self addSubview:rightView];
 }
 #pragma mark 按汇总按钮点击事件
 - (void)totalButtonClick{
     self.totalButton.backgroundColor = [UIColor redColor];
-    self.detailButton.backgroundColor = DARKGRAYCOLOR;
+    self.detailButton.backgroundColor = GRAY;
 }
 #pragma mark 按明细按钮点击事件
 - (void)detailButtonClick{
     self.detailButton.backgroundColor = [UIColor redColor];
-    self.totalButton.backgroundColor = DARKGRAYCOLOR;
+    self.totalButton.backgroundColor = GRAY;
 }
 #pragma mark 创建底部表格表头
 - (void)createButtomTable{
     NSArray *headNameArray = @[@"持货时间",@"买/卖",@"持货/可调",@"订立/持货",@"盈亏/剩余"];
     UIView *horizontal_1 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.bsButton.frame)+20., WIDTH, 1)];
-    horizontal_1.backgroundColor = LIGHTGRAYCOLOR;
+    horizontal_1.backgroundColor = LINEGRAY;
     [self addSubview:horizontal_1];
     for (NSInteger i = 0; i < 5; i++) {
         UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(WIDTH/5.0*i, CGRectGetMaxY(horizontal_1.frame), WIDTH/5.0, 37)];
         headLabel.text = headNameArray[i];
-        headLabel.textColor = GRAYCOLOR;
+        headLabel.textColor = LIGHTGRAY;
         headLabel.backgroundColor = [UIColor colorWithRed:243/255.0 green:244/255.0 blue:245/255.0 alpha:1];
         headLabel.font = [UIFont systemFontOfSize:12.0f];
         headLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:headLabel];
     }
     UIView *horizontal_2 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(horizontal_1.frame)+37, WIDTH, 1)];
-    horizontal_2.backgroundColor = LIGHTGRAYCOLOR;
+    horizontal_2.backgroundColor = LINEGRAY;
     [self addSubview:horizontal_2];
     
 }

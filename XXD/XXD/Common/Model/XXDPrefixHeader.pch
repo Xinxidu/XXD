@@ -16,10 +16,17 @@
 //屏幕高宽
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
-//4种灰色
-#define DARKGRAY [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]   //#666666
+//5种灰色
+#define DARKGRAY [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]   //#333333
 #define GRAY [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]   //#666666
 #define LIGHTGRAY [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]   //#999999
-#define LINE [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1]  //#dedede
+#define LINEGRAY [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1]  //#dedede
+#define BGGRAY [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1]  //#f6f6f6
+//深绿色
+#define DARKGREEN [UIColor colorWithRed:1/255.0 green:155/255.0 blue:92/255.0 alpha:1]  //#019b5c
+//红色
+#define RED [UIColor redColor]  //#ff0000
+//负责背景色
+#define HEADERBG [UIColor colorWithRed:227/255.0 green:241/255.0 blue:1 alpha:1]  //#f6f6f6
 
 #endif /* XXDPrefixHeader_pch */

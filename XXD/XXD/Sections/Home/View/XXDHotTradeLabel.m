@@ -13,7 +13,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.text = text;
-        self.textColor = changeValue  >0 ? [UIColor redColor] : [UIColor colorWithRed:0/255.0 green:142/255.0 blue:48/255.0 alpha:1];
+        self.textColor = changeValue  >0 ? RED : DARKGREEN;
         self.font = [UIFont systemFontOfSize:12.0f];
         self.textAlignment = NSTextAlignmentCenter;
     }

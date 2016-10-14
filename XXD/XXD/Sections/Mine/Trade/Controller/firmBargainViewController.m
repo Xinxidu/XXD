@@ -11,9 +11,6 @@
 #import "XXDDelegateView.h"
 #import "XXDHoldProductView.h"
 #import "XXDOrderSwapsBSViewModel.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
-#define BLUECOLOR [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0]
 typedef NS_ENUM(NSInteger,XXDButtonType){
     XXDButtonTypeOrderBuy,           //订立买
     XXDButtonTypeOrderSell,           //订立卖
@@ -34,7 +31,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1];
+    self.view.backgroundColor = BGGRAY;
     self.navigationItem.title = @"实盘交易";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -61,8 +58,8 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
         UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonWidth*i, 0, buttonWidth, 37)];
         menuButton.titleLabel.font = [UIFont boldSystemFontOfSize:13.0];
         [menuButton setTitle:self.menuBottonNameArray[i] forState:UIControlStateNormal];
-        [menuButton setTitleColor:i==0?BLUECOLOR:[UIColor blackColor] forState:UIControlStateNormal];
-        menuButton.backgroundColor = i == 0 ? [UIColor colorWithRed:243/255.0 green:244/255.0 blue:245/255.0 alpha:1] : [UIColor whiteColor];
+        [menuButton setTitleColor:i==0?MAINCOLOR:DARKGRAY forState:UIControlStateNormal];
+        menuButton.backgroundColor = i == 0 ? BGGRAY : [UIColor whiteColor];
         menuButton.tag = i;
         [menuButton addTarget:self action:@selector(topMenuButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [topView addSubview:menuButton];
@@ -70,7 +67,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     }
     //下划线
     self.topUnderLine = [[UIView alloc] initWithFrame:CGRectMake(0, 35.5, buttonWidth, 1.5)];
-    self.topUnderLine.backgroundColor = BLUECOLOR;
+    self.topUnderLine.backgroundColor = MAINCOLOR;
     [topView addSubview:self.topUnderLine];
     self.topView = topView;
 }
@@ -78,10 +75,10 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 - (void)topMenuButtonClick:(UIButton *)sender{
     for (UIButton *item in self.topButtonArray) {
         item.backgroundColor = [UIColor whiteColor];
-        [item setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [item setTitleColor:DARKGRAY forState:UIControlStateNormal];
     }
-    [sender setTitleColor:BLUECOLOR forState:UIControlStateNormal];
-    sender.backgroundColor = [UIColor colorWithRed:243/255.0 green:244/255.0 blue:245/255.0 alpha:1];
+    [sender setTitleColor:MAINCOLOR forState:UIControlStateNormal];
+    sender.backgroundColor = BGGRAY;
     CGFloat buttonWidth = WIDTH/self.menuBottonNameArray.count;
     self.topUnderLine.frame = CGRectMake(buttonWidth*sender.tag, 35.5, buttonWidth, 1.5);
     [self createMainViewWithButtonType:sender.tag];
