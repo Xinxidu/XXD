@@ -15,6 +15,7 @@
 @interface ProfessorTeamViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray* dataArray;
+@property (strong,nonatomic) UIActivityIndicatorView *activity;//刷新控件
 @end
 
 @implementation ProfessorTeamViewController
@@ -31,6 +32,7 @@
 }
 #pragma mark ****** 数据请求
 -(void)requestWebServiceData{
+    [_activity startAnimating];
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
     [manager GET:URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSArray*  array = responseObject[@"data"];
@@ -47,19 +49,28 @@
             [_dataArray addObject:model];
         }
         [_tableView reloadData];
+        [_activity stopAnimating];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //        [self showAlert:@"加载失败..."];
     }];
     
 }
 -(void)createTableView{
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.bounces = NO;
-    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     _tableView.backgroundColor = BGGRAY;
     [self.view addSubview:_tableView];
+    //------ 刷新控件 ------
+    //------ 指定进度轮中心点 ------
+    _activity = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    //------ 指定进度轮中心点 ------
+    [_activity setCenter:self.view.center];
+    //------ 设置进度轮显示类型 ------
+    [_activity setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:_activity];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return _dataArray.count;

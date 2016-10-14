@@ -54,6 +54,7 @@
     XXDLiveOnlineDetailController *detail = [[XXDLiveOnlineDetailController alloc] init];
     XXDLiveOnLineView *liveView = (XXDLiveOnLineView *)sender.view;
     detail.liveOnlineName = liveView.liveImage.liveName;
+    NSLog(@"%@",liveView.liveImage.liveName);
     self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detail animated:YES];
 }
