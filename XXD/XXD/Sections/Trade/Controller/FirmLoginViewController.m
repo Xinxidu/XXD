@@ -110,7 +110,7 @@
     [_loginBtn.layer setMasksToBounds:YES];
     CALayer *layer = [CALayer layer];
     layer.frame = CGRectMake((self.view.bounds.size.width-280)/2, CGRectGetMaxY(_lineLabel2.frame)+145, 280, 40);
-    layer.backgroundColor = [UIColor blueColor].CGColor;
+    layer.backgroundColor = MAINCOLOR.CGColor;
     layer.shadowOffset = CGSizeMake(2, 2);
     layer.shadowOpacity = 0.8;
     layer.cornerRadius = 20;

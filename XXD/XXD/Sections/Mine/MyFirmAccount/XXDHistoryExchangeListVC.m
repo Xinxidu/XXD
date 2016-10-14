@@ -147,11 +147,11 @@
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.backgroundColor = [UIColor whiteColor];
     if (indexPath.row %2 == 0) {
-        cell.buyLabel.textColor = [UIColor redColor];
-        cell.saleLabel.textColor = [UIColor redColor];
+        cell.buyLabel.textColor = RED;
+        cell.saleLabel.textColor = RED;
     }else{
-        cell.buyLabel.textColor = [UIColor greenColor];
-        cell.saleLabel.textColor = [UIColor greenColor];
+        cell.buyLabel.textColor = DARKGREEN;
+        cell.saleLabel.textColor = DARKGREEN;
     }
     return cell;
     
