@@ -97,7 +97,7 @@
     _submitButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _submitButton.frame = CGRectMake(20, CGRectGetMaxY(pwdView.frame)+20, WIDTH-40, 50);
     [_submitButton setTitle:@"完成登录" forState:UIControlStateNormal];
-    [_submitButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _submitButton.titleLabel.font = [UIFont systemFontOfSize:18.0];
     _submitButton.backgroundColor = MAINCOLOR;
     _submitButton.layer.cornerRadius = 25;

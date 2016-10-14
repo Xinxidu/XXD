@@ -8,6 +8,9 @@
 
 #import "XXDHistoryMakeListVC.h"
 #import "XXDHistoryMarketListCell.h"
+#import "XXDOrderSwapsBSCell.h"
+#import "XXDOrderSwapsBSViewModel.h"
+#import "XXDOrderSwapsBS.h"
 
 @interface XXDHistoryMakeListVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
@@ -18,6 +21,7 @@
 @property (strong,nonatomic) UIButton *startButton;//起始日期
 @property (strong,nonatomic) UIButton *endButton;//截止日期
 @property (assign,nonatomic) int buttonIndex;//截止日期
+@property (nonatomic,strong)NSArray *tableViewData;
 @end
 
 @implementation XXDHistoryMakeListVC
@@ -25,10 +29,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    self.view.backgroundColor = BGGRAY;
     self.navigationItem.title = @"历史订立单";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    _tableViewData =
+    @[@{@"holdTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"holdPirce":@"1022.0",@"swapsPrice":@"1,023.0",@"orderHold":@"34",@"surplus":@"63,478"},
+      @{@"holdTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"holdPirce":@"1022.0",@"swapsPrice":@"1,023.0",@"orderHold":@"34",@"surplus":@"63,478"},
+      @{@"holdTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"holdPirce":@"1022.0",@"swapsPrice":@"1,023.0",@"orderHold":@"34",@"surplus":@"63,478"}];
+
     [self createUI];
     [self initCustomAlert];
 }
@@ -36,7 +45,7 @@
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 80)];
     topView.backgroundColor = [UIColor colorWithRed:225/255.0 green:241/255.0 blue:254/255.0 alpha:1.0];
     topView.layer.borderWidth = 0.5;
-    topView.layer.borderColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0].CGColor;
+    topView.layer.borderColor = MAINCOLOR.CGColor;
     [self.view addSubview:topView];
     NSArray *dateText = @[@"起始日期",@"截止日期"];
     NSArray *datePlaceholderText = @[@"请输入起始日期",@"请输入截止日期"];
@@ -51,11 +60,11 @@
         _dateTextButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _dateTextButton.frame = CGRectMake((self.view.bounds.size.width-240)/3+((self.view.bounds.size.width-240)/3+120)*i, CGRectGetMaxY(dateTextLabel.frame), 120, 30);
         [_dateTextButton setTitle:datePlaceholderText[i] forState:UIControlStateNormal];
-        [_dateTextButton setTitleColor:[UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+        [_dateTextButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
         _dateTextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         _dateTextButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
         _dateTextButton.layer.borderWidth = 0.5;
-        _dateTextButton.layer.borderColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0].CGColor;
+        _dateTextButton.layer.borderColor = MAINCOLOR.CGColor;
         _dateTextButton.layer.cornerRadius = 15;
         _dateTextButton.layer.masksToBounds = YES;
         [_dateTextButton addTarget:self action:@selector(calendarClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -131,33 +140,32 @@
     _tableView.dataSource = self;
     _tableView.bounces = NO;
     _tableView.scrollEnabled = NO;
-    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     _tableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_tableView];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 6;
+    return 3;
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    XXDHistoryMarketListCell *cell = [[XXDHistoryMarketListCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"mycell"];
-    if (cell==nil) {
-        cell=[[XXDHistoryMarketListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"mycell"];
-    }
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    cell.backgroundColor = [UIColor whiteColor];
-    if (indexPath.row %2 == 0) {
-        cell.buyLabel.textColor = [UIColor redColor];
-        cell.saleLabel.textColor = [UIColor redColor];
-    }else{
-        cell.buyLabel.textColor = [UIColor greenColor];
-        cell.saleLabel.textColor = [UIColor greenColor];
+    XXDOrderSwapsBS *orderSwapsBS = [[XXDOrderSwapsBS alloc] init];
+    orderSwapsBS.holdTime = _tableViewData[indexPath.row][@"holdTime"];
+    orderSwapsBS.buyPrice = _tableViewData[indexPath.row][@"buyPrice"];
+    orderSwapsBS.sellPrice = _tableViewData[indexPath.row][@"sellPrice"];
+    orderSwapsBS.holdPirce = _tableViewData[indexPath.row][@"holdPirce"];
+    orderSwapsBS.swapsPrice = _tableViewData[indexPath.row][@"swapsPrice"];
+    orderSwapsBS.orderHold = _tableViewData[indexPath.row][@"orderHold"];
+    orderSwapsBS.surplus = _tableViewData[indexPath.row][@"surplus"];
+    static NSString *cellId = @"cell";
+    XXDOrderSwapsBSCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[XXDOrderSwapsBSCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId orderSwapsBS:orderSwapsBS];
     }
     return cell;
-    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    return 50;
 }
 #pragma mark -返回按钮点击
 - (void)backBtnClick{

@@ -17,17 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.title = @"实盘开户";
     self.view.backgroundColor = BGGRAY;
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
-//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [XXDCustomNavigation loadUIViewController:self title:@"实盘开户" backSelector:@selector(backBtnClick)];
     [self createUI];
 }
-//-(void)viewWillAppear:(BOOL)animated{
-//    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:16/255.0 green:134/255.0 blue:243/255.0 alpha:1.0];
-//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-//}
 -(void)createUI{
     //初始化WebView
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, -45, WIDTH, HEIGHT+45)];

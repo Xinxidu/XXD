@@ -8,10 +8,14 @@
 
 #import "XXDTodayExchangeListVC.h"
 #import "XXDTodayExchangeCell.h"
+#import "XXDOrderSwapsBSCell.h"
+#import "XXDOrderSwapsBSViewModel.h"
+#import "XXDOrderSwapsBS.h"
 
 @interface XXDTodayExchangeListVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)UILabel *lineLabel;
+@property (nonatomic,strong)NSArray *tableViewData;
 @end
 
 @implementation XXDTodayExchangeListVC
@@ -23,6 +27,11 @@
     self.navigationItem.title = @"当日调期单";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    _tableViewData =
+    @[@{@"holdTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"holdPirce":@"1022.0",@"swapsPrice":@"1,023.0",@"orderHold":@"34",@"surplus":@"63,478"},
+      @{@"holdTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"holdPirce":@"1022.0",@"swapsPrice":@"1,023.0",@"orderHold":@"34",@"surplus":@"63,478"},
+      @{@"holdTime":@"03-26",@"buyPrice":@"1,022.0",@"sellPrice":@"1,023.0",@"holdPirce":@"1022.0",@"swapsPrice":@"1,023.0",@"orderHold":@"34",@"surplus":@"63,478"}];
+
     [self createUI];
 }
 -(void)createUI{
@@ -48,35 +57,34 @@
     _tableView.dataSource = self;
     _tableView.bounces = NO;
     _tableView.scrollEnabled = NO;
-    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     _tableView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_tableView];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 6;
+    return 3;
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    XXDTodayExchangeCell *cell = [[XXDTodayExchangeCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"mycell"];
-    if (cell==nil) {
-        cell=[[XXDTodayExchangeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"mycell"];
-    }
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    cell.backgroundColor = [UIColor whiteColor];
-    if (indexPath.row %2 == 0) {
-        cell.buyLabel.textColor = RED;
-        cell.saleLabel.textColor = RED;
-    }else{
-        cell.buyLabel.textColor = DARKGREEN;
-        cell.saleLabel.textColor = DARKGREEN;
+    XXDOrderSwapsBS *orderSwapsBS = [[XXDOrderSwapsBS alloc] init];
+    orderSwapsBS.holdTime = _tableViewData[indexPath.row][@"holdTime"];
+    orderSwapsBS.buyPrice = _tableViewData[indexPath.row][@"buyPrice"];
+    orderSwapsBS.sellPrice = _tableViewData[indexPath.row][@"sellPrice"];
+    orderSwapsBS.holdPirce = _tableViewData[indexPath.row][@"holdPirce"];
+    orderSwapsBS.swapsPrice = _tableViewData[indexPath.row][@"swapsPrice"];
+    orderSwapsBS.orderHold = _tableViewData[indexPath.row][@"orderHold"];
+    orderSwapsBS.surplus = _tableViewData[indexPath.row][@"surplus"];
+    static NSString *cellId = @"cell";
+    XXDOrderSwapsBSCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[XXDOrderSwapsBSCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId orderSwapsBS:orderSwapsBS];
     }
     return cell;
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    return 50;
 }
-
 #pragma mark -返回按钮点击
 - (void)backBtnClick{
     [self.navigationController popViewControllerAnimated:YES];

@@ -83,6 +83,7 @@
 		697D76701D782939008D7C94 /* XXDTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D766F1D782939008D7C94 /* XXDTradeViewController.m */; };
 		697D76731D782951008D7C94 /* XXDDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D76721D782951008D7C94 /* XXDDiscoverViewController.m */; };
 		697D76791D782E77008D7C94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 697D76771D782E77008D7C94 /* Main.storyboard */; };
+		699ADD7C1DB0A7A6008F210B /* XXDLiveOnlineDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699ADD7B1DB0A7A6008F210B /* XXDLiveOnlineDetailController.m */; };
 		69B1C6111D7E4FE8000CA633 /* XXDLiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B1C6101D7E4FE8000CA633 /* XXDLiveView.m */; };
 		69B1C6181D7E64FF000CA633 /* XXDLiveImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B1C6171D7E64FF000CA633 /* XXDLiveImage.m */; };
 		69B1C61C1D7EBD39000CA633 /* XXDTimeNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B1C61B1D7EBD39000CA633 /* XXDTimeNewsCell.m */; };
@@ -264,6 +265,8 @@
 		697D76711D782951008D7C94 /* XXDDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDDiscoverViewController.h; sourceTree = "<group>"; };
 		697D76721D782951008D7C94 /* XXDDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDDiscoverViewController.m; sourceTree = "<group>"; };
 		697D76781D782E77008D7C94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		699ADD7A1DB0A7A6008F210B /* XXDLiveOnlineDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLiveOnlineDetailController.h; sourceTree = "<group>"; };
+		699ADD7B1DB0A7A6008F210B /* XXDLiveOnlineDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLiveOnlineDetailController.m; sourceTree = "<group>"; };
 		69B1C60F1D7E4FE8000CA633 /* XXDLiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLiveView.h; sourceTree = "<group>"; };
 		69B1C6101D7E4FE8000CA633 /* XXDLiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLiveView.m; sourceTree = "<group>"; };
 		69B1C6161D7E64FF000CA633 /* XXDLiveImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLiveImage.h; sourceTree = "<group>"; };
@@ -840,6 +843,8 @@
 			children = (
 				69B89A6F1D7FFFCE009875E1 /* XXDLiveOnLineController.h */,
 				69B89A701D7FFFCE009875E1 /* XXDLiveOnLineController.m */,
+				699ADD7A1DB0A7A6008F210B /* XXDLiveOnlineDetailController.h */,
+				699ADD7B1DB0A7A6008F210B /* XXDLiveOnlineDetailController.m */,
 			);
 			path = LiveOnLine;
 			sourceTree = "<group>";
@@ -959,7 +964,7 @@
 				TargetAttributes = {
 					697D76331D781300008D7C94 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = R9DE87BJ5L;
+						DevelopmentTeam = 5GW83Q82UJ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1132,6 +1137,7 @@
 				3B6F5F2F1D7FB0F00058D2DE /* BaseWebRequest.m in Sources */,
 				3B7B3E6C1D7E5632003DBF06 /* ProfitSkillCell.m in Sources */,
 				3BAF05A61D93853A00CFB105 /* XXDTodayMakeListCell.m in Sources */,
+				699ADD7C1DB0A7A6008F210B /* XXDLiveOnlineDetailController.m in Sources */,
 				3B6F5F3B1D8008350058D2DE /* XXDMyFirmAccountVC.m in Sources */,
 				69BC4A5A1D9DFE460035328C /* XXDCalendar.m in Sources */,
 				3B355B841D8158F4008C8376 /* XXDHistoryExchangeListVC.m in Sources */,
@@ -1262,7 +1268,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R9DE87BJ5L;
+				DEVELOPMENT_TEAM = 5GW83Q82UJ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XXD/Common/Model/XXDPrefixHeader.pch";
 				INFOPLIST_FILE = XXD/Info.plist;
@@ -1285,7 +1291,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R9DE87BJ5L;
+				DEVELOPMENT_TEAM = 5GW83Q82UJ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XXD/Common/Model/XXDPrefixHeader.pch";
 				INFOPLIST_FILE = XXD/Info.plist;

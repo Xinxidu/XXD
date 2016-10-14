@@ -70,7 +70,7 @@
         [titleView addSubview:titleButton];
         if (i == 0) {
             selectButton = titleButton;
-            [selectButton setTitleColor:[UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+            [selectButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
         }
         [_buttonArray addObject:titleButton];
         
@@ -78,7 +78,7 @@
     
     //滑块
     UIView *sliderV=[[UIView alloc]initWithFrame:CGRectMake(0, titleHeight-1, titleWidth, 1)];
-    sliderV.backgroundColor = [UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0];
+    sliderV.backgroundColor = MAINCOLOR;
     [titleView addSubview:sliderV];
     _sliderView=sliderV;
     
@@ -98,7 +98,7 @@
 {
     [selectButton setTitleColor:backColor forState:UIControlStateNormal];
     selectButton = _buttonArray[index];
-    [selectButton setTitleColor:[UIColor colorWithRed:31/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [selectButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
     [UIView animateWithDuration:0.3 animations:^{
         _sliderView.frame = CGRectMake(titleWidth*index, titleHeight-1, titleWidth, 1);
     }];

@@ -14,7 +14,7 @@
 - (instancetype)initWithFrame:(CGRect)frame  tableViewData:(NSArray *)tableViewData{
     if (self = [super initWithFrame:frame]) {
         self.tableViewData = tableViewData;
-        self.backgroundColor = [UIColor colorWithRed:252/255.0 green:253/255.0 blue:254/255.0 alpha:1];
+        self.backgroundColor = [UIColor whiteColor];
         UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(-1, 10, WIDTH+2, 50)];
         topView.backgroundColor = [UIColor colorWithRed:225/255.0 green:241/255.0 blue:254/255.0 alpha:1];//225 241 254
         topView.layer.borderColor = MAINCOLOR.CGColor;

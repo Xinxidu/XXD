@@ -14,7 +14,7 @@
 - (instancetype)initWithFrame:(CGRect)frame tableViewData:(NSArray *)tableViewData{
     if (self = [super initWithFrame:frame]) {
         self.tableViewData = tableViewData;
-        self.backgroundColor = [UIColor colorWithRed:252/255.0 green:253/255.0 blue:254/255.0 alpha:1];
+        self.backgroundColor = [UIColor whiteColor];
         //数据初始化
         NSArray *headNameArray = @[@"委托时间",@"买/卖",@"委托/均价",@"委托/成交",@"状态"];
         CGFloat width = self.frame.size.width;

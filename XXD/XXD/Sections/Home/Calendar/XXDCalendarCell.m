@@ -8,11 +8,6 @@
 
 #import "XXDCalendarCell.h"
 #import "XXDCalendar.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define DARKGRAYCOLOR [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]   //#666666
-#define GRAYCOLOR [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]   //#999999
-#define LIGHTGRAYCOLOR [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1]  //#dedede
-#define GREENCOLOR [UIColor colorWithRed:21/255.0 green:154/255.0 blue:96/255.0 alpha:1]
 @implementation XXDCalendarCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier calendar:(XXDCalendar *)calendar{
@@ -23,14 +18,14 @@
         UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 9, 38, 12)];
         dateLabel.font = [UIFont systemFontOfSize:12.0f];
         dateLabel.text = calendar.dateString;
-        dateLabel.textColor = DARKGRAYCOLOR;
+        dateLabel.textColor = GRAY;
         [self.contentView addSubview:dateLabel];
         //时间
         UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(dateLabel.frame)+1, 34, 12)];
         timeLabel.font = [UIFont systemFontOfSize:12.0f];
         timeLabel.text = calendar.timeString;
         timeLabel.textAlignment = NSTextAlignmentCenter;
-        timeLabel.textColor = DARKGRAYCOLOR;
+        timeLabel.textColor = GRAY;
         [self.contentView addSubview:timeLabel];
         //国旗
         UIImageView *nationalFlag = [[UIImageView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(timeLabel.frame)+5, 34, 20)];
@@ -44,14 +39,14 @@
         UILabel *country = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(starImage.frame)+5, 34, 12)];
         country.font = [UIFont systemFontOfSize:12.0f];
         country.text = calendar.country;
-        country.textColor = DARKGRAYCOLOR;
+        country.textColor = GRAY;
         country.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:country];
         //标题
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, WIDTH-80, 15)];
         titleLabel.font = [UIFont systemFontOfSize:13.0f];
         titleLabel.text = calendar.title;
-        titleLabel.textColor = DARKGRAYCOLOR;
+        titleLabel.textColor = GRAY;
         [self.contentView addSubview:titleLabel];
         //前值 预测 公布标题
         NSArray *titleArray = @[@"前值",@"预测",@"公布"];
@@ -59,7 +54,7 @@
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(starImage.frame)+i*70, CGRectGetMaxY(titleLabel.frame)+10, 70, 13)];
             label.font = [UIFont systemFontOfSize:12.0f];
             label.text = titleArray[i];
-            label.textColor = GRAYCOLOR;
+            label.textColor = LIGHTGRAY;
             label.textAlignment = NSTextAlignmentCenter;
             [self.contentView addSubview:label];
         }
@@ -89,7 +84,7 @@
             UILabel *liduoValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(liduoLabel.frame), CGRectGetMaxY(titleLabel.frame)+48, 27*calendar.liduoArray.count, 17)];
             liduoValueLabel.font = [UIFont systemFontOfSize:11.0f];
             liduoValueLabel.text = [calendar.liduoArray componentsJoinedByString:@" "];
-            liduoValueLabel.textColor = DARKGRAYCOLOR;
+            liduoValueLabel.textColor = GRAY;
             liduoValueLabel.backgroundColor = [UIColor whiteColor];
             liduoValueLabel.textAlignment = NSTextAlignmentCenter;
             liduoValueLabel.layer.borderWidth = 0.5f;
@@ -100,17 +95,17 @@
             likongLabel.font = [UIFont systemFontOfSize:11.0f];
             likongLabel.text = @"利空";
             likongLabel.textColor = [UIColor whiteColor];
-            likongLabel.backgroundColor = GREENCOLOR;
+            likongLabel.backgroundColor = DARKGREEN;
             likongLabel.textAlignment = NSTextAlignmentCenter;
             [self.contentView addSubview:likongLabel];
             UILabel *likongValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(likongLabel.frame), CGRectGetMaxY(titleLabel.frame)+48, 27*calendar.likongArray.count, 17)];
             likongValueLabel.font = [UIFont systemFontOfSize:11.0f];
             likongValueLabel.text = [calendar.likongArray componentsJoinedByString:@" "];
-            likongValueLabel.textColor = DARKGRAYCOLOR;
+            likongValueLabel.textColor = GRAY;
             likongValueLabel.backgroundColor = [UIColor whiteColor];
             likongValueLabel.textAlignment = NSTextAlignmentCenter;
             likongValueLabel.layer.borderWidth = 0.5f;
-            likongValueLabel.layer.borderColor = GREENCOLOR.CGColor;
+            likongValueLabel.layer.borderColor = DARKGREEN.CGColor;
             [self.contentView addSubview:likongValueLabel];
              //右箭头
             UIImageView *rightArrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH-17, CGRectGetMaxY(titleLabel.frame)+50, 7, 10)];
@@ -119,7 +114,7 @@
         }
         //分割线
         UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0, 99, WIDTH, 1)];
-        horizontal.backgroundColor = LIGHTGRAYCOLOR;  //#dedede;
+        horizontal.backgroundColor = LINEGRAY;  //#dedede;
         [self.contentView addSubview:horizontal];
     }
     return self;
