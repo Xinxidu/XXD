@@ -11,8 +11,6 @@
 #import "XXDProfessorTeamModel.h"
 #import "XXDProfessorTeamCell.h"
 #import "XXDProfessorDetailViewController.h"
-#define WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
-#define HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
 #define URL @"http://app.service.xiduoil.com/Team?type=list&name=none"
 @interface ProfessorTeamViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;

@@ -7,8 +7,6 @@
 //
 
 #import "XXDProfessorDetailViewController.h"
-#define WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
-#define HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
 #import <UIImageView+WebCache.h>
 @interface XXDProfessorDetailViewController ()
 

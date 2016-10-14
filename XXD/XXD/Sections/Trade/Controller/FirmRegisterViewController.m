@@ -9,8 +9,6 @@
 #import "FirmRegisterViewController.h"
 #import "BaseWebRequest.h"
 #import "XXDCustomNavigation.h"
-#define WIDTH CGRectGetWidth(self.view.bounds)
-#define HEIGHT CGRectGetHeight(self.view.bounds)
 #define API @"http://trade.huatongsilver.com:80/accountweb/web/reg2/reg.html"
 @interface FirmRegisterViewController ()
 @end

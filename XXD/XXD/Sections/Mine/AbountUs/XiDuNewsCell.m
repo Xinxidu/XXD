@@ -7,7 +7,6 @@
 //
 
 #import "XiDuNewsCell.h"
-#define WIDTH [[UIScreen mainScreen] bounds].size.width
 @implementation XiDuNewsCell
 
 - (void)awakeFromNib {
