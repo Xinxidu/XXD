@@ -28,10 +28,8 @@
     
     _antistopLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(_titleLable.frame), 40, 15)];
     _antistopLabel.text = @"关键词:";
-//    _antistopLabel.backgroundColor = [UIColor blueColor];
-    _antistopLabel.textColor = [UIColor redColor];
+    _antistopLabel.textColor = RED;
     _antistopLabel.font = [UIFont systemFontOfSize:12.0f];
-//    [self.contentView addSubview:_antistopLabel];
     
     _wordLable = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_titleLable.frame)+3, SIZE.width-20, 15)];
     _wordLable.font = [UIFont systemFontOfSize:13.0f];
@@ -41,7 +39,7 @@
     
     _dateLable = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_wordLable.frame)+5, SIZE.width-20, 12)];
     _dateLable.font = [UIFont systemFontOfSize:12.0f];
-    _dateLable.textColor = [UIColor redColor];
+    _dateLable.textColor = RED;
     _dateLable.text = @"2016-02-22 07:01:01";
     _dateLable.textColor = [UIColor grayColor];
     [self.contentView addSubview:_dateLable];

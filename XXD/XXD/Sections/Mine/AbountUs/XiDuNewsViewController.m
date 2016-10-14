@@ -70,7 +70,7 @@
 #pragma mark 初始化表格
 - (void)createTableView{
     _tableView=[[BaseTableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64) style:UITableViewStylePlain];
-    _tableView.backgroundColor=[UIColor colorWithRed:243/255.0 green:244/255.0 blue:245/255.0 alpha:1.0];
+    _tableView.backgroundColor=BGGRAY;
     _tableView.delegate=self; 
     _tableView.dataSource=self;
     _tableView.bounces=YES;

@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    self.view.backgroundColor = BGGRAY;
     self.navigationItem.title = @"历史订立单";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -45,7 +45,7 @@
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 80)];
     topView.backgroundColor = [UIColor colorWithRed:225/255.0 green:241/255.0 blue:254/255.0 alpha:1.0];
     topView.layer.borderWidth = 0.5;
-    topView.layer.borderColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0].CGColor;
+    topView.layer.borderColor = MAINCOLOR.CGColor;
     [self.view addSubview:topView];
     NSArray *dateText = @[@"起始日期",@"截止日期"];
     NSArray *datePlaceholderText = @[@"请输入起始日期",@"请输入截止日期"];
@@ -60,11 +60,11 @@
         _dateTextButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _dateTextButton.frame = CGRectMake((self.view.bounds.size.width-240)/3+((self.view.bounds.size.width-240)/3+120)*i, CGRectGetMaxY(dateTextLabel.frame), 120, 30);
         [_dateTextButton setTitle:datePlaceholderText[i] forState:UIControlStateNormal];
-        [_dateTextButton setTitleColor:[UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0] forState:UIControlStateNormal];
+        [_dateTextButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
         _dateTextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         _dateTextButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
         _dateTextButton.layer.borderWidth = 0.5;
-        _dateTextButton.layer.borderColor = [UIColor colorWithRed:30/255.0 green:138/255.0 blue:240/255.0 alpha:1.0].CGColor;
+        _dateTextButton.layer.borderColor = MAINCOLOR.CGColor;
         _dateTextButton.layer.cornerRadius = 15;
         _dateTextButton.layer.masksToBounds = YES;
         [_dateTextButton addTarget:self action:@selector(calendarClick:) forControlEvents:UIControlEventTouchUpInside];

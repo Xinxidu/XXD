@@ -28,9 +28,9 @@
             label.font = [UIFont systemFontOfSize:12.0f];
             label.text = labelStringArray[i];
             label.textAlignment = NSTextAlignmentCenter;
-            label.textColor = i !=1 || i !=2 ? [UIColor blackColor] : [UIColor redColor];
+            label.textColor = i !=1 || i !=2 ? [UIColor blackColor] : RED;
             if (i == 1 || i ==2) {
-                label.textColor = [UIColor redColor] ;
+                label.textColor = RED ;
             }else{
                 label.textColor = [UIColor blackColor] ;
             }
