@@ -66,6 +66,7 @@
 		3B7B3E9A1D7EC0C6003DBF06 /* XXDMyActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B3E991D7EC0C6003DBF06 /* XXDMyActivityCell.m */; };
 		3B8FF8C91D86750E003D5EC1 /* XXDLeftMarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8FF8C81D86750E003D5EC1 /* XXDLeftMarketViewController.m */; };
 		3B9FA4A71DB0B7BE00608A89 /* XXDLiveOnLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9FA4A61DB0B7BE00608A89 /* XXDLiveOnLineView.m */; };
+		3B9FA4AA1DB0DB6700608A89 /* XXDWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9FA4A91DB0DB6700608A89 /* XXDWebView.m */; };
 		3BA5F70A1DAF2600008271F4 /* FirmRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5F7091DAF2600008271F4 /* FirmRegisterViewController.m */; };
 		3BAF05A61D93853A00CFB105 /* XXDTodayMakeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05A51D93853A00CFB105 /* XXDTodayMakeListCell.m */; };
 		3BAF05A91D93A5F700CFB105 /* XXDTodayExchangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05A81D93A5F700CFB105 /* XXDTodayExchangeCell.m */; };
@@ -234,6 +235,8 @@
 		3B8FF8C81D86750E003D5EC1 /* XXDLeftMarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLeftMarketViewController.m; sourceTree = "<group>"; };
 		3B9FA4A51DB0B7BE00608A89 /* XXDLiveOnLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLiveOnLineView.h; sourceTree = "<group>"; };
 		3B9FA4A61DB0B7BE00608A89 /* XXDLiveOnLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLiveOnLineView.m; sourceTree = "<group>"; };
+		3B9FA4A81DB0DB6700608A89 /* XXDWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDWebView.h; sourceTree = "<group>"; };
+		3B9FA4A91DB0DB6700608A89 /* XXDWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDWebView.m; sourceTree = "<group>"; };
 		3BA5F7081DAF2600008271F4 /* FirmRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirmRegisterViewController.h; sourceTree = "<group>"; };
 		3BA5F7091DAF2600008271F4 /* FirmRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirmRegisterViewController.m; sourceTree = "<group>"; };
 		3BAF05A41D93853A00CFB105 /* XXDTodayMakeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDTodayMakeListCell.h; sourceTree = "<group>"; };
@@ -787,6 +790,8 @@
 			children = (
 				69B1C60F1D7E4FE8000CA633 /* XXDLiveView.h */,
 				69B1C6101D7E4FE8000CA633 /* XXDLiveView.m */,
+				3B9FA4A81DB0DB6700608A89 /* XXDWebView.h */,
+				3B9FA4A91DB0DB6700608A89 /* XXDWebView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1062,6 +1067,7 @@
 				3B2EC0371D87CC7D0019A72E /* XXDRegisterSecondViewController.m in Sources */,
 				3B60B88A1D7D3D08002AA667 /* ItemTableViewCell.m in Sources */,
 				69BFEA691DAC8DE2001F57D1 /* XXDUserFeedbackViewController.m in Sources */,
+				3B9FA4AA1DB0DB6700608A89 /* XXDWebView.m in Sources */,
 				3B732BA31DAC72470042B494 /* XXDProfessorDetailViewController.m in Sources */,
 				3B7B3E841D7E61BD003DBF06 /* ProfessorTeamViewController.m in Sources */,
 				3B9FA4A71DB0B7BE00608A89 /* XXDLiveOnLineView.m in Sources */,

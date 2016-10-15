@@ -23,6 +23,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [XXDCustomNavigation loadUIViewController:self title:self.liveOnlineName backSelector:@selector(backBtnClick)];
+    NSLog(@"%@",self.liveOnlineName);
     UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.frame];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:liveUrl]]];
     [self.view addSubview:webView];
