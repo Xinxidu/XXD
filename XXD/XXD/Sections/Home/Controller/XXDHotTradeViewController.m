@@ -14,6 +14,7 @@
 
 @interface XXDHotTradeViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong,nonatomic) UITableView *hotTradeTableView;
+@property (strong,nonatomic) UIActivityIndicatorView *activity;
 @property (strong,nonatomic) NSMutableArray *dataArray;
 @property (strong,nonatomic) NSArray *menuArray1;
 @property (strong,nonatomic) NSArray *menuFieldArray1;
@@ -79,15 +80,15 @@
         }
     }
     //加载控件
-    UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    activity.center = self.view.center;
-    [self.view addSubview:activity];
-    [activity stopAnimating];
+    self.activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activity.center = self.view.center;
+    [self.view addSubview:self.activity];
+    [self.activity stopAnimating];
     //数据请求
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [manager GET:HOTTRADEURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [activity stopAnimating];
+        [self.activity stopAnimating];
         NSArray *arr = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         self.dataArray = [NSMutableArray arrayWithArray:arr];
         for (NSMutableDictionary *dic in self.dataArray) {
@@ -104,7 +105,7 @@
         self.hotTradeTableView.separatorColor = [UIColor colorWithRed:232/255.0 green:232/255.0 blue:232/255.0 alpha:1];
         [self.view addSubview:self.hotTradeTableView];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [activity stopAnimating];
+        [self.activity stopAnimating];
         NSLog(@"请求失败");
     }];
 }
@@ -186,7 +187,22 @@
 }
 #pragma mark 刷新
 - (void)refresh{
-    [self.hotTradeTableView reloadData];
+    [self.activity startAnimating];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager GET:HOTTRADEURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self.activity stopAnimating];
+        NSArray *arr = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        self.dataArray = [NSMutableArray arrayWithArray:arr];
+        for (NSMutableDictionary *dic in self.dataArray) {
+            [dic addEntriesFromDictionary:[NSDictionary dictionaryWithObject:dic[@"valueOfUpOrDown"] forKey:@"dropDownKey1"]];
+            [dic addEntriesFromDictionary:[NSDictionary dictionaryWithObject:dic[@"volume"] forKey:@"dropDownKey2"]];
+        }
+       [self.hotTradeTableView reloadData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self.activity stopAnimating];
+        NSLog(@"请求失败");
+    }];
 }
 #pragma mark tableView代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
