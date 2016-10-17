@@ -974,7 +974,7 @@
 				TargetAttributes = {
 					697D76331D781300008D7C94 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = R9DE87BJ5L;
+						DevelopmentTeam = VRQSU9ZYT4;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1280,11 +1280,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R9DE87BJ5L;
+				DEVELOPMENT_TEAM = VRQSU9ZYT4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XXD/Common/Model/XXDPrefixHeader.pch";
 				INFOPLIST_FILE = XXD/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xinxidu.XXDs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1303,11 +1303,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R9DE87BJ5L;
+				DEVELOPMENT_TEAM = VRQSU9ZYT4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XXD/Common/Model/XXDPrefixHeader.pch";
 				INFOPLIST_FILE = XXD/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xinxidu.XXDs;
 				PRODUCT_NAME = "$(TARGET_NAME)";

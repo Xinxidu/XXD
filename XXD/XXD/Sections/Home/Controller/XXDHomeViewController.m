@@ -20,6 +20,7 @@
 #import "XXDLiveNewViewController.h"
 #import "XXDLiveOnLineController.h"
 #import "FirmRegisterViewController.h"
+#import "XXDLoginViewController.h"
 #define BGCOLOR [UIColor colorWithRed:230/255.0 green:231/255.0 blue:232/255.0 alpha:1]
 typedef NS_ENUM(NSInteger,XXDButtonType){
     XXDButtonTypeHotTrade,              //热门交易
@@ -290,11 +291,24 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 立即开户按钮点击
 - (void)openAccountClick{
-    self.hidesBottomBarWhenPushed = YES;
-    FirmRegisterViewController *firm = [[FirmRegisterViewController alloc]init];
-    firm.delegate = self;
-    [self.navigationController pushViewController:firm animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    BOOL isLogin = [user boolForKey:@"isLogin"];
+    if (isLogin == YES) {
+        self.hidesBottomBarWhenPushed = YES;
+        FirmRegisterViewController *firm = [[FirmRegisterViewController alloc]init];
+        firm.delegate = self;
+        [self.navigationController pushViewController:firm animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
+    }else{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请先登录APP！" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController pushViewController:[[XXDLoginViewController alloc ] init] animated:YES];
+        }];
+        [alertController addAction:cancleAction];
+        [alertController addAction:sureAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 #pragma mark 创建直播视图
 - (void)createLiveView{

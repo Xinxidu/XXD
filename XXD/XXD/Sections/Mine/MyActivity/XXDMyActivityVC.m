@@ -15,6 +15,8 @@
 @interface XXDMyActivityVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray* dataArray;
+@property (strong,nonatomic) UIActivityIndicatorView *activityIndicatorView;
+@property (strong,nonatomic) UIView *opaqueView;
 @end
 
 @implementation XXDMyActivityVC
@@ -30,6 +32,15 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     _dataArray = [[NSMutableArray alloc]init];
+    _opaqueView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    _opaqueView.backgroundColor = [UIColor grayColor];
+    _activityIndicatorView = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    _activityIndicatorView.center = _opaqueView.center;
+    _activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    [_opaqueView addSubview:_activityIndicatorView];
+    [_activityIndicatorView startAnimating];
+    _opaqueView.hidden = NO;
+    [self.view addSubview:_opaqueView];
     [self createTableView];
     [self requestWebServiceData];
 }
@@ -61,12 +72,9 @@
             model.picUrl = dict[@"picUrl"];
             [_dataArray addObject:model];
         }
-            if (array.count==0) {
-//                [self showAlert:@"加载失败..."];
-            }
-        else
-//            [self showAlert:@"加载失败..."];
         [_tableView reloadData];
+        [_activityIndicatorView stopAnimating];
+        _opaqueView.hidden = YES;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 //        [self showAlert:@"加载失败..."];
     }];
@@ -77,7 +85,7 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.bounces = NO;
-    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     _tableView.backgroundColor = BGGRAY;
     [self.view addSubview:_tableView];
 }

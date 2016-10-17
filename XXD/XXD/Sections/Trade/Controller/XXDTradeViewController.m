@@ -34,7 +34,7 @@
 -(void)createUI{
     UIButton *_topButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _topButton.frame = CGRectMake(100, 100, 100, 40);
-    [_topButton setTitle:@"登录" forState:UIControlStateNormal];
+    [_topButton setTitle:@"实盘登录" forState:UIControlStateNormal];
     [_topButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
     [_topButton addTarget:self action:@selector(topButtonChangeClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_topButton];

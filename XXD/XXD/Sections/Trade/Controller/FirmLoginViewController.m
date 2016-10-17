@@ -9,6 +9,7 @@
 #import "FirmLoginViewController.h"
 #import "AuthcodeView.h"
 #import "FirmRegisterViewController.h"
+#import "XXDLoginViewController.h"
 @interface FirmLoginViewController ()<UITextFieldDelegate>
 @property (strong,nonatomic) UISegmentedControl *segmentControl;//实盘，模拟盘切换
 @property (strong,nonatomic) UIView *topView;
@@ -220,8 +221,22 @@
 }
 #pragma mark 跳转到实盘注册
 -(void)gotoRegister{
-    self.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:[[FirmRegisterViewController alloc]init] animated:YES];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    BOOL isLogin = [user boolForKey:@"isLogin"];
+    if (isLogin == YES) {
+        self.hidesBottomBarWhenPushed = YES;
+        FirmRegisterViewController *firm = [[FirmRegisterViewController alloc]init];
+        [self.navigationController pushViewController:firm animated:YES];
+    }else{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请先登录APP！" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController pushViewController:[[XXDLoginViewController alloc ] init] animated:YES];
+        }];
+        [alertController addAction:cancleAction];
+        [alertController addAction:sureAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 #pragma mark 键盘收起
 -(void)keyboardHide:(UITapGestureRecognizer*)tap{
