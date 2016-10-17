@@ -246,7 +246,11 @@
         if (indexPath.row == 0) {//使用帮助
             
         }else{//设置
-            [self.navigationController pushViewController:[[XXDSetupViewController alloc] init] animated:YES];
+            if (_islogin == NO) {
+                [self customAlertViewMessageString:@"登录先APP"];
+            }else{
+                [self.navigationController pushViewController:[[XXDSetupViewController alloc] init] animated:YES];
+            }
         }
     }
     self.hidesBottomBarWhenPushed = NO;

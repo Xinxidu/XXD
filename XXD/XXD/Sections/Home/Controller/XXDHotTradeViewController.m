@@ -10,12 +10,15 @@
 #import "XXDHotTradeCell.h"
 #import "XXDHotTrade.h"
 #import "XXDCustomNavigation.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
+#import <AFNetworking.h>
+
 @interface XXDHotTradeViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong,nonatomic) UITableView *hotTradeTableView;
-@property (strong,nonatomic) NSArray *dataArray;
+@property (strong,nonatomic) NSMutableArray *dataArray;
 @property (strong,nonatomic) NSArray *menuArray1;
+@property (strong,nonatomic) NSArray *menuFieldArray1;
 @property (strong,nonatomic) NSArray *menuArray2;
+@property (strong,nonatomic) NSArray *menuFieldArray2;
 @property (strong,nonatomic) UIButton *dropDownButton1;
 @property (strong,nonatomic) UIButton *dropDownButton2;
 @property (strong,nonatomic) UIView *optionView1;
@@ -24,7 +27,6 @@
 @end
 
 @implementation XXDHotTradeViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     //导航栏
@@ -35,8 +37,10 @@
     bgView.backgroundColor = BGGRAY;
     [self.view addSubview:bgView];
     NSArray *titleArray = @[@"商品",@"最新",@"买1/卖1",@"涨跌值",@"成交量"];
-    self.menuArray1 = @[@"涨跌幅",@"振幅",@"涨跌值"];
-    self.menuArray2 = @[@"成交量",@"最高",@"最低",@"开盘",@"昨收",@"昨结",@"现量",@"持货量",@"成交额"];
+    self.menuArray1 = @[@"涨跌值",@"涨跌幅"];//接口无振幅
+    self.menuFieldArray1 = @[@"valueOfUpOrDown",@"upsAndDowns"];
+    self.menuArray2 = @[@"成交量",@"最高",@"最低",@"开盘",@"昨收",@"昨结",@"持货量",@"成交额"];//接口无现量
+    self.menuFieldArray2 = @[@"volume",@"highestPrice",@"lowestPrice",@"openPrice",@"yesterdayClose",@"yesterdayBalance",@"openInterest",@"obv"];
     for (NSInteger i = 0; i<5; i++) {
         CGFloat x = 0,width = 0;
         if (i == 0) {
@@ -74,20 +78,35 @@
             }
         }
     }
-    //初始化数据
-    self.dataArray = @[@{@"name":@"白银升贴水1000",@"newest":@"1,023.0",@"buy":@"1,022.0",@"sell":@"1,023.0",@"changeValue":@"34.0",@"volume":@"63,478"},
-                                             @{@"name":@"白银基差1000",@"newest":@"925.0",@"buy":@"924.0",@"sell":@"925.0",@"changeValue":@"-47.0",@"volume":@"149.380"},
-                                             @{@"name":@"白银现货排期",@"newest":@"4,131",@"buy":@"4,130",@"sell":@"4,131",@"changeValue":@"-59",@"volume":@"64.238"},
-                                             @{@"name":@"龙田勇银",@"newest":@"4,179",@"buy":@"0",@"sell":@"0",@"changeValue":@"-1",@"volume":@"0"}];
-    //表体
-    self.hotTradeTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 99, WIDTH, self.dataArray.count*48) style:UITableViewStylePlain];
-    self.hotTradeTableView.backgroundColor = [UIColor whiteColor];
-    self.hotTradeTableView.delegate = self;
-    self.hotTradeTableView.dataSource = self;
-    self.hotTradeTableView.rowHeight = 48;
-    self.hotTradeTableView.bounces = NO;
-    self.hotTradeTableView.separatorColor = [UIColor colorWithRed:232/255.0 green:232/255.0 blue:232/255.0 alpha:1];
-    [self.view addSubview:self.hotTradeTableView];
+    //加载控件
+    UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activity.center = self.view.center;
+    [self.view addSubview:activity];
+    [activity stopAnimating];
+    //数据请求
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager GET:HOTTRADEURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [activity stopAnimating];
+        NSArray *arr = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        self.dataArray = [NSMutableArray arrayWithArray:arr];
+        for (NSMutableDictionary *dic in self.dataArray) {
+            [dic addEntriesFromDictionary:[NSDictionary dictionaryWithObject:dic[@"valueOfUpOrDown"] forKey:@"dropDownKey1"]];
+            [dic addEntriesFromDictionary:[NSDictionary dictionaryWithObject:dic[@"volume"] forKey:@"dropDownKey2"]];
+        }
+        //表体
+        self.hotTradeTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 99, WIDTH, self.dataArray.count*48) style:UITableViewStylePlain];
+        self.hotTradeTableView.backgroundColor = [UIColor whiteColor];
+        self.hotTradeTableView.delegate = self;
+        self.hotTradeTableView.dataSource = self;
+        self.hotTradeTableView.rowHeight = 48;
+        self.hotTradeTableView.bounces = NO;
+        self.hotTradeTableView.separatorColor = [UIColor colorWithRed:232/255.0 green:232/255.0 blue:232/255.0 alpha:1];
+        [self.view addSubview:self.hotTradeTableView];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [activity stopAnimating];
+        NSLog(@"请求失败");
+    }];
 }
 #pragma mark 返回
 - (void)backBtnClick{
@@ -147,11 +166,23 @@
         [self.dropDownButton1 setTitle:sender.titleLabel.text forState:UIControlStateNormal];
         [self.optionView1 removeFromSuperview];
         self.optionView1 = nil;
+        //刷新下拉框1的数据
+        for (NSMutableDictionary *dic in self.dataArray) {
+            NSInteger i = [self.menuArray1 indexOfObject:sender.titleLabel.text];
+            dic[@"dropDownKey1"] = dic[self.menuFieldArray1[i]];
+        }
     }else{
         [self.dropDownButton2 setTitle:sender.titleLabel.text forState:UIControlStateNormal];
         [self.optionView2 removeFromSuperview];
         self.optionView2 = nil;
+        //刷新下拉框2的数据
+        for (NSMutableDictionary *dic in self.dataArray) {
+            NSInteger i = [self.menuArray2 indexOfObject:sender.titleLabel.text];
+            NSLog(@"%@",dic[self.menuFieldArray2[i]]);
+            dic[@"dropDownKey2"] = dic[self.menuFieldArray2[i]];
+        }
     }
+    [self.hotTradeTableView reloadData];
 }
 #pragma mark 刷新
 - (void)refresh{
@@ -163,22 +194,24 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     XXDHotTrade *hotTrade = [[XXDHotTrade alloc] init];
-    hotTrade.productName = self.dataArray[indexPath.row][@"name"];
-    hotTrade.newestPrice = self.dataArray[indexPath.row][@"newest"];
-    hotTrade.buyPrice = self.dataArray[indexPath.row][@"buy"];
-    hotTrade.sellPrice = self.dataArray[indexPath.row][@"sell"];
-    hotTrade.changeValue = self.dataArray[indexPath.row][@"changeValue"];
-    hotTrade.volume = self.dataArray[indexPath.row][@"volume"];
-    static NSString *cellId = @"cell";
+    hotTrade.commodity = self.dataArray[indexPath.row][@"commodity"];
+    hotTrade.name = self.dataArray[indexPath.row][@"name"];
+    hotTrade.latestPrice = self.dataArray[indexPath.row][@"latestPrice"];
+    hotTrade.buy1 = self.dataArray[indexPath.row][@"buy1"];
+    hotTrade.sale1 = self.dataArray[indexPath.row][@"sale1"];
+    hotTrade.dropDownValue1 = self.dataArray[indexPath.row][@"dropDownKey1"];
+    hotTrade.dropDownValue2 = self.dataArray[indexPath.row][@"dropDownKey2"];
+    hotTrade.valueOfUpOrDown = self.dataArray[indexPath.row][@"valueOfUpOrDown"];
+    NSString *cellId = @"cell";
     XXDHotTradeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
-        cell = [[XXDHotTradeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId hotTrade:hotTrade];
+       cell = [[XXDHotTradeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil hotTrade:hotTrade];
     }
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     XXDHotTradeCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"%@",cell.hotTrade.productName);
+    NSLog(@"%@",cell.hotTrade.commodity);
 }
 
 - (void)didReceiveMemoryWarning {

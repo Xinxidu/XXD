@@ -15,8 +15,8 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         CGFloat width = self.contentView.frame.size.width;
         self.hotTrade = hotTrade;
-        //商品    最新      买1/卖1       涨跌值     成交量
-        NSArray *labelStringArray = [NSArray arrayWithObjects:hotTrade.productName,hotTrade.newestPrice,hotTrade.buyPrice,hotTrade.sellPrice,hotTrade.changeValue,hotTrade.volume, nil];
+        //商品名    最新      买1/卖1       涨跌值     成交量
+        NSArray *labelStringArray = [NSArray arrayWithObjects:hotTrade.name,hotTrade.latestPrice,hotTrade.buy1,hotTrade.sale1,hotTrade.dropDownValue1,hotTrade.dropDownValue2, nil];
         for (NSInteger i = 0; i<6; i++) {
             CGFloat x = 0,y = 0,w = 0,h = 0;
             switch (i) {
@@ -27,7 +27,7 @@
                 case 4:
                 case 5:    w = (width*0.8-30)/4.0, x = 15+width*0.2+w*(i-2), y =0, h=50;       break;
             }
-            XXDHotTradeLabel *hotTradeLabel = [[XXDHotTradeLabel alloc] initWithFrame:CGRectMake(x, y, w, h) text:labelStringArray[i] changeValue:[hotTrade.changeValue doubleValue]];
+            XXDHotTradeLabel *hotTradeLabel = [[XXDHotTradeLabel alloc] initWithFrame:CGRectMake(x, y, w, h) text:labelStringArray[i] changeValue:[hotTrade.valueOfUpOrDown doubleValue]];
             if (i == 0) {  hotTradeLabel.textAlignment = NSTextAlignmentLeft; hotTradeLabel.numberOfLines=2; }
             [self.contentView addSubview:hotTradeLabel];
         }
