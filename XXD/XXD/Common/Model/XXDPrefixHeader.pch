@@ -28,5 +28,7 @@
 #define RED [UIColor redColor]  //#ff0000
 //辅助背景色
 #define HEADERBG [UIColor colorWithRed:227/255.0 green:241/255.0 blue:1 alpha:1]  //#f6f6f6
+//热门交易接口
+#define HOTTRADEURL @"http://175.102.13.51:8080/XDSY/latestInformation"
 
 #endif /* XXDPrefixHeader_pch */
