@@ -117,15 +117,17 @@
     }
     return cell;
 }
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if (_dataArray.count>0) {
         return  _dataArray.count;
     }else
         return 30;
-    
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 72;
+    return 120;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (_dataArray.count>0) {
@@ -135,6 +137,12 @@
         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:detailVC animated:YES];
     }
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 15;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.1;
 }
 
 #pragma mark ****** 提示框
