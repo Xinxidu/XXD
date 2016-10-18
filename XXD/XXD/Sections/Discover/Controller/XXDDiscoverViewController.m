@@ -74,7 +74,7 @@
             cell.textLabel.text = @"投资策略";
         }else if (indexPath.row == 2){
             cell.imageView.image = [UIImage imageNamed:@"yinglijiqiao"];
-            cell.textLabel.text = @"盈利技巧";
+            cell.textLabel.text = @"行情解读";
         }else{
             cell.imageView.image = [UIImage imageNamed:@"mingshituandui"];
             cell.textLabel.text = @"名师团队";

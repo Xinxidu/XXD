@@ -18,27 +18,27 @@
     return self;
 }
 -(void)createView{
-    UIView *topBgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 38)];
-    topBgView.backgroundColor = [UIColor colorWithRed:253/255.0 green:243/255.0 blue:241/255.0 alpha:1.0];
-    [self.contentView addSubview:topBgView];
+    _topBgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 38)];
+    _topBgView.backgroundColor = [UIColor colorWithRed:253/255.0 green:243/255.0 blue:241/255.0 alpha:1.0];
+    [self.contentView addSubview:_topBgView];
     
     _litpicimageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 2)];
     _litpicimageView.backgroundColor = RED;
-    [topBgView addSubview:_litpicimageView];
+    [_topBgView addSubview:_litpicimageView];
     
     _leftTitleLable = [[UILabel alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(_litpicimageView.frame)+12, 25, 12)];
     _leftTitleLable.text = @"日刊";
     _leftTitleLable.textColor = RED;
     _leftTitleLable.font = [UIFont systemFontOfSize:12.0];
-    [topBgView addSubview:_leftTitleLable];
+    [_topBgView addSubview:_leftTitleLable];
     
     _titleLable = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_leftTitleLable.frame)+5, CGRectGetMaxY(_litpicimageView.frame)+12, WIDTH-30-30, 12)];
     _titleLable.text = @"鑫西都:论升息美元节节攀升,瞩减产油价待时而升";
     _titleLable.textColor = MAINCOLOR;
     _titleLable.font = [UIFont systemFontOfSize:12.0];
-    [topBgView addSubview:_titleLable];
+    [_topBgView addSubview:_titleLable];
     
-    _textLable = [[UILabel alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(topBgView.frame)+5, WIDTH-30, 50)];
+    _textLable = [[UILabel alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(_topBgView.frame)+5, WIDTH-30, 50)];
     _textLable.text = @"鑫西都：10月14日整体变现良好的数据和美联储官员们的升息言论，进一步巩固了年底在升息的预期，美元因此攀升至七个月高位。";
     _textLable.textColor = GRAY;
     _textLable.font = [UIFont systemFontOfSize:11.0];
