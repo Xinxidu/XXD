@@ -79,9 +79,10 @@
 - (void)scrollViewSelectToIndex:(UIButton *)button
 {
     [self selectButton:button.tag-100];
-    [UIView animateWithDuration:0 animations:^{
-        _scrollView.contentOffset = CGPointMake(WIDTH*(button.tag-100), 0);
-    }];
+//    [UIView animateWithDuration:0 animations:^{
+//        _scrollView.contentOffset = CGPointMake(WIDTH*(button.tag-100), 0);
+//    }];
+    _scrollView.contentOffset = CGPointMake(WIDTH*(button.tag-100), 0);
 }
 
 //选择某个标题
@@ -92,10 +93,12 @@
     }
     selectButton = _buttonArray[index];
     [selectButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
-    [UIView animateWithDuration:0.3 animations:^{
-        _sliderView.frame = CGRectMake(50+titleWidth*index, titleHeight-1, titleWidth, 1);
-        selectButton.backgroundColor = BGGRAY;
-    }];
+//    [UIView animateWithDuration:0.3 animations:^{
+//        _sliderView.frame = CGRectMake(50+titleWidth*index, titleHeight-1, titleWidth, 1);
+//        selectButton.backgroundColor = BGGRAY;
+//    }];
+    _sliderView.frame = CGRectMake(50+titleWidth*index, titleHeight-1, titleWidth, 1);
+    selectButton.backgroundColor = BGGRAY;
     
 }
 
