@@ -21,6 +21,7 @@
 #import "XXDLiveOnLineController.h"
 #import "FirmRegisterViewController.h"
 #import "XXDLoginViewController.h"
+#import <AFNetworking.h>
 #define BGCOLOR [UIColor colorWithRed:230/255.0 green:231/255.0 blue:232/255.0 alpha:1]
 typedef NS_ENUM(NSInteger,XXDButtonType){
     XXDButtonTypeHotTrade,              //热门交易
@@ -45,10 +46,22 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 @property (assign,nonatomic) NSInteger flagForTable;    //切换实时快讯和金银牛评tableView的标记
 @property (strong,nonatomic) NSMutableArray *timeNewsArray;
 @property (assign,nonatomic) CGFloat tableViewHeight;
+@property (strong,nonatomic) UILabel *latest1;
+@property (strong,nonatomic) UILabel *latest2;
+@property (strong,nonatomic) UILabel *upsAndDowns1;
+@property (strong,nonatomic) UILabel *upsAndDowns2;
+@property (strong,nonatomic) UILabel *valueOfUpOrDown1;
+@property (strong,nonatomic) UILabel *valueOfUpOrDown2;
+@property (strong,nonatomic) CADisplayLink *displayLink;
+@property (assign,nonatomic) NSUInteger stepper;
 @end
 
 @implementation XXDHomeViewController
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(step)];
+    [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"";
@@ -222,44 +235,102 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 创建主打产品
 - (void)createFeaturedProducts{
-    NSArray *productNameArray = @[@"白银升贴水1000",@"白银基差1000"];
-    NSArray *num1Array = @[@"994.0",@"959.0"];
-    NSArray *num2Array = @[@"-36.0",@"+1.0"];
-    NSArray *num3Array = @[@"-3.50%",@"+0.10%"];
-    for (NSInteger i = 0; i < 2 ; i++) {
-        CGFloat viewWidth = (WIDTH-1)/2.0;
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake((viewWidth+1)*i, CGRectGetMaxY(self.topBgView.frame)+10, viewWidth, 72)];
-        v.backgroundColor = [UIColor whiteColor];
-        UILabel *productName = [[UILabel alloc] init];
-        productName.text = productNameArray[i];
-        productName.font = [UIFont boldSystemFontOfSize:13.0f];
-        CGFloat productNameWidth = [(NSString *)productNameArray[i] boundingRectWithSize:CGSizeMake(1000, 16) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:productName.font forKey:NSFontAttributeName] context:nil].size.width;
-        productName.frame = CGRectMake((viewWidth-productNameWidth)/2.0, 5, productNameWidth, 22);
-        [v addSubview:productName];
-        CGFloat x = productName.frame.origin.x;
-        UILabel *num1 = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(productName.frame), viewWidth-x, 22)];
-        num1.font = [UIFont systemFontOfSize:20.0];
-        num1.text = num1Array[i];
-        num1.textColor = (i == 0 ? DARKGREEN : RED);
-        [v addSubview:num1];
-        UILabel *num2 = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(num1.frame), viewWidth/2.0-x, 15)];
-        num2.font = [UIFont systemFontOfSize:12.0];
-        num2.text = num2Array[i];
-        num2.textColor = (i == 0 ? DARKGREEN : RED);
-        [v addSubview:num2];
-        UILabel *num3 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(num2.frame), CGRectGetMaxY(num1.frame), viewWidth-CGRectGetMaxX(num2.frame), 15)];
-        num3.font = [UIFont systemFontOfSize:12.0];
-        num3.text = num3Array[i];
-        num3.textColor = (i == 0 ? DARKGREEN : RED);
-        [v addSubview:num3];
-        if (i == 0) {
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(featuredProductsClick1)];
-            [v addGestureRecognizer:tap];
-        }else{
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(featuredProductsClick2)];
-            [v addGestureRecognizer:tap];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager GET:HOTTRADEURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSArray *arr = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSMutableArray  *nameArray = [NSMutableArray array];//名称
+        NSMutableArray  *lastPriceArray = [NSMutableArray array];//最新价
+        NSMutableArray  *valueOfUpOrDownArray = [NSMutableArray array];//涨跌值
+        NSMutableArray  *upsAndDownsArray = [NSMutableArray array];//涨跌幅
+        for (NSDictionary *dic in arr) {
+            if ([dic[@"commodity"] isEqualToString:@"AgJC"]) {
+                [nameArray addObject:dic[@"name"]];
+                [lastPriceArray addObject:dic[@"latestPrice"]];
+                [valueOfUpOrDownArray addObject:dic[@"valueOfUpOrDown"]];
+                [upsAndDownsArray addObject:dic[@"upsAndDowns"]];
+            }else if ([dic[@"commodity"] isEqualToString:@"AgSTS"]){
+                [nameArray addObject:dic[@"name"]];
+                [lastPriceArray addObject:dic[@"latestPrice"]];
+                [valueOfUpOrDownArray addObject:dic[@"valueOfUpOrDown"]];
+                [upsAndDownsArray addObject:dic[@"upsAndDowns"]];
+            }
         }
-        [self.rootScrollView addSubview:v];
+        for (NSInteger i = 0; i < 2 ; i++) {
+            CGFloat viewWidth = (WIDTH-1)/2.0;
+            UIView *v = [[UIView alloc] initWithFrame:CGRectMake((viewWidth+1)*i, CGRectGetMaxY(self.topBgView.frame)+10, viewWidth, 72)];
+            v.backgroundColor = [UIColor whiteColor];
+            UILabel *productName = [[UILabel alloc] init];
+            productName.text = nameArray[i];
+            productName.font = [UIFont boldSystemFontOfSize:13.0f];
+            CGFloat productNameWidth = [(NSString *)nameArray[i] boundingRectWithSize:CGSizeMake(1000, 16) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:productName.font forKey:NSFontAttributeName] context:nil].size.width;
+            productName.frame = CGRectMake((viewWidth-productNameWidth)/2.0, 5, productNameWidth, 22);
+            [v addSubview:productName];
+            CGFloat x = productName.frame.origin.x;
+            UILabel *num1 = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(productName.frame), viewWidth-x, 22)];
+            num1.font = [UIFont systemFontOfSize:20.0];
+            num1.text = lastPriceArray[i];
+            num1.textColor = (i == 0 ? DARKGREEN : RED);
+            [v addSubview:num1];
+            if (i == 0) {
+                self.latest1 = num1;
+            }else{
+                self.latest2 = num1;
+            }
+            UILabel *num2 = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(num1.frame), viewWidth/2.0-x, 15)];
+            num2.font = [UIFont systemFontOfSize:12.0];
+            num2.text = upsAndDownsArray[i];
+            num2.textColor = (i == 0 ? DARKGREEN : RED);
+            [v addSubview:num2];
+            if (i == 0) {
+                self.upsAndDowns1 = num2;
+            }else{
+                self.upsAndDowns2 = num2;
+            }
+            UILabel *num3 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(num2.frame), CGRectGetMaxY(num1.frame), viewWidth-CGRectGetMaxX(num2.frame), 15)];
+            num3.font = [UIFont systemFontOfSize:12.0];
+            num3.text = valueOfUpOrDownArray[i];
+            num3.textColor = (i == 0 ? DARKGREEN : RED);
+            [v addSubview:num3];
+            if (i == 0) {
+                self.valueOfUpOrDown1 = num3;
+            }else{
+                self.valueOfUpOrDown2 = num3;
+            }
+            if (i == 0) {
+                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(featuredProductsClick1)];
+                [v addGestureRecognizer:tap];
+            }else{
+                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(featuredProductsClick2)];
+                [v addGestureRecognizer:tap];
+            }
+            [self.rootScrollView addSubview:v];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"请求失败");
+    }];
+}
+- (void)step{
+    self.stepper ++;
+    if (self.stepper%60==0) {
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        [manager GET:HOTTRADEURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSArray *arr = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            for (NSDictionary *dic in arr) {
+                if ([dic[@"commodity"] isEqualToString:@"AgJC"]) {
+                    self.latest1.text = dic[@"latestPrice"];
+                    self.upsAndDowns1.text = dic[@"upsAndDowns"];
+                    self.valueOfUpOrDown1.text = dic[@"valueOfUpOrDown"];
+                }else if ([dic[@"commodity"] isEqualToString:@"AgSTS"]){
+                    self.latest2.text = dic[@"latestPrice"];
+                    self.upsAndDowns2.text = dic[@"upsAndDowns"];
+                    self.valueOfUpOrDown2.text = dic[@"valueOfUpOrDown"];
+                }
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"请求失败");
+        }];
     }
 }
 #pragma mark 主打产品的点击事件
@@ -432,6 +503,11 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     _tableViewHeight += cell.contentView.frame.size.height;
     self.buttomTableView.frame = CGRectMake(0, CGRectGetMaxY(self.timeNewsButton.frame), WIDTH, _tableViewHeight+20);
     self.rootScrollView.contentSize = CGSizeMake(WIDTH, CGRectGetMaxY(self.liveView.frame)+_tableViewHeight+20);
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.displayLink invalidate];
+    self.displayLink = nil;
 }
 - (void)didReceiveMemoryWarning {[super didReceiveMemoryWarning];}
 @end
