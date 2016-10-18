@@ -73,32 +73,30 @@
     sliderV.backgroundColor = MAINCOLOR;
     [titleView addSubview:sliderV];
     _sliderView=sliderV;
-    
+    selectButton.backgroundColor = BGGRAY;
 }
 
 - (void)scrollViewSelectToIndex:(UIButton *)button
 {
-    
     [self selectButton:button.tag-100];
     [UIView animateWithDuration:0 animations:^{
         _scrollView.contentOffset = CGPointMake(WIDTH*(button.tag-100), 0);
     }];
-        if (button.selected == YES) {
-                button.backgroundColor = BGGRAY;
-        }
-            else{
-                selectButton.backgroundColor = [UIColor whiteColor];
-        }
 }
 
 //选择某个标题
 - (void)selectButton:(NSInteger)index
 {
+    for (UIButton *button in _buttonArray) {
+        button.backgroundColor = [UIColor whiteColor];
+    }
     selectButton = _buttonArray[index];
     [selectButton setTitleColor:MAINCOLOR forState:UIControlStateNormal];
     [UIView animateWithDuration:0.3 animations:^{
         _sliderView.frame = CGRectMake(50+titleWidth*index, titleHeight-1, titleWidth, 1);
+        selectButton.backgroundColor = BGGRAY;
     }];
+    
 }
 
 //监听滚动事件判断当前拖动到哪一个了

@@ -15,6 +15,7 @@
 @property (strong,nonatomic) UILabel* titleLable;
 @property (strong,nonatomic) UILabel* textLable;
 @property (strong,nonatomic) UIImageView* litpicimageView;
+@property (strong,nonatomic) UIView *topBgView;
 
 @property(copy,nonatomic) NSString* Id;
 -(void)configModel:(ProfitSkillModel*)model;
