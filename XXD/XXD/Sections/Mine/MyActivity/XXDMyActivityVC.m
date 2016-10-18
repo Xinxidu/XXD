@@ -16,7 +16,6 @@
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray* dataArray;
 @property (strong,nonatomic) UIActivityIndicatorView *activityIndicatorView;
-@property (strong,nonatomic) UIView *opaqueView;
 @end
 
 @implementation XXDMyActivityVC
@@ -32,15 +31,11 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     _dataArray = [[NSMutableArray alloc]init];
-    _opaqueView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
-    _opaqueView.backgroundColor = [UIColor grayColor];
     _activityIndicatorView = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
-    _activityIndicatorView.center = _opaqueView.center;
+    _activityIndicatorView.center = self.view.center;
     _activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-    [_opaqueView addSubview:_activityIndicatorView];
+    [self.view addSubview:_activityIndicatorView];
     [_activityIndicatorView startAnimating];
-    _opaqueView.hidden = NO;
-    [self.view addSubview:_opaqueView];
     [self createTableView];
     [self requestWebServiceData];
 }
@@ -52,7 +47,7 @@
     NSDictionary* dic = [[NSDictionary alloc]initWithObjectsAndKeys:
                          @"",@"status",
                          @"1",@"currentPage",
-                         @"15",@"pageSize",
+                         @"30",@"pageSize",
                          nil];
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
     [manager GET:URL parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -74,14 +69,13 @@
         }
         [_tableView reloadData];
         [_activityIndicatorView stopAnimating];
-        _opaqueView.hidden = YES;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 //        [self showAlert:@"加载失败..."];
     }];
     
 }
 -(void)createTableView{
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height-64)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.bounces = NO;

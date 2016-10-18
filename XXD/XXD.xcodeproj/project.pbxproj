@@ -975,7 +975,6 @@
 					697D76331D781300008D7C94 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = VRQSU9ZYT4;
-						DevelopmentTeam = 44C6QDW62L;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1282,7 +1281,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = VRQSU9ZYT4;
-				DEVELOPMENT_TEAM = 44C6QDW62L;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XXD/Common/Model/XXDPrefixHeader.pch";
 				INFOPLIST_FILE = XXD/Info.plist;
@@ -1306,7 +1304,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = VRQSU9ZYT4;
-				DEVELOPMENT_TEAM = 44C6QDW62L;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XXD/Common/Model/XXDPrefixHeader.pch";
 				INFOPLIST_FILE = XXD/Info.plist;

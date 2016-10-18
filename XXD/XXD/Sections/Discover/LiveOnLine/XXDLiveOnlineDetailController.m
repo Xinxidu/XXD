@@ -9,8 +9,9 @@
 #import "XXDLiveOnlineDetailController.h"
 #import "XXDCustomNavigation.h"
 #define liveUrl @"http://win.xxidu.com"
-@interface XXDLiveOnlineDetailController ()
-
+@interface XXDLiveOnlineDetailController ()<UIWebViewDelegate>
+@property (strong,nonatomic) UIActivityIndicatorView *activity;//刷新控件
+@property (strong,nonatomic) UIWebView *webView;//webview
 @end
 
 @implementation XXDLiveOnlineDetailController
@@ -23,10 +24,9 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [XXDCustomNavigation loadUIViewController:self title:self.liveOnlineName backSelector:@selector(backBtnClick)];
-    NSLog(@"%@",self.liveOnlineName);
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.frame];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:liveUrl]]];
-    [self.view addSubview:webView];
+    _webView = [[UIWebView alloc] initWithFrame:self.view.frame];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:liveUrl]]];
+    [self.view addSubview:_webView];
 }
 #pragma mark -返回按钮点击
 - (void)backBtnClick{

@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,7 +32,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>600C42C0A63AF98FE73204C02DE3001D</key>
+		<key>1E3911A42A2E2C876ED6C8AC6B191EF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39C1EAA7D1D3C04B3AEFC7A66A26C6AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E4C14AE2BE396B80F2E4AAE50D74F99E</key>
+		<key>D058B89EB3B3DF45457A2DCD3971AFFE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
