@@ -74,6 +74,9 @@
 		3BAF05AF1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF05AE1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m */; };
 		3BBE4C721DAB7EAE0079F7A6 /* XXDProfessorTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE4C711DAB7EAE0079F7A6 /* XXDProfessorTeamCell.m */; };
 		3BBE4C751DAB7ECE0079F7A6 /* XXDProfessorTeamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE4C741DAB7ECE0079F7A6 /* XXDProfessorTeamModel.m */; };
+		3BF63D7A1DB5F2D80012AAE6 /* XXDProfitSkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF63D791DB5F2D80012AAE6 /* XXDProfitSkillViewController.m */; };
+		3BF63D7D1DB5F40B0012AAE6 /* XXDProfitScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF63D7C1DB5F40B0012AAE6 /* XXDProfitScrollViewController.m */; };
+		3BF63D801DB605950012AAE6 /* XXDProfitSkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF63D7F1DB605950012AAE6 /* XXDProfitSkillCell.m */; };
 		6933F6971D790B7A009CB88F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6933F6961D790B7A009CB88F /* Default-568h@2x.png */; };
 		696BC0F11DAB74D8003589C0 /* XXDSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 696BC0F01DAB74D8003589C0 /* XXDSetupViewController.m */; };
 		697D76391D781300008D7C94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D76381D781300008D7C94 /* main.m */; };
@@ -251,6 +254,12 @@
 		3BBE4C711DAB7EAE0079F7A6 /* XXDProfessorTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDProfessorTeamCell.m; sourceTree = "<group>"; };
 		3BBE4C731DAB7ECE0079F7A6 /* XXDProfessorTeamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDProfessorTeamModel.h; sourceTree = "<group>"; };
 		3BBE4C741DAB7ECE0079F7A6 /* XXDProfessorTeamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDProfessorTeamModel.m; sourceTree = "<group>"; };
+		3BF63D781DB5F2D80012AAE6 /* XXDProfitSkillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDProfitSkillViewController.h; sourceTree = "<group>"; };
+		3BF63D791DB5F2D80012AAE6 /* XXDProfitSkillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDProfitSkillViewController.m; sourceTree = "<group>"; };
+		3BF63D7B1DB5F40B0012AAE6 /* XXDProfitScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDProfitScrollViewController.h; sourceTree = "<group>"; };
+		3BF63D7C1DB5F40B0012AAE6 /* XXDProfitScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDProfitScrollViewController.m; sourceTree = "<group>"; };
+		3BF63D7E1DB605950012AAE6 /* XXDProfitSkillCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDProfitSkillCell.h; sourceTree = "<group>"; };
+		3BF63D7F1DB605950012AAE6 /* XXDProfitSkillCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDProfitSkillCell.m; sourceTree = "<group>"; };
 		6933F6961D790B7A009CB88F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		696BC0EF1DAB74D8003589C0 /* XXDSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDSetupViewController.h; sourceTree = "<group>"; };
 		696BC0F01DAB74D8003589C0 /* XXDSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDSetupViewController.m; sourceTree = "<group>"; };
@@ -487,6 +496,12 @@
 				3B7B3E691D7E5632003DBF06 /* ProfitSkillModel.m */,
 				3B7B3E6A1D7E5632003DBF06 /* ProfitSkillViewController.h */,
 				3B7B3E6B1D7E5632003DBF06 /* ProfitSkillViewController.m */,
+				3BF63D781DB5F2D80012AAE6 /* XXDProfitSkillViewController.h */,
+				3BF63D791DB5F2D80012AAE6 /* XXDProfitSkillViewController.m */,
+				3BF63D7B1DB5F40B0012AAE6 /* XXDProfitScrollViewController.h */,
+				3BF63D7C1DB5F40B0012AAE6 /* XXDProfitScrollViewController.m */,
+				3BF63D7E1DB605950012AAE6 /* XXDProfitSkillCell.h */,
+				3BF63D7F1DB605950012AAE6 /* XXDProfitSkillCell.m */,
 			);
 			path = ProfitSkill;
 			sourceTree = "<group>";
@@ -1079,6 +1094,7 @@
 				3BAF05AC1D93AD8300CFB105 /* XXDHistoryMarketListCell.m in Sources */,
 				3B60B8A61D7D3D8A002AA667 /* VarietyModel.m in Sources */,
 				69E1C6381D87EE3300ED2735 /* XXDLiveNewViewController.m in Sources */,
+				3BF63D801DB605950012AAE6 /* XXDProfitSkillCell.m in Sources */,
 				3B2EC0261D878A290019A72E /* XXDCalendarViewController.m in Sources */,
 				69B531C71D891F310055A9AE /* XXDNewerViewController.m in Sources */,
 				3B2713031DAE03EF008EDA1E /* XXDCollectViewController.m in Sources */,
@@ -1125,6 +1141,7 @@
 				69B89A711D7FFFCE009875E1 /* XXDLiveOnLineController.m in Sources */,
 				69B89A891D8137ED009875E1 /* XXDDelegateView.m in Sources */,
 				3B2EC0301D8793A30019A72E /* XXDHotActivityViewController.m in Sources */,
+				3BF63D7A1DB5F2D80012AAE6 /* XXDProfitSkillViewController.m in Sources */,
 				3BAF05AF1D93ADAA00CFB105 /* XXDHistoryExchangeCell.m in Sources */,
 				3B6F5F321D7FDAF00058D2DE /* XXDSearchViewController.m in Sources */,
 				3B355B721D80F8F1008C8376 /* XXDMyAccountInfoVC.m in Sources */,
@@ -1134,6 +1151,7 @@
 				3B7070071D9E0206005C6076 /* XXDCustomScrollViewController.m in Sources */,
 				3B7B3E6E1D7E5632003DBF06 /* ProfitSkillViewController.m in Sources */,
 				697D76701D782939008D7C94 /* XXDTradeViewController.m in Sources */,
+				3BF63D7D1DB5F40B0012AAE6 /* XXDProfitScrollViewController.m in Sources */,
 				69B1C6111D7E4FE8000CA633 /* XXDLiveView.m in Sources */,
 				3BBE4C751DAB7ECE0079F7A6 /* XXDProfessorTeamModel.m in Sources */,
 				69B89A801D813723009875E1 /* firmBargainViewController.m in Sources */,

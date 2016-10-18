@@ -14,6 +14,7 @@
 #import "XXDLiveOnLineController.h"
 #import "XXDNewerViewController.h"
 #import "FirmLoginViewController.h"
+#import "XXDProfitSkillViewController.h"
 
 @interface XXDDiscoverViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
@@ -95,7 +96,7 @@
         }else if(indexPath.row == 1){  //投资策略
             [self.navigationController pushViewController:[[DaysInvestmentViewController alloc] init] animated:YES];
         }else if (indexPath.row == 2){  //盈利技巧
-            [self.navigationController pushViewController:[[ProfitSkillViewController alloc] init] animated:YES];
+            [self.navigationController pushViewController:[[XXDProfitSkillViewController alloc] init] animated:YES];
         }else{  //名师团队
             [self.navigationController pushViewController:[[ProfessorTeamViewController alloc] init] animated:YES];
         }

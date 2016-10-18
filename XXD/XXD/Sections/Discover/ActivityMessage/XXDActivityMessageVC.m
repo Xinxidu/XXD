@@ -48,10 +48,11 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor whiteColor];
     if (indexPath.section %2 == 0) {
-        cell.activityStatusLabel.backgroundColor = RED;
+        cell.activityStatusLabel.text = @"进行中";
+        cell.activityStatusImage.image = [UIImage imageNamed:@"beBg"];
     }else{
-        cell.activityStatusLabel.backgroundColor = [UIColor grayColor];
         cell.activityStatusLabel.text = @"已结束";
+        cell.activityStatusImage.image = [UIImage imageNamed:@"endBg"];
     }
     cell.picImageView.image = [UIImage imageNamed:@"messageImg"];
     return cell;

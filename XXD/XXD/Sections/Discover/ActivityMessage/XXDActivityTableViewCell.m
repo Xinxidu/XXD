@@ -44,13 +44,35 @@
     _descriptionLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:_descriptionLabel];
     
-    _activityStatusLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.contentView.bounds.size.width-51-40, 0, 45, 16)];
-    _activityStatusLabel.text = @"活动中";
-    _activityStatusLabel.font = [UIFont systemFontOfSize:13.0];
-    _activityStatusLabel.backgroundColor = [UIColor orangeColor];
+//    _activityStatusLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.contentView.bounds.size.width-51-40, 0, 45, 16)];
+//    _activityStatusLabel.text = @"活动中";
+//    _activityStatusLabel.font = [UIFont systemFontOfSize:13.0];
+//    _activityStatusLabel.backgroundColor = [UIColor orangeColor];
+//    _activityStatusLabel.textColor = [UIColor whiteColor];
+//    _activityStatusLabel.textAlignment = NSTextAlignmentCenter;
+//    [self.contentView addSubview:_activityStatusLabel];
+    
+    _activityStatusImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.contentView.bounds.size.width-44-40, 0, 44, 15)];
+    //    _activityStatusImage.image = [UIImage imageNamed:@"beBg"];
+    [self.contentView addSubview:_activityStatusImage];
+    
+    _activityStatusLabel = [[UILabel alloc]initWithFrame:CGRectMake(4, 0, 36, 14)];
+    _activityStatusLabel.font = [UIFont systemFontOfSize:10.0];
     _activityStatusLabel.textColor = [UIColor whiteColor];
     _activityStatusLabel.textAlignment = NSTextAlignmentCenter;
-    [self.contentView addSubview:_activityStatusLabel];
+    _activityStatusLabel.text = @"进行中";
+    [_activityStatusImage addSubview:_activityStatusLabel];
+    
+//    _activityStatusImage = [[UIImageView alloc]initWithFrame:CGRectMake((rightView.frame.size.width-44)/2, 0, 44, 15)];
+//    //    _activityStatusImage.image = [UIImage imageNamed:@"beBg"];
+//    [rightView addSubview:_activityStatusImage];
+//    
+//    _activityStatusLabel = [[UILabel alloc]initWithFrame:CGRectMake(4, 0, 36, 14)];
+//    _activityStatusLabel.font = [UIFont systemFontOfSize:10.0];
+//    _activityStatusLabel.textColor = [UIColor whiteColor];
+//    _activityStatusLabel.textAlignment = NSTextAlignmentCenter;
+//    _activityStatusLabel.text = @"进行中";
+//    [_activityStatusImage addSubview:_activityStatusLabel];
     
     
 }

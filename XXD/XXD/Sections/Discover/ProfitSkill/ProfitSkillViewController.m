@@ -11,6 +11,7 @@
 #import "BaseTableView.h"
 #import "AFNetworking.h"
 #import "DaysDetailController.h"
+#import "XXDProfitSkillCell.h"
 
 #define SIZE [UIScreen mainScreen].bounds.size
 #define URL @"http://app.service.xiduoil.com/ZhuBan"
@@ -99,21 +100,29 @@
         [blockSelf refreshStateChangeIsUpToGetMore:YES];
     }];
 }
-#pragma mark ****** tableView的代理方法
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if (_dataArray.count>0) {
-        return _dataArray.count;
+        return  _dataArray.count;
     }else
-        return 10;
+        return 30;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 120;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 15;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.1;
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString* cellId = @"cell";
-    ProfitSkillCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    XXDProfitSkillCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (!cell) {
-        cell = [[ProfitSkillCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        cell = [[XXDProfitSkillCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     if (_dataArray.count>0){
         ProfitSkillModel* model = _dataArray[indexPath.row];

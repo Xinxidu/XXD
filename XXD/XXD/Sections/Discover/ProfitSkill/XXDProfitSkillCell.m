@@ -1,14 +1,14 @@
- //
-//  DayInvestmentCell.m
-//  MarKet
 //
-//  Created by Secret Wang on 16/3/11.
-//  Copyright © 2016年 Secret. All rights reserved.
+//  XXDProfitSkillCell.m
+//  XXD
+//
+//  Created by pan on 2016/10/18.
+//  Copyright © 2016年 xinxidu. All rights reserved.
 //
 
-#import "DayInvestmentCell.h"
-#import "UIImageView+WebCache.h"
-@implementation DayInvestmentCell
+#import "XXDProfitSkillCell.h"
+
+@implementation XXDProfitSkillCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -26,8 +26,14 @@
     _litpicimageView.backgroundColor = RED;
     [topBgView addSubview:_litpicimageView];
     
-    _titleLable = [[UILabel alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(_litpicimageView.frame)+12, WIDTH-30, 12)];
-    _titleLable.text = @"鑫西都：论升息美元节节攀升，瞩减产油价待时而升";
+    _leftTitleLable = [[UILabel alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(_litpicimageView.frame)+12, 25, 12)];
+    _leftTitleLable.text = @"日刊";
+    _leftTitleLable.textColor = RED;
+    _leftTitleLable.font = [UIFont systemFontOfSize:12.0];
+    [topBgView addSubview:_leftTitleLable];
+    
+    _titleLable = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_leftTitleLable.frame)+5, CGRectGetMaxY(_litpicimageView.frame)+12, WIDTH-30-30, 12)];
+    _titleLable.text = @"鑫西都:论升息美元节节攀升,瞩减产油价待时而升";
     _titleLable.textColor = MAINCOLOR;
     _titleLable.font = [UIFont systemFontOfSize:12.0];
     [topBgView addSubview:_titleLable];
@@ -52,12 +58,12 @@
     _timeLable.font = [UIFont systemFontOfSize:11.0];
     [self.contentView addSubview:_timeLable];
 }
--(void)configModel:(DaysInvestmentModel *)model{
-//    _titleLable.text = model.titleString;
-//    _timeLable.text = model.timeString;
-//    _textLable.text = [NSString stringWithFormat:@"编者语:%@",model.textString];
-//    _Id = model.IdString;
-//    NSString *str = [NSString stringWithFormat:@"http://app.service.xiduoil.com%@",model.LitpicString];
-//    [_litpicimageView sd_setImageWithURL:[NSURL URLWithString:str] placeholderImage:[UIImage imageNamed:@"img4"]];
+-(void)configModel:(ProfitSkillModel *)model{
+    //    _titleLable.text = model.titleString;
+    //    _timeLable.text = model.timeString;
+    //    _textLable.text = [NSString stringWithFormat:@"编者语:%@",model.textString];
+    //    _Id = model.IdString;
+    //    NSString *str = [NSString stringWithFormat:@"http://app.service.xiduoil.com%@",model.LitpicString];
+    //    [_litpicimageView sd_setImageWithURL:[NSURL URLWithString:str] placeholderImage:[UIImage imageNamed:@"img4"]];
 }
 @end

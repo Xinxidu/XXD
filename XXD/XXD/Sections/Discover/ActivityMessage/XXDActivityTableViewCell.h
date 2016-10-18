@@ -14,4 +14,5 @@
 @property (nonatomic,strong)UILabel *descriptionLabel;//简单描述
 @property (nonatomic,strong)UILabel *timeLabel;//时间
 @property (nonatomic,strong)UILabel *activityStatusLabel;//活动状态
+@property (nonatomic,strong)UIImageView *activityStatusImage;
 @end
