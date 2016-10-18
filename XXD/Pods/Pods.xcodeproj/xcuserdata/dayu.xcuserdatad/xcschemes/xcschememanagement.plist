@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -27,6 +32,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1E3911A42A2E2C876ED6C8AC6B191EF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39C1EAA7D1D3C04B3AEFC7A66A26C6AA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>600C42C0A63AF98FE73204C02DE3001D</key>
 		<dict>
 			<key>primary</key>
@@ -43,6 +58,11 @@
 			<true/>
 		</dict>
 		<key>C22B0F55E74405A9A48A68011CB1E2F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D058B89EB3B3DF45457A2DCD3971AFFE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

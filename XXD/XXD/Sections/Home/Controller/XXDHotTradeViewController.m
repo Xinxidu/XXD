@@ -24,10 +24,18 @@
 @property (strong,nonatomic) UIButton *dropDownButton2;
 @property (strong,nonatomic) UIView *optionView1;
 @property (strong,nonatomic) UIView *optionView2;
-
+@property (copy,nonatomic) NSString *key1;
+@property (copy,nonatomic) NSString *key2;
+@property (strong,nonatomic) CADisplayLink *displayLink;
+@property (assign,nonatomic) NSUInteger stepper;
 @end
 
 @implementation XXDHotTradeViewController
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(step)];
+    [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     //导航栏
@@ -91,10 +99,12 @@
         [self.activity stopAnimating];
         NSArray *arr = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         self.dataArray = [NSMutableArray arrayWithArray:arr];
-        for (NSMutableDictionary *dic in self.dataArray) {
-            [dic addEntriesFromDictionary:[NSDictionary dictionaryWithObject:dic[@"valueOfUpOrDown"] forKey:@"dropDownKey1"]];
-            [dic addEntriesFromDictionary:[NSDictionary dictionaryWithObject:dic[@"volume"] forKey:@"dropDownKey2"]];
-        }
+//        for (NSMutableDictionary *dic in self.dataArray) {
+//            [dic addEntriesFromDictionary:[NSDictionary dictionaryWithObject:dic[@"valueOfUpOrDown"] forKey:@"dropDownKey1"]];
+//            [dic addEntriesFromDictionary:[NSDictionary dictionaryWithObject:dic[@"volume"] forKey:@"dropDownKey2"]];
+            self.key1 = @"valueOfUpOrDown";
+            self.key2 = @"volume";
+//        }
         //表体
         self.hotTradeTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 99, WIDTH, self.dataArray.count*48) style:UITableViewStylePlain];
         self.hotTradeTableView.backgroundColor = [UIColor whiteColor];
@@ -170,7 +180,8 @@
         //刷新下拉框1的数据
         for (NSMutableDictionary *dic in self.dataArray) {
             NSInteger i = [self.menuArray1 indexOfObject:sender.titleLabel.text];
-            dic[@"dropDownKey1"] = dic[self.menuFieldArray1[i]];
+            self.key1 = self.menuFieldArray1[i];
+            dic[self.key1] = dic[self.menuFieldArray1[i]];
         }
     }else{
         [self.dropDownButton2 setTitle:sender.titleLabel.text forState:UIControlStateNormal];
@@ -179,8 +190,8 @@
         //刷新下拉框2的数据
         for (NSMutableDictionary *dic in self.dataArray) {
             NSInteger i = [self.menuArray2 indexOfObject:sender.titleLabel.text];
-            NSLog(@"%@",dic[self.menuFieldArray2[i]]);
-            dic[@"dropDownKey2"] = dic[self.menuFieldArray2[i]];
+            self.key2 = self.menuFieldArray2[i];
+            dic[self.key2] = dic[self.menuFieldArray2[i]];
         }
     }
     [self.hotTradeTableView reloadData];
@@ -194,10 +205,6 @@
         [self.activity stopAnimating];
         NSArray *arr = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         self.dataArray = [NSMutableArray arrayWithArray:arr];
-        for (NSMutableDictionary *dic in self.dataArray) {
-            [dic addEntriesFromDictionary:[NSDictionary dictionaryWithObject:dic[@"valueOfUpOrDown"] forKey:@"dropDownKey1"]];
-            [dic addEntriesFromDictionary:[NSDictionary dictionaryWithObject:dic[@"volume"] forKey:@"dropDownKey2"]];
-        }
        [self.hotTradeTableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self.activity stopAnimating];
@@ -215,8 +222,8 @@
     hotTrade.latestPrice = self.dataArray[indexPath.row][@"latestPrice"];
     hotTrade.buy1 = self.dataArray[indexPath.row][@"buy1"];
     hotTrade.sale1 = self.dataArray[indexPath.row][@"sale1"];
-    hotTrade.dropDownValue1 = self.dataArray[indexPath.row][@"dropDownKey1"];
-    hotTrade.dropDownValue2 = self.dataArray[indexPath.row][@"dropDownKey2"];
+    hotTrade.dropDownValue1 = self.dataArray[indexPath.row][self.key1];
+    hotTrade.dropDownValue2 = self.dataArray[indexPath.row][self.key2];
     hotTrade.valueOfUpOrDown = self.dataArray[indexPath.row][@"valueOfUpOrDown"];
     NSString *cellId = @"cell";
     XXDHotTradeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
@@ -229,7 +236,25 @@
     XXDHotTradeCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSLog(@"%@",cell.hotTrade.commodity);
 }
-
+- (void)step{
+    self.stepper ++;
+    if (self.stepper%60==0) {
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        [manager GET:HOTTRADEURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSArray *arr = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            self.dataArray = [NSMutableArray arrayWithArray:arr];
+            [self.hotTradeTableView reloadData];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"请求失败");
+        }];
+    }
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.displayLink invalidate];
+    self.displayLink = nil;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
