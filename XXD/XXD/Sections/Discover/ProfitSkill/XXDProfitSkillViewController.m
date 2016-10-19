@@ -30,8 +30,6 @@
     ProfitSkillViewController *oneVC = [[ProfitSkillViewController alloc] init];
     ProfitSkillViewController *twoVC = [[ProfitSkillViewController alloc] init];
     ProfitSkillViewController *threeVC = [[ProfitSkillViewController alloc] init];
-//    ProfitSkillViewController *fourVC = [[ProfitSkillViewController alloc] init];
-    
     self.controllerArray = @[oneVC,twoVC,threeVC];
 }
 -(void)viewWillAppear:(BOOL)animated{
