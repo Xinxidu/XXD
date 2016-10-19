@@ -77,7 +77,6 @@
 		3BF63D7A1DB5F2D80012AAE6 /* XXDProfitSkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF63D791DB5F2D80012AAE6 /* XXDProfitSkillViewController.m */; };
 		3BF63D7D1DB5F40B0012AAE6 /* XXDProfitScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF63D7C1DB5F40B0012AAE6 /* XXDProfitScrollViewController.m */; };
 		3BF63D801DB605950012AAE6 /* XXDProfitSkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF63D7F1DB605950012AAE6 /* XXDProfitSkillCell.m */; };
-		6933F6971D790B7A009CB88F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6933F6961D790B7A009CB88F /* Default-568h@2x.png */; };
 		696BC0F11DAB74D8003589C0 /* XXDSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 696BC0F01DAB74D8003589C0 /* XXDSetupViewController.m */; };
 		697D76391D781300008D7C94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D76381D781300008D7C94 /* main.m */; };
 		697D763C1D781300008D7C94 /* XXDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697D763B1D781300008D7C94 /* XXDAppDelegate.m */; };
@@ -111,6 +110,8 @@
 		69C5BCAB1D9A420C005CF969 /* XXDOrderSwapsBSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5BCAA1D9A420C005CF969 /* XXDOrderSwapsBSCell.m */; };
 		69C5BCAF1D9A4307005CF969 /* XXDOrderSwapsBS.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5BCAE1D9A4307005CF969 /* XXDOrderSwapsBS.m */; };
 		69C5BCB21D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5BCB11D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.m */; };
+		69CCFB171DB755DD00604607 /* XXDBannerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CCFB161DB755DD00604607 /* XXDBannerDetailViewController.m */; };
+		69CCFB1A1DB75EB600604607 /* XXDLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CCFB191DB75EB600604607 /* XXDLiveViewController.m */; };
 		69D54A9A1D9B5A58007D033D /* XXDDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D54A991D9B5A58007D033D /* XXDDelegate.m */; };
 		69D54A9D1D9B603A007D033D /* XXDDelegateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D54A9C1D9B603A007D033D /* XXDDelegateCell.m */; };
 		69E1C62B1D8793AD00ED2735 /* XXDHotTradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E1C62A1D8793AD00ED2735 /* XXDHotTradeViewController.m */; };
@@ -260,7 +261,6 @@
 		3BF63D7C1DB5F40B0012AAE6 /* XXDProfitScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDProfitScrollViewController.m; sourceTree = "<group>"; };
 		3BF63D7E1DB605950012AAE6 /* XXDProfitSkillCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDProfitSkillCell.h; sourceTree = "<group>"; };
 		3BF63D7F1DB605950012AAE6 /* XXDProfitSkillCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDProfitSkillCell.m; sourceTree = "<group>"; };
-		6933F6961D790B7A009CB88F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		696BC0EF1DAB74D8003589C0 /* XXDSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDSetupViewController.h; sourceTree = "<group>"; };
 		696BC0F01DAB74D8003589C0 /* XXDSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDSetupViewController.m; sourceTree = "<group>"; };
 		697D76341D781300008D7C94 /* XXD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XXD.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -327,6 +327,10 @@
 		69C5BCAE1D9A4307005CF969 /* XXDOrderSwapsBS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDOrderSwapsBS.m; sourceTree = "<group>"; };
 		69C5BCB01D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDOrderSwapsBSViewModel.h; sourceTree = "<group>"; };
 		69C5BCB11D9A51AC005CF969 /* XXDOrderSwapsBSViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDOrderSwapsBSViewModel.m; sourceTree = "<group>"; };
+		69CCFB151DB755DD00604607 /* XXDBannerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDBannerDetailViewController.h; sourceTree = "<group>"; };
+		69CCFB161DB755DD00604607 /* XXDBannerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDBannerDetailViewController.m; sourceTree = "<group>"; };
+		69CCFB181DB75EB600604607 /* XXDLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDLiveViewController.h; sourceTree = "<group>"; };
+		69CCFB191DB75EB600604607 /* XXDLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDLiveViewController.m; sourceTree = "<group>"; };
 		69D54A981D9B5A58007D033D /* XXDDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDDelegate.h; sourceTree = "<group>"; };
 		69D54A991D9B5A58007D033D /* XXDDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDDelegate.m; sourceTree = "<group>"; };
 		69D54A9B1D9B603A007D033D /* XXDDelegateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDDelegateCell.h; sourceTree = "<group>"; };
@@ -654,7 +658,6 @@
 				697D76431D781300008D7C94 /* Assets.xcassets */,
 				697D76771D782E77008D7C94 /* Main.storyboard */,
 				697D76481D781300008D7C94 /* Info.plist */,
-				6933F6961D790B7A009CB88F /* Default-568h@2x.png */,
 				697D76371D781300008D7C94 /* Supporting Files */,
 			);
 			path = XXD;
@@ -718,6 +721,7 @@
 		697D76561D781B9E008D7C94 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				69CCFB141DB755B200604607 /* Banner */,
 				69E1C6351D87E64300ED2735 /* LiveNew */,
 				3B2EC02D1D87938B0019A72E /* HotActivity */,
 				3B2EC0231D878A050019A72E /* Calendar */,
@@ -932,6 +936,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		69CCFB141DB755B200604607 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				69CCFB151DB755DD00604607 /* XXDBannerDetailViewController.h */,
+				69CCFB161DB755DD00604607 /* XXDBannerDetailViewController.m */,
+				69CCFB181DB75EB600604607 /* XXDLiveViewController.h */,
+				69CCFB191DB75EB600604607 /* XXDLiveViewController.m */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
 		69E1C6351D87E64300ED2735 /* LiveNew */ = {
 			isa = PBXGroup;
 			children = (
@@ -1019,7 +1034,6 @@
 			files = (
 				697D76441D781300008D7C94 /* Assets.xcassets in Resources */,
 				697D76791D782E77008D7C94 /* Main.storyboard in Resources */,
-				6933F6971D790B7A009CB88F /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1132,10 +1146,12 @@
 				3B355B751D8149D6008C8376 /* AuthcodeView.m in Sources */,
 				69B1C6181D7E64FF000CA633 /* XXDLiveImage.m in Sources */,
 				697D76731D782951008D7C94 /* XXDDiscoverViewController.m in Sources */,
+				69CCFB171DB755DD00604607 /* XXDBannerDetailViewController.m in Sources */,
 				3BAF05A91D93A5F700CFB105 /* XXDTodayExchangeCell.m in Sources */,
 				696BC0F11DAB74D8003589C0 /* XXDSetupViewController.m in Sources */,
 				3B6C69121D9B5B1900C1CB1A /* XXDFindPwdSecondViewController.m in Sources */,
 				69BC4A601D9DFF140035328C /* XXDCalendarCell.m in Sources */,
+				69CCFB1A1DB75EB600604607 /* XXDLiveViewController.m in Sources */,
 				69B1C61F1D7EBD61000CA633 /* XXDJinYinNiuPingCell.m in Sources */,
 				3B60B88B1D7D3D08002AA667 /* MoreDetailModel.m in Sources */,
 				69B89A711D7FFFCE009875E1 /* XXDLiveOnLineController.m in Sources */,
@@ -1295,6 +1311,7 @@
 			baseConfigurationReference = 8A1EB41BB141BBB1A5B05B48 /* Pods-XXD.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1318,6 +1335,7 @@
 			baseConfigurationReference = B431A3CF173B42D828D67E6C /* Pods-XXD.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

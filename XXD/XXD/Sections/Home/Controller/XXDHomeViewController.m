@@ -22,6 +22,7 @@
 #import "FirmRegisterViewController.h"
 #import "XXDLoginViewController.h"
 #import <AFNetworking.h>
+#import "XXDBannerDetailViewController.h"
 #define BGCOLOR [UIColor colorWithRed:230/255.0 green:231/255.0 blue:232/255.0 alpha:1]
 typedef NS_ENUM(NSInteger,XXDButtonType){
     XXDButtonTypeHotTrade,              //热门交易
@@ -33,6 +34,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 @interface XXDHomeViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,PopViewControllerDelegate>
 @property (strong,nonatomic) UIScrollView *rootScrollView;  //根视图
 @property (strong,nonatomic) UIScrollView *topScrollView;   //顶部滚动视图
+@property (strong,nonatomic) NSArray *bannerArray;
 @property (strong,nonatomic) UIPageControl *pageControl;    //页码
 @property (strong,nonatomic) NSTimer *timer;    //定时器
 @property (assign,nonatomic) CGFloat scrollViewWidth;   //顶部滚动视图的宽度
@@ -101,7 +103,8 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 - (void)createInfiniteScrollView {
     //网络图片
     //本地图片数组
-    NSArray *imagesURLStrings = @[@"banner01",@"banner02",@"banner03",@"banner04"];
+    NSArray *imagesURLStrings = @[@"banner00",@"banner01",@"banner02",@"banner03",@"banner04"];
+    self.bannerArray = imagesURLStrings;
     //初始化scrollView
     CGFloat scrollViewHeight = 166;
     self.topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, scrollViewHeight)];
@@ -140,13 +143,13 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 #pragma mark 下一张图片
 - (void)nextImage{
     NSInteger page = self.pageControl.currentPage;
-    if (page == 3) {
+    if (page == self.bannerArray.count - 1) {
         page = 0;
+        [self.topScrollView setContentOffset:CGPointMake(0, 0) animated:NO];
     }else{
         page++;
+        [self.topScrollView setContentOffset:CGPointMake(page*self.scrollViewWidth, 0) animated:YES];
     }
-    //设置scrollView的偏移量
-    [self.topScrollView setContentOffset:CGPointMake(page*self.scrollViewWidth, 0) animated:YES];
 }
 #pragma mark scrollView滚动时的代理
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -166,7 +169,11 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 滚轮视图图片点击事件
 - (void)imageViewClick:(UITapGestureRecognizer *)sender{
-    NSLog(@"%ld",sender.view.tag);
+    self.hidesBottomBarWhenPushed = YES;
+    if (sender.view.tag == 0) {
+        [self.navigationController pushViewController:[[XXDBannerDetailViewController alloc] init] animated:YES];
+    }
+    self.hidesBottomBarWhenPushed = NO;
 }
 #pragma mark 创建顶部4个按钮
 - (void)creatButtions{
