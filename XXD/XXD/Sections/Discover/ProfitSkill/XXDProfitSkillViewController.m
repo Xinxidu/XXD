@@ -26,7 +26,6 @@
 }
 -(void)createUI{
     self.titleArray = @[@"e日刊",@"e周刊",@"e月刊"];
-    _titleStringArray = self.titleArray;
     
     ProfitSkillViewController *oneVC = [[ProfitSkillViewController alloc] init];
     ProfitSkillViewController *twoVC = [[ProfitSkillViewController alloc] init];

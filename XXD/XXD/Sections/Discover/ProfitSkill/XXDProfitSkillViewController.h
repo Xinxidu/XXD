@@ -10,5 +10,4 @@
 #import "XXDProfitScrollViewController.h"
 
 @interface XXDProfitSkillViewController : XXDProfitScrollViewController
-@property(strong,nonatomic) NSArray* titleStringArray;
 @end
