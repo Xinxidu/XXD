@@ -11,4 +11,5 @@
 @interface XXDProfitScrollViewController : UIViewController
 @property (nonatomic, strong) NSArray *titleArray;
 @property (nonatomic, strong) NSArray *controllerArray;
+@property (nonatomic, strong) NSString *titleString;
 @end

@@ -16,6 +16,7 @@
     UIView *_sliderView;
     UIViewController *_viewController;
     UIScrollView *_scrollView;
+    NSNotificationCenter *center;
 }
 @property (nonatomic, strong) NSMutableArray *buttonArray;
 @end
@@ -27,7 +28,9 @@
     
     
     _buttonArray = [NSMutableArray array];
-    
+    // 创建一个通知中心
+    center = [NSNotificationCenter defaultCenter];
+
 }
 
 - (void)setTitleArray:(NSArray *)titleArray {
@@ -74,6 +77,9 @@
     [titleView addSubview:sliderV];
     _sliderView=sliderV;
     selectButton.backgroundColor = BGGRAY;
+    // 发送通知. 其中的Name填写第一界面的Name， 系统知道是第一界面来相应通知， object就是要传的值。 UserInfo是一个字典， 如果要用的话，提前定义一个字典， 可以通过这个来实现多个参数的传值使用。
+    
+    [center postNotificationName:@"cesuo" object:@"e日刊" userInfo:nil];
 }
 
 - (void)scrollViewSelectToIndex:(UIButton *)button
@@ -99,6 +105,9 @@
 //    }];
     _sliderView.frame = CGRectMake(50+titleWidth*index, titleHeight-1, titleWidth, 1);
     selectButton.backgroundColor = BGGRAY;
+    _titleString = _titleArray[index];
+    // 发送通知. 其中的Name填写第一界面的Name， 系统知道是第一界面来相应通知， object就是要传的值。 UserInfo是一个字典， 如果要用的话，提前定义一个字典， 可以通过这个来实现多个参数的传值使用。
+    [center postNotificationName:@"titleStringPost" object:_titleString userInfo:nil];
     
 }
 

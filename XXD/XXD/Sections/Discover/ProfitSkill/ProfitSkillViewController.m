@@ -21,6 +21,7 @@
     NSInteger _page;
     NSMutableArray* _dataArray;
 }
+@property (nonatomic,copy)NSString* titleString;
 @end
 
 @implementation ProfitSkillViewController
@@ -33,6 +34,13 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     _page = 1;
     _dataArray = [[NSMutableArray alloc]init];
+    //通知中心是个单例
+    NSNotificationCenter *notiCenter = [NSNotificationCenter defaultCenter];
+    
+    // 注册一个监听事件。第三个参数的事件名， 系统用这个参数来区别不同事件。
+    [notiCenter addObserver:self selector:@selector(receiveNotification:) name:@"titleStringPost" object:nil];
+    
+    // @selector(receiveNotification:)方法， 即受到通知之后的事件
     [self createTableView];
 }
 #pragma mark -返回按钮点击
@@ -124,12 +132,40 @@
     if (!cell) {
         cell = [[XXDProfitSkillCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
-    if (_dataArray.count>0){
-        ProfitSkillModel* model = _dataArray[indexPath.row];
-        [cell configModel:model];
+//    if (_dataArray.count>0){
+//        ProfitSkillModel* model = _dataArray[indexPath.row];
+//        [cell configModel:model];
+//    }
+    if ([_titleString isEqualToString:@"e日刊"]) {
+        cell.leftTitleLable.text = @"日刊";
+        cell.leftTitleLable.textColor = RED;
+        cell.topBgView.backgroundColor = [UIColor colorWithRed:253/255.0 green:243/255.0 blue:241/255.0 alpha:1.0];
+        cell.litpicimageView.backgroundColor = RED;
+        
+    }else if ([_titleString isEqualToString:@"e周刊"]){
+        cell.leftTitleLable.text = @"周刊";
+        cell.leftTitleLable.textColor = [UIColor colorWithRed:246/255.0 green:78/255.0 blue:30/255.0 alpha:1.0];
+        cell.topBgView.backgroundColor = [UIColor colorWithRed:255/255.0 green:245/255.0 blue:243/255.0 alpha:1.0];
+        cell.litpicimageView.backgroundColor = [UIColor colorWithRed:246/255.0 green:78/255.0 blue:30/255.0 alpha:1.0];
+    }else if ([_titleString isEqualToString:@"e月刊"]){
+        cell.leftTitleLable.text = @"月刊";
+        cell.leftTitleLable.textColor = [UIColor colorWithRed:217/255.0 green:129/255.0 blue:32/255.0 alpha:1.0];
+        cell.topBgView.backgroundColor = [UIColor colorWithRed:254/255.0 green:249/255.0 blue:243/255.0 alpha:1.0];
+        cell.litpicimageView.backgroundColor = [UIColor colorWithRed:217/255.0 green:129/255.0 blue:32/255.0 alpha:1.0];
+    }else{
+        cell.leftTitleLable.text = @"日刊";
+        cell.leftTitleLable.textColor = RED;
+        cell.topBgView.backgroundColor = [UIColor colorWithRed:253/255.0 green:243/255.0 blue:241/255.0 alpha:1.0];
+        cell.litpicimageView.backgroundColor = RED;
     }
-    return cell;
+       return cell;
 }
+- (void)receiveNotification:(NSNotification *)noti
+{
+    // NSNotification 有三个属性，name, object, userInfo，其中最关键的object就是从第三个界面传来的数据。name就是通知事件的名字， userInfo一般是事件的信息。
+    _titleString = noti.object;
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (_dataArray.count>0) {
         ProfitSkillModel* model = _dataArray[indexPath.row];

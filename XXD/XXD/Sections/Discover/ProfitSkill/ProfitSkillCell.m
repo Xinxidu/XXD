@@ -19,7 +19,6 @@
     return self;
 }
 -(void)createView{
-    
     _titleLable = [[UILabel alloc]initWithFrame:CGRectMake(10, 12, SIZE.width-20, 16)];
     _titleLable.text = @"沙特或利用OPEC会议加强团结";
     _titleLable.font = [UIFont systemFontOfSize:16.0f];
