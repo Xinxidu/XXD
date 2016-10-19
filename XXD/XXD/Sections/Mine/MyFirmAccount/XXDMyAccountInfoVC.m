@@ -7,7 +7,6 @@
 //
 
 #import "XXDMyAccountInfoVC.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
 @interface XXDMyAccountInfoVC ()
 @property (strong,nonatomic) NSArray *titleArray;///表头数组
 @property (strong,nonatomic) NSArray *numArray;//数额数组

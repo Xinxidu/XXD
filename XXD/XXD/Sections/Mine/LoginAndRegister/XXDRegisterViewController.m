@@ -198,7 +198,7 @@
 }
 #pragma mark -返回按钮点击
 - (void)backBtnClick{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

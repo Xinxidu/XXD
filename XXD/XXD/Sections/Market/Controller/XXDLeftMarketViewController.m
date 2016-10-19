@@ -7,8 +7,6 @@
 //
 
 #import "XXDLeftMarketViewController.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface XXDLeftMarketViewController ()
 
 @end

@@ -6,8 +6,6 @@
 //  Copyright © 2016年 Secret. All rights reserved.
 //
 #import "BaseWKWebView.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 @implementation BaseWKWebView
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];

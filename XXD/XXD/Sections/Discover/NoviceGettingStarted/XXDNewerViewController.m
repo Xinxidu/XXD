@@ -7,7 +7,6 @@
 //
 
 #import "XXDNewerViewController.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
 @interface XXDNewerViewController ()
 @property (strong,nonatomic) UIView *topView;
 @property (strong,nonatomic) UIButton *skillButton;

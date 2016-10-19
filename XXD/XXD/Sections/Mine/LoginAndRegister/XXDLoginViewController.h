@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "PopViewControllerDelegate.h"
 @interface XXDLoginViewController : UIViewController
+@property (weak,nonatomic) id<PopViewControllerDelegate> delegate;
 @end
