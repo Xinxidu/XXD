@@ -8,6 +8,7 @@
 
 #import "XXDBannerDetailViewController.h"
 #import "XXDLiveViewController.h"
+#import "XXDLoginViewController.h"
 @interface XXDBannerDetailViewController ()<PopViewControllerDelegate>
 
 @end
@@ -26,10 +27,26 @@
     [imageView addSubview:button];
 }
 - (void)btnClick{
-    self.hidesBottomBarWhenPushed = YES;
-    XXDLiveViewController *live = [[XXDLiveViewController alloc] init];
-    live.delegate = self;
-    [self.navigationController pushViewController:live animated:YES];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    BOOL isLogin = [user boolForKey:@"isLogin"];
+    if (isLogin == YES) {
+        self.hidesBottomBarWhenPushed = YES;
+        XXDLiveViewController *live = [[XXDLiveViewController alloc] init];
+        live.delegate = self;
+        [self.navigationController pushViewController:live animated:YES];
+    }else{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请先登录APP！" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            XXDLoginViewController *login = [[XXDLoginViewController alloc ] init];
+            login.delegate = self;
+            [self.navigationController pushViewController:login animated:YES];
+            self.hidesBottomBarWhenPushed = NO;
+        }];
+        [alertController addAction:cancleAction];
+        [alertController addAction:sureAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 - (void)changeNavigationBarColor{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:0];
