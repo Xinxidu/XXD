@@ -364,8 +364,8 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 - (void)openAccountClick{
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     BOOL isLogin = [user boolForKey:@"isLogin"];
+    self.hidesBottomBarWhenPushed = YES;
     if (isLogin == YES) {
-        self.hidesBottomBarWhenPushed = YES;
         FirmRegisterViewController *firm = [[FirmRegisterViewController alloc]init];
         firm.delegate = self;
         [self.navigationController pushViewController:firm animated:YES];
@@ -374,12 +374,16 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请先登录APP！" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
         UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self.navigationController pushViewController:[[XXDLoginViewController alloc ] init] animated:YES];
+            XXDLoginViewController *login = [[XXDLoginViewController alloc ] init];
+            login.delegate = self;
+            [self.navigationController pushViewController:login animated:YES];
+            self.hidesBottomBarWhenPushed = NO;
         }];
         [alertController addAction:cancleAction];
         [alertController addAction:sureAction];
         [self presentViewController:alertController animated:YES completion:nil];
     }
+    
 }
 #pragma mark 创建直播视图
 - (void)createLiveView{

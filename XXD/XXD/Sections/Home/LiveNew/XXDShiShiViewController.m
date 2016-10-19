@@ -9,9 +9,6 @@
 #import "XXDShiShiViewController.h"
 #import "XXDTimeNews.h"
 #import "XXDTimeNewsCell.h"
-
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface XXDShiShiViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong,nonatomic) UITableView *tableView;  //底部TableView
 @property (strong,nonatomic) NSMutableArray *timeNewsArray;  //初始化数据

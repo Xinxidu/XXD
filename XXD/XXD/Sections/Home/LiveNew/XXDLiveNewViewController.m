@@ -13,9 +13,6 @@
 #import "XXDJinRongViewController.h"
 #import "XXDCollectViewController.h"
 #import "SGTopTitleView.h"
-
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface XXDLiveNewViewController ()<SGTopTitleViewDelegate,UIScrollViewDelegate>
 @property (nonatomic, strong) SGTopTitleView *topTitleView;
 @property (nonatomic, strong) UIScrollView *mainScrollView;

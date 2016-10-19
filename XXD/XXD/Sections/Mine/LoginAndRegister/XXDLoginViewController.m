@@ -12,8 +12,6 @@
 #import "BaseWebRequest.h"
 #import <AFNetworking/AFNetworking.h>
 #define URL @"http://app.service.xiduoil.com/app/controller/user/login/json"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface XXDLoginViewController ()<UITextFieldDelegate>
 @property (nonatomic,strong)UITextField *userNameTxt;
 @property (nonatomic,strong)UITextField *pwdTxt;
@@ -29,6 +27,7 @@
     self.navigationItem.title = @"登录";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"root_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(backBtnClick)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:0];
     [self createUI];
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -187,14 +186,13 @@
         }else{
             NSDictionary *userInfoDict = responseObject[@"userInfo"];
             NSLog(@"userInfoDict=%@",userInfoDict);
-            [self.navigationController popToRootViewControllerAnimated:YES];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];
-
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:YES forKey:@"isLogin"];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.delegate changeNavigationBarColor];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark -弹出框
 -(void)alertwithTitle:(NSString *)titleString{
@@ -206,6 +204,7 @@
 
 #pragma mark -返回按钮点击
 - (void)backBtnClick{
+    [self.delegate changeNavigationBarColor];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {

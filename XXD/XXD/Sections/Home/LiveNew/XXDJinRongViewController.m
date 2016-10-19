@@ -9,8 +9,6 @@
 #import "XXDJinRongViewController.h"
 #import "XXDJinYinNiuPing.h"
 #import "ProfitSkillCell.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface XXDJinRongViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong,nonatomic) UITableView *tableView;  //底部TableView
 @property (strong,nonatomic) NSMutableArray *timeNewsArray;  //初始化数据

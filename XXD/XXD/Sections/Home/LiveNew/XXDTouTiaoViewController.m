@@ -9,8 +9,6 @@
 #import "XXDTouTiaoViewController.h"
 #import "XXDJinYinNiuPing.h"
 #import "XXDJinYinNiuPingCell.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface XXDTouTiaoViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong,nonatomic) UITableView *tableView;  //底部TableView
 @property (strong,nonatomic) NSMutableArray *timeNewsArray;  //初始化数据

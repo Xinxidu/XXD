@@ -11,8 +11,6 @@
 #import "XXDLiveImage.h"
 #import "XXDCustomNavigation.h"
 #import "XXDLiveOnlineDetailController.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface XXDLiveOnLineController ()
 @property (strong,nonatomic) NSArray *dataArray;
 @end

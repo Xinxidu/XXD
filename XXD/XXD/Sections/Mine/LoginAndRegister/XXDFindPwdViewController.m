@@ -8,8 +8,6 @@
 
 #import "XXDFindPwdViewController.h"
 #import "XXDFindPwdSecondViewController.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
-#define HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface XXDFindPwdViewController ()
 @property (nonatomic,strong)UITextField *phoneNumberTextfield;
 @property (nonatomic,strong)UITextField *codeTextfield;
@@ -98,7 +96,7 @@
 }
 #pragma mark -返回按钮点击
 - (void)backBtnClick{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -8,7 +8,6 @@
 
 #import "XXDFindPwdSecondViewController.h"
 #import "XXDLoginViewController.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width
 @interface XXDFindPwdSecondViewController ()
 @property (nonatomic,strong)UITextField *NewPwdTextfield;
 @property (nonatomic,strong)UITextField *surepwdTextfield;
