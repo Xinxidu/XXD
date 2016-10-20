@@ -205,6 +205,7 @@
 #pragma mark -返回按钮点击
 - (void)backBtnClick{
     [self.delegate changeNavigationBarColor];
+    self.tabBarController.tabBar.hidden = NO;
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {
