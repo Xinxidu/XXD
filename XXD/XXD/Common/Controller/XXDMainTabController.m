@@ -14,6 +14,7 @@
 #import "XXDTradeViewController.h"
 #import "XXDDiscoverViewController.h"
 #import "XXDMyViewController.h"
+#import "XXDLoginViewController.h"
 @interface XXDMainTabController ()<UITabBarControllerDelegate>
 @end
 @implementation XXDMainTabController
@@ -35,6 +36,7 @@
 //            nav.interactivePopGestureRecognizer.enabled = YES;
 //            [nav.interactivePopGestureRecognizer setDelegate:(id<UIGestureRecognizerDelegate>)self];
 //        }
+        nav.tabBarItem.tag = i;
         nav.navigationBar.barStyle = UIBarStyleBlackTranslucent;
         vc.navigationItem.title = titleArray[i];
         [navArray addObject:nav];
@@ -60,6 +62,25 @@
             [item setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor clearColor] forKey:NSForegroundColorAttributeName] forState:UIControlStateSelected];
         }
     }
+}
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    if (item.tag == 2) {
+
+    }
+}
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+//    NSLog(@"%ld",viewController.tabBarItem.tag);
+    if(viewController.tabBarItem.tag == 2){
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        NSLog(@"%@",viewController.title);
+        BOOL isLogin = [userDefault boolForKey:@"isLogin"];
+        if (isLogin == NO) {
+            UINavigationController *nav = (UINavigationController *)self.viewControllers[2];
+            [nav pushViewController:[[XXDLoginViewController alloc] init] animated:YES];
+            return NO;
+        }
+    }
+    return YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

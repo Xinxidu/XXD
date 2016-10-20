@@ -94,7 +94,6 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
     self.jinYinNiuPingButton.titleEdgeInsets = UIEdgeInsetsMake(10, 32, 10, (WIDTH-1)*0.5 -96);
     //初始化数据
     self.timeNewsArray  = [NSMutableArray arrayWithObjects:@"俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是",@"俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是",@"俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是发达地方",@"俺的沙发多发的发的发的是发的是发达地方俺的沙发多发的发的发的是发的是",@"俺的沙发多发的发的发的是发的是发达地方",nil];
-
     //初始化底部TableView
     [self initButtomTableView];
 }
@@ -201,7 +200,6 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
 }
 #pragma mark 顶部按钮的点击事件
 - (void)buttonClick:(UIButton*)sender {
-    self.hidesBottomBarWhenPushed = YES;
     switch (sender.tag) {
         case XXDButtonTypeHotTrade:{
             XXDHotTradeViewController *hotTradeVc = [[XXDHotTradeViewController alloc] init];
@@ -273,11 +271,12 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
             CGFloat productNameWidth = [(NSString *)nameArray[i] boundingRectWithSize:CGSizeMake(1000, 16) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:productName.font forKey:NSFontAttributeName] context:nil].size.width;
             productName.frame = CGRectMake((viewWidth-productNameWidth)/2.0, 5, productNameWidth, 22);
             [v addSubview:productName];
+            
             CGFloat x = productName.frame.origin.x;
             UILabel *num1 = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(productName.frame), viewWidth-x, 22)];
             num1.font = [UIFont systemFontOfSize:20.0];
             num1.text = lastPriceArray[i];
-            num1.textColor = (i == 0 ? DARKGREEN : RED);
+            num1.textColor = ([valueOfUpOrDownArray[i] floatValue]<0 ? DARKGREEN : RED);
             [v addSubview:num1];
             if (i == 0) {
                 self.latest1 = num1;
@@ -287,7 +286,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
             UILabel *num2 = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(num1.frame), viewWidth/2.0-x, 15)];
             num2.font = [UIFont systemFontOfSize:12.0];
             num2.text = upsAndDownsArray[i];
-            num2.textColor = (i == 0 ? DARKGREEN : RED);
+            num2.textColor = ([valueOfUpOrDownArray[i] floatValue]<0 ? DARKGREEN : RED);
             [v addSubview:num2];
             if (i == 0) {
                 self.upsAndDowns1 = num2;
@@ -297,7 +296,7 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
             UILabel *num3 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(num2.frame), CGRectGetMaxY(num1.frame), viewWidth-CGRectGetMaxX(num2.frame), 15)];
             num3.font = [UIFont systemFontOfSize:12.0];
             num3.text = valueOfUpOrDownArray[i];
-            num3.textColor = (i == 0 ? DARKGREEN : RED);
+            num3.textColor = ([valueOfUpOrDownArray[i] floatValue]<0? DARKGREEN : RED);
             [v addSubview:num3];
             if (i == 0) {
                 self.valueOfUpOrDown1 = num3;
@@ -327,12 +326,18 @@ typedef NS_ENUM(NSInteger,XXDButtonType){
             for (NSDictionary *dic in arr) {
                 if ([dic[@"commodity"] isEqualToString:@"AgJC"]) {
                     self.latest1.text = dic[@"latestPrice"];
+                    self.latest1.textColor = ([dic[@"valueOfUpOrDown"] floatValue]<0 ? DARKGREEN : RED);
                     self.upsAndDowns1.text = dic[@"upsAndDowns"];
+                    self.upsAndDowns1.textColor = ([dic[@"valueOfUpOrDown"] floatValue]<0 ? DARKGREEN : RED);
                     self.valueOfUpOrDown1.text = dic[@"valueOfUpOrDown"];
+                    self.valueOfUpOrDown1.textColor = ([dic[@"valueOfUpOrDown"] floatValue]<0 ? DARKGREEN : RED);
                 }else if ([dic[@"commodity"] isEqualToString:@"AgSTS"]){
                     self.latest2.text = dic[@"latestPrice"];
+                    self.latest2.textColor = ([dic[@"valueOfUpOrDown"] floatValue]<0 ? DARKGREEN : RED);
                     self.upsAndDowns2.text = dic[@"upsAndDowns"];
+                     self.upsAndDowns2.textColor = ([dic[@"valueOfUpOrDown"] floatValue]<0 ? DARKGREEN : RED);
                     self.valueOfUpOrDown2.text = dic[@"valueOfUpOrDown"];
+                    self.valueOfUpOrDown2.textColor = ([dic[@"valueOfUpOrDown"] floatValue]<0 ? DARKGREEN : RED);
                 }
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

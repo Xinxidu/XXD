@@ -91,7 +91,7 @@
     
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.hidesBottomBarWhenPushed = YES;
+//    self.hidesBottomBarWhenPushed = YES;
     if (indexPath.row == 0) {
         [self.navigationController pushViewController:[[XXDMyAccountInfoVC alloc]init] animated:YES];
     }else if (indexPath.row == 1){

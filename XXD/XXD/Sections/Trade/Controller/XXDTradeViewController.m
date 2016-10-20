@@ -41,7 +41,7 @@
 
 }
 -(void)topButtonChangeClick:(UIButton*)sender{
-    self.hidesBottomBarWhenPushed = YES;
+//    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:[[FirmLoginViewController alloc]init] animated:YES];
     self.hidesBottomBarWhenPushed = NO;
 }
